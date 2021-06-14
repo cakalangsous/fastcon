@@ -12,7 +12,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-12 history-wrapper">
 
                             <div class="history-item">
@@ -55,7 +55,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

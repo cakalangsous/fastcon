@@ -1284,7 +1284,8 @@ ul.member-menu {
 	width: calc( 100vw - 17%);
 	
 	.member-container {
-		max-width: 950px !important;
+		// max-width: 950px !important;
+		width: min(87%, 1020px) !important;
 		padding-left: 5%;
 	}
 
