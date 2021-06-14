@@ -1,0 +1,274 @@
+@media screen and (max-width: 767px) {
+
+    .width-md-fit {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .width-sm-fit {
+        width: fit-content !important;
+    }
+
+    .large-medium-only {
+        display: none !important;
+    }
+
+    .small-only {
+        display: block;
+    }
+
+    #content .content-wrap {
+        padding: 60px 0 100px;
+    }
+
+    .container,
+    .stretched .full-header #header-wrap > .container {
+        max-width: $max-width-small !important;
+    }
+
+    .svg-trigger {
+        width: 45px;
+        height: 45px;
+    }
+
+    .hero-section_bg {
+        max-width: 90%;
+        img.hero-img {
+            max-width: 172px;
+            left: 4%;
+        }
+
+        img.hero-bg {
+            max-width: 80%;
+            width: 80%;
+        }
+    }
+
+    .hero-section_info {
+        .hero-section_info-wrap,
+        .hero-section_info-btn,
+        .hero-section_info-iso {
+            @include container_small;
+            max-width: 295px;
+        }
+    }
+
+    .sub-menu-container {
+        .menu-link {
+            color: $grayscale-900 !important;
+            font-size: 18px !important;
+            line-height: 21px;
+            font-weight: 400 !important;
+        }
+    }
+
+    .menu-link {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 28px;
+    }
+
+    .menu-item .sub-menu-trigger {
+        top: 12px;
+    }
+
+    .fastcon-post .fastcon-post-item {
+        padding: 0 10px;
+    }
+
+    .fastcon-news .fastcon-news-item {
+        height: 350px;
+        max-height: 350px;
+    }
+
+    .fastcon-news-home div:nth-child(2) {
+        display: none;
+    }
+
+    .footer-column .iso-img {
+        max-width: 205px;
+    }
+
+    .cr-wrap, .cr-wrap .cr {
+        text-align: center;
+    }
+
+    .cr-wrap {
+        margin-top: 20px;
+    }
+
+    .cr-wrap .cr {
+        margin-top: 30px;
+    }
+    
+
+    .fastcon-product-list .product-item {
+        margin-bottom: 0;
+    }
+
+    .fastcon-product-list .product-item .product-desc {
+        width: 95%;
+    }
+
+    .products-wrap {
+        margin-top: 40px;
+    }
+
+    .tab-container {
+        padding: 0;
+    }
+
+    .cart-card-wrap {
+
+        .cart-card-item {
+
+            flex-direction: column;
+
+            .card-img {
+                width: 100%;
+                max-width: 100%;
+
+                img {
+                  max-width: 64px;
+                  margin-bottom: 10px;
+                }
+            }
+
+            .card-desc {
+                h4 {
+                    max-width: 100%;
+                }
+            }
+
+            .card-qty {
+                justify-content: center;
+                margin-left: 0;
+                margin-top: 20px;
+
+                .quantity {
+                    width: 100%;
+                }
+
+                .qty {
+                    width: 75%;
+                }
+            }
+
+            .delete-link {
+                position: absolute;
+                right: 5%;
+            }
+        }
+    }
+
+    .cart-option-wrap {
+        padding: 40px 15px 0;
+    }
+
+    #banner {
+        background-position: 80%;
+        max-height: 375px;
+        min-height: 375px;
+        display: flex;
+        align-items: flex-end;
+
+        .title-card {
+            padding: 30px;
+            max-width: 90%;
+            width: 90%;
+
+            h2 {
+                width: 222px;
+            }
+        }
+    }
+
+    .contact-banner {
+        background-position: center;
+    }
+
+    .projects-wrap {
+        .project-item {
+            margin-bottom: 30px;
+        }
+    }
+
+    .project-slider-bg {
+        max-width: 87%;
+        height: 264px;
+    }
+
+    .owl-carousel .owl-item img {
+        width: 90%;
+    }
+
+    .project-details-slider-mobile {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        width: 100%;
+        height: 279px;
+    }
+
+    .project-content {
+        margin-top: 285px;
+    }
+
+    .owl-carousel .owl-dots .owl-dot {
+        margin-right: 7px;
+        margin-left: 0;
+        width: 8px;
+        height: 8px;
+    }
+
+    .owl-carousel .owl-dots {
+        width: 90%;
+        max-width: 90%;
+        bottom: 20px;
+    }
+
+    .fastcon-distributor-wrap {
+        margin-top: 40px;
+    }
+
+    .contact-address-wrap > div:first-child {
+        margin-bottom: 40px;
+    }
+
+    .contact-address-wrap h3 {
+        margin-bottom: 20px;
+    }
+
+    .contact-form {
+        margin-top: 50px;
+    }
+
+    .btn-wrap {
+        @include flex_center;
+
+        button {
+            margin-bottom: 20px;
+        }
+    }
+
+    .login-title-wrap {
+        h1 {
+            font-size: 24px;
+        }
+    }
+
+    .member-content-wrap {
+        width: $max-width-small;
+        max-width: $max-width-small;
+
+        .member-container {
+            max-width: $max-width-small !important;
+        }
+    }
+
+    .coupon-details {
+        div {
+            margin-bottom: 20px;
+        }
+    }
+}

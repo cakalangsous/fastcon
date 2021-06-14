@@ -51,9 +51,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route_path = APPPATH . 'routes/';
 // require_once $route_path . 'routes_landing.php';
-$route['default_controller'] = 'auth/login';
+$route['calc'] = 'pages/calculator';
+$route['contact'] = 'pages/contact';
+$route['about-us'] = 'pages/about';
+$route['distributor'] = 'pages/distributor';
+$route['default_controller'] = 'pages/index';
 
-$route['404_override'] = 'not_found';
+$route['404_override'] = 'pages/not_found';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['administrator/login'] = 'administrator/auth/login';

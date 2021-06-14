@@ -1,0 +1,309 @@
+//colors
+$white:          #fff;
+$primary-900:    #00672B;
+$primary-300:    #79D090;
+$primary-50:     #E7F7EB;
+
+$grayscale-900:  #212121;
+$grayscale-600:  #757575;
+$grayscale-500:  #9E9E9E;
+$grayscale-300:  #E0E0E0;
+$grayscale-100:  #F5F5F5;
+
+$error: #d3302f;
+
+.cl-primary-900 {
+    color: $primary-900 !important;
+}
+
+.cl-grey-900 {
+    color: $grayscale-900 !important;
+}
+
+.cl-grey-600 {
+    color: $grayscale-600 !important;
+}
+
+.cl-grey-500 {
+    color: $grayscale-500 !important;
+}
+
+.cl-error {
+    color: $error !important;
+}
+
+.bg-primary-50 {
+    background-color: $primary-50;
+}
+
+
+p, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.fastcon-h1 {
+    font-family: 'Jura', sans-serif;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 53px;
+    letter-spacing: 0;
+}
+
+.fastcon-h2 {
+    font-family: 'Jura', sans-serif;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 39px;
+    letter-spacing: 0;
+}
+
+.fastcon-h3 {
+    font-family: 'Jura', sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0;
+}
+
+.fastcon-h4 {
+    font-family: 'Jura', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: $grayscale-900;
+}
+
+.fastcon-calc-result {
+    font-family: 'Jura', sans-serif;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 70px;
+}
+
+.fastcon-body, 
+.project-content-body p,
+.news-content p,
+.about-content p,
+.calc-content-wrap p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0;
+}
+
+.project-content-body ol,
+.news-content ol,
+.about-content ol,
+.calc-content-wrap ol,
+.project-content-body ul,
+.news-content ul,
+.about-content ul,
+.calc-content-wrap ul {
+    list-style-position: inside;
+}
+
+.fastcon-body-large {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 24px !important;
+}
+
+.fastcon-description {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 19px !important;
+}
+
+.fastcon-label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 19px !important;
+    letter-spacing: 0 !important;
+}
+
+.fastcon-nav {
+    font-family: 'Jura', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+    text-transform: uppercase;
+}
+
+//fastcon button
+.fastcon-btn {
+    padding: 12px;
+    font-family: 'Jura', sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+
+    transition: all .2s ease-in-out;
+}
+
+.primary-btn {
+    background-color: $primary-900;
+    border: 1px solid $primary-900;
+    color: $white;
+
+    &:hover {
+        background-color: $primary-300;
+        color: $white;
+        border: 1px solid $primary-300;
+    }
+}
+
+.secondary-btn {
+    background-color: $white;
+    color: $grayscale-900;
+    border: 1px solid $grayscale-900;
+}
+
+.secondary-error-btn {
+    background-color: $white;
+    color: $error;
+    border: 1px solid $error;
+}
+
+.secondary-error-btn:hover {
+    color: $error;
+}
+
+.coupon-btn {
+    padding: 7px 20px;
+}
+
+input,
+textarea {
+    padding: 8px 16px;
+    background-color: $grayscale-100 !important;
+    border: 1px solid #E0E0E0 !important;
+    border-radius: 8px !important;
+}
+
+textarea,
+input,
+input::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: $grayscale-500 !important;
+}
+
+textarea:focus,
+input:valid {
+    color: $grayscale-900 !important;
+}
+
+.form-text {
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.bootstrap-select>.dropdown-toggle {
+    background-color: $grayscale-300 !important;
+    border: 1px solid #BDBDBD;
+    border-radius: 8px;
+}
+
+.bootstrap-select .dropdown-toggle .filter-option-inner-inner,
+.dropdown-item {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: $grayscale-900;
+}
+
+.bootstrap-select div.dropdown-menu.show {
+    margin-top: 0;
+    padding: 4px 0;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.dropdown-item {
+    padding: 4px 24px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    color: $grayscale-900;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: transparent;
+    color: $primary-900;
+}
+
+.dropdown-item:hover,
+.dro.pdown-item:focus {
+    background-color: transparent;
+    color: $primary-900;
+}
+
+.fastcon-alert {
+    margin: 30px 0;
+    padding: 8px 16px;
+    color: #212121;
+
+    .alert-header {
+        .alert-title {
+            font-family: 'Open Sans';
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 18px !important;
+            text-transform: uppercase;
+        }
+    }
+
+    .alert-body {
+        .alert-message {
+            font-family: 'Open Sans';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px !important;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.fastcon-alert-error {
+    background-color: rgba(211, 48, 47, .2);
+}
+
+
+@media screen and (max-width: 767px) {
+    .fastcon-h1 {
+        font-size: 32px;
+        line-height: 39px;
+    }
+
+    .fastcon-h2 {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .fastcon-h3 {
+        font-size: 18px;
+        line-height: 21px;
+    }
+}

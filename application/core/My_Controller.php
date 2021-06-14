@@ -704,15 +704,7 @@ class Front extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-
-        if (installation_complete()) {
-            $this->active_theme = get_option('active_theme');
-            $this->register_template();
-        }
-
-        define('BASE_THEME', BASE_URL . 'cc-content/themes/' . $this->active_theme . '/');
-
-        $this->template->set_theme('cicool');
+        $this->data['title'] = 'Home';
     }
 
     public function render($view='', $data=[])
@@ -734,6 +726,12 @@ class Front extends MY_Controller
             'smtp_user' => getenv('SMTP_USER'),
             'smtp_pass' => getenv('SMTP_PASS'),
         ];
+    }
+
+    public function not_found()
+    {
+        $this->data['title'] = 'Page not found';
+        $this->load->view('frontend/404', $this->data);
     }
 
 }

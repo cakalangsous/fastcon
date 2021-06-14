@@ -4,7 +4,8 @@
 
 //-------------------- Base Colors --------------------//
 
-$theme-color:                   		#1ABC9C;
+$fastcon-bg : 							#E5E5E5;
+$theme-color:                   		#00672B;
 $body-text-color:               		#555;
 
 $body-bg:								$white; // White
@@ -164,8 +165,8 @@ $spacers: map-merge(
 
 //-------------------- Font Families --------------------//
 
-$body-font:                     		'Lato', sans-serif;
-$heading-font:                  		'Poppins', sans-serif;
+$body-font:                     		'Open Sans', sans-serif;
+$heading-font:                  		'Jura', sans-serif;
 $secondary-font:                		'PT Serif', serif;
 
 

@@ -509,7 +509,7 @@ var SEMICOLON = SEMICOLON || {};
 
 			menuItemSubs.addClass('sub-menu'); // , .primary-menu.with-arrows > .menu-container > .menu-item:has(.sub-menu-container) > .menu-link > div:not(:has(.icon-angle-down))
 			$( '.top-links-item:has(.top-links-sub-menu,.top-links-section) > a:not(:has(.icon-angle-down)), .menu-item:not(.mega-menu-title):has(.sub-menu-container) > .menu-link > div:not(:has(.icon-angle-down)), .page-menu-item:has(.page-menu-sub-menu) > a > div:not(:has(.icon-angle-down))' ).append( '<i class="icon-angle-down"></i>' );
-			$( '.menu-item:not(.mega-menu-title):has(.sub-menu-container):not(:has(.sub-menu-trigger))' ).append( '<button class="sub-menu-trigger icon-chevron-right"></button>' );
+			$( '.menu-item:not(.mega-menu-title):has(.sub-menu-container):not(:has(.sub-menu-trigger))' ).append( '<button class="sub-menu-trigger icon-chevron-down"></button>' );
 
 			SEMICOLON.header.menuInvert();
 
@@ -593,16 +593,16 @@ var SEMICOLON = SEMICOLON || {};
 
 				menuItemTrigger.off( 'click' ).on( 'click', function(e){
 					let triggerEl = $(this);
-					triggerEl.parents( subMenuT ).siblings().find( subMenuTriggerT ).removeClass('icon-rotate-90');
+					triggerEl.parents( subMenuT ).siblings().find( subMenuTriggerT ).removeClass('icon-rotate-180');
 					triggerEl.parents( subMenuT ).siblings().find( submenus ).filter(':not(:animated)').stop( true, true ).slideUp( menuSpeed );
 					triggerEl.parent( menuItemT ).children( submenusT ).filter(':not(:animated)').stop( true, true ).slideToggle( menuSpeed );
 
 					let subMenuTriggerEl = triggerEl.parent( menuItemT ).children( subMenuTriggerT );
 
-					if( !subMenuTriggerEl.hasClass( 'icon-rotate-90' ) ) {
-						subMenuTriggerEl.addClass('icon-rotate-90');
+					if( !subMenuTriggerEl.hasClass( 'icon-rotate-180' ) ) {
+						subMenuTriggerEl.addClass('icon-rotate-180');
 					} else {
-						subMenuTriggerEl.removeClass('icon-rotate-90');
+						subMenuTriggerEl.removeClass('icon-rotate-180');
 					}
 
 					e.preventDefault();

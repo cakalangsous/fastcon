@@ -1,3 +1,3 @@
-## Custom CMS
+## Fastcon
 
-This CMS is used by my project only
+Fastcon ecommerce website
