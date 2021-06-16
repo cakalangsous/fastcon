@@ -15,6 +15,8 @@ if(first_active.hasClass('active')){
 
 $(document).ready(() => {
 
+    $('#home_modal').modal('show');
+
     if( $body.hasClass('fastcon-menu') && ( $body.hasClass('device-md') || $body.hasClass('device-sm') || $body.hasClass('device-xs') ) ) {
         $('#primary-menu-trigger').off( 'click' ).on( 'click', function() {
 

@@ -1468,6 +1468,41 @@ ul.member-menu {
 	}
 }
 
+.home-modal {
+
+	.modal-content {
+		width: 750px;
+	}
+
+	.modal-header {
+		margin-left: auto;
+		margin-right: auto;
+		border: none;
+
+		padding: 40px 0 0;
+	}
+
+	.modal-body {
+		@include flex_center;
+		flex-direction: column;
+		padding: 40px;
+		text-align: center;
+
+		h2 {
+			margin-bottom: 20px;
+		}
+
+		p {
+			max-width: 629px;
+			margin-bottom: 30px;
+		}
+
+		.button-wrap a {
+			margin-right: 20px;
+		}
+	}
+}
+
 
 @import "sass/medium_devices";
 @import "sass/small_devices";

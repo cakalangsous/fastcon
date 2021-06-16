@@ -1996,6 +1996,48 @@ ul.member-menu li.active a {
   margin-top: 40px;
 }
 
+.home-modal .modal-content {
+  width: 750px;
+}
+
+.home-modal .modal-header {
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  padding: 40px 0 0;
+}
+
+.home-modal .modal-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 40px;
+  text-align: center;
+}
+
+.home-modal .modal-body h2 {
+  margin-bottom: 20px;
+}
+
+.home-modal .modal-body p {
+  max-width: 629px;
+  margin-bottom: 30px;
+}
+
+.home-modal .modal-body .button-wrap a {
+  margin-right: 20px;
+}
+
 @media screen and (max-width: 991px) {
   .fastcon-btn {
     width: 100%;
