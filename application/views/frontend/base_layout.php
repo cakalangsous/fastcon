@@ -157,6 +157,10 @@
 								<li class="menu-item">
 									<a class="menu-link" href="<?=site_url('contact')?>"><div>Kontak</div></a>
 								</li>
+
+								<li class="menu-item small-only">
+									<a class="menu-link" href="<?=site_url('member/login')?>"><div>Login</div></a>
+								</li>
 							</ul>
 
 						</nav>

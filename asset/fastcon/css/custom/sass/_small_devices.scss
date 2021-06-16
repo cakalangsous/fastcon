@@ -313,4 +313,47 @@
     .accordion-content .card-summary {
         padding: 20px 0;
     }
+
+    .home-modal {
+
+        .modal-dialog {
+            margin: unset;
+
+            .modal-body {
+                padding: unset;
+            }
+        }
+
+        .modal-content {
+            width: 315px;
+            padding: 50px 30px;
+
+            .modal-header {
+                padding-top: 0;
+                margin-bottom: 30px;
+            }
+
+            .modal-body {
+                p {
+                    margin-bottom: 40px;
+                }
+            }
+
+            .button-wrap {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+
+                a {
+                    margin-bottom: 20px;
+                }
+
+                .fastcon-btn {
+                    width: 100%;
+                }
+            }
+        }
+
+    }
 }

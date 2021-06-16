@@ -270,4 +270,26 @@
             padding: 0 30px 30px;
         }
     }
+
+    .home-modal {
+
+        .modal-dialog {
+            margin: unset;
+        }
+
+        .modal-content {
+            width: 680px;
+
+            .button-wrap {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+
+                .fastcon-btn {
+                    width: fit-content;
+                }
+            }
+        }
+
+    }
 }
