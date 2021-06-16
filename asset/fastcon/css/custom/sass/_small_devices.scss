@@ -257,6 +257,20 @@
         }
     }
 
+    .login-form {
+        .btn-wrap {
+            flex-direction: column;
+            
+            button[type="submit"] {   
+                margin-right: 0;
+            }
+
+            a {
+                text-align: center;
+            }
+        }
+    }
+
     .member-content-wrap {
         width: $max-width-small;
         max-width: $max-width-small;

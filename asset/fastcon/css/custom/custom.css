@@ -2552,6 +2552,18 @@ ul.member-menu li.active a {
   .login-title-wrap h1 {
     font-size: 24px;
   }
+  .login-form .btn-wrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .login-form .btn-wrap button[type="submit"] {
+    margin-right: 0;
+  }
+  .login-form .btn-wrap a {
+    text-align: center;
+  }
   .member-content-wrap {
     width: 320px;
     max-width: 320px;
