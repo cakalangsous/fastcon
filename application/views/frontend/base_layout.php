@@ -240,6 +240,10 @@
 													<a href="<?=site_url('projects')?>" class="fastcon-nav cl-grey-900">Proyek</a>
 
 													<a href="<?=site_url('distributor')?>" class="fastcon-nav cl-grey-900">Distributor</a>
+
+													<a href="<?=site_url('asdlkfkj')?>" class="fastcon-nav cl-grey-900">404</a>
+
+													<a href="<?=site_url('thankyou')?>" class="fastcon-nav cl-grey-900">Thank You</a>
 												</div>
 												<div class="col-lg-7 col-sm-6 footer-column">
 													<h4 class="fastcon-h4 cl-grey-900">Marketplace Kami</h4>

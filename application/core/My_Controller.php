@@ -731,7 +731,7 @@ class Front extends MY_Controller
     public function not_found()
     {
         $this->data['title'] = 'Page not found';
-        $this->load->view('frontend/404', $this->data);
+        $this->render('404', $this->data);
     }
 
 }

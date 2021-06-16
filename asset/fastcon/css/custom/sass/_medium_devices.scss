@@ -246,5 +246,28 @@
     .coupon-wrap {
         margin-left: 0;
     }
+
+    .accordion-title {
+        margin-left: 0;
+
+        img {
+            max-width: 94px;
+            max-height: 94px;
+            margin-right: 45px;
+        }
+    }
+
+    .accordion-content {
+        padding-left: 0;
+
+    }
     
+    .history-content-wrapper {
+        display: flex;
+        flex-direction: column-reverse;
+
+        div.col-md-12 {
+            padding: 0 30px 30px;
+        }
+    }
 }

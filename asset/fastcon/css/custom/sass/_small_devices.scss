@@ -271,4 +271,46 @@
             margin-bottom: 20px;
         }
     }
+
+    .accordion-title {
+        display: flex;
+        flex-direction: column;
+    
+        img {
+            max-width: 60px;
+            max-height: 60px;
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+    
+        .info-body {
+            margin-left: 0;
+            div {
+                &:not(.status-wrap) {
+                    display: flex;
+                }
+                margin-bottom: 15px;
+    
+                &:last-child {
+                    margin-right: 36px;
+                }
+
+                p:first-child {
+                    margin-right: 5px;	
+                }
+    
+                p {
+                    margin-bottom: 7px;	
+                }
+            }
+        }
+    
+        .fastcon-btn:hover{
+            background-color: $primary-900;
+        }
+    }
+
+    .accordion-content .card-summary {
+        padding: 20px 0;
+    }
 }

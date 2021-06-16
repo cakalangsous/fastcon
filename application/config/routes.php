@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route_path = APPPATH . 'routes/';
 // require_once $route_path . 'routes_landing.php';
+$route['thankyou'] = 'pages/thankyou';
 $route['calc'] = 'pages/calculator';
 $route['contact'] = 'pages/contact';
 $route['about-us'] = 'pages/about';

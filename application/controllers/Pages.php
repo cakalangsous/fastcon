@@ -33,6 +33,12 @@ class Pages extends Front {
 		$this->render('accounting-calc', $this->data);
 	}
 
+	public function thankyou()
+	{
+		$this->data['title'] = 'Thank You';
+		$this->render('thankyou', $this->data);
+	}
+
 }
 
 /* End of file Pages.php */
