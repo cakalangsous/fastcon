@@ -174,10 +174,18 @@
             }
         }
     }
+
+    .fastcon-post {
+        .slick-slide {
+            max-width: 324px !important;
+            width: 324px !important;
+            margin-right: 30px;
+        }
+    }
     
 
     .fastcon-post .fastcon-post-item .fastcon-post-info .fastcon-description::after {
-        bottom: 38%;
+        margin-top: 9px;
     }
 
     .slider-nav .slick-list{

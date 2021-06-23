@@ -103,7 +103,7 @@ $(document).ready(() => {
           settings: {
             arrows: true,
             centerMode: false,
-            centerPadding: '40px',
+            centerPadding: '20px',
             slidesToShow: 2
           }
         },
@@ -112,7 +112,7 @@ $(document).ready(() => {
           settings: {
             arrows: true,
             centerMode: false,
-            centerPadding: '30px',
+            centerPadding: '20px',
             slidesToShow: 1
           }
         }

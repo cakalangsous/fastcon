@@ -54,7 +54,7 @@
         .hero-section_info-btn,
         .hero-section_info-iso {
             @include container_small;
-            max-width: 295px;
+            max-width: 310px;
         }
     }
 
@@ -507,10 +507,15 @@
     .home-modal {
 
         .modal-dialog {
-            margin: unset;
+            margin-left: auto;
+            margin-right: auto;
 
             .modal-body {
                 padding: unset;
+
+                img {
+                    max-width: 184px;
+                }
             }
         }
 
@@ -524,6 +529,7 @@
             }
 
             .modal-body {
+                padding: 0 !important;
                 p {
                     margin-bottom: 40px;
                 }

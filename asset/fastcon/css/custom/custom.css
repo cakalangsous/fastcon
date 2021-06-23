@@ -697,7 +697,7 @@ footer {
   margin-left: 10px;
   border-top: 1px solid #212121;
   position: absolute;
-  bottom: 28.8%;
+  margin-top: 9px;
   height: 1px;
   width: 24px;
 }
@@ -2500,8 +2500,13 @@ ul.member-menu li.active a::after {
   .fastcon-benefits .benefits-item .benefits-item_desc {
     max-width: 442px;
   }
+  .fastcon-post .slick-slide {
+    max-width: 324px !important;
+    width: 324px !important;
+    margin-right: 30px;
+  }
   .fastcon-post .fastcon-post-item .fastcon-post-info .fastcon-description::after {
-    bottom: 38%;
+    margin-top: 9px;
   }
   .slider-nav .slick-list {
     padding: 0 !important;
@@ -2808,7 +2813,7 @@ ul.member-menu li.active a::after {
     margin-right: auto;
     padding-left: 0;
     padding-right: 0;
-    max-width: 295px;
+    max-width: 310px;
   }
   .primary-menu {
     -webkit-box-orient: vertical;
@@ -3211,10 +3216,14 @@ ul.member-menu li.active a::after {
     padding: 20px 0;
   }
   .home-modal .modal-dialog {
-    margin: unset;
+    margin-left: auto;
+    margin-right: auto;
   }
   .home-modal .modal-dialog .modal-body {
     padding: unset;
+  }
+  .home-modal .modal-dialog .modal-body img {
+    max-width: 184px;
   }
   .home-modal .modal-content {
     width: 315px;
@@ -3223,6 +3232,9 @@ ul.member-menu li.active a::after {
   .home-modal .modal-content .modal-header {
     padding-top: 0;
     margin-bottom: 30px;
+  }
+  .home-modal .modal-content .modal-body {
+    padding: 0 !important;
   }
   .home-modal .modal-content .modal-body p {
     margin-bottom: 40px;
