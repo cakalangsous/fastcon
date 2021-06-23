@@ -53,7 +53,7 @@
                     <div class="address-wrap">
                         <div class="title-wrap">
                             <h4 class="fastcon-h4 cl-primary-900">DATA PENGIRIMAN</h4>
-                            <a href="javascript:void(0)" class="edit-link" data-toggle="modal" data-target=".address-modal">
+                            <a href="javascript:void(0)" class="edit-link large-medium-only" data-toggle="modal" data-target=".address-modal">
                                 <h4 class="fastcon-h4 cl-primary-900">
                                     <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
                                     UBAH
@@ -67,6 +67,16 @@
                             <p class="receiver-email">081234567890</p>
                             <p class="address">Jln. HOS. Cokroaminoto, Kel. Tulungrejo, Kediri, Jawa Timur, 64212 (Sebelah toko listrik Sinar Jaya) DEDDY HERMAWAN 082211334455</p>
                         </div>
+
+                        <div class="link-wrap small-only">
+                            <a href="javascript:void(0)" class="edit-link" data-toggle="modal" data-target=".address-modal">
+                                <h4 class="fastcon-h4 cl-primary-900">
+                                    <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
+                                    UBAH
+                                </h4>
+                            </a>
+                        </div>
+
                     </div>
 
                     <div class="fastcon-alert fastcon-alert-error">

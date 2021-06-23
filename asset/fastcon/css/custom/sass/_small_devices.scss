@@ -612,4 +612,68 @@
     .forgot-wrap {
         max-width: 100%;
     }
+
+    .thankyou-wrap {
+        img {
+            max-width: 130px;
+        }
+
+        h2 {
+            margin: 40px 0 20px;
+        }
+
+        .button-wrap {
+            width: 100%;
+        }
+    }
+
+    .delete-cart-modal.show .modal-dialog {
+        max-width: $max-width-small;
+    }
+
+    .link-wrap {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0 0;
+    }
+
+    .fastcon-alert {
+        margin-top: 40px;
+    }
+
+    .address-modal .modal-body .address-modal-card {
+
+        display: flex;
+        flex-direction: column;
+
+        .btn-wrap {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            
+            a:first-child {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+        
+    } 
+
+    .address-modal-card > a.edit-link {
+        align-self: center;
+    }
+
+    .address-modal.show .modal-dialog {
+        max-width: $max-width-small;
+    }
+
+    .address-modal.show .modal-dialog > .modal-body {
+        max-height: 600px;
+    }
+
+    .address-modal.show {
+        max-height: 600px;
+        overflow: auto;
+        margin-top: 25%;
+    }
 }
