@@ -2500,6 +2500,9 @@ ul.member-menu li.active a::after {
   .fastcon-benefits .benefits-item .benefits-item_desc {
     max-width: 442px;
   }
+  .fastcon-post .slick-track {
+    width: 3000px !important;
+  }
   .fastcon-post .slick-slide {
     max-width: 324px !important;
     width: 324px !important;

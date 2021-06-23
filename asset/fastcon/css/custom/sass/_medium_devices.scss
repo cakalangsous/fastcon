@@ -176,6 +176,10 @@
     }
 
     .fastcon-post {
+        .slick-track {
+            width: 3000px !important;
+        }
+
         .slick-slide {
             max-width: 324px !important;
             width: 324px !important;
