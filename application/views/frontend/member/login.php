@@ -16,7 +16,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="fastcon-label cl-grey-900">KATA SANDI* (LUPA KATA SANDI?)</label>
+                            <label for="password" class="fastcon-label cl-grey-900">KATA SANDI* <a href="<?=site_url('member/forgot_password')?>" class="cl-grey-900">(LUPA KATA SANDI?)</a></label>
                             <input type="password" class="form-control" id="password" placeholder="Ketik disini">
                         </div>
 

@@ -73,7 +73,7 @@
                                             </div>
     
                                             <div class="product-desc">
-                                                <p class="fastcon-description">BATA RINGAN AAC</p>
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
                                                 <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
                                             </div>
                                         </a>
@@ -86,7 +86,7 @@
                                             </div>
     
                                             <div class="product-desc">
-                                                <p class="fastcon-description">BATA RINGAN AAC</p>
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
                                                 <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
                                             </div>
                                         </a>
@@ -99,7 +99,7 @@
                                             </div>
     
                                             <div class="product-desc">
-                                                <p class="fastcon-description">BATA RINGAN AAC</p>
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
                                                 <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
                                             </div>
                                         </a>
@@ -112,7 +112,7 @@
                                             </div>
     
                                             <div class="product-desc">
-                                                <p class="fastcon-description">BATA RINGAN AAC</p>
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
                                                 <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
                                             </div>
                                         </a>
@@ -125,7 +125,7 @@
                                             </div>
     
                                             <div class="product-desc">
-                                                <p class="fastcon-description">BATA RINGAN AAC</p>
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
                                                 <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
                                             </div>
                                         </a>
@@ -138,7 +138,7 @@
                                             </div>
     
                                             <div class="product-desc">
-                                                <p class="fastcon-description">Mortar</p>
+                                                <p class="fastcon-description cl-grey-900">Mortar</p>
                                                 <h4 class="fastcon-h4">ULTIMAMORTAR UM-901 ACIAN</h4>
                                             </div>
                                         </a>
@@ -151,7 +151,7 @@
                                             </div>
     
                                             <div class="product-desc">
-                                                <p class="fastcon-description">Mortar</p>
+                                                <p class="fastcon-description cl-grey-900">Mortar</p>
                                                 <h4 class="fastcon-h4">FASTMORTAR FM-300 PEREKAT KERAMIK SERBAGUNA</h4>
                                             </div>
                                         </a>
@@ -164,7 +164,7 @@
                                             </div>
     
                                             <div class="product-desc">
-                                                <p class="fastcon-description">BATA RINGAN AAC</p>
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
                                                 <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
                                             </div>
                                         </a>
@@ -177,7 +177,46 @@
                                             </div>
     
                                             <div class="product-desc">
-                                                <p class="fastcon-description">BATA RINGAN AAC</p>
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
+                                                <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <a href="<?=site_url('products/details/1/asdf')?>" class="product-item">
+                                            <div class="product-img">
+                                                <img src="<?=BASE_ASSET?>fastcon/img/products/img.jpg" alt="">
+                                            </div>
+    
+                                            <div class="product-desc">
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
+                                                <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <a href="<?=site_url('products/details/1/asdf')?>" class="product-item">
+                                            <div class="product-img">
+                                                <img src="<?=BASE_ASSET?>fastcon/img/products/img.jpg" alt="">
+                                            </div>
+    
+                                            <div class="product-desc">
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
+                                                <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                        <a href="<?=site_url('products/details/1/asdf')?>" class="product-item">
+                                            <div class="product-img">
+                                                <img src="<?=BASE_ASSET?>fastcon/img/products/img-1.jpg" alt="">
+                                            </div>
+    
+                                            <div class="product-desc">
+                                                <p class="fastcon-description cl-grey-900">BATA RINGAN AAC</p>
                                                 <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
                                             </div>
                                         </a>

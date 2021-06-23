@@ -153,18 +153,18 @@ p, h1, h2, h3, h4, h5, h6 {
     border-radius: 8px;
 
     transition: all .2s ease-in-out;
-}
-
-.primary-btn {
-    background-color: $primary-900;
-    border: 1px solid $primary-900;
-    color: $white;
 
     &:hover {
         background-color: $primary-300;
         color: $white;
         border: 1px solid $primary-300;
     }
+}
+
+.primary-btn {
+    background-color: $primary-900;
+    border: 1px solid $primary-900;
+    color: $white;
 }
 
 .secondary-btn {
@@ -178,6 +178,25 @@ p, h1, h2, h3, h4, h5, h6 {
     color: $error;
     border: 1px solid $error;
 }
+
+.new-order-btn {
+    background-color: #F8C821;
+    color: #fff;
+    border: 1px solid #F8C821;
+}
+
+.sent-btn {
+    background-color: #e0e0e0;
+    color: #fff;
+    border: 1px solid #e0e0e0;
+}
+
+.cancelled-btn {
+    background-color: #D3302F;
+    color: #fff;
+    border: 1px solid #D3302F;
+}
+
 
 .secondary-error-btn:hover {
     color: $error;
@@ -214,13 +233,41 @@ input:valid {
 }
 
 .form-group {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .bootstrap-select>.dropdown-toggle {
     background-color: $grayscale-300 !important;
     border: 1px solid #BDBDBD;
     border-radius: 8px;
+}
+
+.bootstrap-select.rounded-0>.dropdown-toggle {
+    border-radius: 0;
+    border: 0;
+    padding: 12px 8%;
+}
+
+.bootstrap-select.rounded-0 .dropdown-menu.show {
+    background-color: #e0e0e0;
+}
+
+.bootstrap-select.rounded-0 .dropdown-menu .dropdown-item {
+    padding-left: 9%;
+
+    span {
+        font-family: 'Jura', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+}
+
+.bootstrap-select.rounded-0 .dropdown-toggle .filter-option-inner-inner, .dropdown-item {
+    font-family: 'Jura', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .bootstrap-select .dropdown-toggle .filter-option-inner-inner,

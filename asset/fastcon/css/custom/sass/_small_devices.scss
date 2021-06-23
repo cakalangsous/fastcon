@@ -1,5 +1,10 @@
 @media screen and (max-width: 767px) {
 
+    .fastcon-btn {
+        width: 100%;
+        text-align: center;
+    }
+
     .width-md-fit {
         width: 100% !important;
         text-align: center;
@@ -53,6 +58,43 @@
         }
     }
 
+    .primary-menu {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .account-link-wrap {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: -20px;
+        width: 100%;
+        margin-bottom: 0;
+
+        background-color: #757575;
+        
+        li {
+            padding-left: 5%;
+            list-style: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            
+            a {
+                display: flex;
+                align-items: center;
+                color: #fff;
+                
+                svg {
+                    margin-right: 12px;
+
+                    path {
+                        fill: #fff;
+                    }
+                }
+            }
+        }
+    }
+
     .sub-menu-container {
         .menu-link {
             color: $grayscale-900 !important;
@@ -69,19 +111,86 @@
     }
 
     .menu-item .sub-menu-trigger {
-        top: 12px;
+        top: 25px;
     }
 
-    .fastcon-post .fastcon-post-item {
-        padding: 0 10px;
+    .breadcrumbs {
+        display: none;
+    }
+
+    .slick-slide:not(.product-details-img-wrap .slick-slide) {
+        margin-right: 20px;
+        max-width: 324px;
+    }
+
+    .slider-for {
+        margin-left: 0;
+        margin-right: 0;
+        left: unset;
+    }
+
+    .slider-for .slick-list {
+        max-width: 315px;
+        width: 315px;
+    }
+
+    .slick-dots {
+        @include flex_center;
+    }
+
+    .product-details-img-wrap {
+        justify-content: center;
+    }
+
+    .product-details-img-wrap .slick-slide {
+        max-width: 315px;
+        width: 315px !important;
+        margin: 0 auto;
+    }
+
+    .slick-dots{
+        bottom: 20px;
+    }
+
+    .slick-dots li,
+    .slick-dots li button {
+        padding: 0;
+        width: 12px;
+        height: 12px;
+    }
+
+    .slick-dots li button:before {
+        content: '';
+        font-size: 14px;
+        width: 12px;
+        height: 12px;
+        color: #fff;
+        background-color: #fff;
+        opacity: 1;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+    }
+
+    .slick-dots li.slick-active button:before {
+        color: $primary-900;
+        background-color: $primary-900;
+        opacity: 1;
+    }
+
+    .qty-wrap .quantity .qty {
+        width: 75%;
     }
 
     .fastcon-news .fastcon-news-item {
-        height: 350px;
-        max-height: 350px;
+        height: 373px;
+        max-height: 373px;
     }
 
-    .fastcon-news-home div:nth-child(2) {
+    .fastcon-news-home {
+        margin: 30px 0 40px;
+    }
+
+    .fastcon-news-home > div:nth-child(2) {
         display: none;
     }
 
@@ -105,6 +214,28 @@
     .fastcon-product-list .product-item {
         margin-bottom: 0;
     }
+    
+    .related-product-wrap > div:nth-child(2) {
+        display: none;
+    }
+
+    .tab-product-details {
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        left: 50%;
+        display: inline-block;
+    }
+
+    .tab-nav li a {
+        display: flex;
+        align-items: center;
+
+        font-family: 'Jura', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+    }
 
     .fastcon-product-list .product-item .product-desc {
         width: 95%;
@@ -115,7 +246,17 @@
     }
 
     .tab-container {
-        padding: 0;
+        padding: 34px 0 !important;
+
+        .tab-content {
+            width: $max-width-small;
+            margin: 0 auto;
+        }
+    }
+
+    .post-carousel-title {
+        flex-direction: column;
+        margin-bottom: 30px;
     }
 
     .cart-card-wrap {
@@ -176,6 +317,7 @@
             padding: 30px;
             max-width: 90%;
             width: 90%;
+            min-height: 172px;
 
             h2 {
                 width: 222px;
@@ -187,7 +329,12 @@
         background-position: center;
     }
 
+    .project-list-wrap {
+        padding: 60px 0 80px;
+    }
+
     .projects-wrap {
+        margin-top: 40px;
         .project-item {
             margin-bottom: 30px;
         }
@@ -202,6 +349,10 @@
         width: 90%;
     }
 
+    .projects-tab-container {
+        padding: 0 !important;
+    }
+
     .project-details-slider-mobile {
         position: absolute;
         top: 30px;
@@ -210,8 +361,29 @@
         height: 279px;
     }
 
+    .slider-nav {
+        display: none;
+    }
+
     .project-content {
         margin-top: 285px;
+        
+        p {
+            margin-bottom: 10px;
+        }
+    }
+
+    .maps-wrap {
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        left: 50%;
+        padding: 0;
+        min-height: 375px;
+
+        .fluid-width-video-wrapper {
+            height: 100%;
+        }
     }
 
     .owl-carousel .owl-dots .owl-dot {
@@ -229,6 +401,10 @@
 
     .fastcon-distributor-wrap {
         margin-top: 40px;
+    }
+
+    .fastcon-post .fastcon-post-item .fastcon-post-info .fastcon-description::after {
+        bottom: 37%;
     }
 
     .contact-address-wrap > div:first-child {
@@ -369,5 +545,71 @@
             }
         }
 
+    }
+
+    .delete-cart-modal.show {
+        .modal-content{
+            .modal-body {
+                padding: 30px;
+            }
+        }
+    }
+
+    .modal-dialog {
+        max-width: $max-width-small;
+        margin-left: auto;
+        margin-right: auto;
+
+        .modal-body {
+            padding: 0;
+        }
+
+        .modal-content {
+            .modal-body {
+                padding: 30px;
+            }
+        }
+    }
+
+    .about-wrap {
+        .tab-container {
+            padding-top: 0 !important;
+
+            .form-group {
+                margin-bottom: 50px;
+            }
+        }
+    }
+
+    .address-links {
+        flex-direction: column;
+        margin-top: 20px !important;
+
+        .btn-wrap {
+            margin-bottom: 20px;
+            width: 100% ;
+            
+            a {
+                margin-right: 0 !important;
+                width: 100% !important;
+                text-align: center;
+            }
+        }
+
+        .card-btn-wrap {
+            display: flex;
+        }
+    }
+
+    .label-btn {
+        width: fit-content !important;
+    }
+
+    .coupon-wrap {
+        margin-left: -15px;
+    }
+
+    .forgot-wrap {
+        max-width: 100%;
     }
 }

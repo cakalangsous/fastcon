@@ -81,12 +81,12 @@
 				</div>
 			</div>
 
-			<div class="row post-carousel-title">
-				<div class="col-lg-6 col-sm-12">
+			<div class="post-carousel-title">
+				<div class="carousel-title">
 					<h2 class="fastcon-h2">FASTCON TELAH DIGUNAKAN DI
-					<br>BERBAGAI SEKTOR INDUSTRI</h2>
+					BERBAGAI SEKTOR INDUSTRI</h2>
 				</div>
-				<div class="col-lg-6 col-sm-12">
+				<div class="carousel-nav">
 					<div class="fastcon-slick-nav">
 						<button type="button" role="presentation" class="owl-prev disabled">
 							<i class="icon-angle-left"></i>
@@ -101,109 +101,111 @@
 		</div><!-- .container end -->
 
 		<div class="fastcon-post-home">
-			<div class="fastcon-post fastcon-slick">
-				<div class="fastcon-post-item">
-					<div class="post-img">
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<img src="<?=BASE_ASSET?>fastcon/img/projects/1.jpg" alt="">
-						</a>
-						<div class="overlay"></div>
-					</div>
-
-
-					<div class="fastcon-post-info">
-						<p class="fastcon-description">Hotel</p>
-
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<h3 class="fastcon-h3">MARC HOTEL</h3>
-						</a>
-						<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div>
-				</div>
-
-				<div class="fastcon-post-item">
-					<div class="post-img">
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<img src="<?=BASE_ASSET?>fastcon/img/projects/1.jpg" alt="">
+			<div class="container">
+				<div class="fastcon-post fastcon-slick">
+					<div class="fastcon-post-item">
+						<div class="post-img">
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<img src="<?=BASE_ASSET?>fastcon/img/projects/1.jpg" alt="">
+							</a>
 							<div class="overlay"></div>
-						</a>
+						</div>
+	
+	
+						<div class="fastcon-post-info">
+							<p class="fastcon-description">Hotel</p>
+	
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<h3 class="fastcon-h3">MARC HOTEL</h3>
+							</a>
+							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
 					</div>
-
-					<div class="fastcon-post-info">
-						<p class="fastcon-description">Bandara</p>
-
-						<h3 class="fastcon-h3">TERMINAL 3 BANDARA SOEKARNO-HATTA</h3>
-						<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	
+					<div class="fastcon-post-item">
+						<div class="post-img">
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<img src="<?=BASE_ASSET?>fastcon/img/projects/2.jpg" alt="">
+								<div class="overlay"></div>
+							</a>
+						</div>
+	
+						<div class="fastcon-post-info">
+							<p class="fastcon-description">Bandara</p>
+	
+							<h3 class="fastcon-h3">TERMINAL 3 BANDARA SOEKARNO-HATTA</h3>
+							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
 					</div>
-				</div>
-
-				<div class="fastcon-post-item">
-					<div class="post-img">
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<img src="<?=BASE_ASSET?>fastcon/img/projects/1.jpg" alt="">
-							<div class="overlay"></div>
-						</a>
+	
+					<div class="fastcon-post-item">
+						<div class="post-img">
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<img src="<?=BASE_ASSET?>fastcon/img/projects/3.jpg" alt="">
+								<div class="overlay"></div>
+							</a>
+						</div>
+	
+						<div class="fastcon-post-info">
+							<p class="fastcon-description">Properti</p>
+	
+							<h3 class="fastcon-h3">GRAND SOENGKONO</h3>
+							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
 					</div>
-
-					<div class="fastcon-post-info">
-						<p class="fastcon-description">Properti</p>
-
-						<h3 class="fastcon-h3">GRAND SOENGKONO</h3>
-						<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	
+					<div class="fastcon-post-item">
+						<div class="post-img">
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<img src="<?=BASE_ASSET?>fastcon/img/projects/4.jpg" alt="">
+								<div class="overlay"></div>
+							</a>
+						</div>
+	
+						<div class="fastcon-post-info">
+							<p class="fastcon-description">Hotel</p>
+	
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<h3 class="fastcon-h3">MARC HOTEL</h3>
+							</a>
+							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
 					</div>
-				</div>
-
-				<div class="fastcon-post-item">
-					<div class="post-img">
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<img src="<?=BASE_ASSET?>fastcon/img/projects/1.jpg" alt="">
-							<div class="overlay"></div>
-						</a>
+	
+					<div class="fastcon-post-item">
+						<div class="post-img">
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<img src="<?=BASE_ASSET?>fastcon/img/projects/5.jpg" alt="">
+								<div class="overlay"></div>
+							</a>
+						</div>
+	
+						<div class="fastcon-post-info">
+							<p class="fastcon-description">Hotel</p>
+	
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<h3 class="fastcon-h3">MARC HOTEL</h3>
+							</a>
+							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
 					</div>
-
-					<div class="fastcon-post-info">
-						<p class="fastcon-description">Hotel</p>
-
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<h3 class="fastcon-h3">MARC HOTEL</h3>
-						</a>
-						<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div>
-				</div>
-
-				<div class="fastcon-post-item">
-					<div class="post-img">
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<img src="<?=BASE_ASSET?>fastcon/img/projects/1.jpg" alt="">
-							<div class="overlay"></div>
-						</a>
-					</div>
-
-					<div class="fastcon-post-info">
-						<p class="fastcon-description">Hotel</p>
-
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<h3 class="fastcon-h3">MARC HOTEL</h3>
-						</a>
-						<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div>
-				</div>
-
-				<div class="fastcon-post-item">
-					<div class="post-img">
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<img src="<?=BASE_ASSET?>fastcon/img/projects/1.jpg" alt="">
-							<div class="overlay"></div>
-						</a>
-					</div>
-
-					<div class="fastcon-post-info">
-						<p class="fastcon-description">Hotel</p>
-
-						<a href="<?=site_url('projects/details/1/asdf')?>">
-							<h3 class="fastcon-h3">MARC HOTEL</h3>
-						</a>
-						<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	
+					<div class="fastcon-post-item">
+						<div class="post-img">
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<img src="<?=BASE_ASSET?>fastcon/img/projects/6.jpg" alt="">
+								<div class="overlay"></div>
+							</a>
+						</div>
+	
+						<div class="fastcon-post-info">
+							<p class="fastcon-description">Hotel</p>
+	
+							<a href="<?=site_url('projects/details/1/asdf')?>">
+								<h3 class="fastcon-h3">MARC HOTEL</h3>
+							</a>
+							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
 					</div>
 				</div>
 			</div>

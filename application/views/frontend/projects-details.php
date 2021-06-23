@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="col-lg-8 large-medium-only">
-                    <div id="oc-images" class="owl-carousel image-carousel carousel-widget" data-items-xs="1" data-items-sm="1" data-items-lg="1" data-items-xl="1" data-nav="false" data-autoplay="4000" data-loop="true">
+                    <div id="oc-images" class="owl-carousel image-carousel carousel-widget" data-items-xs="1" data-items-sm="1" data-items-lg="1" data-items-xl="1" data-nav="false" data-autoplay="4000" data-loop="true" data-speed="1000">
 
                         <div class="oc-item">
                             <a href="#"><img src="<?=BASE_ASSET?>fastcon/img/projects/1.jpg" alt="Image 1"></a>

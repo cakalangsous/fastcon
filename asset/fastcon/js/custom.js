@@ -1,8 +1,29 @@
 $('.fastcon-slick-nav button.owl-prev').click(function(e) {
     $('.slick-prev').trigger('click');
+    let post_item = $('.slick-slide:nth-last-child(2)');
+    if(post_item.hasClass('slick-active')) {
+        $('.fastcon-slick-nav button.owl-next').removeAttr('disabled', 'disabled');
+        $('.fastcon-slick-nav button.owl-next').removeAttr('readonly', 'readonly');
+    }
+
+    checkFirst();
+    
 });
 
 $('.fastcon-slick-nav button.owl-next').click(function(e) {
+    let post_item = $('.slick-slide:nth-last-child(3)');
+    if(post_item.hasClass('slick-active')) {
+        $('.fastcon-slick-nav button.owl-next').attr('disabled', 'disabled');
+        $('.fastcon-slick-nav button.owl-next').attr('readonly', 'readonly');
+    }
+
+    let post_item_second = $('.slick-track:nth-child(2)');
+    if(!post_item_second.hasClass('slick-active')) {
+        $('.fastcon-slick-nav button.owl-prev').removeAttr('disabled', 'disabled');
+        $('.fastcon-slick-nav button.owl-prev').removeAttr('readonly', 'readonly');
+    }
+    
+
     $('.slick-next').trigger('click');
 });
 
@@ -13,7 +34,34 @@ if(first_active.hasClass('active')){
     $('.fastcon-slick-nav button.owl-prev').attr('disabled', 'disabled');
 }
 
+const checkFirst = () => {
+    let post_item_first = $('.slick-slide:first-child');
+    if(post_item_first.hasClass('slick-active')) {
+        $('.fastcon-slick-nav button.owl-prev').attr('disabled', 'disabled');
+        $('.fastcon-slick-nav button.owl-prev').attr('readonly', 'readonly');
+    }else {
+        $('.fastcon-slick-nav button.owl-prev').removeAttr('disabled', 'disabled');
+        $('.fastcon-slick-nav button.owl-prev').removeAttr('readonly', 'readonly');
+    }
+
+
+    let post_item_last = $('.slick-slide:nth-last-child(3)');
+
+    if(post_item_last.hasClass('slick-active')) {
+        $('.fastcon-slick-nav button.owl-next').removeAttr('disabled', 'disabled');
+        $('.fastcon-slick-nav button.owl-next').removeAttr('readonly', 'readonly');
+    }
+}
+$('.select-change-page').change(function(event) {
+    var selected_value = $(this).children("option:selected").val();
+    window.location.href = selected_value;
+});
 $(document).ready(() => {
+
+
+    setTimeout(() => {
+        checkFirst();
+    },2000);
 
     $('#home_modal').modal('show');
 
@@ -45,15 +93,16 @@ $(document).ready(() => {
         });
     }
     $('.fastcon-slick').slick({
-      centerMode: true,
-      centerPadding: '260px',
+      centerMode: false,
+      centerPadding: '100px',
       slidesToShow: 2,
+      infinite:false,
       responsive: [
         {
           breakpoint: 769,
           settings: {
             arrows: true,
-            centerMode: true,
+            centerMode: false,
             centerPadding: '40px',
             slidesToShow: 2
           }
@@ -62,7 +111,7 @@ $(document).ready(() => {
           breakpoint: 480,
           settings: {
             arrows: true,
-            centerMode: true,
+            centerMode: false,
             centerPadding: '30px',
             slidesToShow: 1
           }
@@ -77,7 +126,17 @@ $(document).ready(() => {
       asNavFor: '.slider-nav',
       autoplay: true,
       fade: true,
-      adaptiveHeight: true
+      responsive: [{
+            breakpoint: 768,
+            settings: {
+                autoplay: false,
+                // autoplaySpeed: 6000,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                centerMode: true
+            }
+      }]
     });
     
     $('.slider-nav').slick({

@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="col-lg-4 col-md-12">
-                        <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/home.png" alt="">  DATA DIRI</h4>
+                        <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/home.png" alt="">  ALAMAT PENGIRIMAN</h4>
                         <div class="form-group">
                             <label for="email" class="fastcon-label cl-grey-900">Alamat*</label>
                             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col-lg-4 col-md-12">
-                        <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/cardbox.png" alt="">  DATA DIRI</h4>
+                        <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/cardbox.png" alt="">  DATA PENERIMA</h4>
                         <div class="form-group">
                             <label for="email" class="fastcon-label cl-grey-900">Nama Lengkap*</label>
                             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">

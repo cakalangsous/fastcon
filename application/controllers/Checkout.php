@@ -23,6 +23,7 @@ class Checkout extends Front {
 	public function summary()
 	{
 		$this->data['title'] = 'Checkout';
+		$this->data['checkout'] = true;
 		$this->render('checkout', $this->data);
 	}
 	

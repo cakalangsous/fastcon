@@ -601,8 +601,17 @@ var SEMICOLON = SEMICOLON || {};
 
 					if( !subMenuTriggerEl.hasClass( 'icon-rotate-180' ) ) {
 						subMenuTriggerEl.addClass('icon-rotate-180');
+						subMenuTriggerEl.css('right', '70px');
+						
+						if($body.hasClass('device-sm') || $body.hasClass('device-xs')) {
+							subMenuTriggerEl.css('right', '0');
+						}
 					} else {
 						subMenuTriggerEl.removeClass('icon-rotate-180');
+
+						setTimeout(() => {
+							subMenuTriggerEl.css('right', '-50px');
+						}, 200);
 					}
 
 					e.preventDefault();

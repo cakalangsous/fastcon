@@ -6,7 +6,7 @@
             </div>
 
             <div class="row product-details-content-wrap">
-                <div class="col-lg-6 pl-0">
+                <div class="col-lg-6">
 
                     <div class="product-details-img-wrap">
                         <div class="slider-nav">
@@ -21,7 +21,13 @@
                             <img src="<?=BASE_ASSET?>fastcon/img/products/img-2.jpg" alt="">
                             <img src="<?=BASE_ASSET?>fastcon/img/products/img-3.jpg" alt="">
                         </div>
-    
+                    </div>
+                    <div class="share">
+                        <p class="fastcon-description">Bagikan:</p>
+                        <img src="<?=BASE_ASSET?>fastcon/img/icons/email.png" alt="">
+                        <img src="<?=BASE_ASSET?>fastcon/img/icons/facebook.png" alt="">
+                        <img src="<?=BASE_ASSET?>fastcon/img/icons/twitter.png" alt="">
+                        <img src="<?=BASE_ASSET?>fastcon/img/icons/whatsapp.png" alt="">
                     </div>
 
                 </div>
@@ -92,7 +98,7 @@
             <div class="row product-details-description-wrap">
                 <div class="col-sm-12">
                     <div class="product-desc">
-                        <p>Bata Ringan Fastcon diproduksi dengan menggunakan teknologi modern dan melalui proses uji mutu yang baku sesuai dengan standard international. Bata ringan Fastcon juga ramah lingkungan terbuat dari bahan alamai non toxic dan dapat di daur ulang, memiliki kepadatan material yang lebih padat sehingga lambat dalam penyerapan air dan mudah kering.</p>
+                        <p class="mb-30">Bata Ringan Fastcon diproduksi dengan menggunakan teknologi modern dan melalui proses uji mutu yang baku sesuai dengan standard international. Bata ringan Fastcon juga ramah lingkungan terbuat dari bahan alamai non toxic dan dapat di daur ulang, memiliki kepadatan material yang lebih padat sehingga lambat dalam penyerapan air dan mudah kering.</p>
                         <img src="<?=BASE_ASSET?>fastcon/img/products/product-desc.png" alt="">
                     </div>
                 </div>
@@ -102,15 +108,17 @@
                     <div class="tabs clearfix tab-product-details" id="tab-1">
 
                         <ul class="tab-nav clearfix tab-nav-product-details">
-                            <li><a href="#tabs-1"><span class="d-none d-md-inline-block"> Spesifikasi</span></a></li>
-                            <li><a href="#tabs-2"><span class="d-none d-md-inline-block"> Cara Pasang</span></a></li>
-                            <li><a href="#tabs-3"><span class="d-none d-md-inline-block"> Sertifikat</span></a></li>
+                            <li><a href="#tabs-1"><span> Spesifikasi</span></a></li>
+                            <li><a href="#tabs-2"><span> Cara Pasang</span></a></li>
+                            <li><a href="#tabs-3"><span> Sertifikat</span></a></li>
                         </ul>
 
                         <div class="tab-container">
 
-                            <div class="tab-content clearfix" id="tabs-1">
-                                <img src="<?=BASE_ASSET?>fastcon/img/products/spek.png" alt="">
+                            <div class="tab-content clearfix" data-lightbox="gallery" id="tabs-1">
+                                <a href="<?=BASE_ASSET?>fastcon/img/products/spek.png" data-lightbox="gallery-item">
+                                    <img src="<?=BASE_ASSET?>fastcon/img/products/spek.png" alt="">
+                                </a>
                             </div>
                             <div class="tab-content clearfix" id="tabs-2">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, impedit ex consequuntur dolor vero architecto veniam ullam perferendis quisquam sunt.
@@ -260,7 +268,7 @@
                     <h3 class="fastcon-h3">PRODUK TERKAIT</h3>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="<?=site_url('products/details/1/asdf')?>" class="product-item">
+                    <a href="<?=site_url('products/details/1/asdf')?>" class="product-item mb-0">
                         <div class="product-img">
                             <img src="<?=BASE_ASSET?>fastcon/img/products/img.jpg" alt="">
                         </div>
@@ -273,7 +281,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="<?=site_url('products/details/1/asdf')?>" class="product-item">
+                    <a href="<?=site_url('products/details/1/asdf')?>" class="product-item mb-0">
                         <div class="product-img">
                             <img src="<?=BASE_ASSET?>fastcon/img/products/img.jpg" alt="">
                         </div>
@@ -286,7 +294,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="<?=site_url('products/details/1/asdf')?>" class="product-item">
+                    <a href="<?=site_url('products/details/1/asdf')?>" class="product-item mb-0">
                         <div class="product-img">
                             <img src="<?=BASE_ASSET?>fastcon/img/products/img-1.jpg" alt="">
                         </div>

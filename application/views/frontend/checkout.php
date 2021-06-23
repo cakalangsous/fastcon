@@ -53,7 +53,7 @@
                     <div class="address-wrap">
                         <div class="title-wrap">
                             <h4 class="fastcon-h4 cl-primary-900">DATA PENGIRIMAN</h4>
-                            <a href="#" class="edit-link">
+                            <a href="javascript:void(0)" class="edit-link" data-toggle="modal" data-target=".address-modal">
                                 <h4 class="fastcon-h4 cl-primary-900">
                                     <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
                                     UBAH
@@ -137,12 +137,20 @@
                             </div>
                         </div>
 
-                        <div class="card-summary-product-item mb-0">
+                        <div class="card-summary-product-item">
                             <div class="product">
                                 <p class="fastcon-description">Ongkos Kirim</p>
                             </div>
                             <div class="price">
                                 <p>Rp450.000</p>
+                            </div>
+                        </div>
+
+                        <div class="card-summary-product-item mb-0">
+                            <div class="product">
+                                <p class="fastcon-description"><b>Catatan:</b></p>
+                                <p class="fastcon-description">Catatan: 
+Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 1234 atau kontak kami untuk melanjutkan transaksi Anda.</p>
                             </div>
                         </div>
 
@@ -174,6 +182,57 @@
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
+
 </section>
+
+<div class="modal fade address-modal" tabindex="-1" role="dialog" aria-labelledby="addressModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3 class="fastcon-h3 cl-grey-900 text-uppercase text-center mb-30">Data Anda</h3>
+                    
+                    <div class="d-flex w-100">
+                        <a href="javascript:void(0)" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ TAMBAH ALAMAT</a>
+                    </div>
+
+                    <div class="address-modal-card active">
+                        <p class="receiver-name">Eka Raharjo</p>
+                        <p class="receiver-email">ekaraharjo@gmail.com</p>
+                        <p class="receiver-email">081234567890</p>
+                        <p class="address">Jln. HOS. Cokroaminoto, Kel. Tulungrejo, Kediri, Jawa Timur, 64212 (Sebelah toko listrik Sinar Jaya) DEDDY HERMAWAN</p>
+                        <p class="address mb-20">082211334455</p>
+                        <a href="javascript:void(0)" class="edit-link">
+                            <h4 class="fastcon-h4 cl-primary-900">
+                                <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
+                                UBAH
+                            </h4>
+                        </a>
+                    </div>
+
+                    <div class="address-modal-card">
+                        <p class="receiver-name">Eka Raharjo</p>
+                        <p class="receiver-email">ekaraharjo@gmail.com</p>
+                        <p class="receiver-email">081234567890</p>
+                        <p class="address">Jln. HOS. Cokroaminoto, Kel. Tulungrejo, Kediri, Jawa Timur, 64212 (Sebelah toko listrik Sinar Jaya) DEDDY HERMAWAN</p>
+                        <p class="address mb-20">082211334455</p>
+
+                        <div class="btn-wrap">
+                            <a href="#" class="fastcon-btn secondary-btn">GANTI ALAMAT</a>
+                            <a href="javascript:void(0)" class="edit-link">
+                                <h4 class="fastcon-h4 cl-primary-900">
+                                    <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
+                                    UBAH
+                                </h4>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

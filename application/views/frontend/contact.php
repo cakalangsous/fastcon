@@ -1,4 +1,4 @@
-<section id="banner" class="contact-banner" style="background-image: url('<?=BASE_ASSET?>fastcon/img/contact-banner.jpg');">
+<section id="banner" class="projects-banner contact-banner" style="background-image: url('<?=BASE_ASSET?>fastcon/img/contact-banner.jpg');">
     <div class="title-card">
         <h2 class="fastcon-h2">KONTAK KAMI</h2>
     </div>

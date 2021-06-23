@@ -705,6 +705,7 @@ class Front extends MY_Controller
     {
         parent::__construct();
         $this->data['title'] = 'Home';
+        $this->data['line'] = true;
     }
 
     public function render($view='', $data=[])

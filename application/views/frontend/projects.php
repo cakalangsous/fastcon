@@ -9,7 +9,7 @@
             <span>Beranda</span> <span>Proyek</span>
         </div>
     </div>
-    <div class="content-wrap">
+    <div class="content-wrap project-list-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -32,7 +32,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="tab-container">
+                        <div class="tab-container projects-tab-container">
                             <div class="tab-content clearfix">
                                 <div class="row projects-wrap">
                                     
@@ -105,6 +105,22 @@
                                         <div class="project-img">
                                             <a href="<?=site_url('projects/details/1/asdf')?>">
                                                 <img src="<?=BASE_ASSET?>fastcon/img/projects/4.jpg" alt="">
+                                                <div class="overlay"></div>
+                                            </a>
+                                        </div>
+                                        <div class="project-description">
+                                            <p class="category">Apartemen</p>
+                                            <a href="<?=site_url('projects/details/1/asdf')?>">
+                                                <h3 class="fastcon-h3">WARHOL</h3>
+                                            </a>
+                                            <p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-sm-12 project-item right">
+                                        <div class="project-img">
+                                            <a href="<?=site_url('projects/details/1/asdf')?>">
+                                                <img src="<?=BASE_ASSET?>fastcon/img/projects/2.jpg" alt="">
                                                 <div class="overlay"></div>
                                             </a>
                                         </div>

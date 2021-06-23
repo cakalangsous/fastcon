@@ -20,7 +20,7 @@
     
                                 <div class="form-group">
                                     <label for="email" class="fastcon-label cl-grey-900">E-mail</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                                    <input type="email" class="form-control disabled" id="email" aria-describedby="emailHelp" placeholder="Ketik disini" disabled>
                                 </div>
 
                                 <div class="form-group">
@@ -61,19 +61,21 @@
                                     </div>
 
                                     <div class="address-links">
-                                        <a href="#" class="edit-link">
-                                            <h4 class="fastcon-h4 cl-primary-900">
-                                                <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
-                                                UBAH
-                                            </h4>
-                                        </a>
-
-                                        <a href="#" class="edit-link">
-                                            <h4 class="fastcon-h4 cl-error">
-                                                <img src="<?=BASE_ASSET?>fastcon/img/icons/trash.png" alt="">
-                                                Hapus
-                                            </h4>
-                                        </a>
+                                        <div class="card-btn-wrap">
+                                            <a href="#" class="edit-link">
+                                                <h4 class="fastcon-h4 cl-primary-900">
+                                                    <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
+                                                    UBAH
+                                                </h4>
+                                            </a>
+    
+                                            <a href="#" class="edit-link">
+                                                <h4 class="fastcon-h4 cl-error">
+                                                    <img src="<?=BASE_ASSET?>fastcon/img/icons/trash.png" alt="">
+                                                    HAPUS
+                                                </h4>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -90,22 +92,27 @@
                                     </div>
 
                                     <div class="address-links">
-                                        <a href="#" class="fastcon-btn secondary-btn">
-                                            GANTI ALAMAT
-                                        </a>
-                                        <a href="#" class="edit-link">
-                                            <h4 class="fastcon-h4 cl-primary-900">
-                                                <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
-                                                UBAH
-                                            </h4>
-                                        </a>
+                                        <div class="btn-wrap">
+                                            <a href="#" class="fastcon-btn secondary-btn">
+                                                GANTI ALAMAT
+                                            </a>
+                                        </div>
 
-                                        <a href="#" class="edit-link">
-                                            <h4 class="fastcon-h4 cl-error">
-                                                <img src="<?=BASE_ASSET?>fastcon/img/icons/trash.png" alt="">
-                                                Hapus
-                                            </h4>
-                                        </a>
+                                        <div class="card-btn-wrap">
+                                            <a href="#" class="edit-link">
+                                                <h4 class="fastcon-h4 cl-primary-900">
+                                                    <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
+                                                    UBAH
+                                                </h4>
+                                            </a>
+    
+                                            <a href="#" class="edit-link">
+                                                <h4 class="fastcon-h4 cl-error">
+                                                    <img src="<?=BASE_ASSET?>fastcon/img/icons/trash.png" alt="">
+                                                    HAPUS
+                                                </h4>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
 

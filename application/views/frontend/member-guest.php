@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2 class="fastcon-h2 mb-20">Pilihan masuk</h2>
+                    <h2 class="fastcon-h2 mb-20 text-uppercase">Pilihan masuk</h2>
                     <p class="fastcon-body">Masuk dan selesaikan pesanan dengan data pribadi Anda atau daftar untuk menikmati semua manfaat memiliki akun Fastcon.</p>
                 </div>
             </div>

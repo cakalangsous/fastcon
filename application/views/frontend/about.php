@@ -23,6 +23,18 @@
                         <div class="tab-container">
                             <div class="tab-content clearfix">
                                 <div class="row">
+                                    <div class="col-lg-3 col-md-6 col-sm-12 small-only">
+                                        <div class="form-group">
+                                            <label class="fastcon-label cl-grey-900">KATEGORI</label>
+                                            <select class="form-control selectpicker">
+                                                <option>Semua Produk</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-12 about-content">
                                         <p>PT. Corin Mulia Gemilang pertama mendirikan pabrik bata ringan Fastcon pada tahun 2013. Sejak itu kita sudah melakukan penambahan kapasitas untuk melayani permintaan pasar yang terus naik tiap tahun. Dengan tim pabrik yang handal, Fastcon akan terus fokus kepada kualitas bata yang terbaik dengan harga terjangkau.</p>
                                     </div>
