@@ -82,6 +82,7 @@ $max-width-small: 320px;
 // 	right: 70px;
 // }
 
+.header-row.large-only 
 .menu-container .menu-item:last-child::after {
 	content: '';
 	height: 44px; 
@@ -1000,7 +1001,7 @@ a.product-item:hover img {
 }
 
 .address-wrap {
-	margin: 40px 0 30px;
+	margin: 20px 0;
 
 	.title-wrap {
 		display: flex;
@@ -1531,6 +1532,10 @@ ul.member-menu {
 			display: flex;
 			align-items: center;
 			margin-top: 10px;
+
+			.card-btn-wrap {
+				display: flex;
+			}
 
 			a {
 				margin-right: 20px;
