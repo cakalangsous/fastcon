@@ -240,6 +240,12 @@ input:valid {
   color: #212121 !important;
 }
 
+input.disabled,
+input:disabled {
+  background-color: #E0E0E0 !important;
+  color: #9E9E9E !important;
+}
+
 .form-text {
   margin-top: 10px;
 }
@@ -1900,9 +1906,13 @@ a.product-item:hover img {
 }
 
 .whatsapp-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: -webkit-sticky;
   position: sticky;
   bottom: 5%;
+  right: 5%;
   margin-bottom: 30px;
 }
 
@@ -2026,6 +2036,9 @@ ul.member-menu li.active a::after {
   height: 100vh;
   width: 18%;
   background-color: #F5F5F5;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 86px;
 }
 
 .member-content-wrap {
@@ -2714,6 +2727,8 @@ ul.member-menu li.active a::after {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
+    max-width: 678px;
+    margin: 0 auto;
   }
   .history-content-wrapper div.col-md-12 {
     padding: 0 30px 30px;

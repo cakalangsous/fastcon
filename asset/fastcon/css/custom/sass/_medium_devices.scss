@@ -410,6 +410,8 @@
     .history-content-wrapper {
         display: flex;
         flex-direction: column-reverse;
+        max-width: $max-width-medium;
+        margin: 0 auto;
 
         div.col-md-12 {
             padding: 0 30px 30px;

@@ -228,6 +228,12 @@ input:valid {
     color: $grayscale-900 !important;
 }
 
+input.disabled, 
+input:disabled {
+    background-color: #E0E0E0 !important;
+    color: $grayscale-500 !important;
+}
+
 .form-text {
     margin-top: 10px;
 }
