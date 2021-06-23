@@ -3353,13 +3353,9 @@ ul.member-menu li.active a::after {
   .address-modal.show .modal-dialog {
     max-width: 320px;
   }
-  .address-modal.show .modal-dialog > .modal-body {
+  .address-modal.show .modal-dialog > .modal-body .modal-content {
     max-height: 600px;
-  }
-  .address-modal.show {
-    max-height: 600px;
-    overflow: auto;
-    margin-top: 25%;
+    overflow-y: scroll;
   }
 }
 /*# sourceMappingURL=custom.css.map */

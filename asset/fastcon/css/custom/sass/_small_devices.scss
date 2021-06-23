@@ -667,13 +667,8 @@
         max-width: $max-width-small;
     }
 
-    .address-modal.show .modal-dialog > .modal-body {
+    .address-modal.show .modal-dialog > .modal-body .modal-content {
         max-height: 600px;
-    }
-
-    .address-modal.show {
-        max-height: 600px;
-        overflow: auto;
-        margin-top: 25%;
+        overflow-y: scroll;
     }
 }
