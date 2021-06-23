@@ -250,6 +250,10 @@ footer {
 .post-carousel-title {
 	display: flex;
 	margin-bottom: 60px;
+	
+	.carousel-title {
+		max-width: 515px;
+	}
 
 	.carousel-nav {
 		margin-left: auto;
@@ -1728,6 +1732,16 @@ ul.member-menu {
 
 .forgot-wrap {
 	max-width: 350px;
+}
+
+.register-title-wrap {
+	h1 {
+		margin-bottom: 50px;
+	}
+}
+
+.guest-wrap > div {
+	margin-bottom: 50px;
 }
 
 

@@ -461,17 +461,6 @@
                     img {
                         border: 1px solid #E0E0E0;
                     }
-    
-                    .btn-wrap {
-                        display: flex;
-                        flex-direction: column;
-                        margin-top: 30px;
-    
-                        a:first-child {
-                            margin-right: 0;
-                            margin-bottom: 20px;
-                        }
-                    }
                 }
             }
         }
@@ -493,4 +482,14 @@
     .forgot-wrap {
         max-width: 442px;
     }
+
+    .post-carousel-title {
+        margin-bottom: 40px;
+        
+        .carousel-title {
+            max-width: 570px;
+        }
+    }
+
+    
 }

@@ -60,7 +60,8 @@
 
     .primary-menu {
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: flex-start;
+        top: 69px !important;
     }
 
     .account-link-wrap {
@@ -557,6 +558,17 @@
         .modal-content{
             .modal-body {
                 padding: 30px;
+
+                .btn-wrap {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 30px;
+
+                    a:first-child {
+                        margin-right: 0;
+                        margin-bottom: 20px;
+                    }
+                }
             }
         }
     }
@@ -676,5 +688,13 @@
     .address-modal.show .modal-dialog > .modal-body .modal-content {
         max-height: 600px;
         overflow-y: scroll;
+    }
+
+    .post-carousel-title {
+        margin-bottom: 30px;
+        
+        .carousel-title {
+            max-width: 314px;
+        }
     }
 }
