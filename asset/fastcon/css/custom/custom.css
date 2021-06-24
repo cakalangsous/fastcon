@@ -973,6 +973,10 @@ a.product-item:hover img {
   opacity: 0.5;
 }
 
+a.product-item:hover h4 {
+  color: #00672B;
+}
+
 .breadcrumbs {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2134,6 +2138,16 @@ ul.member-menu li.active a::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 8px;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.coupon-wrap .coupon-item:hover {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
 .coupon-wrap .coupon-item p {
@@ -2216,6 +2230,7 @@ ul.member-menu li.active a::after {
   border: 1px solid rgba(0, 0, 0, 0.1);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-right: 0;
 }
 
 .accordion-content {
@@ -3419,6 +3434,9 @@ ul.member-menu li.active a::after {
   }
   .post-carousel-title .carousel-title {
     max-width: 314px;
+  }
+  .coupon-wrap .coupon-item {
+    margin-bottom: 24px;
   }
 }
 /*# sourceMappingURL=custom.css.map */

@@ -204,7 +204,7 @@
 
 		<div class="whatsapp-wrap">
 			<div class="container">
-				<div class="col-12 d-flex justify-content-end">
+				<div class="d-flex justify-content-end">
 					<img src="<?=BASE_ASSET?>fastcon/img/icons/whatsapp-big.png" alt="">
 				</div>
 			</div>
