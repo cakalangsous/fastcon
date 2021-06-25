@@ -80,7 +80,8 @@ p, h1, h2, h3, h4, h5, h6 {
 .project-content-body p,
 .news-content p,
 .about-content p,
-.calc-content-wrap p {
+.calc-content-wrap p,
+.coupon-description p {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
   font-size: 14px;
@@ -145,6 +146,20 @@ p, h1, h2, h3, h4, h5, h6 {
   background-color: #79D090;
   color: #fff;
   border: 1px solid #79D090;
+}
+
+.label-btn {
+  padding: 12px;
+  font-family: 'Jura', sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 8px;
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .primary-btn {
@@ -438,7 +453,7 @@ input:disabled {
 .sub-menu-container .menu-item > .menu-link:hover {
   font-weight: 500;
   background-color: #00672B;
-  color: #fff;
+  color: #fff !important;
 }
 
 .header-row.large-only
@@ -947,6 +962,10 @@ footer {
 .product-img,
 .product-details-img-wrap .slick-slide img {
   border: 1px solid #E0E0E0;
+}
+
+.product-img {
+  background-color: #fff;
 }
 
 .product-details-img-wrap .slick-slide:not(.slick-current) {
@@ -2184,6 +2203,12 @@ ul.member-menu li.active a::after {
   margin-left: 55px;
 }
 
+.accordion-title .row {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .accordion-title .accordion-img {
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -2197,16 +2222,8 @@ ul.member-menu li.active a::after {
   border: 1px solid #E0E0E0;
 }
 
-.accordion-title .info-body {
-  margin-left: auto;
-}
-
 .accordion-title .info-body div {
   margin-bottom: 15px;
-}
-
-.accordion-title .info-body div:last-child {
-  margin-right: 36px;
 }
 
 .accordion-title .info-body div p {
@@ -2360,6 +2377,73 @@ ul.member-menu li.active a::after {
 
 .guest-wrap > div {
   margin-bottom: 50px;
+}
+
+.form-address-modal .modal-dialog {
+  width: 732px;
+  max-width: 732px;
+}
+
+.form-address-modal.show .modal-content {
+  max-height: 650px;
+  overflow-y: scroll;
+}
+
+.form-address-modal .modal-content .modal-body {
+  padding: 40px;
+}
+
+.form-address-modal .guest-form hr {
+  margin: 10px 0 30px;
+}
+
+.form-address-modal .guest-form .col-12:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.form-address-modal .guest-form .button-submit-wrap {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 30px;
+}
+
+.form-address-modal .guest-form .button-submit-wrap a {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.member-wrapper .content-wrap,
+.member-wrapper .member-menu {
+  height: 100% !important;
+}
+
+.coupon-details-modal.show .modal-content {
+  max-height: 650px;
+  overflow-y: scroll;
+}
+
+.coupon-details-modal .modal-dialog {
+  width: 732px;
+  max-width: 732px;
+}
+
+.coupon-details-modal .modal-dialog .modal-content .modal-body {
+  padding: 40px;
+}
+
+.coupon-details-modal .modal-dialog .modal-content .modal-body .button-submit-wrap {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 30px;
+}
+
+.coupon-details-modal .modal-dialog .modal-content .modal-body .button-submit-wrap a {
+  margin-top: 20px;
+  text-align: center;
 }
 
 @media screen and (max-width: 991px) {
@@ -2572,7 +2656,11 @@ ul.member-menu li.active a::after {
     width: 442px;
   }
   .fastcon-news-home {
-    margin: 40px 0 60px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+  .fastcon-news-home .fastcon-news-item {
+    margin-bottom: 0;
   }
   .fastcon-news-home > div:last-child {
     display: none;
@@ -2805,6 +2893,19 @@ ul.member-menu li.active a::after {
   .post-carousel-title .carousel-title {
     max-width: 570px;
   }
+  .form-address-modal .modal-dialog,
+  .coupon-details-modal .modal-dialog {
+    width: 678px;
+    max-width: 678px;
+  }
+  .form-address-modal.show .modal-content,
+  .coupon-details-modal.show .modal-content {
+    max-height: 635px;
+  }
+  .sub-menu-container .menu-item {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -2858,6 +2959,15 @@ ul.member-menu li.active a::after {
     padding-left: 0;
     padding-right: 0;
     max-width: 310px;
+  }
+  .hero-section_info .hero-section_info-btn {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .hero-section_info .hero-section_info-btn a:first-child {
+    margin-bottom: 20px;
   }
   .primary-menu {
     -webkit-box-orient: vertical;
@@ -2987,7 +3097,11 @@ ul.member-menu li.active a::after {
     max-height: 373px;
   }
   .fastcon-news-home {
-    margin: 30px 0 40px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  .fastcon-post-home {
+    padding-bottom: 50px;
   }
   .fastcon-news-home > div:nth-child(2) {
     display: none;
@@ -3034,6 +3148,9 @@ ul.member-menu li.active a::after {
   }
   .products-wrap {
     margin-top: 40px;
+  }
+  .products-wrap .tab-container {
+    padding-top: 0 !important;
   }
   .tab-container {
     padding: 34px 0 !important;
@@ -3169,9 +3286,6 @@ ul.member-menu li.active a::after {
   .fastcon-distributor-wrap {
     margin-top: 40px;
   }
-  .fastcon-post .fastcon-post-item .fastcon-post-info .fastcon-description::after {
-    bottom: 37%;
-  }
   .contact-address-wrap > div:first-child {
     margin-bottom: 40px;
   }
@@ -3217,7 +3331,7 @@ ul.member-menu li.active a::after {
   .member-content-wrap .member-container {
     max-width: 320px !important;
   }
-  .coupon-details div {
+  .coupon-details div:not(:last-child) {
     margin-bottom: 20px;
   }
   .accordion-title {
@@ -3437,6 +3551,35 @@ ul.member-menu li.active a::after {
   }
   .coupon-wrap .coupon-item {
     margin-bottom: 24px;
+  }
+  .form-address-modal .modal-dialog {
+    width: 315px;
+    max-width: 315px;
+  }
+  .form-address-modal.show .modal-content {
+    max-height: 600px;
+  }
+  .form-address-modal .guest-form .col-12:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  .coupon-details-modal .modal-dialog {
+    width: 315px;
+    max-width: 315px;
+  }
+  .coupon-details-modal.show .modal-content {
+    max-height: 600px;
+  }
+  .register-form .form-check {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .register-form .form-check [type="checkbox"] {
+    width: 32px;
+    margin-top: 2px;
   }
 }
 /*# sourceMappingURL=custom.css.map */

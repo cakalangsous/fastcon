@@ -9,8 +9,8 @@
 					<p class="fastcon-body-large">Batu bata ringan AAC dapat membuat pengerjaan bangunan Anda lebih cepat, kuat, dan tepat dengan minim resiko pencemaran lingkungan.</p>
 				</div>
 				<div class="hero-section_info-btn">
-					<a href="#" class="fastcon-btn primary-btn">Lihat Produk</a>
-					<a href="#" class="fastcon-btn secondary-btn">Kontak Kami</a>
+					<a href="<?=site_url('products')?>" class="fastcon-btn primary-btn">Lihat Produk</a>
+					<a href="<?=site_url('contact')?>" class="fastcon-btn secondary-btn">Kontak Kami</a>
 				</div>
 				<div class="hero-section_info-iso">
 					<img src="<?=BASE_ASSET?>fastcon/img/iso.png" alt="Fastcon ISO" class="iso-img">

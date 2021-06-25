@@ -92,7 +92,8 @@ p, h1, h2, h3, h4, h5, h6 {
 .project-content-body p,
 .news-content p,
 .about-content p,
-.calc-content-wrap p {
+.calc-content-wrap p,
+.coupon-description p {
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     font-size: 14px;
@@ -159,6 +160,18 @@ p, h1, h2, h3, h4, h5, h6 {
         color: $white;
         border: 1px solid $primary-300;
     }
+}
+
+.label-btn {
+    padding: 12px;
+    font-family: 'Jura', sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+    text-align: center;
+    width: fit-content;
 }
 
 .primary-btn {

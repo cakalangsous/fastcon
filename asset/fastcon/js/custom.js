@@ -56,8 +56,24 @@ $('.select-change-page').change(function(event) {
     var selected_value = $(this).children("option:selected").val();
     window.location.href = selected_value;
 });
+
+$('#add_address_btn').click(() => {
+    $('.address-modal').modal('hide');
+    $('.form-address-modal').modal('show');
+})
+
+
+
+
 $(document).ready(() => {
 
+    $('.modal').on('show.bs.modal', () => {
+        $('body').css('overflow', 'hidden');
+    });
+
+    $('.modal').on('hide.bs.modal', () => {
+        $('body').css('overflow', 'unset');
+    });
 
     setTimeout(() => {
         checkFirst();

@@ -213,7 +213,12 @@
     // }
 
     .fastcon-news-home {
-        margin: 40px 0 60px;
+        margin-top: 40px;
+        margin-bottom: 60px;
+
+        .fastcon-news-item {
+            margin-bottom: 0;
+        }
     }
 
     .fastcon-news-home > div:last-child {
@@ -491,6 +496,27 @@
         .carousel-title {
             max-width: 570px;
         }
+    }
+
+    
+    .form-address-modal,
+    .coupon-details-modal {
+
+        .modal-dialog {
+            width: 678px;
+            max-width: 678px;
+        }
+    
+        &.show {
+            .modal-content {
+                max-height: 635px;
+            }
+        }
+    }
+
+    .sub-menu-container .menu-item {
+        width: 100%;
+        text-align: center;
     }
 
     
