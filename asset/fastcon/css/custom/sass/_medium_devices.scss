@@ -519,5 +519,9 @@
         text-align: center;
     }
 
-    
+    .member-nav {
+        position: sticky;
+        top: 48px;
+        z-index: 6;
+    }
 }

@@ -2059,6 +2059,9 @@ ul.member-menu li.active a::after {
   height: 100vh;
   width: 18%;
   background-color: #F5F5F5;
+}
+
+.member-navbar .member-menu {
   position: -webkit-sticky;
   position: sticky;
   top: 86px;
@@ -2196,6 +2199,19 @@ ul.member-menu li.active a::after {
   display: flex;
 }
 
+.accordion-header.multiple .accordion-img {
+  position: relative;
+  top: -9px;
+  right: -10px;
+  border: 1px solid #E0E0E0;
+}
+
+.accordion-header.multiple .accordion-img img {
+  position: relative;
+  top: 9px;
+  right: 10px;
+}
+
 .accordion-title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2213,12 +2229,12 @@ ul.member-menu li.active a::after {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-}
-
-.accordion-title img {
   max-width: 125px;
   max-height: 125px;
   margin-right: 55px;
+}
+
+.accordion-title img {
   border: 1px solid #E0E0E0;
 }
 
@@ -2905,6 +2921,12 @@ ul.member-menu li.active a::after {
   .sub-menu-container .menu-item {
     width: 100%;
     text-align: center;
+  }
+  .member-nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 48px;
+    z-index: 6;
   }
 }
 
