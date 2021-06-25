@@ -298,6 +298,25 @@
 
 	</div>
 
+	<div class="modal fade logout-modal" tabindex="-1" role="dialog" aria-labelledby="logoutModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-body">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h2 class="fastcon-h2 cl-grey-900 text-uppercase text-center mb-20">FAST50</h2>
+
+						<p class="fastcon-body-large cl-grey-900 text-center">Apakah Anda yakin ingin keluar dari akun ini?</p>
+						
+						<div class="btn-wrap">
+							<a href="javascript:void(0)" class="fastcon-btn primary-btn" data-dismiss="modal" aria-hidden="true">KEMBALI</a>
+							<a href="<?=site_url()?>" class="fastcon-btn secondary-error-btn">Keluar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="whatsapp-wrap">
 		<a href="#">
 			<img src="<?=BASE_ASSET?>fastcon/img/icons/whatsapp-big.png" alt="">

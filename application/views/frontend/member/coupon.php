@@ -93,14 +93,32 @@
                     <h3 class="fastcon-h3 cl-grey-900 text-uppercase text-center mb-20">FAST50</h3>
 
                     <div class="coupon-description">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum maxime voluptatum explicabo mollitia similique alias magnam ex assumenda eligendi asperiores commodi sed cum, facilis repellendus et tenetur aspernatur culpa dolore eos vel. Amet similique eveniet quam error distinctio! Obcaecati dolores architecto, et eius expedita officiis distinctio molestias aspernatur repudiandae aperiam?</p>
+                        <p class="fastcon-body"><b>Syarat & Ketentuan:</b></p>
+                        <ol>
+                            <li>Dapatkan diskon sebesar Rp5.000.000 untuk semua kategori produk (Bata ringan AAC, Mortar, Panel).</li>
+                            <li>Minimum transaksi Rp50.000.000.</li>
+                            <li>Berlaku hingga 27 Maret 2021.</li>
+                            <li>Pengguna diharapkan untuk memperhatikan masa berlaku masing-masing Promo, Promo tidak berlaku apabila sudah melewati batas waktu yang telah ditentukan oleh Fastcon.</li>
+                            <li>1 (satu) Kupon hanya berlaku untuk 1 (satu) kali transaksi.</li>
+                            <li>Promo hanya berlaku untuk transaksi melalui website Fastcon.</li>
+                            <li>Berlaku untuk semua metode pembayaran.</li>
+                            <li>Tidak bisa digabung dengan Kupon/Promo lain.</li>
+                            <li>Fastcon berhak melakukan tindakan yang diperlukan apabila diduga terjadi tindakan kecurangan dari pengguna yang merugikan pihak Fastcon.</li>
+                            <li>Dengan menggunakan Kupon ini, pengguna dianggap mengerti dan menyetuju semua syarat & ketentuan yang berlaku.</li>
+                        </ol>
                         <br>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem illum deleniti nemo quaerat quas magnam ducimus quis molestias iste, debitis harum in eum vero, accusantium alias nam, impedit necessitatibus culpa! Quibusdam, temporibus dicta ipsa labore reiciendis cupiditate vitae perferendis omnis perspiciatis expedita ullam obcaecati sapiente, consectetur velit enim consequuntur accusamus iure, dignissimos impedit. Pariatur esse vitae quia? Asperiores earum nesciunt saepe debitis at neque animi ratione fugiat quo modi quasi eos odit vitae illum dolorem ea quod corrupti, iste voluptate architecto delectus error, est molestias. Doloremque, deserunt, eveniet officia temporibus quos fugit nisi necessitatibus voluptatem laboriosam tempora voluptates nesciunt itaque.</p>
+                        <p><b>Cara Penggunaan Kupon:</b></p>
+                        <ol>
+                            <li>Cek halaman “Kupon Belanja” untuk melihat Kupon yang telah didapat.</li>
+                            <li>Gunakan Kupon pada saat checkout dengan mengetik “FAST50”</li>
+                        </ol>
+
+
                     </div>
                     
                     <div class="row">
                         <div class="col-12 button-submit-wrap">
-                            <button class="fastcon-btn primary-btn">LANJUT KE CHECKOUT</button>
+                            <button class="fastcon-btn primary-btn">GUNAKAN KUPON</button>
                             <a href="#" class="fastcon-btn secondary-btn" data-dismiss="modal" aria-hidden="true">KEMBALI</a>
                         </div>
                     </div>

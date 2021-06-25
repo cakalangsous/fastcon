@@ -93,10 +93,12 @@ p, h1, h2, h3, h4, h5, h6 {
 .news-content ol,
 .about-content ol,
 .calc-content-wrap ol,
+.coupon-description ol,
 .project-content-body ul,
 .news-content ul,
 .about-content ul,
-.calc-content-wrap ul {
+.calc-content-wrap ul,
+.coupon-description ul {
   list-style-position: inside;
 }
 
@@ -279,6 +281,7 @@ input:disabled {
   border-radius: 0;
   border: 0;
   padding: 12px 8%;
+  background-color: #f5f5f5 !important;
 }
 
 .bootstrap-select.rounded-0 .dropdown-menu.show {
@@ -380,6 +383,10 @@ input:disabled {
     font-size: 18px;
     line-height: 21px;
   }
+}
+
+ol {
+  margin-bottom: 0;
 }
 
 .medium-small-only {
@@ -778,6 +785,7 @@ footer {
 
 .slick-slide {
   max-width: 475px;
+  margin-right: 30px;
 }
 
 .fastcon-news-home {
@@ -837,6 +845,8 @@ footer {
 
 #footer {
   border: none;
+  background-color: #F5F5F5;
+  margin-top: 0 !important;
 }
 
 #footer h4 {
@@ -2460,6 +2470,33 @@ ul.member-menu li.active a::after {
   text-align: center;
 }
 
+.logout-modal .modal-dialog {
+  width: 732px;
+  max-width: 732px;
+}
+
+.logout-modal .modal-dialog .modal-content .modal-body {
+  padding: 80px;
+}
+
+.logout-modal .btn-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.logout-modal .btn-wrap a:first-child {
+  margin-right: 20px;
+}
+
 @media screen and (max-width: 991px) {
   .width-md-fit {
     width: -webkit-fit-content !important;
@@ -2908,12 +2945,14 @@ ul.member-menu li.active a::after {
     max-width: 570px;
   }
   .form-address-modal .modal-dialog,
-  .coupon-details-modal .modal-dialog {
+  .coupon-details-modal .modal-dialog,
+  .logout-modal .modal-dialog {
     width: 678px;
     max-width: 678px;
   }
   .form-address-modal.show .modal-content,
-  .coupon-details-modal.show .modal-content {
+  .coupon-details-modal.show .modal-content,
+  .logout-modal.show .modal-content {
     max-height: 635px;
   }
   .sub-menu-container .menu-item {
@@ -3582,12 +3621,33 @@ ul.member-menu li.active a::after {
   .form-address-modal .guest-form .col-12:not(:last-child) {
     margin-bottom: 20px;
   }
-  .coupon-details-modal .modal-dialog {
+  .coupon-details-modal .modal-dialog,
+  .logout-modal .modal-dialog {
     width: 315px;
     max-width: 315px;
   }
-  .coupon-details-modal.show .modal-content {
+  .coupon-details-modal.show .modal-content,
+  .logout-modal.show .modal-content {
     max-height: 600px;
+  }
+  .logout-modal .modal-dialog .modal-content .modal-body {
+    padding: 30px;
+  }
+  .logout-modal .btn-wrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 30px;
+    width: 100%;
+  }
+  .logout-modal .btn-wrap a {
+    width: 100%;
+    text-align: center;
+  }
+  .logout-modal .btn-wrap a:first-child {
+    margin-right: 0;
+    margin-bottom: 20px;
   }
   .register-form .form-check {
     display: -webkit-box;

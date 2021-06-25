@@ -10,6 +10,11 @@ $max-width-medium: 678px;
 $max-width-small: 320px; 
 
 
+ol {
+	margin-bottom: 0;
+}
+
+
 .medium-small-only {
 	display: none;
 }
@@ -363,6 +368,7 @@ footer {
 
 .slick-slide {
 	max-width: 475px;
+	margin-right: 30px;
 }
 
 .fastcon-news-home {
@@ -418,6 +424,8 @@ footer {
 
 #footer {
 	border: none;
+	background-color: #F5F5F5;
+	margin-top: 0 !important;
 }
 
 #footer h4 {
@@ -1872,6 +1880,28 @@ ul.member-menu {
 	}
 }
 
+.logout-modal {
+	.modal-dialog {
+		width: 732px;
+		max-width: 732px;
+
+		.modal-content {
+			.modal-body {
+				padding: 80px;
+			}
+		}
+	}
+
+	.btn-wrap {
+		@include flex_center;
+		margin-top: 40px;
+		width: 100%;
+
+		a:first-child {
+			margin-right: 20px;
+		}
+	}
+}
 
 @import "sass/medium_devices";
 @import "sass/small_devices";

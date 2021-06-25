@@ -741,7 +741,8 @@
 
     } 
 
-    .coupon-details-modal {
+    .coupon-details-modal,
+    .logout-modal {
 
         .modal-dialog {
             width: 315px;
@@ -752,6 +753,33 @@
             .modal-content {
                 max-height: 600px;
             }
+        }
+    }
+
+    .logout-modal {
+        .modal-dialog {
+            .modal-content {
+                .modal-body {
+                    padding: 30px;
+                }
+            }
+        }
+
+        .btn-wrap {
+            flex-direction: column;
+            margin-top: 30px;
+            width: 100%;
+
+            a {
+                width: 100%;
+                text-align: center;
+
+                &:first-child {
+                    margin-right: 0;
+                    margin-bottom: 20px;
+                }
+            }
+    
         }
     }
 
