@@ -2,7 +2,7 @@
 	Custom SASS by Benkin
 -----------------------------------------------------------------*/
 
-@import "sass/fastconstyles";
+@import "sass/_fastconstyles.scss";
 @import "sass/default";
 
 $max-width-large: 1110px;
@@ -1394,11 +1394,11 @@ a.product-item:hover h4 {
 }
 
 .whatsapp-wrap {
-	display: flex;
-	position: sticky;
+	// display: flex;
+	position: fixed;
 	bottom: 5%;
-	right: 5%;
-	margin-bottom: 30px;
+	right: 7%;
+	// margin-bottom: 30px;
 }
 
 .login-wrap {
@@ -1444,6 +1444,7 @@ a.product-item:hover h4 {
 ul.member-menu {
 	li {
 		margin-bottom: 20px;
+		list-style: none;
 
 		a {
 			font-family: 'Jura', sans-serif;
@@ -1487,13 +1488,13 @@ ul.member-menu {
 
 .member-navbar {
 	padding-left: 4%;
-	height: 100vh;
+	// height: 100vh;
 	width: 18%;
 	background-color: #F5F5F5;
 
 	.member-menu {
 		position: sticky;
-		top: 86px;
+		top: 168px;
 	}
 }
 
@@ -1831,7 +1832,10 @@ ul.member-menu {
 	}
 }
 
-.member-wrapper .content-wrap,
+.member-wrapper .content-wrap {
+	overflow: unset !important;
+}
+
 .member-wrapper .member-menu {
 	height: 100% !important;
 }

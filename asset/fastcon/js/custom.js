@@ -67,6 +67,13 @@ $('#add_address_btn').click(() => {
 
 $(document).ready(() => {
 
+    setTimeout(() => {
+        let member_content = $('.member-content-wrap');
+        if(member_content !== 'undefined') {
+            $('.member-wrapper .content-wrap').css('min-height', member_content.height());
+        }
+    }, 80)
+
     $('.modal').on('show.bs.modal', () => {
         $('body').css('overflow', 'hidden');
     });

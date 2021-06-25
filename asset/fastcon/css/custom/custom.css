@@ -1929,14 +1929,9 @@ a.product-item:hover h4 {
 }
 
 .whatsapp-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   bottom: 5%;
-  right: 5%;
-  margin-bottom: 30px;
+  right: 7%;
 }
 
 .login-wrap {
@@ -2014,6 +2009,7 @@ a.product-item:hover h4 {
 
 ul.member-menu li {
   margin-bottom: 20px;
+  list-style: none;
 }
 
 ul.member-menu li a {
@@ -2056,7 +2052,6 @@ ul.member-menu li.active a::after {
 
 .member-navbar {
   padding-left: 4%;
-  height: 100vh;
   width: 18%;
   background-color: #F5F5F5;
 }
@@ -2064,7 +2059,7 @@ ul.member-menu li.active a::after {
 .member-navbar .member-menu {
   position: -webkit-sticky;
   position: sticky;
-  top: 86px;
+  top: 168px;
 }
 
 .member-content-wrap {
@@ -2430,7 +2425,10 @@ ul.member-menu li.active a::after {
   text-align: center;
 }
 
-.member-wrapper .content-wrap,
+.member-wrapper .content-wrap {
+  overflow: unset !important;
+}
+
 .member-wrapper .member-menu {
   height: 100% !important;
 }

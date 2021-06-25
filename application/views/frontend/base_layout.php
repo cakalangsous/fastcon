@@ -198,13 +198,6 @@
 
 		<?php $this->load->view($view)?>
 
-		<div class="whatsapp-wrap">
-			<div class="container">
-				<div class="d-flex justify-content-end">
-					<img src="<?=BASE_ASSET?>fastcon/img/icons/whatsapp-big.png" alt="">
-				</div>
-			</div>
-		</div>
 		<footer id="footer">
 			<div class="container">
 
@@ -303,6 +296,12 @@
 
 		</footer>
 
+	</div>
+
+	<div class="whatsapp-wrap">
+		<a href="#">
+			<img src="<?=BASE_ASSET?>fastcon/img/icons/whatsapp-big.png" alt="">
+		</a>
 	</div>
 
 	<script src="<?=BASE_ASSET?>fastcon/js/jquery.js"></script>
