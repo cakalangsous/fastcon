@@ -118,7 +118,7 @@
                     
                     <div class="row">
                         <div class="col-12 button-submit-wrap">
-                            <button class="fastcon-btn primary-btn">GUNAKAN KUPON</button>
+                            <a href="<?=site_url('products')?>" class="fastcon-btn primary-btn">GUNAKAN KUPON</a>
                             <a href="#" class="fastcon-btn secondary-btn" data-dismiss="modal" aria-hidden="true">KEMBALI</a>
                         </div>
                     </div>

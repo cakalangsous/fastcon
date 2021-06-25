@@ -525,4 +525,8 @@
         top: 48px;
         z-index: 6;
     }
+
+    .member-nav .bootstrap-select.rounded-0 .dropdown-menu.show {
+        border-radius: 0 !important;
+    }
 }

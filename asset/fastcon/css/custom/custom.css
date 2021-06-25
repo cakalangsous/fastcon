@@ -289,7 +289,7 @@ input:disabled {
 }
 
 .bootstrap-select.rounded-0 .dropdown-menu .dropdown-item {
-  padding-left: 9%;
+  padding-left: 8.1%;
 }
 
 .bootstrap-select.rounded-0 .dropdown-menu .dropdown-item span {
@@ -2964,6 +2964,9 @@ ul.member-menu li.active a::after {
     position: sticky;
     top: 48px;
     z-index: 6;
+  }
+  .member-nav .bootstrap-select.rounded-0 .dropdown-menu.show {
+    border-radius: 0 !important;
   }
 }
 

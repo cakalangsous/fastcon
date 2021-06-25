@@ -36,7 +36,6 @@ if(first_active.hasClass('active')){
 
 const checkFirst = () => {
     let post_item_first = $('.slick-slide:first-child');
-    console.log(post_item_first);
     if(post_item_first.hasClass('slick-active') || post_item_first.hasClass('slick-current')) {
         $('.fastcon-slick-nav button.owl-prev').attr('disabled', 'disabled');
         $('.fastcon-slick-nav button.owl-prev').attr('readonly', 'readonly');
@@ -69,7 +68,11 @@ $('#add_address_btn').click(() => {
     $('.form-address-modal').modal('show');
 })
 
-
+$('.member-nav-select').on('show.bs.select', () => {
+    setTimeout(() => {
+        $('.member-nav-select .dropdown-menu').css('left', '5px');
+    }, 0.001)
+})
 
 
 $(document).ready(() => {
@@ -80,6 +83,7 @@ $(document).ready(() => {
             $('.member-wrapper .content-wrap').css('min-height', member_content.height());
         }
     }, 80)
+
 
     $('.modal').on('show.bs.modal', () => {
         $('body').css('overflow', 'hidden');

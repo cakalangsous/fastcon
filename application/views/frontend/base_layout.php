@@ -303,7 +303,7 @@
 			<div class="modal-body">
 				<div class="modal-content">
 					<div class="modal-body">
-						<h2 class="fastcon-h2 cl-grey-900 text-uppercase text-center mb-20">FAST50</h2>
+						<h2 class="fastcon-h2 cl-grey-900 text-uppercase text-center mb-20">LOG OUT</h2>
 
 						<p class="fastcon-body-large cl-grey-900 text-center">Apakah Anda yakin ingin keluar dari akun ini?</p>
 						

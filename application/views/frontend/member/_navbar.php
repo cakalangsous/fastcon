@@ -11,7 +11,7 @@
 
 <nav class="member-nav medium-small-only">
     <div class="w-100 medium-small-only">
-        <select class="form-control selectpicker rounded-0 select-change-page">
+        <select class="form-control selectpicker rounded-0 select-change-page member-nav-select">
             <option value="<?=site_url('member/dashboard')?>">Profil</option>
             <option value="<?=site_url('member/history')?>">HISTORI TRANSAKSI</option>
             <option value="<?=site_url('member/coupon')?>">KUPON BELANJA (3)</option>
