@@ -92,7 +92,7 @@ if(!function_exists('redirect_back')) {
 
 if(!function_exists('db_get_all_data')) {
 
-	function db_get_all_data($table_name = null, $where = false, $limit=false, $from=false, $select_field=false, $order_by=false) {
+	function db_get_all_data($table_name = null, $where = false, $limit=false, $from=false, $select_field=false, $order_by=false, $group_by=false) {
 
 		$ci =& get_instance();
 
@@ -104,6 +104,10 @@ if(!function_exists('db_get_all_data')) {
 
 			$ci->db->where($where);
 
+		}
+
+		if ($group_by) {
+			$ci->db->group_by($group_by);
 		}
 
 		if ($order_by) {
@@ -180,6 +184,21 @@ if(!function_exists('is_image')) {
 
 	}
 
+}
+
+if(!function_exists('delete_this_data')) {
+
+	function delete_this_data($table='', $where=false)
+	{
+		if (!is_array($where) || $where==null) {
+			return false;
+		}
+		else{
+			$ci =& get_instance();
+			$ci->db->where($where);
+			return $ci->db->delete($table);
+		}
+	}
 }
 
 

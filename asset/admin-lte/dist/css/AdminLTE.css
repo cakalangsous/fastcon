@@ -1,7 +1,7 @@
 /*!
  *   AdminLTE v2.4.2
  *   Author: Almsaeed Studio
- *	 Website: Almsaeed Studio <https://adminlte.io>
+ *   Website: Almsaeed Studio <https://adminlte.io>
  *   License: Open source - MIT
  *           Please visit http://opensource.org/licenses/MIT for more information
  */
@@ -22,6 +22,9 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   overflow-y: auto;
+}
+.mr-3 {
+  margin-right: 1rem;
 }
 /* Layout */
 .wrapper {
@@ -2974,6 +2977,15 @@ table.text-center th {
 .modal {
   background: rgba(0, 0, 0, 0.3);
 }
+
+.modal.fade.show {
+  opacity: 1 !important;
+}
+
+.modal.fade.show > .modal-dialog {
+  max-height: calc(100vh - 1200px);
+}
+
 .modal-content {
   border-radius: 0;
   -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);

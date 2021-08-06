@@ -215,7 +215,7 @@ class Menu extends Admin
 
 
 
-			if (count($this->input->post('group'))) {
+			if ($this->input->post('group')) {
 
 				foreach ($this->input->post('group') as $group_id) {
 
@@ -451,7 +451,7 @@ class Menu extends Admin
 
 
 
-			if (count($this->input->post('group'))) {
+			if ($this->input->post('group')) {
 
 				foreach ($this->input->post('group') as $group_id) {
 

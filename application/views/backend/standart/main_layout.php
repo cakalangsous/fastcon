@@ -349,36 +349,40 @@
 
 <script>
 
-        var AdminLTEOptions = {
+    var AdminLTEOptions = {
 
-          sidebarExpandOnHover: false,
+      sidebarExpandOnHover: false,
 
-           navbarMenuSlimscroll: false,
+       navbarMenuSlimscroll: false,
 
-        };
+    };
 
 
-        function delete_this(url) {
+    function delete_this(url) {
 
-          swal({
-              title: "<?= cclang('are_you_sure'); ?>",
-              text: "<?= cclang('data_to_be_deleted_can_not_be_restored'); ?>",
-              type: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#DD6B55",
-              confirmButtonText: "<?= cclang('yes_delete_it'); ?>",
-              cancelButtonText: "<?= cclang('no_cancel_plx'); ?>",
-              closeOnConfirm: true,
-              closeOnCancel: true
-            },
-            function(isConfirm){
-              if (isConfirm) {
-                document.location.href = url;            
-              }
-            });
+      swal({
+          title: "<?= cclang('are_you_sure'); ?>",
+          text: "<?= cclang('data_to_be_deleted_can_not_be_restored'); ?>",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "<?= cclang('yes_delete_it'); ?>",
+          cancelButtonText: "<?= cclang('no_cancel_plx'); ?>",
+          closeOnConfirm: true,
+          closeOnCancel: true
+        },
+        function(isConfirm){
+          if (isConfirm) {
+            document.location.href = url;            
+          }
+        });
 
-          return false;
-        };
+      return false;
+    };
+
+    let base_url = '<?=site_url()?>';
+    let base_asset = '<?=BASE_ASSET;?>';
+
 
 </script>
 

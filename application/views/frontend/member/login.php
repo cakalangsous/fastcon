@@ -3,33 +3,48 @@
         <div class="container">
             <div class="row login-wrapper">
                 <div class="col-lg-6 col-md-12 login-title-wrap">
-                    <h1 class="fastcon-h1 cl-grey-900 mb-20">MASUK KE AKUN ANDA</h1>
-                    <p class="fastcon-body">Masuk ke akun Anda agar dapat menikmati banyak promo menarik dan melihat histori sampai status transaksi lewat website.</p>
+                    <h1 class="fastcon-h1 cl-grey-900 mb-20 text-uppercase"><?=lang('login_to_account')?></h1>
+                    <p class="fastcon-body"><?=lang('login_caption')?></p>
                 </div>
 
                 <div class="col-lg-6 col-md-12 login-form-wrap">
-                    <form action="#" class="login-form">
 
+
+                    <?=form_open(site_url('authentication'), ['class' => 'login-form', 'method' => 'post']);?>
+
+	                    <?php if ($this->session->flashdata('error')): ?>
+	                        
+			                <div class="style-msg errormsg">
+			                    <div class="sb-msg"><?=$this->session->flashdata('error');?></div>
+			                </div>
+
+			            <?php endif ?>
+
+	                	<?php if ($this->session->flashdata('response')): ?>
+			                <div class="style-msg successmsg">
+			                    <div class="sb-msg"><?=$this->session->flashdata('response');?></div>
+			                </div>
+			            <?php endif ?>
                         <div class="form-group">
                             <label for="email" class="fastcon-label cl-grey-900">E-mail*</label>
-                            <input type="email" class="form-control" id="email" placeholder="Ketik disini">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Ketik disini">
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="fastcon-label cl-grey-900">KATA SANDI* <a href="<?=site_url('member/forgot_password')?>" class="cl-grey-900">(LUPA KATA SANDI?)</a></label>
-                            <input type="password" class="form-control" id="password" placeholder="Ketik disini">
+                            <label for="password" class="fastcon-label cl-grey-900"><?=lang('password')?>* <a href="<?=site_url('forgot-password')?>" class="cl-grey-900">(<?=lang('forget_password')?>?)</a></label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Ketik disini">
                         </div>
 
                         <div class="form-check p-0">
-                            <input type="checkbox" value="1" checked> <span class="fastcon-description cl-grey-900">Ingat saya</span>
+                            <input type="checkbox" value="1" checked> <span class="fastcon-description cl-grey-900"><?=lang('remember_me')?></span>
                         </div>
 
                         <div class="btn-wrap">
-                            <button type="submit" class="fastcon-btn primary-btn">MASUK</button>
-                            <a href="<?=site_url('member/register')?>" class="fastcon-btn secondary-btn">BELUM PUNYA AKUN?</a>
+                            <button type="submit" class="fastcon-btn primary-btn"><?=lang('login')?></button>
+                            <a href="<?=site_url('register')?>" class="fastcon-btn secondary-btn"><?=lang('dont_have_account')?></a>
                         </div>
 
-                    </form>
+                    <?=form_close();?>
                 </div>
             </div>
         </div>

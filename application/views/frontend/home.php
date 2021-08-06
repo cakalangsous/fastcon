@@ -4,13 +4,13 @@
 			<div class="col-lg-6 hero-section hero-section_info">
 				<div class="hero-section_info-wrap">
 					<div class="border-bottom-0">
-						<h1 class="fastcon-h1">SOLUSI PEMBANGUNAN RAMAH LINGKUNGAN</h1>
+						<h1 class="fastcon-h1"><?=$lang=='indonesian'?$banner->title:$banner->title_en ?></h1>
 					</div>
-					<p class="fastcon-body-large">Batu bata ringan AAC dapat membuat pengerjaan bangunan Anda lebih cepat, kuat, dan tepat dengan minim resiko pencemaran lingkungan.</p>
+					<p class="fastcon-body-large"><?=$lang=='indonesian'?$banner->caption:$banner->caption_en ?></p>
 				</div>
 				<div class="hero-section_info-btn">
-					<a href="<?=site_url('products')?>" class="fastcon-btn primary-btn">Lihat Produk</a>
-					<a href="<?=site_url('contact')?>" class="fastcon-btn secondary-btn">Kontak Kami</a>
+					<a href="<?=site_url('products')?>" class="fastcon-btn primary-btn"><?=lang('see_product')?></a>
+					<a href="<?=site_url('contact')?>" class="fastcon-btn secondary-btn"><?=lang('contact_us')?></a>
 				</div>
 				<div class="hero-section_info-iso">
 					<img src="<?=BASE_ASSET?>fastcon/img/iso.png" alt="Fastcon ISO" class="iso-img">
@@ -19,8 +19,8 @@
 
 			<div class="col-lg-6 center hero-section hero-section_bg">
 				<div class="hero-bg-wrap">
-					<img src="<?=BASE_ASSET?>fastcon/img/hero-bg.png" class="hero-bg" alt="Fastcon">
-					<img src="<?=BASE_ASSET?>fastcon/img/hero-img.png" class="hero-img" alt="Fastcon Hero">
+					<img src="<?=site_url('uploads/fastcon_banner/'.$banner->bg_img)?>" class="hero-bg" alt="Fastcon">
+					<img src="<?=site_url('uploads/fastcon_banner/'.$banner->fg_img)?>" class="hero-img" alt="Fastcon Hero">
 				</div>
 			</div>
 		</div>
@@ -30,44 +30,25 @@
 				<div class="col-12">
 					<div class="row fastcon-benefits">
 						<div class="col-12">
-							<h2 class="fastcon-h2">MANFAAT PRODUK FASTCON</h2>
+							<h2 class="fastcon-h2 text-uppercase"> <?=$this->session->userdata('language');?> <?=lang('benefits_of_fastcon')?></h2>
 						</div>
 						<div class="benefits-wrap">
-							<div class="col-lg-4 col-md-12 benefits-item">
-								<div class="benefits-icon">
-									<img src="<?=BASE_ASSET?>fastcon/img/benefits/1.png" alt="KUALITAS TINGGI">
+							<?php foreach ($bennefits as $b): ?>
+								
+								<div class="col-lg-4 col-md-12 benefits-item">
+									<div class="benefits-icon">
+										<img src="<?=site_url('uploads/fastcon_benefits/'.$b->image)?>" alt="<?=$b->title?>">
+									</div>
+									<div class="benefits-item_desc">
+										<h3 class="fastcon-h3 text-uppercase"><?=$lang=='indonesian'?$b->title:$b->title_en ?></h3>
+										<p class="fastcon-body">
+											<?=$lang=='indonesian'?$b->caption:$b->caption_en ?>
+										</p>
+									</div>
 								</div>
-								<div class="benefits-item_desc">
-									<h3 class="fastcon-h3">KUALITAS TINGGI</h3>
-									<p class="fastcon-body">
-										Bata Ringan Fastcon diproduksi dengan kekuatan dan presisi yang paling baik, menggunakan bahan baku berkualitas.
-									</p>
-								</div>
-							</div>
 
-							<div class="col-lg-4 col-md-12 benefits-item">
-								<div class="benefits-icon">
-									<img src="<?=BASE_ASSET?>fastcon/img/benefits/2.png" alt="PEMASANGAN CEPAT">
-								</div>
-								<div class="benefits-item_desc">
-									<h3 class="fastcon-h3">PEMASANGAN CEPAT</h3>
-									<p class="fastcon-body">
-										Pemasangan bata ringan Fastcon sangat cepat dan efisien yang bisa menghemat biaya tenaga dan waktu.
-									</p>
-								</div>
-							</div>
+							<?php endforeach ?>
 
-							<div class="col-lg-4 col-md-12 benefits-item">
-								<div class="benefits-icon">
-									<img src="<?=BASE_ASSET?>fastcon/img/benefits/3.png" alt="HARGA TERJANGKAU">
-								</div>
-								<div class="benefits-item_desc">
-									<h3 class="fastcon-h3">HARGA TERJANGKAU</h3>
-									<p class="fastcon-body">
-										Dengan menggunakan mesin produksi paling canggih, Fastcon bisa menawarkan harga yang terjangkau untuk semua pelanggan.
-									</p>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -75,16 +56,15 @@
 
 			<div class="row clearfix our-location">
 				<div class="col-12 text-center">
-					<h2 class="fastcon-h2">JARINGAN DISTRIBUSI KAMI</h2>
+					<h2 class="fastcon-h2 text-uppercase"><?=lang('distribution_network')?></h2>
 
-					<img src="<?=BASE_ASSET?>fastcon/img/location.png" alt="Fastcon Location">
+					<img src="<?=site_url('uploads/fastcon_our_location/'.$location->image)?>" alt="Fastcon Location">
 				</div>
 			</div>
 
 			<div class="post-carousel-title">
 				<div class="carousel-title">
-					<h2 class="fastcon-h2">FASTCON TELAH DIGUNAKAN DI
-					BERBAGAI SEKTOR INDUSTRI</h2>
+					<h2 class="fastcon-h2 text-uppercase"><?=lang('industrial_sector')?></h2>
 				</div>
 				<div class="carousel-nav">
 					<div class="fastcon-slick-nav">
@@ -103,110 +83,33 @@
 		<div class="fastcon-post-home">
 			<div class="container">
 				<div class="fastcon-post fastcon-slick">
-					<div class="fastcon-post-item">
-						<div class="post-img">
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<img src="<?=BASE_ASSET?>fastcon/img/projects/1.jpg" alt="">
-							</a>
-							<div class="overlay"></div>
-						</div>
-	
-	
-						<div class="fastcon-post-info">
-							<p class="fastcon-description">Hotel</p>
-	
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<h3 class="fastcon-h3">MARC HOTEL</h3>
-							</a>
-							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-	
-					<div class="fastcon-post-item">
-						<div class="post-img">
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<img src="<?=BASE_ASSET?>fastcon/img/projects/2.jpg" alt="">
+
+					<?php foreach ($projects as $p): ?>
+						
+						<div class="fastcon-post-item">
+							<div class="post-img">
+								<a href="<?=site_url('projects/details/'.$p->id.'/'.$p->slug)?>">
+									<img src="<?=site_url('uploads/fastcon_projects/'. explode(',', $p->images)[0])?>" alt="">
+								</a>
 								<div class="overlay"></div>
-							</a>
+							</div>
+		
+		
+							<div class="fastcon-post-info">
+								<?php 
+									$pc = db_get_row_data('fastcon_project_category', ['category_id' => $p->category]);
+								?>
+								<p class="fastcon-description"><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></p>
+		
+								<a href="<?=site_url('projects/details/'.$p->id.'/'.$p->slug)?>">
+									<h3 class="fastcon-h3 text-uppercase"><?=$lang=='indonesian'?$p->title:$p->title_en?></h3>
+								</a>
+								<?=$lang=='indonesian'?$p->short_desc:$p->short_desc_en?>
+							</div>
 						</div>
-	
-						<div class="fastcon-post-info">
-							<p class="fastcon-description">Bandara</p>
-	
-							<h3 class="fastcon-h3">TERMINAL 3 BANDARA SOEKARNO-HATTA</h3>
-							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-	
-					<div class="fastcon-post-item">
-						<div class="post-img">
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<img src="<?=BASE_ASSET?>fastcon/img/projects/3.jpg" alt="">
-								<div class="overlay"></div>
-							</a>
-						</div>
-	
-						<div class="fastcon-post-info">
-							<p class="fastcon-description">Properti</p>
-	
-							<h3 class="fastcon-h3">GRAND SOENGKONO</h3>
-							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-	
-					<div class="fastcon-post-item">
-						<div class="post-img">
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<img src="<?=BASE_ASSET?>fastcon/img/projects/4.jpg" alt="">
-								<div class="overlay"></div>
-							</a>
-						</div>
-	
-						<div class="fastcon-post-info">
-							<p class="fastcon-description">Hotel</p>
-	
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<h3 class="fastcon-h3">MARC HOTEL</h3>
-							</a>
-							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-	
-					<div class="fastcon-post-item">
-						<div class="post-img">
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<img src="<?=BASE_ASSET?>fastcon/img/projects/5.jpg" alt="">
-								<div class="overlay"></div>
-							</a>
-						</div>
-	
-						<div class="fastcon-post-info">
-							<p class="fastcon-description">Hotel</p>
-	
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<h3 class="fastcon-h3">MARC HOTEL</h3>
-							</a>
-							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-	
-					<div class="fastcon-post-item">
-						<div class="post-img">
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<img src="<?=BASE_ASSET?>fastcon/img/projects/6.jpg" alt="">
-								<div class="overlay"></div>
-							</a>
-						</div>
-	
-						<div class="fastcon-post-info">
-							<p class="fastcon-description">Hotel</p>
-	
-							<a href="<?=site_url('projects/details/1/asdf')?>">
-								<h3 class="fastcon-h3">MARC HOTEL</h3>
-							</a>
-							<p class="fastcon-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
+
+					<?php endforeach ?>
+
 				</div>
 			</div>
 		</div>
@@ -214,63 +117,35 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<h2 class="fastcon-h2">BERITA KAMI</h2>
+					<h2 class="fastcon-h2"><?=lang('our_news')?></h2>
 				</div>
 			</div>
 			<div class="row fastcon-news fastcon-news-home">
+				<?php foreach ($news as $n): ?>
+					
+					<div class="col-lg-4 col-md-6 col-sm-12 fastcon-news-item">
+						<div class="news-img">
+							<a href="<?=site_url('news/details/'.$n->id.'/'.$n->slug)?>">
+								<img src="<?=site_url('uploads/fastcon_news/'.$n->image)?>" alt="">
+								<div class="overlay"></div>
+							</a>
+						</div>
 
-				<div class="col-lg-4 col-md-6 col-sm-12 fastcon-news-item">
-					<div class="news-img">
-						<a href="<?=site_url('news/details/1/asdf')?>">
-							<img src="<?=BASE_ASSET?>fastcon/img/news/img.jpg" alt="">
-							<div class="overlay"></div>
-						</a>
+						<div class="news-description">
+							<a href="<?=site_url('news/details/'.$n->id.'/'.$n->slug)?>">
+								<h3 class="fastcon-h3 text-uppercase news-title"><?=$lang=='indonesian'?$n->title:$n->title_en?></h3>
+							</a>
+							<p class="fastcon-label"><?=date('j F Y', strtotime($n->created_at))?></p>
+						</div>
 					</div>
 
-					<div class="news-description">
-						<a href="<?=site_url('news/details/1/asdf')?>">
-							<h3 class="fastcon-h3">CARA MEMASANG BATA RINGAN HEBEL</h3>
-						</a>
-						<p class="fastcon-label">13 Maret 2021</p>
-					</div>
-				</div>
+				<?php endforeach ?>
 
-				<div class="col-lg-4 col-md-6 col-sm-12 fastcon-news-item">
-					<div class="news-img">
-						<a href="<?=site_url('news/details/1/asdf')?>">
-							<img src="<?=BASE_ASSET?>fastcon/img/news/2.jpg" alt="">
-							<div class="overlay"></div>
-						</a>
-					</div>
-
-					<div class="news-description">
-						<a href="<?=site_url('news/details/1/asdf')?>">
-							<h3 class="fastcon-h3">APA ITU BATA RINGAN HEBEL AAC (AUTOCLAVED AERATED CONCRETE)?</h3>
-						</a>
-						<p class="fastcon-label">13 Maret 2021</p>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-md-6 col-sm-12 fastcon-news-item">
-					<div class="news-img">
-						<a href="<?=site_url('news/details/1/asdf')?>">
-							<img src="<?=BASE_ASSET?>fastcon/img/news/3.jpg" alt="">
-							<div class="overlay"></div>
-						</a>
-					</div>
-
-					<div class="news-description">
-						<a href="<?=site_url('news/details/1/asdf')?>">
-							<h3 class="fastcon-h3">SOLUSI MENGHEMAT BIAYA PEMBANGUNAN</h3>
-						</a>
-						<p class="fastcon-label">13 Maret 2021</p>
-					</div>
-				</div>
 
 			</div>
 
 			<div class="news-btn-wrap">
-				<a href="<?=site_url('news')?>" class="fastcon-btn secondary-btn">Lihat Semua Berita</a>
+				<a href="<?=site_url('news')?>" class="fastcon-btn secondary-btn"><?=lang('see_all_news')?></a>
 			</div>
 		</div>
 

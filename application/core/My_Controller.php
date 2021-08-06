@@ -706,6 +706,18 @@ class Front extends MY_Controller
         parent::__construct();
         $this->data['title'] = 'Home';
         $this->data['line'] = true;
+
+        if (!$this->session->userdata('fastcon_lang')) {
+            $this->session->set_userdata( ['fastcon_lang' => 'indonesian'] );
+        }
+
+        $this->lang->load('fastcon', $this->session->userdata('fastcon_lang'));
+        $this->data['lang'] = $this->session->userdata('fastcon_lang');
+        $this->data['active'] = '';
+        $this->data['marketplace'] = db_get_all_data('fastcon_marketplace');
+        $this->data['contact_settings'] = db_get_all_data('fastcon_contact_settings');
+        $this->data['pages'] = db_get_all_data('fastcon_pages', ['show_in_footer' => 'yes', 'publish' => 'yes'], 3, false, false, 'id desc');
+
     }
 
     public function render($view='', $data=[])
@@ -719,7 +731,7 @@ class Front extends MY_Controller
         return $config = [
             'protocol'  => 'smtp',
             'smtp_host' => getenv('SMTP_HOST'),
-            'smtp_port' => 587,
+            'smtp_port' => getenv('SMTP_PORT'),
             'charset'   => 'utf-8',
             'wordwrap'  => TRUE,
             'mailtype'  => 'html',
@@ -733,6 +745,56 @@ class Front extends MY_Controller
     {
         $this->data['title'] = 'Page not found';
         $this->render('404', $this->data);
+    }
+
+    public function set_lang($lang='')
+    {
+        $available_lang = ['indonesian', 'english'];
+
+        if ($lang!='' AND !in_array($lang, $available_lang)) {
+            $this->not_found();
+            return;
+        }
+
+        $this->session->set_userdata(['fastcon_lang' => $lang]);
+
+        redirect_back();
+    }
+
+    public function pagination_front($config = [])
+    {
+        $this->load->library('pagination');
+        
+        $config = [
+            'suffix'           => isset($_GET)?'?'.http_build_query($_GET):'',
+            'base_url'         => site_url($config['base_url']),
+            'total_rows'       => $config['total_rows'],
+            'per_page'         => $config['per_page'],
+            'uri_segment'      => $config['uri_segment'],
+            'num_links'        => 2,
+            'num_tag_open'     => '<li class="page-item">',
+            'num_tag_close'    => '</li>',
+            'full_tag_open'    => '<ul class="pagination pagination-rounded pagination-inside-transparent pagination-button pagination-sm">',
+            'full_tag_close'   => '</ul>',
+            'first_link'       => 'First',
+            'first_tag_open'   => '<li class="page-item">',
+            'first_tag_close'  => '</li>',
+            'last_link'        => 'Last',
+            'last_tag_open'    => '<li class="page-item">',
+            'last_tag_close'   => '</li>',
+            'next_link'        => 'Next >',
+            'next_tag_open'    => '<li class="page-item next">',
+            'next_tag_close'   => '</li>',
+            'prev_link'        => '< Prev',
+            'prev_tag_open'    => '<li class="page-item previous">',
+            'prev_tag_close'   => '</li>',
+            'cur_tag_open'     => '<li class="page-item active"><a href="#">',
+            'cur_tag_close'    => '</a></li>',
+        ];
+
+        $this->pagination->initialize($config);
+        
+        return  $this->pagination->create_links();
     }
 
 }

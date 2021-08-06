@@ -53,6 +53,79 @@ const checkFirst = () => {
     }
 }
 
+let result = [];
+$('.product_option_select').change(function (e) {
+    e.preventDefault();
+
+
+    $('select[name="product_options[]"]').map(function(index) {
+        let arr = {};
+        if ($(this).val()) {
+            arr["product"] = $(this).data('product');
+            arr["option"] = $(this).data('option_id');
+            arr["value"] = $(this).val();
+        }
+
+        result[index] = arr;
+        return result;
+    }).get();
+
+    // $.ajax({
+    //     url: base_url + 'products/get_related_variants',
+    //     type: 'POST',
+    //     dataType: 'JSON',
+    //     data: {[csrf_name]:csrf_val, result},
+    // })
+    // .done(function(res) {
+    //     console.log(res);
+    // });
+    
+});
+
+$('#add_to_cart_btn').click(function (e) {
+    e.preventDefault();
+
+    var quantity = $('form.cart #quantity').val();
+    var selected_value = result;
+
+    $.ajax({
+        url: base_url + 'products/add_to_cart',
+        type: 'post',
+        dataType: 'json',
+        data: {[csrf_name]:csrf_val, selected_value, quantity},
+    })
+    .done(function(res) {
+        if (res.status===false) {
+            if (res.redirect!=undefined) {
+                window.location.href = res.redirect;
+                return;
+            }else{
+
+            }
+        }else {
+            $('#added_to_cart_modal').modal('show');
+        }
+    });
+    
+});
+
+$('.coupon-item').click(function (e) {
+    e.preventDefault();
+
+    var voucher_code = $(this).data('code');
+    var voucher_desc = $(this).data('desc');
+
+
+    $('#voucher_code').text(voucher_code);
+    $('#voucher_description').html(voucher_desc);
+    $('.coupon-details-modal').modal('show');
+});
+
+$('.coupon-details-modal').on('.hide.bs.modal', () => {
+    $('#voucher_code').text('');
+    $('#voucher_description').text('');
+});
+
 $('.select-change-page').change(function(event) {
     var selected_value = $(this).children("option:selected").val();
 
@@ -73,6 +146,114 @@ $('.member-nav-select').on('show.bs.select', () => {
         $('.member-nav-select .dropdown-menu').css('left', '5px');
     }, 0.001)
 })
+
+// $('.select-change-page').change(function(event) {
+//     var value = $(this).val();
+//     window.location.href = value;
+// });
+
+$('#kota_kecamatan').keyup(function(event) {
+    var search = $("#kota_kecamatan").val();
+    if (search.length>2) {
+        var result =[] ;
+        $.ajax({
+            url: base_url + 'member/kota_kecamatan',
+            dataType: 'json',
+            data: {[csrf_name]:csrf_val, kota_kecamatan:search},
+            type: "POST",
+            success: function(response) {
+                for(i=0;i<response.length;i++)
+                {
+                    result[i]=(response[i].provinsi + ", " + response[i].kabupaten + ", " + response[i].kecamatan + ", " + response[i].kelurahan + ", " + response[i].kode_pos);
+                }
+            }
+        });
+
+        $("#kota_kecamatan").autocomplete({
+            source :result,
+            classes: {
+                "ui-autocomplete": "frontbox",
+            },
+            appendTo: '#auto_result',
+            change: function(event, ui){
+                if (!ui.item) {
+                    $(this).val('');
+                }
+            }
+        });
+    }
+});
+
+$('.edit_address').click(function(e) {
+    e.preventDefault();
+
+    let name = $(this).data('name');
+    let email = $(this).data('email');
+    let phone = $(this).data('phone');
+    let address = $(this).data('address');
+    let id = $(this).data('id');
+
+    $('#address_form_member input[name="fullname"]').val(name);
+    $('#address_form_member input[name="email"]').val(email);
+    $('#address_form_member input[name="phone"]').val(phone);
+    $('#address_form_member textarea#address').val(address);
+
+    $('#address_form_member').attr('action', base_url+'member/update_address/'+id)
+
+    $('#address_modal_form').modal('show');
+});
+
+$('#address_modal_form').on('hide.bs.modal', () => {
+    $('#address_form_member').trigger('reset');
+});
+
+function calc() {
+    var panjang = $('#calculator_form #panjang').val();
+    var lebar = $('#calculator_form #lebar').val();
+    var tinggi = $('#calculator_form #tinggi').val();
+    var ketebalan = $('#calculator_form #ketebalan').val();
+
+
+    if (panjang!=='' || lebar!=='' || tinggi!=='') {
+        panjang = parseInt(panjang);
+        lebar = parseInt(lebar);
+        tinggi = parseInt(tinggi);
+
+
+        let bata;
+
+        switch(ketebalan) {
+            case '75' : bata = 11.1; break;
+            case '100' : bata = 8.3; break;
+            default : bata = 0;
+        }
+
+        console.log(`bata=${bata}`);
+
+        let keliling, luas, kebutuhan, kubik;
+
+        keliling = 2 * (panjang + lebar);
+        console.log(`keliling = ${keliling}`);
+
+        luas = keliling * tinggi;
+        console.log(`luas = ${luas}`);
+
+        kebutuhan = luas * bata;
+        console.log(`kebutuhan = ${kebutuhan}`);
+
+
+        kubik = kebutuhan / (bata * 10);
+        console.log(`kubik = ${kubik}`);
+
+        if (!isNaN(kebutuhan) && !isNaN(kubik)) {
+            $('#needs').text(kebutuhan.toFixed(1));
+            $('#kubik_needs').text(kubik.toFixed(1));
+        }
+
+    }
+
+
+}
 
 
 $(document).ready(() => {
@@ -191,80 +372,88 @@ $(document).ready(() => {
           var itemWidth = $(this).outerWidth();
           itemsWidth+=itemWidth;
       });
+
       return itemsWidth;
     };
 
-    var widthOfHidden = function(){
-        var ww = 0 - $('.wrapper').outerWidth();
-        var hw = (($('.wrapper').outerWidth())-widthOfList()-getLeftPosi())-scrollBarWidths;
-        var rp = $(document).width() - ($('.nav-item.nav-link').last().offset().left + $('.nav-item.nav-link').last().outerWidth());
+
+
+    if (active_page=='distributor') {
+
+        var widthOfHidden = function(){
+            var ww = 0 - $('.wrapper').outerWidth();
+            var hw = (($('.wrapper').outerWidth())-widthOfList()-getLeftPosi())-scrollBarWidths;
+            // var rp = $(document).width() - ($('.nav-item.nav-link').last().offset().left + $('.nav-item.nav-link').last().outerWidth());
+            var rp = $(document).width() - ($('.nav-item.nav-link').last().offset() + $('.nav-item.nav-link').last().outerWidth());
+
+            if (ww>hw) {
+                //return ww;
+                return (rp>ww?rp:ww);
+            }
+            else {
+                //return hw;
+                return (rp>hw?rp:hw);
+            }
+        };
+
+        var getLeftPosi = function(){
+            
+            var ww = 0 - $('.wrapper').outerWidth();
+            var lp = $('.list').position().left;
+            
+            if (ww>lp) {
+                return ww;
+            }
+            else {
+                return lp;
+            }
+        };
+
+        var reAdjust = function(){
         
-        if (ww>hw) {
-            //return ww;
-            return (rp>ww?rp:ww);
+            // check right pos of last nav item
+            var rp = $(document).width() - ($('.nav-item.nav-link').last().offset().left + $('.nav-item.nav-link').last().outerWidth());
+            if (($('.wrapper').outerWidth()) < widthOfList() && (rp<0)) {
+                $('.scroller-right').show().css('display', 'flex');
+            }
+            else {
+                $('.scroller-right').hide();
+            }
+            
+            if (getLeftPosi()<0) {
+                $('.scroller-left').show().css('display', 'flex');
+            }
+            else {
+                $('.item').animate({left:"-="+getLeftPosi()+"px"},'slow');
+                $('.scroller-left').hide();
+            }
         }
-        else {
-            //return hw;
-            return (rp>hw?rp:hw);
-        }
-    };
 
-    var getLeftPosi = function(){
-        
-        var ww = 0 - $('.wrapper').outerWidth();
-        var lp = $('.list').position().left;
-        
-        if (ww>lp) {
-            return ww;
-        }
-        else {
-            return lp;
-        }
-    };
-
-    var reAdjust = function(){
-    
-    // check right pos of last nav item
-    var rp = $(document).width() - ($('.nav-item.nav-link').last().offset().left + $('.nav-item.nav-link').last().outerWidth());
-    if (($('.wrapper').outerWidth()) < widthOfList() && (rp<0)) {
-        $('.scroller-right').show().css('display', 'flex');
-    }
-    else {
-        $('.scroller-right').hide();
-    }
-    
-    if (getLeftPosi()<0) {
-        $('.scroller-left').show().css('display', 'flex');
-    }
-    else {
-        $('.item').animate({left:"-="+getLeftPosi()+"px"},'slow');
-        $('.scroller-left').hide();
-    }
-    }
-
-    reAdjust();
-
-    $(window).on('resize',function(e){  
         reAdjust();
-    });
 
-    $('.scroller-right').click(function() {
-    
-    $('.scroller-left').fadeIn('slow');
-    $('.scroller-right').fadeOut('slow');
-    
-    $('.list').animate({left:"+="+widthOfHidden()+"px"},'slow',function(){
-        reAdjust();
-    });
-    });
-
-    $('.scroller-left').click(function() {
-    
-        $('.scroller-right').fadeIn('slow');
-        $('.scroller-left').fadeOut('slow');
-    
-        $('.list').animate({left:"-="+getLeftPosi()+"px"},'slow',function(){
+        $(window).on('resize',function(e){  
             reAdjust();
         });
-    });
+
+        $('.scroller-right').click(function() {
+        
+            $('.scroller-left').fadeIn('slow');
+            $('.scroller-right').fadeOut('slow');
+            
+            $('.list').animate({left:"+="+widthOfHidden()+"px"},'slow',function(){
+                reAdjust();
+            });
+        });
+
+        $('.scroller-left').click(function() {
+        
+            $('.scroller-right').fadeIn('slow');
+            $('.scroller-left').fadeOut('slow');
+        
+            $('.list').animate({left:"-="+getLeftPosi()+"px"},'slow',function(){
+                reAdjust();
+            });
+        });
+
+    }
 })

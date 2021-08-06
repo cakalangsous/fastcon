@@ -51,10 +51,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route_path = APPPATH . 'routes/';
 // require_once $route_path . 'routes_landing.php';
+$route['projects/(:num)'] = 'projects/index/$1';
 $route['thankyou'] = 'pages/thankyou';
 $route['calc'] = 'pages/calculator';
 $route['contact'] = 'pages/contact';
-$route['about-us'] = 'pages/about';
+$route['contact_submit'] = 'pages/contact_submit';
+$route['register'] = 'pages/register';
+$route['login'] = 'pages/login';
+$route['forgot-password'] = 'pages/forgot_password';
+$route['register_submit'] = 'pages/register_submit';
+$route['authentication'] = 'pages/authentication';
+$route['verify_email/(:any)/(:any)/(:any)'] = 'pages/verify_email/$1/$2/$3';
+
+
+$route['about'] = 'pages/about';
+$route['vision_mission'] = 'pages/vision_mission';
 $route['distributor'] = 'pages/distributor';
 $route['default_controller'] = 'pages/index';
 
@@ -65,5 +76,5 @@ $route['administrator/login'] = 'administrator/auth/login';
 $route['administrator/register'] = 'administrator/auth/register';
 $route['administrator/forgot-password'] = 'administrator/auth/forgot_password';
 
-$route['page/(:any)'] = 'page/detail/$1';
+$route['page/(:num)/(:any)'] = 'pages/page_details/$1/$2';
 $route['administrator/web-page'] = 'administrator/page/admin';

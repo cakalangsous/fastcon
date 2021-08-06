@@ -3,15 +3,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 thankyou-wrap">
-                    <img src="<?=BASE_ASSET?>fastcon/img/icons/thankyou.png" alt="Thank You">
+                    <?php if ($this->session->flashdata('response')): ?>
 
-                    <h2 class="fastcon-h2 cl-grey-900">Anda telah berhasil membeli produk kami!</h2>
+                        <img src="<?=BASE_ASSET?>fastcon/img/icons/thankyou.png" alt="Thank You">
 
-                    <p class="fastcon-body">Saat ini kami sedang mempersiapkan barang belanja Anda. Terus belanjakan produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.</p>
+                        <h2 class="fastcon-h2 cl-grey-900"><?=$this->session->flashdata('response')['title']?></h2>
 
-                    <div class="button-wrap">
-                        <a href="<?=site_url()?>" class="fastcon-btn secondary-btn">KEMBALI KE BERANDA</a>
-                    </div>
+                        <p class="fastcon-body"><?=$this->session->flashdata('response')['content']?></p>
+
+                        <div class="button-wrap">
+                            <a href="<?=site_url()?>" class="fastcon-btn secondary-btn text-uppercase"><?=lang('back_to_home')?></a>
+                        </div>
+
+                    <?php endif ?>
                 </div>
             </div>
         </div>

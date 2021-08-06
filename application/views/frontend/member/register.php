@@ -7,35 +7,43 @@
                 </div>
             </div>
 
+            <?php if ($this->session->flashdata('error')): ?>
+                        
+                <div class="style-msg errormsg">
+                    <div class="sb-msg"><?=$this->session->flashdata('error');?></div>
+                </div>
+
+            <?php endif ?>
+
             <div class="row">
                 <div class="col-12">
                     <h4 class="fastcon-h4 cl-primary-900 mb-30"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt="">  DATA DIRI</h4>
-                    <form action="#" class="register-form">
+                    <?=form_open(site_url('register_submit'), ['method' => "post", 'class' => "register-form"]);?>
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="email" class="fastcon-label cl-grey-900">Nama lengkap*</label>
-                                    <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                                    <label for="fullname" class="fastcon-label cl-grey-900">Nama lengkap*</label>
+                                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Ketik disini">
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label for="email" class="fastcon-label cl-grey-900">E-mail*</label>
-                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Ketik disini">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="phone" class="fastcon-label cl-grey-900">KATA SANDI*</label>
-                                    <input type="password" class="form-control" id="phone" placeholder="Ketik disini">
+                                    <label for="password" class="fastcon-label cl-grey-900">KATA SANDI*</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Ketik disini">
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="phone" class="fastcon-label cl-grey-900">ULANGI KATA SANDI*</label>
-                                    <input type="password" class="form-control" id="phone" placeholder="Ketik disini">
+                                    <label for="c_password" class="fastcon-label cl-grey-900">ULANGI KATA SANDI*</label>
+                                    <input type="password" class="form-control" id="c_password" name="c_password" placeholder="Ketik disini">
                                 </div>
                             </div>
                         </div>
@@ -49,8 +57,8 @@
                             <button type="submit" class="fastcon-btn primary-btn text-uppercase">daftar sekarang</button>
 
                         </div>
-                        <a href="<?=site_url('member/dashboard')?>">Temp link to member dashboard</a>
-                    </form>
+                        <!-- <a href="<?=site_url('member/dashboard')?>">Temp link to member dashboard</a> -->
+                    <?=form_close();?>
                 </div>
             </div>
         </div>
