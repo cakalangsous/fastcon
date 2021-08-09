@@ -56,7 +56,7 @@
                             <?php if ($product->product_option1_name!=NULL): ?>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="fastcon-label cl-grey-900"><?=$lang=='indonesian'?$product->product_option1_name:$po->product_option1_name_en?></label>
+                                        <label class="fastcon-label cl-grey-900"><?=$lang=='indonesian'?$product->product_option1_name:$product->product_option1_name_en?></label>
                                         <select class="form-control selectpicker" name="product_options1" data-product="<?=$product->product_id?>" id="product_options1" title="Pilih Satu">
                                             <?php foreach ($this->Model_web->get_variant_value($product->product_id, 'option_value1_id') as $v): ?>
                                                 <option value="<?=$v->option_value1_id?>"><?=$v->option_value1?></option>
@@ -69,7 +69,7 @@
                             <?php if ($product->product_option2_id!=NULL): ?>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="fastcon-label cl-grey-900"><?=$lang=='indonesian'?$product->product_option2_name:$po->product_option2_name_en?></label>
+                                        <label class="fastcon-label cl-grey-900"><?=$lang=='indonesian'?$product->product_option2_name:$product->product_option2_name_en?></label>
                                         <select class="form-control selectpicker" name="product_options2" data-product="<?=$product->product_id?>" id="product_options2" title="Pilih Satu"></select>
                                     </div>
                                 </div>
