@@ -27,6 +27,7 @@ $lang = [
 	'see_all_news' 			=> 'See All News',
 	'all_projects' 			=> 'All Projects',
 
+	'address' 				=> 'Address',
 	'fullname' 				=> 'Fullname',
 	'email' 				=> 'E-mail',
 	'phone' 				=> 'Phone',
@@ -43,6 +44,10 @@ $lang = [
 	'thank_you_title' 		=> 'THANK YOU FOR CONTACTING US!',
 	'thank_you_content' 	=> 'We’ll contact you via e-mail or phone number very shortly. Shop for more Fastcon products as an environmentally friendly development solution and get promos from us, for more information contact our call center at (031) 7421270. ',
 	'back_to_home' 			=> 'Back to Home',
+	'go_to_products' 		=> 'View All Product',
+
+	'cart_empty_title' 		=> 'YOUR SHOPPING CART IS EMPTY',
+	'cart_empty_content' 	=> 'You don’t have any product in your shopping cart.',
 
 	'login_to_account' 		=> 'Login to your account',
 	'login_caption' 		=> 'Log in to your account to enjoy our exciting promos to transaction history.',

@@ -5,7 +5,7 @@ class Model_fastcon_product_variant extends MY_Model {
 
 	private $primary_key 	= 'variant_id';
 	private $table_name 	= 'fastcon_product_variant';
-	private $field_search 	= ['sku_id', 'product_option_id', 'product_option_value_id'];
+	private $field_search 	= ['product_id', 'product_option1', 'product_option_value1', 'product_option2', 'product_option_value2', 'sku', 'price', 'discount'];
 
 	public function __construct()
 	{
@@ -90,11 +90,28 @@ class Model_fastcon_product_variant extends MY_Model {
 	}
 
 	public function join_avaiable() {
-		$this->db->join('fastcon_product_sku', 'fastcon_product_sku.sku_id = fastcon_product_variant.sku_id', 'LEFT');
-	    $this->db->join('fastcon_product_option', 'fastcon_product_option.product_type_id = fastcon_product_variant.product_option_id', 'LEFT');
-	    $this->db->join('fastcon_product_option_value', 'fastcon_product_option_value.option_value_id = fastcon_product_variant.product_option_value_id', 'LEFT');
+		$this->db->join('fastcon_product', 'fastcon_product.product_id = fastcon_product_variant.product_id', 'LEFT');
+	    $this->db->join('fastcon_product_option', 'fastcon_product_option.product_type_id = fastcon_product_variant.product_option1', 'LEFT');
+	    $this->db->join('fastcon_product_option_value', 'fastcon_product_option_value.option_value_id = fastcon_product_variant.product_option_value1', 'LEFT');
+	    $this->db->join('fastcon_product_option fastcon_product_option1', 'fastcon_product_option1.product_type_id = fastcon_product_variant.product_option2', 'LEFT');
+	    $this->db->join('fastcon_product_option_value fastcon_product_option_value1', 'fastcon_product_option_value1.option_value_id = fastcon_product_variant.product_option_value2', 'LEFT');
 	    
     	return $this;
+	}
+
+
+	public function get_option_text($ids)
+	{
+		$this->db->select('po.*, ov.*')
+				->from('fastcon_product_option_value ov')
+				->join('fastcon_product_option po', 'po.product_type_id=ov.product_option_id')
+				->where_in('ov.option_value_id', $ids);
+		return $this->db->get()->result();
+	}
+
+	public function insert_batch($data)
+	{
+		return $this->db->insert_batch('fastcon_product_variant', $data);
 	}
 
 }

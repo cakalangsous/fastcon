@@ -45,26 +45,35 @@
                     <div class="product-details-info-wrap">
                         <h2 class="fastcon-h2 product-title"><?=$product->product_name?></h2>
 
-                        <p class="fastcon-description cl-grey-900 product-sku">SKU: 123456789 | Bata Ringan AAC</p>
+                        <p class="fastcon-description cl-grey-900 product-sku"><span></span> Bata Ringan AAC</p>
 
-                        <del class="normal-price">Rp7.000.000</del>
+                        <del class="normal-price"></del>
 
-                        <h2 class="fastcon-h2 main-price cl-error">Rp 5.000.000</h2>
+                        <h2 class="fastcon-h2 main-price cl-error"></h2>
 
                         <div class="row">
 
-                            <?php foreach ($product_option as $po): ?>
+                            <?php if ($product->product_option1_name!=NULL): ?>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="fastcon-label cl-grey-900"><?=$lang=='indonesian'?$po->product_option_name:$po->product_option_name_en?></label>
-                                        <select class="form-control selectpicker product_option_select"  name="product_options[]" title="Pilih Satu" data-option_id="<?=$po->product_option_id?>" data-product="<?=$product->product_id?>" id="product_option<?=$po->product_option_id?>">
-                                            <?php foreach ($this->Model_web->get_variant_value($product->product_id, $po->product_option_id) as $s): ?>
-                                                <option value="<?=$s->product_option_value_id?>"><?=$s->option_value?></option>
+                                        <label class="fastcon-label cl-grey-900"><?=$lang=='indonesian'?$product->product_option1_name:$po->product_option1_name_en?></label>
+                                        <select class="form-control selectpicker" name="product_options1" data-product="<?=$product->product_id?>" id="product_options1" title="Pilih Satu">
+                                            <?php foreach ($this->Model_web->get_variant_value($product->product_id, 'option_value1_id') as $v): ?>
+                                                <option value="<?=$v->option_value1_id?>"><?=$v->option_value1?></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>
                                 </div>
-                            <?php endforeach ?>
+                            <?php endif ?>
+
+                            <?php if ($product->product_option2_id!=NULL): ?>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="fastcon-label cl-grey-900"><?=$lang=='indonesian'?$product->product_option2_name:$po->product_option2_name_en?></label>
+                                        <select class="form-control selectpicker" name="product_options2" data-product="<?=$product->product_id?>" id="product_options2" title="Pilih Satu"></select>
+                                    </div>
+                                </div>
+                            <?php endif ?>
 
                         </div>
 
@@ -82,7 +91,7 @@
                             </div>
                             <div class="row cart-btn-wrap">
                                 <div class="col-sm-12">
-                                    <button type="button" class="fastcon-btn primary-btn" id="add_to_cart_btn">TAMBAH KE TROLI BELANJA</button>
+                                    <button type="button" class="fastcon-btn primary-btn" data-product="<?=$product->product_id?>" id="add_to_cart_btn">TAMBAH KE TROLI BELANJA</button>
                                     <a href="#" class="fastcon-btn secondary-btn">KONTAK KAMI</a>
                                 </div>
                             </div>

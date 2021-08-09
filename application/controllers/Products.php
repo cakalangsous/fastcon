@@ -7,7 +7,7 @@ class Products extends Front {
 	{
 		parent::__construct();
 		$this->load->model('Model_web');
-
+		$this->load->library('cart');
 	}
 
 	public function index($offset=false)
@@ -28,25 +28,19 @@ class Products extends Front {
 			return;
 		}
 
-		if (!$product = db_get_row_data('fastcon_product', ['product_id' => $id])) {
+		if (!$product = db_get_row_data('view_product_with_option', ['product_id' => $id])) {
 			$this->not_found();
 			return;
 		}
 
 		$this->data['title'] = $product->product_name;
 		$this->data['product'] = $product;
-
-		$this->data['product_option'] = $this->Model_web->get_product_option($id);
-		// echo '<pre>';
-		// print_r($this->db->last_query());
-		// echo '<br>';
-		// print_r($this->data['product_option']);
-		// exit;
 		
 		$this->render('product-details', $this->data);
 	}
 
-	public function get_related_variants()
+	
+	public function get_option2()
 	{
 		if (!$this->input->is_ajax_request()) {
 			$this->not_found();
@@ -54,23 +48,30 @@ class Products extends Front {
 		}
 
 		$arr = $this->input->post();
-		
-		if (!is_array($arr['result'])) {
-			echo json_encode("Unknown Request!");
+
+		$option2 = db_get_all_data('view_product_variant', ['product_id' => $arr['product'], 'option_value1_id' => $arr['option1']]);
+
+		$status = 200;
+		if ($option2[0]->product_option2==NULL) {
+			$status = 404;
+		}
+		echo json_encode(['status' => $status, 'message' => 'Success', 'data' => db_get_all_data('view_product_variant', ['product_id' => $arr['product'], 'option_value1_id' => $arr['option1']]) ]);
+		return;
+	}
+
+	public function get_variant()
+	{
+		if (!$this->input->is_ajax_request()) {
+			$this->not_found();
 			return;
 		}
 
-		$options = [];
-		foreach ($arr['result'] as $a) {
-			$sku = db_get_row_data('view_product_variants', ['product_id' => $a['product'], 'product_option_id' => $a['option'], 'product_option_value_id' => $a['value']], false, false, 'sku_id');
+		$arr = $this->input->post();
 
-			$next = db_get_all_data('view_product_variants', ['sku_id' => $sku->sku_id, 'product_option_id !=' => $a['option']], false, false, 'product_option_name, product_option_name_en, product_option_id, product_option_value_id, option_value');
+		$variant = db_get_row_data('view_product_variant', ['product_id' => $arr['product'], 'option_value1_id' => $arr['option1'], 'option_value2_id' => $arr['option2']]);
 
-			array_push($options, $next);
-		}
-
-		echo json_encode(['status' => true, 'message' => 'Get data success', 'data' => $options]);
-
+		echo json_encode(['status' => true, 'message' => 'Success', 'data' => $variant]);
+		return;
 	}
 
 	public function add_to_cart()
@@ -80,56 +81,102 @@ class Products extends Front {
 			return;
 		}
 
+		$arr = $this->input->post();
+
+		$product_variant = db_get_row_data('fastcon_product_variant', ['product_id' => $arr['product'], 'product_option_value1' => $arr['option']['option1']]);
+
+		if (isset($arr['option']['option2'])) {
+			$product_variant = db_get_row_data('fastcon_product_variant', ['product_id' => $arr['product'], 'product_option_value1' => $arr['option']['option1'], 'product_option_value2' => $arr['option']['option2']]);
+		}
+
+		$cart_data = [
+			'product_id' => $product_variant->product_id,
+			'variant_id' => $product_variant->variant_id,
+			'quantity' => $arr['quantity']
+		];
+
 		if (!$this->session->userdata('member')) {
-			$this->session->set_flashdata('error', 'You need to login to access this page!');
-			echo json_encode(['status' => false, 'message' => 'You need to login to access this page!', 'redirect' => site_url('login')]);
+			$cart_data['id'] = $product_variant->variant_id;
+			$cart_data['price'] = $product_variant->price;
+			$cart_data['qty'] = $arr['quantity'];
+			$cart_data['name'] = $product_variant->product_id;
+
+			$insert = $this->cart->insert($cart_data);
+		}else{
+			$cart_data['member_id'] = $this->session->userdata('member')['member_id'];
+
+			$cart = db_get_row_data('fastcon_product_cart', ['member_id' => $this->session->userdata('member')['member_id'], 'variant_id' => $product_variant->variant_id]);
+			if (!$cart) {
+				insert_this_data('fastcon_product_cart', $cart_data);
+			}else{
+				update_this_data('fastcon_product_cart', ['member_id' => $this->session->userdata('member')['member_id'], 'variant_id' => $product_variant->variant_id], ['quantity' => $cart->quantity + $arr['quantity']]);
+			}
+		}
+
+		echo json_encode(['status' => true, 'message' => 'Added to cart!']);
+		return;
+	}
+
+	public function cart()
+	{
+		$cart = [];
+
+		if (!$this->session->userdata('member')) {
+			foreach ($this->cart->contents() as $c) {
+				$product = db_get_row_data('view_product_option_variant', ['variant_id' => $c['id']]);
+				if ($product AND $product->variant_id == $c['id']) {
+					$product->id = $c['id'];
+					$product->rowid = $c['rowid'];
+					$product->qty = $c['qty'];
+					$product->quantity = $c['quantity'];
+
+				}
+				array_push($cart, $product);
+			}
+		}else {
+			$cart = $this->Model_web->get_cart();
+		}
+
+		$this->data['title'] = 'Cart';
+		if (empty($cart)) {
+			$this->data['cart']['title'] = lang('cart_empty_title');
+			$this->data['cart']['content'] = lang('cart_empty_content');
+			$this->render('thankyou', $this->data);
+			return;
+		}
+
+		$this->data['cart'] = $cart;
+		$this->render('cart', $this->data);
+	}
+
+	public function delete_cart_item()
+	{
+		if (!$this->input->is_ajax_request()) {
+			$this->not_found();
 			return;
 		}
 
 		$arr = $this->input->post();
 
-		$variant = [];
-		$product_id = false;
-		foreach ($arr['selected_value'] as $a) {
-			$product_id = $a['product'];
-			$prod = db_get_row_data('view_product_variants', ['product_id' => $a['product'], 'product_option_id' => $a['option'], 'product_option_value_id' => $a['value']]);
+		if (!$this->session->userdata('member')) {
+			$data['rowid'] = $arr['variant'];
+			$data['qty'] = 0;
 
-			if ($prod) {
-				array_push($variant, $prod->sku_id);
-			}
-		}
+			$update = $this->cart->update($data);
 
-
-		$variant = array_unique($variant);
-		if (count($variant) > 1) {
-			echo json_encode(['status' => false, 'message' => 'Sku not found']);
+			echo json_encode(['status' => true, 'message' => 'Cart updated']);
 			return;
 		}
 
-		if ($current = db_get_row_data('fastcon_product_cart', ['product_id' => $a['product'], 'sku_id' => $variant[0]])) {
-			update_this_data('fastcon_product_cart', ['cart_id' => $current->cart_id], ['quantity' => $current->quantity + $arr['quantity']]);
-		}else{
-			if (!$cart = insert_this_data('fastcon_product_cart', ['product_id' => $product_id, 'sku_id' => $variant[0], 'member_id' => $this->session->userdata('member')['member_id'], 'quantity' => $a['quantity']])) {
-				echo json_encode(['status' => false, 'message' => 'Something went wrong. Please try again']);
-				return;
-			}
+		$cart = db_get_row_data('fastcon_product_cart', ['member_id' => $this->session->userdata('member')['member_id'], 'variant_id' => $arr['variant']]);
+		if (!$cart) {
+			echo json_encode(['status' => false, 'message' => 'Cart not found']);
+			return;
 		}
 
-
-		echo json_encode(['status' => true, 'message' => 'Product added to cart']);
-	}
-
-	public function cart()
-	{
-		if (!$this->session->userdata('member')) {
-			$this->session->set_flashdata('error', 'You need to login to access this page!');
-			redirect(site_url('login'));
-		}
-
-		$this->data['title'] = 'Cart';
-		$this->data['products'] = $this->Model_web->get_product_on_cart();
-		$this->data['cart'] = $this->Model_web->get_cart();
-		$this->render('cart', $this->data);
+		delete_this_data('fastcon_product_cart', ['member_id' => $this->session->userdata('member')['member_id'], 'variant_id' => $arr['variant']]);
+		echo json_encode(['status' => true, 'message' => 'Cart updated']);
+		return;
 	}
 }
 

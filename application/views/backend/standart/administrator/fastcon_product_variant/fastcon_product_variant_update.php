@@ -60,14 +60,14 @@
                             ]); ?>
                          
                                                 <div class="form-group ">
-                            <label for="sku_id" class="col-sm-2 control-label">Sku Id 
+                            <label for="product_id" class="col-sm-2 control-label">Product Id 
                             <i class="required">*</i>
                             </label>
                             <div class="col-sm-8">
-                                <select  class="form-control chosen chosen-select-deselect" name="sku_id" id="sku_id" data-placeholder="Select Sku Id" >
+                                <select  class="form-control chosen chosen-select-deselect" name="product_id" id="product_id" data-placeholder="Select Product Id" >
                                     <option value=""></option>
-                                    <?php foreach (db_get_all_data('fastcon_product_sku') as $row): ?>
-                                    <option <?=  $row->sku_id ==  $fastcon_product_variant->sku_id ? 'selected' : ''; ?> value="<?= $row->sku_id ?>"><?= $row->sku; ?></option>
+                                    <?php foreach (db_get_all_data('fastcon_product') as $row): ?>
+                                    <option <?=  $row->product_id ==  $fastcon_product_variant->product_id ? 'selected' : ''; ?> value="<?= $row->product_id ?>"><?= $row->product_name; ?></option>
                                     <?php endforeach; ?>  
                                 </select>
                                 <small class="info help-block">
@@ -77,14 +77,14 @@
 
                                                  
                                                 <div class="form-group ">
-                            <label for="product_option_id" class="col-sm-2 control-label">Product Option Id 
+                            <label for="product_option1" class="col-sm-2 control-label">Product Option1 
                             <i class="required">*</i>
                             </label>
                             <div class="col-sm-8">
-                                <select  class="form-control chosen chosen-select-deselect" name="product_option_id" id="product_option_id" data-placeholder="Select Product Option Id" >
+                                <select  class="form-control chosen chosen-select-deselect" name="product_option1" id="product_option1" data-placeholder="Select Product Option1" >
                                     <option value=""></option>
                                     <?php foreach (db_get_all_data('fastcon_product_option') as $row): ?>
-                                    <option <?=  $row->product_type_id ==  $fastcon_product_variant->product_option_id ? 'selected' : ''; ?> value="<?= $row->product_type_id ?>"><?= $row->product_option_name; ?></option>
+                                    <option <?=  $row->product_type_id ==  $fastcon_product_variant->product_option1 ? 'selected' : ''; ?> value="<?= $row->product_type_id ?>"><?= $row->product_option_name; ?></option>
                                     <?php endforeach; ?>  
                                 </select>
                                 <small class="info help-block">
@@ -94,14 +94,30 @@
 
                                                  
                                                 <div class="form-group ">
-                            <label for="product_option_value_id" class="col-sm-2 control-label">Product Option Value Id 
+                            <label for="product_option_value1" class="col-sm-2 control-label">Product Option Value1 
                             <i class="required">*</i>
                             </label>
                             <div class="col-sm-8">
-                                <select  class="form-control chosen chosen-select-deselect" name="product_option_value_id" id="product_option_value_id" data-placeholder="Select Product Option Value Id" >
+                                <select  class="form-control chosen chosen-select" name="product_option_value1[]" id="product_option_value1" data-placeholder="Select Product Option Value1" multiple >
                                     <option value=""></option>
                                     <?php foreach (db_get_all_data('fastcon_product_option_value') as $row): ?>
-                                    <option <?=  $row->option_value_id ==  $fastcon_product_variant->product_option_value_id ? 'selected' : ''; ?> value="<?= $row->option_value_id ?>"><?= $row->option_value; ?></option>
+                                    <option <?=  in_array($row->option_value_id, explode(',', $fastcon_product_variant->product_option_value1)) ? 'selected' : ''; ?> value="<?= $row->option_value_id ?>"><?= $row->option_value; ?></option>
+                                    <?php endforeach; ?>  
+                                </select>
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="product_option2" class="col-sm-2 control-label">Product Option2 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <select  class="form-control chosen chosen-select-deselect" name="product_option2" id="product_option2" data-placeholder="Select Product Option2" >
+                                    <option value=""></option>
+                                    <?php foreach (db_get_all_data('fastcon_product_option') as $row): ?>
+                                    <option <?=  $row->product_type_id ==  $fastcon_product_variant->product_option2 ? 'selected' : ''; ?> value="<?= $row->product_type_id ?>"><?= $row->product_option_name; ?></option>
                                     <?php endforeach; ?>  
                                 </select>
                                 <small class="info help-block">
@@ -109,6 +125,56 @@
                             </div>
                         </div>
 
+                                                 
+                                                <div class="form-group ">
+                            <label for="product_option_value2" class="col-sm-2 control-label">Product Option Value2 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <select  class="form-control chosen chosen-select-deselect" name="product_option_value2" id="product_option_value2" data-placeholder="Select Product Option Value2" >
+                                    <option value=""></option>
+                                    <?php foreach (db_get_all_data('fastcon_product_option_value') as $row): ?>
+                                    <option <?=  $row->option_value_id ==  $fastcon_product_variant->product_option_value2 ? 'selected' : ''; ?> value="<?= $row->option_value_id ?>"><?= $row->option_value; ?></option>
+                                    <?php endforeach; ?>  
+                                </select>
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+
+                                                 
+                                                <div class="form-group ">
+                            <label for="sku" class="col-sm-2 control-label">Sku 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="sku" id="sku" placeholder="Sku" value="<?= set_value('sku', $fastcon_product_variant->sku); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="price" class="col-sm-2 control-label">Price 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="price" id="price" placeholder="Price" value="<?= set_value('price', $fastcon_product_variant->price); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="discount" class="col-sm-2 control-label">Discount 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="discount" id="discount" placeholder="Discount" value="<?= set_value('discount', $fastcon_product_variant->discount); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
                                                 
                         <div class="message"></div>
                         <div class="row-fluid col-md-7">

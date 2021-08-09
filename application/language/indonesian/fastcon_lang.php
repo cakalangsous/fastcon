@@ -27,6 +27,7 @@ $lang = [
 	'see_all_news' 			=> 'Lihat Semua Berita',
 	'all_projects' 			=> 'Semua Proyek',
 
+	'address' 				=> 'Alamat',
 	'fullname' 				=> 'Nama Lengkap',
 	'email' 				=> 'E-mail',
 	'phone' 				=> 'Nomor HP',
@@ -43,6 +44,10 @@ $lang = [
 	'thank_you_title' 		=> 'ANDA TELAH BERHASIL MENGONTAK KAMI!',
 	'thank_you_content' 	=> 'Sesaat lagi kami akan menghubungi Anda via e-mail atau nomor HP. Terus belanjakan produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.',
 	'back_to_home' 			=> 'Kembali ke Beranda',
+	'go_to_products' 		=> 'Ke Halaman Produk',
+
+	'cart_empty_title' 		=> 'TROLI BELANJA ANDA KOSONG ',
+	'cart_empty_content' 	=> 'Anda tidak memiliki produk apapun di daftar belanja.',
 
 	'login_to_account' 		=> 'Masuk ke akun anda',
 	'login_caption' 		=> 'Masuk ke akun Anda agar dapat menikmati banyak promo menarik dan melihat histori sampai status transaksi lewat website.',

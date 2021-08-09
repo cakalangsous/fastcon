@@ -67,9 +67,14 @@ jQuery(document).ready(domo);
                   <table class="table table-bordered table-striped dataTable" id="fastcon_product_variant">
                      <thead>
                         <tr class="">
-                           <th>Sku Id</th>
-                           <th>Product Option Id</th>
-                           <th>Product Option Value Id</th>
+                           <th>Product Id</th>
+                           <th>Product Option1</th>
+                           <th>Product Option Value1</th>
+                           <th>Product Option2</th>
+                           <th>Product Option Value2</th>
+                           <th>Sku</th>
+                           <th>Price</th>
+                           <th>Discount</th>
                            <th width="250">Action</th>
                         </tr>
                      </thead>

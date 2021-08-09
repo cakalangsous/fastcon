@@ -3,28 +3,28 @@
         <div class="container">
             <h2 class="fastcon-h2 text-center">MOHON ISI DATA DIRI DAN ALAMAT PENGIRIMAN</h2>
 
-            <form action="#" class="guest-form">
+            <?=form_open(site_url('checkout/save_guest_address'), ['class' => 'guest-form', 'method' => 'post']);?>
                 <div class="row guest-wrap">
                     <div class="col-lg-4 col-md-12">
                         <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt="">  DATA DIRI</h4>
                         <div class="form-group">
-                            <label for="email" class="fastcon-label cl-grey-900">E-mail*</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <label for="email" class="fastcon-label cl-grey-900"><?=lang('email')?>*</label>
+                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
                         </div>
                         <div class="form-group">
-                            <label for="email" class="fastcon-label cl-grey-900">Nama lengkap*</label>
-                            <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <label for="fullname" class="fastcon-label cl-grey-900"><?=lang('fullname')?>*</label>
+                            <input type="text" class="form-control" id="fullname" id="fullname" aria-describedby="emailHelp" placeholder="Ketik disini">
                         </div>
                         <div class="form-group">
-                            <label for="phone" class="fastcon-label cl-grey-900">NOMOR HP*</label>
-                            <input type="text" class="form-control" id="phone" placeholder="Ketik disini">
+                            <label for="phone" class="fastcon-label cl-grey-900"><?=lang('phone')?>*</label>
+                            <input type="number" class="form-control" name="phone" id="phone" placeholder="Ketik disini">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-12">
                         <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/home.png" alt="">  ALAMAT PENGIRIMAN</h4>
                         <div class="form-group">
-                            <label for="email" class="fastcon-label cl-grey-900">Alamat*</label>
+                            <label for="email" class="fastcon-label cl-grey-900"><?=lang('address')?>*</label>
                             <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
                         </div>
                         <div class="form-group">
@@ -40,15 +40,15 @@
                     <div class="col-lg-4 col-md-12">
                         <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/cardbox.png" alt="">  DATA PENERIMA</h4>
                         <div class="form-group">
-                            <label for="email" class="fastcon-label cl-grey-900">Nama Lengkap*</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <label for="email_penerima" class="fastcon-label cl-grey-900">Nama Lengkap*</label>
+                            <input type="email" class="form-control" name="email_penerima" id="email_penerima" aria-describedby="emailHelp" placeholder="Ketik disini">
                         </div>
                         <div class="form-group">
-                            <label for="phone" class="fastcon-label cl-grey-900">Nomor HP*</label>
-                            <input type="text" class="form-control" id="phone" placeholder="Ketik disini">
+                            <label for="phone_penerima" class="fastcon-label cl-grey-900">Nomor HP*</label>
+                            <input type="text" class="form-control" name="phone_penerima" id="phone_penerima" placeholder="Ketik disini">
                         </div>
                         <div class="form-check p-0">
-                            <input type="checkbox" value="1"> <span class="fastcon-description cl-grey-900">Samakan dengan data diri</span>
+                            <input type="checkbox" value="1" id="copy_user"> <span class="fastcon-description cl-grey-900">Samakan dengan data diri</span>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
 					<a href="<?=site_url('checkout/summary')?>" class="mt-2">Temp link to checkout</a>
                     <div class="col-lg-4"></div>
                 </div>
-            </form>
+            <?=form_close();?>
         </div>
     </div>
 </section>

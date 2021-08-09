@@ -60,6 +60,10 @@ class Fastcon_product_variant extends Admin
         	$button = '';
         	$row = [];
 
+						if($this->is_allowed('fastcon_product_variant_add'))
+        	{
+		        $button .= '<a href="'.site_url("administrator/fastcon_product_variant/clone_data/" . $fastcon_product_variant->variant_id) .'" class="label-default mr-3"><i class="fa fa-copy"></i> '.cclang('clone').'</a>';
+        	}
 			
 	        $button .= '<a href="'.site_url("administrator/fastcon_product_variant/view/" . $fastcon_product_variant->variant_id).'" class="label-default mr-3"><i class="fa fa-newspaper-o" style="padding-right:3px;"></i> '.cclang("view_button").'</a>';
 
@@ -74,9 +78,17 @@ class Fastcon_product_variant extends Admin
 
 
 
-	    			$row[] = $fastcon_product_variant->sku;
+	    			$row[] = $fastcon_product_variant->product_name;
 	    			$row[] = $fastcon_product_variant->product_option_name;
 	    			$row[] = $fastcon_product_variant->option_value;
+	    			$row[] = $fastcon_product_variant->product_option_name;
+	    			$row[] = $fastcon_product_variant->option_value;
+	    	$row[] = $fastcon_product_variant->sku;
+
+	    	$row[] = $fastcon_product_variant->price;
+
+	    	$row[] = $fastcon_product_variant->discount;
+
 	    
 	        $row[] = $button;
 	    	$data[] = $row;
@@ -104,6 +116,93 @@ class Fastcon_product_variant extends Admin
 		$this->render('backend/standart/administrator/fastcon_product_variant/fastcon_product_variant_add', $this->data);
 	}
 
+	public function get_option_value()
+	{
+		$this->is_allowed('fastcon_product_variant_add');
+
+		$arr = $this->input->post();
+
+		$option = db_get_all_data('fastcon_product_option_value', ['product_option_id' => $arr['option']]);
+
+		if (!$option) {
+			echo json_encode(['status' => false, 'message' => 'Option value not found']);
+			return;
+		}
+
+		echo json_encode(['status' => true, 'message' => 'Get option value success', 'data' => $option]);
+		return;
+
+	}
+
+	public function get_option2()
+	{
+		$this->is_allowed('fastcon_product_variant_add');
+
+		$arr = $this->input->post();
+
+		$option2 = db_get_all_data('fastcon_product_option', ['product_type_id !=' => $arr['option1']]);
+
+		if (!$option2) {
+			echo json_encode(['status' => false, 'message' => $this->db->last_query()]);
+			return;
+		}
+
+		echo json_encode(['status' => true, 'message' => 'Get option value success', 'data' => $option2]);
+		return;
+	}
+
+	public function get_option_text()
+	{
+		$this->is_allowed('fastcon_product_variant_add');
+		
+		$arr = $this->input->post();
+		$text1 = $this->model_fastcon_product_variant->get_option_text($arr['option_value1']);
+
+		$text2 = false;
+
+
+		$html = '';
+		$j = 0;
+		foreach ($text1 as $t1) {
+			$html .= '
+				<tr>
+					<td><input type="checkbox" name="check[]" value="'.$j.'" class="flat-red"></td>
+	                <td><input type="hidden" name="product_option1[]" value="'.$t1->product_type_id.'"><input type="hidden" name="product_option_value1[]" value="'.$t1->option_value_id.'">'.$t1->option_value.'</td>
+	                <td><input type="text" name="sku[]" class="form-control"></td>
+	                <td><input type="number" name="price[]" class="form-control"></td>
+	                <td><input type="number" name="discount[]" class="form-control"></td>
+                </tr>
+			';
+			$j++;
+		}
+
+		if (isset($arr['option_value2'])) {
+			$html = '';
+			$text2 = $this->model_fastcon_product_variant->get_option_text($arr['option_value2']);
+			$i = 0;
+			foreach ($text1 as $t1) {
+
+				foreach ($text2 as $t2) {
+					$html .= '
+						<tr>
+							<td><input type="checkbox" name="check[]" value="'.$i.'" class="flat-red"></td>
+			                <td><input type="hidden" name="product_option1[]" value="'.$t1->product_type_id.'"><input type="hidden" name="product_option_value1[]" value="'.$t1->option_value_id.'">'.$t1->option_value.'</td>
+			                <td><input type="hidden" name="product_option2[]" value="'.$t2->product_type_id.'"><input type="hidden" name="product_option_value2[]" value="'.$t2->option_value_id.'">'.$t2->option_value.'</td>
+			                <td><input type="text" name="sku[]" class="form-control"></td>
+			                <td><input type="number" name="price[]" class="form-control"></td>
+			                <td><input type="number" name="discount[]" class="form-control"></td>
+		                </tr>
+					';
+					$i++;
+				}
+			}
+		}
+
+
+
+		echo $html;
+	}
+
 	/**
 	* Add New Fastcon Product Variants
 	*
@@ -119,58 +218,117 @@ class Fastcon_product_variant extends Admin
 			exit;
 		}
 
-		$this->form_validation->set_rules('sku_id', 'Sku Id', 'trim|required');
-		$this->form_validation->set_rules('product_option_id', 'Product Option Id', 'trim|required');
-		$this->form_validation->set_rules('product_option_value_id', 'Product Option Value Id', 'trim|required');
-		
+		$this->form_validation->set_rules('check[]', 'Please mark the option you want to save', 'trim|required');
+		$this->form_validation->set_rules('product_id', 'Product', 'trim|required');
+		$this->form_validation->set_rules('product_option1[]', 'Product Option1', 'trim|required');
+		$this->form_validation->set_rules('product_option_value1[]', 'Product Option Value1', 'trim|required');
+		// $this->form_validation->set_rules('product_option2', 'Product Option2', 'trim|required');
+		// $this->form_validation->set_rules('product_option_value2[]', 'Product Option Value2', 'trim|required');
+		// $this->form_validation->set_rules('sku[]', 'Sku', 'trim|required');
+		// $this->form_validation->set_rules('price[]', 'Price', 'trim|required');
+		// $this->form_validation->set_rules('discount[]', 'Discount', 'trim|required');
 
-		if ($this->form_validation->run()) {
-		
-			$save_data = [
-				'sku_id' => $this->input->post('sku_id'),
-				'product_option_id' => $this->input->post('product_option_id'),
-				'product_option_value_id' => $this->input->post('product_option_value_id'),
-			];
-
-			
-			$save_fastcon_product_variant = $this->model_fastcon_product_variant->store($save_data);
-
-			if ($save_fastcon_product_variant) {
-				if ($this->input->post('save_type') == 'stay') {
-					$this->data['success'] = true;
-					$this->data['id'] 	   = $save_fastcon_product_variant;
-					$this->data['message'] = cclang('success_save_data_stay', [
-						anchor('administrator/fastcon_product_variant/edit/' . $save_fastcon_product_variant, 'Edit Fastcon Product Variant'),
-						anchor('administrator/fastcon_product_variant', ' Go back to list')
-					]);
-				} else {
-					set_message(
-						cclang('success_save_data_redirect', [
-						anchor('administrator/fastcon_product_variant/edit/' . $save_fastcon_product_variant, 'Edit Fastcon Product Variant')
-					]), 'success');
-
-            		$this->data['success'] = true;
-					$this->data['redirect'] = base_url('administrator/fastcon_product_variant');
-				}
-			} else {
-				if ($this->input->post('save_type') == 'stay') {
-					$this->data['success'] = false;
-					$this->data['message'] = cclang('data_not_change');
-				} else {
-            		$this->data['success'] = false;
-            		$this->data['message'] = cclang('data_not_change');
-					$this->data['redirect'] = base_url('administrator/fastcon_product_variant');
-				}
-			}
-
-		} else {
+		if ($this->form_validation->run() == FALSE) {
 			$this->data['success'] = false;
 			$this->data['message'] = validation_errors();
+			echo json_encode($this->data);
+			return;
+		}
+
+		$arr = $this->input->post();
+
+		// echo '<pre>';
+		// print_r($arr);
+		// exit;
+
+
+		// tambah validasi for input checkbox
+
+
+		$data = [];
+
+		$batch = [];
+		for ($i = 0; $i < count($arr['check']); $i++) {
+			$batch['product_id']			= $arr['product_id'];
+			$batch['product_option1'] 		= $arr['product_option1'][$arr['check'][$i]];
+			$batch['product_option_value1'] = $arr['product_option_value1'][$arr['check'][$i]];
+			if (isset($arr['product_option2']) AND isset($arr['product_option_value2'])) {
+				$batch['product_option2'] 		= $arr['product_option2'][$arr['check'][$i]];
+				$batch['product_option_value2'] = $arr['product_option_value2'][$arr['check'][$i]];
+			}
+
+			$batch['sku'] 					= $arr['sku'][$arr['check'][$i]];
+			$batch['price']					= $arr['price'][$arr['check'][$i]];
+			$batch['discount'] 				= $arr['discount'][$arr['check'][$i]];
+
+			array_push($data, $batch);
+		}
+			
+		$save_fastcon_product_variant = $this->model_fastcon_product_variant->insert_batch($data);
+
+		if ($save_fastcon_product_variant) {
+			if ($this->input->post('save_type') == 'stay') {
+				$this->data['success'] = true;
+				$this->data['id'] 	   = $save_fastcon_product_variant;
+				$this->data['message'] = cclang('success_save_data_stay', [
+					anchor('administrator/fastcon_product_variant/edit/' . $save_fastcon_product_variant, 'Edit Fastcon Product Variant'),
+					anchor('administrator/fastcon_product_variant', ' Go back to list')
+				]);
+			} else {
+				set_message(
+					cclang('success_save_data_redirect', [
+					anchor('administrator/fastcon_product_variant/edit/' . $save_fastcon_product_variant, 'Edit Fastcon Product Variant')
+				]), 'success');
+
+        		$this->data['success'] = true;
+				$this->data['redirect'] = base_url('administrator/fastcon_product_variant');
+			}
+		} else {
+			if ($this->input->post('save_type') == 'stay') {
+				$this->data['success'] = false;
+				$this->data['message'] = cclang('data_not_change');
+			} else {
+        		$this->data['success'] = false;
+        		$this->data['message'] = cclang('data_not_change');
+				$this->data['redirect'] = base_url('administrator/fastcon_product_variant');
+			}
 		}
 
 		echo json_encode($this->data);
 	}
 	
+	
+	/**
+	* Clone data Fastcon Product Variant	*
+	*/
+	public function clone_data($id=0)
+	{
+		if($id<=0)
+		{
+			$this->data['success'] = false;
+    		$this->data['message'] = cclang('data_not_found');
+			$this->data['redirect'] = base_url('administrator/fastcon_product_variant');
+			set_message(cclang('data_not_found'), 'warning');
+		}
+
+		$this->is_allowed('fastcon_product_variant_add');
+
+		if($data = db_get_row_data('fastcon_product_variant', ['variant_id' => $id]))
+		{
+			clone_this_data('fastcon_product_variant', ['variant_id' => $id]);
+			$this->data['success'] = true;
+    		$this->data['message'] = cclang('data_cloned');
+			$this->data['redirect'] = base_url('administrator/fastcon_product_variant');
+
+			set_message(cclang('data_cloned'), 'success');
+		}else{
+			set_message(cclang('data_not_found'), 'warning');
+		}
+
+		redirect('administrator/fastcon_product_variant');
+
+	}
+
 	
 		/**
 	* Update view Fastcon Product Variants
@@ -202,16 +360,26 @@ class Fastcon_product_variant extends Admin
 			exit;
 		}
 		
-		$this->form_validation->set_rules('sku_id', 'Sku Id', 'trim|required');
-		$this->form_validation->set_rules('product_option_id', 'Product Option Id', 'trim|required');
-		$this->form_validation->set_rules('product_option_value_id', 'Product Option Value Id', 'trim|required');
+		$this->form_validation->set_rules('product_id', 'Product Id', 'trim|required');
+		$this->form_validation->set_rules('product_option1', 'Product Option1', 'trim|required');
+		$this->form_validation->set_rules('product_option_value1[]', 'Product Option Value1', 'trim|required');
+		$this->form_validation->set_rules('product_option2', 'Product Option2', 'trim|required');
+		$this->form_validation->set_rules('product_option_value2', 'Product Option Value2', 'trim|required');
+		$this->form_validation->set_rules('sku', 'Sku', 'trim|required');
+		$this->form_validation->set_rules('price', 'Price', 'trim|required');
+		$this->form_validation->set_rules('discount', 'Discount', 'trim|required');
 		
 		if ($this->form_validation->run()) {
 		
 			$save_data = [
-				'sku_id' => $this->input->post('sku_id'),
-				'product_option_id' => $this->input->post('product_option_id'),
-				'product_option_value_id' => $this->input->post('product_option_value_id'),
+				'product_id' => $this->input->post('product_id'),
+				'product_option1' => $this->input->post('product_option1'),
+				'product_option_value1' => implode(',', (array) $this->input->post('product_option_value1')),
+				'product_option2' => $this->input->post('product_option2'),
+				'product_option_value2' => $this->input->post('product_option_value2'),
+				'sku' => $this->input->post('sku'),
+				'price' => $this->input->post('price'),
+				'discount' => $this->input->post('discount'),
 			];
 
 			

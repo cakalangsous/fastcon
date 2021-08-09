@@ -13,6 +13,8 @@ class Member extends Front {
 			redirect(site_url('login'));
 		}
 
+		$this->data['member_menu'] = 'dashboard';
+
 		$this->data['total_coupon'] = count(db_get_all_data('fastcon_voucher', ['active' => 1]));
 	}
 
@@ -170,12 +172,14 @@ class Member extends Front {
 	public function history()
 	{
 		$this->data['title'] = 'History';
+		$this->data['member_menu'] = 'history';
 		$this->render('member/history', $this->data);
 	}
 
 	public function coupon()
 	{
 		$this->data['title'] = 'Coupon';
+		$this->data['member_menu'] = 'coupon';
 		$this->data['coupon'] = db_get_all_data('fastcon_voucher');
 		$this->render('member/coupon', $this->data);
 	}

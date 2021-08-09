@@ -16,6 +16,16 @@
                         </div>
 
                     <?php endif ?>
+
+                    <?php if (isset($cart)): ?>
+                        <h2 class="fastcon-h2 cl-grey-900"><?=$cart['title']?></h2>
+
+                        <p class="fastcon-body"><?=$cart['content']?></p>
+
+                        <div class="button-wrap">
+                            <a href="<?=site_url('products')?>" class="fastcon-btn secondary-btn text-uppercase"><?=lang('go_to_products')?></a>
+                        </div>
+                    <?php endif ?>
                 </div>
             </div>
         </div>

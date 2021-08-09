@@ -53,60 +53,183 @@ const checkFirst = () => {
     }
 }
 
-let result = [];
-$('.product_option_select').change(function (e) {
+$('#product_options1').change(function (e) {
     e.preventDefault();
 
+    let option1 = $(this).val();
+    let product = $(this).data('product');
 
-    $('select[name="product_options[]"]').map(function(index) {
-        let arr = {};
-        if ($(this).val()) {
-            arr["product"] = $(this).data('product');
-            arr["option"] = $(this).data('option_id');
-            arr["value"] = $(this).val();
+    $.ajax({
+        url: base_url + 'products/get_option2',
+        type: 'post',
+        dataType: 'json',
+        data: {[csrf_name]:csrf_val, option1, product},
+    })
+    .done(function(res) {
+        if (res.status===200) {
+            let html = '';
+            $.each(res.data, function(index, val) {
+                 html += `<option value="${val.option_value2_id}">${val.option_value2}</option>`
+            });
+            $('#product_options2').html(html).selectpicker('refresh');
+        }else if(res.status===404){
+            let price_text = 0;
+            let real_price_text = false;
+            let sku = '';
+            $.each(res.data, function(index, val) {
+                price_text = parseInt(val.price) - parseInt(val.discount);
+                sku = val.sku;
+                 if(val.discount>0) {
+                    real_price_text = val.price;
+                 }
+            });
+
+            if (real_price_text==false) {
+                $('.normal-price').hide();
+            }else{
+                $('.normal-price').text('Rp. '+convert_rupiah(real_price_text));
+                $('.normal-price').show();
+            }
+            $('.main-price').text('Rp. '+convert_rupiah(price_text));
+            $('.product-sku span').text(sku + ' |');
         }
-
-        result[index] = arr;
-        return result;
-    }).get();
-
-    // $.ajax({
-    //     url: base_url + 'products/get_related_variants',
-    //     type: 'POST',
-    //     dataType: 'JSON',
-    //     data: {[csrf_name]:csrf_val, result},
-    // })
-    // .done(function(res) {
-    //     console.log(res);
-    // });
+    });
     
 });
+
+$('#product_options2').change(function (e) {
+    e.preventDefault();
+
+    let product = $(this).data('product');
+    let option1 = $('#product_options1').val();
+    let option2 = $(this).val();
+
+    $.ajax({
+        url: base_url + 'products/get_variant',
+        type: 'post',
+        dataType: 'json',
+        data: {[csrf_name]:csrf_val, product, option1, option2},
+    })
+    .done(function(res) {
+        const data = res.data;
+        let price_text = parseInt(data.price) - parseInt(data.discount);;
+        let real_price_text = false;
+        let sku = data.sku;
+
+        if(data.discount>0) {
+            real_price_text = data.price;
+        }
+
+        if (real_price_text==false) {
+            $('.normal-price').hide();
+        }else{
+            $('.normal-price').text('Rp. '+convert_rupiah(real_price_text));
+            $('.normal-price').show();
+        }
+        $('.main-price').text('Rp. '+convert_rupiah(price_text));
+        $('.product-sku span').text(sku + ' |');
+    });
+});
+
+function convert_rupiah(angka) {
+    var number_string = angka.toString(),
+    sisa    = number_string.length % 3,
+    rupiah  = number_string.substr(0, sisa),
+    ribuan  = number_string.substr(sisa).match(/\d{3}/g);
+        
+    if (ribuan) {
+        separator = sisa ? '.' : '';
+        rupiah += separator + ribuan.join('.');
+    }
+    return rupiah;
+}
+
+
 
 $('#add_to_cart_btn').click(function (e) {
     e.preventDefault();
 
-    var quantity = $('form.cart #quantity').val();
-    var selected_value = result;
+    let quantity = $('form.cart #quantity').val();
+    let option1 = $('#product_options1').val();
+    let option2 = $('#product_options2').val();
+    const product = $(this).data('product');
+
+    let option = {};
+
+    option['option1'] = option1;
+    if (option2!=null) {
+        option['option2'] = option2;
+    }
 
     $.ajax({
         url: base_url + 'products/add_to_cart',
         type: 'post',
         dataType: 'json',
-        data: {[csrf_name]:csrf_val, selected_value, quantity},
+        data: {[csrf_name]:csrf_val, product, option, quantity},
     })
     .done(function(res) {
-        if (res.status===false) {
-            if (res.redirect!=undefined) {
-                window.location.href = res.redirect;
-                return;
-            }else{
-
-            }
-        }else {
+        if (res.status==true) {
             $('#added_to_cart_modal').modal('show');
         }
     });
+});
+
+let variant_to_delete;
+$('.delete-cart').click(function (e) {
+    e.preventDefault();
+    $('#delete_cart_modal img').removeAttr('src');
+    $('#delete_cart_modal h4').text('');
+
+    let product = $(this).data('product');
+    let variant_id = $(this).data('variant');
+    let rowid = $(this).data('rowid');
+    let image = $(this).data('image');
+
+    if (rowid!=null) {
+        variant_to_delete = rowid;
+    }else {
+        variant_to_delete = variant_id;
+    }
+
+    $('#delete_cart_modal img').attr('src', image);
+    $('#delete_cart_modal h4').text(product);
+    $('#delete_cart_modal').modal('show');
+});
+
+$('.delete_action').click(function (e) {
+    e.preventDefault();
+
+    $.ajax({
+        url: base_url + 'products/delete_cart_item',
+        type: 'post',
+        dataType: 'json',
+        data: {[csrf_name]:csrf_val, variant:variant_to_delete},
+    })
+    .done(function(res) {
+        if (res.status==true) {
+            location.reload();
+        }else{
+            // add if cart failed to delete
+        }
+    });
     
+});
+
+$('.cart_plus').click(function (e) {
+    let variant_id = $(this).data('variant');
+    let qty = $('.cart_qty').val();
+
+    console.log(variant_id, qty);
+});
+
+$('#copy_user').change(function() {
+    if(this.checked) {
+        let email = $('.guest-form #email').val();
+        let phone = $('.guest-form #phone').val();
+
+        $('#email_penerima').val(email);
+        $('#phone_penerima').val(phone);
+    }
 });
 
 $('.coupon-item').click(function (e) {
@@ -147,10 +270,6 @@ $('.member-nav-select').on('show.bs.select', () => {
     }, 0.001)
 })
 
-// $('.select-change-page').change(function(event) {
-//     var value = $(this).val();
-//     window.location.href = value;
-// });
 
 $('#kota_kecamatan').keyup(function(event) {
     var search = $("#kota_kecamatan").val();

@@ -280,6 +280,27 @@ class Pages extends Front {
 			redirect_back();
 		}
 
+		$this->load->library('cart');
+
+		if ($this->cart->contents()) {
+			foreach ($this->cart->contents() as $c) {
+				$cart_data = [
+					'member_id' => $user->member_id,
+					'product_id' => $c['product_id'],
+					'quantity' => $c['qty']
+				];
+
+				$cart = db_get_row_data('fastcon_product_cart', ['member_id' => $user->member_id, 'variant_id' => $c['id']]);
+				if ($cart) {
+					update_this_data('fastcon_product_cart', ['member_id' => $user->member_id, 'variant_id' => $c['id']], $cart_data);
+				}else {
+					$cart_data['variant_id'] = $c['id'];
+					insert_this_data('fastcon_product_cart', $cart_data);
+				}
+
+			}
+		}
+
 		$this->session->set_flashdata('welcome', lang('success_login'));
 
 		$array = [
@@ -291,6 +312,9 @@ class Pages extends Front {
 		];
 		
 		$this->session->set_userdata( $array );
+		if($this->agent->referrer() == site_url('checkout')) {
+			redirect('checkout');
+		}
 		redirect(site_url('member/dashboard'));
 	}
 

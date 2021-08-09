@@ -65,15 +65,15 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Sku Id </label>
+                        <label for="content" class="col-sm-2 control-label">Product Id </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_product_variant->sku); ?>
+                           <?= _ent($fastcon_product_variant->product_name); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Product Option Id </label>
+                        <label for="content" class="col-sm-2 control-label">Product Option1 </label>
 
                         <div class="col-sm-8">
                            <?= _ent($fastcon_product_variant->product_option_name); ?>
@@ -81,10 +81,50 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Product Option Value Id </label>
+                        <label for="content" class="col-sm-2 control-label">Product Option Value1 </label>
 
                         <div class="col-sm-8">
                            <?= _ent($fastcon_product_variant->option_value); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Product Option2 </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_product_variant->product_option_name); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Product Option Value2 </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_product_variant->option_value); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Sku </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_product_variant->sku); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Price </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_product_variant->price); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Discount </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_product_variant->discount); ?>
                         </div>
                     </div>
                                         

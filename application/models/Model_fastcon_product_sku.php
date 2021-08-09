@@ -5,7 +5,7 @@ class Model_fastcon_product_sku extends MY_Model {
 
 	private $primary_key 	= 'sku_id';
 	private $table_name 	= 'fastcon_product_sku';
-	private $field_search 	= ['product_id', 'sku', 'price', 'discount'];
+	private $field_search 	= ['product_id', 'sku', 'product_option1', 'product_option_value1', 'product_option2', 'product_option_value2', 'price', 'discount'];
 
 	public function __construct()
 	{
@@ -91,6 +91,10 @@ class Model_fastcon_product_sku extends MY_Model {
 
 	public function join_avaiable() {
 		$this->db->join('fastcon_product', 'fastcon_product.product_id = fastcon_product_sku.product_id', 'LEFT');
+	    $this->db->join('fastcon_product_option', 'fastcon_product_option.product_type_id = fastcon_product_sku.product_option1', 'LEFT');
+	    $this->db->join('fastcon_product_option_value', 'fastcon_product_option_value.option_value_id = fastcon_product_sku.product_option_value1', 'LEFT');
+	    $this->db->join('fastcon_product_option fastcon_product_option1', 'fastcon_product_option1.product_type_id = fastcon_product_sku.product_option2', 'LEFT');
+	    $this->db->join('fastcon_product_option_value fastcon_product_option_value1', 'fastcon_product_option_value1.option_value_id = fastcon_product_sku.product_option_value2', 'LEFT');
 	    
     	return $this;
 	}

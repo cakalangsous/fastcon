@@ -380,8 +380,10 @@
       return false;
     };
 
-    let base_url = '<?=site_url()?>';
-    let base_asset = '<?=BASE_ASSET;?>';
+    const base_url = '<?=site_url()?>';
+    const base_asset = '<?=BASE_ASSET;?>';
+    const csrf_name = '<?= $this->security->get_csrf_token_name(); ?>';
+    const csrf_val = '<?= $this->security->get_csrf_hash(); ?>';
 
 
 </script>

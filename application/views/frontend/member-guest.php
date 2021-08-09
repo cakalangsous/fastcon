@@ -13,20 +13,40 @@
                         <h4 class="fastcon-h4 cl-primary-900">AKUN SAYA</h4>
                         <p class="fastcon-body">Silakan masuk ke akun Anda untuk menyelesaikan pembayaran dengan data pribadi Anda.</p>
 
-                        <form action="#" class="login-form">
+                        <?=form_open(site_url('authentication'), ['class' => 'login-form', 'method' => 'post']);?>
+	                        <?php if ($this->session->flashdata('error')): ?>
+		                        
+				                <div class="style-msg errormsg">
+				                    <div class="sb-msg"><?=$this->session->flashdata('error');?></div>
+				                </div>
+
+				            <?php endif ?>
+
+		                	<?php if ($this->session->flashdata('response')): ?>
+				                <div class="style-msg successmsg">
+				                    <div class="sb-msg"><?=$this->session->flashdata('response');?></div>
+				                </div>
+				            <?php endif ?>
+                            
                             <div class="form-group">
-                                <label for="email" class="fastcon-label cl-grey-900">E-mail*</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="fastcon-label cl-grey-900">Password*</label>
-                                <input type="password" class="form-control" id="password" placeholder="Ketik disini">
-                            </div>
-                            <div class="form-check p-0">
-                                <input type="checkbox" value="1" checked> <span class="fastcon-description cl-grey-900">Ingat saya</span>
-                            </div>
-                            <button type="submit" class="fastcon-btn primary-btn">Submit</button>
-                        </form>
+	                            <label for="email" class="fastcon-label cl-grey-900">E-mail*</label>
+	                            <input type="email" class="form-control" id="email" name="email" placeholder="Ketik disini">
+	                        </div>
+
+	                        <div class="form-group">
+	                            <label for="password" class="fastcon-label cl-grey-900"><?=lang('password')?>* <a href="<?=site_url('forgot-password')?>" class="cl-grey-900">(<?=lang('forget_password')?>?)</a></label>
+	                            <input type="password" class="form-control" id="password" name="password" placeholder="Ketik disini">
+	                        </div>
+
+	                        <div class="form-check p-0">
+	                            <input type="checkbox" value="1" checked> <span class="fastcon-description cl-grey-900"><?=lang('remember_me')?></span>
+	                        </div>
+
+	                        <div class="btn-wrap">
+	                            <button type="submit" class="fastcon-btn primary-btn"><?=lang('login')?></button>
+	                        </div>
+
+	                    <?=form_close();?>
                     </div>
 
                     
