@@ -121,7 +121,7 @@ class Pages extends Front {
 		$html = $this->load->view('email/index', $info, true);
 
 		$this->email->initialize($this->mail_config());
-		$this->email->from($this->config->item('no_reply_email'), $this->config->item('sender_name'));
+		$this->email->from(getenv('NO_REPLY_EMAIL'), getenv('SENDER_NAME'));
 		$this->email->to($topic->email);
 		$this->email->subject('Fastcon - New Contact Submitted');
 		$this->email->message($html);
