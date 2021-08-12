@@ -372,7 +372,13 @@ ul.social li{
       <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; font-family: 'Open Sans';">
       	<tr>
           <td valign="middle" style="background: #f5f5f5; border-top: 1px solid rgba(0,0,0,.05); color: #212121; padding: 1.5em 2.5em; display: flex; flex-direction: column;">
-              	<a href="<?=site_url()?>" style="text-align: center;" ><img src="<?=BASE_ASSET?>logo/<?=get_option('site_logo')?>" width="180" alt="Fastcon"></a>
+            <table>
+                <tr>
+                    <td align="center">
+                      	<a href="<?=site_url()?>" style="text-align: center;" ><img src="<?=BASE_ASSET?>logo/<?=get_option('site_logo')?>" width="180" alt="Fastcon"></a>
+                    </td>
+                </tr>
+            </table>
             <table>
             	<tr>
                 <td valign="top" align="center" width="50%" style="padding-top: 10px;">
