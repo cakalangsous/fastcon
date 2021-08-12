@@ -202,6 +202,7 @@ class Pages extends Front {
 		$info['title']		= 'Thank you for registration';
 		$info['caption']	= 'In order to login to our site, you need to verify your account. Click verify button below to verify your account.';
 		$info['link']		= site_url('verify_email/'.$arr['verified_key'].'/'.sha1($arr['email']).'/'.$arr['salt']);
+		$info['marketplace']= $this->data['marketplace'];
 
 		$html = $this->load->view('email/index', $info, true);
 
