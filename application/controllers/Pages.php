@@ -114,12 +114,14 @@ class Pages extends Front {
 
 		$topic = db_get_row_data('fastcon_contact_topic', ['topid_id' => $arr['topic']]);
 
-		$info['title']		= 'New Contact Inquiry Submitted';
-		$info['caption']	= 'Dear admin, this is e-mail notification for new submitted inquiry from user. Please respond in 1x24 work hours via phone number or e-mail.';
-		$info['marketplace']= $this->data['marketplace'];
+		$admin['title']		= 'New Contact Inquiry Submitted';
+		$admin['caption']	= 'Dear admin, this is e-mail notification for new submitted inquiry from user. Please respond in 1x24 work hours via phone number or e-mail.';
+		$admin['marketplace']= $this->data['marketplace'];
 
-		$html = $this->load->view('email/index', $info, true);
+		$html = $this->load->view('email/index', $admin, true);
 
+		$this->load->library('email');
+		
 		$this->email->initialize($this->mail_config());
 		$this->email->set_newline("\r\n");
 		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
