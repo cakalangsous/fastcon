@@ -100,9 +100,6 @@ class Pages extends Front {
 
 		$html = $this->load->view('email/index', $info, true);
 
-		print_r($html);
-		exit;
-
 		$this->load->library('email');
 
 		$this->email->initialize($this->mail_config());
