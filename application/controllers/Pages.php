@@ -104,7 +104,7 @@ class Pages extends Front {
 
 		$this->email->initialize($this->mail_config());
 		$this->email->set_newline("\r\n");
-		$this->email->from(getenv('NO_REPLY_EMAIL'), getenv('SENDER_NAME'));
+		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
 		$this->email->to($arr['email']);
 		$this->email->subject('Fastcon - Contact Submitted');
 		$this->email->message($html);
@@ -121,7 +121,7 @@ class Pages extends Front {
 		$html = $this->load->view('email/index', $info, true);
 
 		$this->email->initialize($this->mail_config());
-		$this->email->from(getenv('NO_REPLY_EMAIL'), getenv('SENDER_NAME'));
+		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
 		$this->email->to($topic->email);
 		$this->email->subject('Fastcon - New Contact Submitted');
 		$this->email->message($html);
@@ -209,7 +209,7 @@ class Pages extends Front {
 
 		$this->email->initialize($this->mail_config());
 		$this->email->set_newline("\r\n");
-		$this->email->from(getenv('NO_REPLY_EMAIL'), getenv('SENDER_NAME'));
+		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
 		$this->email->to($arr['email']);
 		$this->email->subject('Fastcon - Contact Submitted');
 		$this->email->message($html);
