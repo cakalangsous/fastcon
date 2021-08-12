@@ -8,6 +8,7 @@ class Products extends Front {
 		parent::__construct();
 		$this->load->model('Model_web');
 		$this->load->library('cart');
+		$this->data['active'] = 'product';
 	}
 
 	public function index($offset=false)
@@ -32,6 +33,17 @@ class Products extends Front {
 			$this->not_found();
 			return;
 		}
+
+		$variants = db_get_all_data('fastcon_product_variant', ['product_id' => $id], false, false, false, 'price');
+
+		$cheap = reset($variants);
+		$expensive = '';
+		if (count($variants) > 0) {
+			$expensive = end($variants)->price;
+		}
+
+		$this->data['cheap'] = $cheap->price;
+		$this->data['expensive'] = $expensive;
 
 		$this->data['title'] = $product->product_name;
 		$this->data['product'] = $product;
@@ -145,6 +157,7 @@ class Products extends Front {
 			return;
 		}
 
+		$this->data['active'] = 'cart';
 		$this->data['cart'] = $cart;
 		$this->render('cart', $this->data);
 	}
@@ -178,6 +191,13 @@ class Products extends Front {
 		echo json_encode(['status' => true, 'message' => 'Cart updated']);
 		return;
 	}
+
+	// public function update_cart()
+	// {
+	// 	if (!$this->session->userdata('member')) {
+
+	// 	}
+	// }
 }
 
 /* End of file Products.php */

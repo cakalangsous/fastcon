@@ -184,6 +184,24 @@ p, h1, h2, h3, h4, h5, h6 {
   border: 1px solid #d3302f;
 }
 
+.secondary-error-btn:hover {
+  background-color: #d3302f;
+  color: #fff !important;
+  border: 1px solid #d3302f;
+}
+
+.error-btn {
+  background-color: #d3302f;
+  color: #fff !important;
+  border: 1px solid #d3302f;
+}
+
+.error-btn:hover {
+  background-color: #fff;
+  color: #d3302f !important;
+  border: 1px solid #d3302f;
+}
+
 .new-order-btn {
   background-color: #F8C821;
   color: #fff;
@@ -208,6 +226,8 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .coupon-btn {
   padding: 7px 20px;
+  max-width: 30%;
+  width: 28%;
 }
 
 input,
@@ -373,6 +393,9 @@ input:disabled {
 .fastcon-alert-error {
   background-color: rgba(211, 48, 47, 0.2);
 }
+.contact-about * {
+  max-width: 200px;
+}
 
 @media screen and (max-width: 767px) {
   .fastcon-h1 {
@@ -529,7 +552,7 @@ ol {
   font-weight: 500;
 }
 
-.menu-item.active .menu-link {
+.menu-item.active > .menu-link {
   font-weight: 700;
   color: #00672B;
 }
@@ -762,7 +785,7 @@ footer {
 .fastcon-post .fastcon-post-item .fastcon-post-info {
   padding-top: 30px;
   z-index: 12;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .fastcon-post .fastcon-post-item .fastcon-post-info .fastcon-description::after {
@@ -1708,8 +1731,9 @@ a.product-item:hover h4 {
 
 .projects-wrap .project-item .project-description {
   padding-top: 30px;
-  background-color: #fff;
+  /*background-color: #fff;*/
   z-index: 12;
+  width: 100%;
 }
 
 .projects-wrap .project-item .project-description .category {
@@ -2644,6 +2668,13 @@ ul.member-menu li.active a::after {
 .logout-modal .btn-wrap a:first-child {
   margin-right: 20px;
 }
+.cart-card-item .card-desc {
+  min-width: 225px;
+}
+
+.home-modal .button-wrap {
+  display: flex;
+}
 
 @media screen and (max-width: 991px) {
   .width-md-fit {
@@ -3118,6 +3149,9 @@ ul.member-menu li.active a::after {
   }
   .member-nav .bootstrap-select.rounded-0 .dropdown-menu.show {
     border-radius: 0 !important;
+  }
+  .accordion-header.multiple .accordion-img {
+    width: 94px;
   }
 }
 
@@ -3814,6 +3848,14 @@ ul.member-menu li.active a::after {
   .register-form .form-check [type="checkbox"] {
     width: 32px;
     margin-top: 2px;
+  }
+
+  .accordion-header.multiple .accordion-img {
+    width: 60px;
+    height: 60px;
+  }
+  .contact-about * {
+    max-width: 100%;
   }
 }
 /*# sourceMappingURL=custom.css.map */

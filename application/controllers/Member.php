@@ -77,6 +77,7 @@ class Member extends Front {
 		$this->form_validation->set_rules('fullname', 'Fullname', 'trim|required');
 		$this->form_validation->set_rules('phone', 'Phone', 'trim|required');
 		$this->form_validation->set_rules('email', 'E-mail', 'trim|required');
+		$this->form_validation->set_rules('province_id', 'Province', 'trim|required');
 		$this->form_validation->set_rules('kota_kecamatan', 'City or District', 'trim|required');
 		$this->form_validation->set_rules('address', 'Address', 'trim|required');
 
@@ -102,15 +103,15 @@ class Member extends Front {
 		]);
 
 		$current_active = db_get_all_data('fastcon_member_address', ['member_id' => $this->session->userdata('member')['member_id'], 'active' => 1]);
-		$active = 0;
-		if (!$current_active) {
-			$active = 1;
+		if ($current_active) {
+			update_this_data('fastcon_member_address', ['member_id' => $this->session->userdata('member')['member_id'], 'active' => 1], ['active' => 0]);
 		}
 
 		$address = [
 			'name'		=> $arr['fullname'],
 			'email'		=> $arr['email'],
 			'phone'		=> $arr['phone'],
+			'province_id'=> $arr['province_id'],
 			'provinsi' 	=> $destination_code->provinsi,
 			'kabupaten' => $destination_code->kabupaten,
 			'kecamatan' => $destination_code->kecamatan,
@@ -118,7 +119,7 @@ class Member extends Front {
 			'kode_pos' 	=> $destination_code->kode_pos,
 			'address'	=> $arr['address'],
 			'member_id' => $this->session->userdata('member')['member_id'],
-			'active'  	=> $active
+			'active'  	=> 1
 		];
 
 		if (!insert_this_data('fastcon_member_address', $address)) {
@@ -150,6 +151,61 @@ class Member extends Front {
 		redirect_back();
 	}
 
+	public function update_address($address_id=false)
+	{
+		if (!$address_id) {
+			$this->not_found();
+			return;
+		}
+
+		if (!$selected_address = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('member')['member_id'], 'id' => $address_id] )) {
+			$this->not_found();
+			return;
+		}
+
+		$this->form_validation->set_rules('fullname', 'Fullname', 'trim|required');
+		$this->form_validation->set_rules('phone', 'Phone', 'trim|required');
+		$this->form_validation->set_rules('email', 'E-mail', 'trim|required');
+		$this->form_validation->set_rules('province_id', 'Province', 'trim|required');
+		$this->form_validation->set_rules('kota_kecamatan', 'City or District', 'trim|required');
+		$this->form_validation->set_rules('address', 'Address', 'trim|required');
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('error', validation_errors());
+			redirect_back();
+		}
+
+		$arr = $this->input->post();
+
+		$destination = explode(',', $arr['kota_kecamatan']);
+		$destination_code = db_get_row_data('fastcon_address_master',[
+			'provinsi' => isset($destination[0])?$destination[0]:'',
+			'kabupaten' => isset($destination[1])?substr($destination[1], 1):'',
+			'kecamatan' => isset($destination[2])?substr($destination[2], 1):'',
+			'kelurahan' => isset($destination[3])?substr($destination[3], 1):'',
+			'kode_pos' => isset($destination[4])?substr($destination[4], 1):'',
+		]);
+
+		$address = [
+			'name'		=> $arr['fullname'],
+			'email'		=> $arr['email'],
+			'phone'		=> $arr['phone'],
+			'province_id'=> $arr['province_id'],
+			'provinsi' 	=> $destination_code->provinsi,
+			'kabupaten' => $destination_code->kabupaten,
+			'kecamatan' => $destination_code->kecamatan,
+			'kelurahan' => $destination_code->kelurahan,
+			'kode_pos' 	=> $destination_code->kode_pos,
+			'address'	=> $arr['address'],
+			'member_id' => $this->session->userdata('member')['member_id'],
+			'active'  	=> $selected_address->active
+		];
+
+		update_this_data('fastcon_member_address', ['id' => $address_id], $address);
+		$this->session->set_flashdata('welcome', 'Address successfully updated.');
+		redirect_back();
+	}
+
 	public function delete_address($address_id=false)
 	{
 		if (!$address_id) {
@@ -161,6 +217,14 @@ class Member extends Front {
 		if (!$address OR $address->member_id != $this->session->userdata('member')['member_id']) {
 			$this->not_found();
 			return;
+		}
+
+		if ($address->active == 1) {
+			$set_active = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('member')['member_id']], false, false, false, 'id desc');
+
+			if ($set_active) {
+				update_this_data('fastcon_member_address', ['id' => $set_active->id], ['active' => 1]);
+			}
 		}
 
 		delete_this_data('fastcon_member_address', ['id' => $address_id]);

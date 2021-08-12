@@ -245,7 +245,7 @@
 										<div class="col-lg-6 col-md-12">
 											<div class="row">
 												<div class="col-lg-5 col-sm-6 footer-column">
-													<a href="<?=site_url('calc')?>" class="fastcon-nav cl-grey-900">Kalkulator acc</a>
+													<a href="<?=site_url('calc')?>" class="fastcon-nav cl-grey-900"><?=lang('calculator')?></a>
 
 													<a href="<?=site_url('about')?>" class="fastcon-nav cl-grey-900"><?=lang('about_us')?></a>
 
@@ -299,18 +299,37 @@
 
 	</div>
 
-	<div class="modal fade logout-modal" tabindex="-1" role="dialog" aria-labelledby="logoutModal" aria-hidden="true">
+	<div class="modal fade logout-modal" id="logout_modal" tabindex="-1" role="dialog" aria-labelledby="logoutModal" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-body">
 				<div class="modal-content">
 					<div class="modal-body">
 						<h2 class="fastcon-h2 cl-grey-900 text-uppercase text-center mb-20">LOG OUT</h2>
 
-						<p class="fastcon-body-large cl-grey-900 text-center">Apakah Anda yakin ingin keluar dari akun ini?</p>
+						<p class="fastcon-body-large cl-grey-900 text-center"><?=lang('logout_title')?></p>
 						
 						<div class="btn-wrap">
-							<a href="javascript:void(0)" class="fastcon-btn primary-btn" data-dismiss="modal" aria-hidden="true">KEMBALI</a>
-							<a href="<?=site_url('member/logout')?>" class="fastcon-btn secondary-error-btn">Keluar</a>
+							<a href="javascript:void(0)" class="fastcon-btn primary-btn" data-dismiss="modal" aria-hidden="true"><?=lang('discard')?></a>
+							<a href="<?=site_url('member/logout')?>" class="fastcon-btn secondary-error-btn"><?=lang('logout')?></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade logout-modal" id="delete_address_modal" tabindex="-1" role="dialog" aria-labelledby="logoutModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-body">
+				<div class="modal-content">
+					<div class="modal-body">
+						<h2 class="fastcon-h2 cl-grey-900 text-uppercase text-center mb-20"><?=lang('remove_address')?></h2>
+
+						<p class="fastcon-body-large cl-grey-900 text-center"><?=lang('remove_address_title')?></p>
+						
+						<div class="btn-wrap">
+							<a href="javascript:void(0)" class="fastcon-btn primary-btn" data-dismiss="modal" aria-hidden="true"><?=lang('discard')?></a>
+							<a class="fastcon-btn secondary-error-btn remove-btn"><?=lang('remove')?></a>
 						</div>
 					</div>
 				</div>

@@ -22,8 +22,8 @@
                     </div>
 
                     <div class="share">
-                        <p class="fastcon-description">Bagikan:</p>
-                        <a href="mailto:?subject=Fastcon - <?=$product->product_name?>&body=<?=$product->product_name .' <br> '. base_url(uri_string())?>'">
+                        <p class="fastcon-description"><?=lang('share')?>:</p>
+                        <a href="mailto:?subject=Fastcon - <?=$product->product_name?>&body=<?=$product->product_name .' - '. base_url(uri_string())?>'">
                             <img src="<?=BASE_ASSET?>fastcon/img/icons/email.png" alt="">
                         </a>
                         <a href="javascript:void(0)" onclick="javascript:window.open('https://www.facebook.com/sharer.php?u=<?=base_url(uri_string())?>',
@@ -49,7 +49,7 @@
 
                         <del class="normal-price"></del>
 
-                        <h2 class="fastcon-h2 main-price cl-error"></h2>
+                        <h2 class="fastcon-h2 main-price"><?='Rp'.number_format($cheap)?> <?=$expensive!=''?' - Rp'.number_format($expensive):''?></h2>
 
                         <div class="row">
 
@@ -112,24 +112,36 @@
                     <div class="tabs clearfix tab-product-details" id="tab-1">
 
                         <ul class="tab-nav clearfix tab-nav-product-details">
-                            <li><a href="#tabs-1"><span> Spesifikasi</span></a></li>
-                            <li><a href="#tabs-2"><span> Cara Pasang</span></a></li>
-                            <li><a href="#tabs-3"><span> Sertifikat</span></a></li>
+                            <?php if ($product->spec): ?>
+                                <li><a href="#tabs-1"><span> Spesifikasi</span></a></li>
+                            <?php endif ?>
+                            <?php if ($product->cara_pasang): ?>
+                                <li><a href="#tabs-2"><span> Cara Pasang</span></a></li>
+                            <?php endif ?>
+                            <?php if ($product->certificate): ?>
+                                <li><a href="#tabs-3"><span> Sertifikat</span></a></li>
+                            <?php endif ?>
                         </ul>
 
                         <div class="tab-container">
 
-                            <div class="tab-content clearfix" data-lightbox="gallery" id="tabs-1">
-                                <a href="<?=BASE_ASSET?>fastcon/img/products/spek.png" data-lightbox="gallery-item">
-                                    <img src="<?=site_url('uploads/fastcon_product/'.$product->spec)?>" alt="">
-                                </a>
-                            </div>
-                            <div class="tab-content clearfix" id="tabs-2">
-                                <img src="<?=site_url('uploads/fastcon_product/'.$product->cara_pasang)?>" alt="">
-                            </div>
-                            <div class="tab-content clearfix" id="tabs-3">
-                                <img src="<?=site_url('uploads/fastcon_product/'.$product->certificate)?>" alt="">
-                            </div>
+                            <?php if ($product->spec): ?>
+                                <div class="tab-content clearfix" data-lightbox="gallery" id="tabs-1">
+                                    <a href="<?=BASE_ASSET?>fastcon/img/products/spek.png" data-lightbox="gallery-item">
+                                        <img src="<?=site_url('uploads/fastcon_product/'.$product->spec)?>" alt="">
+                                    </a>
+                                </div>
+                            <?php endif ?>
+                            <?php if ($product->cara_pasang): ?>
+                                <div class="tab-content clearfix" id="tabs-2">
+                                    <img src="<?=site_url('uploads/fastcon_product/'.$product->cara_pasang)?>" alt="">
+                                </div>
+                            <?php endif ?>
+                            <?php if ($product->certificate): ?>
+                                <div class="tab-content clearfix" id="tabs-3">
+                                    <img src="<?=site_url('uploads/fastcon_product/'.$product->certificate)?>" alt="">
+                                </div>
+                            <?php endif ?>
 
                         </div>
 

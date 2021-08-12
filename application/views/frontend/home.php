@@ -99,7 +99,7 @@
 								<?php 
 									$pc = db_get_row_data('fastcon_project_category', ['category_id' => $p->category]);
 								?>
-								<p class="fastcon-description"><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></p>
+								<p class="fastcon-description text-uppercase"><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></p>
 		
 								<a href="<?=site_url('projects/details/'.$p->id.'/'.$p->slug)?>">
 									<h3 class="fastcon-h3 text-uppercase"><?=$lang=='indonesian'?$p->title:$p->title_en?></h3>
@@ -117,7 +117,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
-					<h2 class="fastcon-h2"><?=lang('our_news')?></h2>
+					<h2 class="fastcon-h2 text-uppercase"><?=lang('our_news')?></h2>
 				</div>
 			</div>
 			<div class="row fastcon-news fastcon-news-home">
@@ -152,24 +152,26 @@
 	</div><!-- .content-wrap end -->
 </section><!-- #content end -->
 
-<div class="modal fade bs-example-modal-lg home-modal" id="home_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg modal-dialog-centered">
-		<div class="modal-body">
-			<div class="modal-content">
-				<div class="modal-header">
-				<img src="<?=BASE_ASSET?>logo/<?= get_option('site_logo'); ?>" width="212" alt="<?= get_option('site_name'); ?>">
-				</div>
-				<div class="modal-body">
-					<h2 class="fastcon-h2 cl-grey-900">DAPATKAN KUPON SENILAI RP5.000.000*</h2>
+<?php if ($popup): ?>
+	<div class="modal fade bs-example-modal-lg home-modal" id="home_modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-body">
+				<div class="modal-content">
+					<div class="modal-header">
+					<img src="<?=BASE_ASSET?>logo/<?= get_option('site_logo'); ?>" width="212" alt="<?= get_option('site_name'); ?>">
+					</div>
+					<div class="modal-body">
+						<h2 class="fastcon-h2 cl-grey-900 text-uppercase"><?=$lang=='indonesian'?$popup->popup_title:$popup->popup_title_en?></h2>
 
-					<p class="fastcon-body-large">Dapatkan kupon menarik dari Fastcon dengan melakukan daftar akun pada website kami dan dapatkan kupon senilai Rp5.000.000*. Syarat dan ketentuan berlaku.</p>
+						<?=$lang=='indonesian'?$popup->body:$popup->body_en?>
 
-					<div class="button-wrap">
-						<a href="<?=site_url('member/register')?>" class="fastcon-btn primary-btn">DAFTAR AKUN</a>
-						<button type="button" class="fastcon-btn secondary-btn" data-dismiss="modal" aria-hidden="true">NANTI SAJA</button>
+						<div class="button-wrap">
+							<a href="<?=$popup->btn_primary_link?>" class="fastcon-btn primary-btn"><?=$lang=='indonesian'?$popup->btn_primary_text:$popup->btn_primary_text_en?></a>
+							<a href="<?=$popup->btn_secondary_link?>" class="fastcon-btn secondary-btn"><?=$lang=='indonesian'?$popup->btn_secondary_text:$popup->btn_secondary_text_en?></a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+<?php endif ?>

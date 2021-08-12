@@ -18,6 +18,7 @@ $lang = [
 	'our_marketplace' 		=> 'Marketplace kami',
 	'our_qualification' 	=> 'Kualifikasi Kami',
 	'benefits_of_fastcon'	=> 'Manfaat Produk Fastcon',
+	'calculator' 			=> 'Kalkulator AAC',
 	'distribution_network'  => 'JARINGAN DISTRIBUSI KAMI',
 	'industrial_sector' 	=> 'FASTCON TELAH DIGUNAKAN DI BERBAGAI SEKTOR INDUSTRI',
 
@@ -63,4 +64,16 @@ $lang = [
 	
 	'not_found_title' 		=> 'UPS! ADA YANG TIDAK BERES. KAMI MENCOBA MEMPERBAIKINYA. ',
 	'not_found_content' 	=> 'Kami mohon maaf atas ketidaknyamanan ini, sekarang kami mencoba untuk memperbaiki kesalahan tersebut. Anda juga dapat mencoba refresh halaman atau mencoba lagi nanti. ',
+
+	'logout_title' 			=> 'Apakah Anda yakin ingin keluar dari akun ini?',
+	'discard' 					=> 'Kembali',
+	'logout' 				=> 'Keluar',
+
+	'remove_address' 		=> 'Hapus Alamat',
+	'remove_address_title' 	=> 'Apakah anda yakin ingin menghapus alamat ini?',
+	'remove' 				=> 'Hapus',
+
+	'address_list' 			=> 'Daftar Alamat',
+	'edit' 					=> 'Ubah',
+	'change_address' 		=> 'Ganti Alamat',
 ];

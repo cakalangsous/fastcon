@@ -87,10 +87,10 @@ $('#product_options1').change(function (e) {
             if (real_price_text==false) {
                 $('.normal-price').hide();
             }else{
-                $('.normal-price').text('Rp. '+convert_rupiah(real_price_text));
+                $('.normal-price').text('Rp'+convert_rupiah(real_price_text));
                 $('.normal-price').show();
             }
-            $('.main-price').text('Rp. '+convert_rupiah(price_text));
+            $('.main-price').text('Rp'+convert_rupiah(price_text));
             $('.product-sku span').text(sku + ' |');
         }
     });
@@ -115,18 +115,19 @@ $('#product_options2').change(function (e) {
         let price_text = parseInt(data.price) - parseInt(data.discount);;
         let real_price_text = false;
         let sku = data.sku;
-
+        $('.main-price').removeClass('cl-error');
         if(data.discount>0) {
             real_price_text = data.price;
+            $('.main-price').addClass('cl-error');
         }
 
         if (real_price_text==false) {
             $('.normal-price').hide();
         }else{
-            $('.normal-price').text('Rp. '+convert_rupiah(real_price_text));
+            $('.normal-price').text('Rp'+convert_rupiah(real_price_text));
             $('.normal-price').show();
         }
-        $('.main-price').text('Rp. '+convert_rupiah(price_text));
+        $('.main-price').text('Rp'+convert_rupiah(price_text));
         $('.product-sku span').text(sku + ' |');
     });
 });
@@ -143,8 +144,6 @@ function convert_rupiah(angka) {
     }
     return rupiah;
 }
-
-
 
 $('#add_to_cart_btn').click(function (e) {
     e.preventDefault();
@@ -215,12 +214,57 @@ $('.delete_action').click(function (e) {
     
 });
 
-$('.cart_plus').click(function (e) {
-    let variant_id = $(this).data('variant');
-    let qty = $('.cart_qty').val();
+if (active_page=='cart') {
 
-    console.log(variant_id, qty);
-});
+    $(".plus").off( 'click' ).on( 'click', function(){
+        let element = $(this).parents('.quantity').find('.qty'),
+            elValue = element.val(),
+            elStep = element.attr('step') || 1,
+            elMax = element.attr('max'),
+            intRegex = /^\d+$/;
+
+        if( elMax && ( Number(elValue) >= Number( elMax ) ) ) { return false; }
+
+        if( intRegex.test( elValue ) ) {
+            let elValuePlus = Number(elValue) + Number(elStep);
+            element.val( elValuePlus ).change();
+        } else {
+            element.val( Number(elStep) ).change();
+        }
+
+        let variant = $(this).data('variant');
+        let quantity = $('#'+variant).val();
+        
+        $('#update_cart').removeClass('toast hide');
+
+        return false;
+    });
+
+    $(".minus").off( 'click' ).on( 'click', function(){
+        let element = $(this).parents('.quantity').find('.qty'),
+            elValue = element.val(),
+            elStep = element.attr('step') || 1,
+            elMin = element.attr('min'),
+            intRegex = /^\d+$/;
+
+        if( !elMin || elMin < 0 ) { elMin = 1; }
+
+        if( intRegex.test( elValue ) ) {
+            if( Number(elValue) > Number( elMin ) ) {
+                let elValueMinus = Number(elValue) - Number(elStep);
+                element.val( elValueMinus ).change();
+            }
+        } else {
+            element.val( Number(elStep) ).change();
+        }
+
+        let variant = $(this).data('variant');
+        let quantity = $('#'+variant).val();
+        $('#update_cart').removeClass('toast hide');
+
+        return false;
+    });
+}
 
 $('#copy_user').change(function() {
     if(this.checked) {
@@ -255,8 +299,17 @@ $('.select-change-page').change(function(event) {
     if(selected_value !== 'logout'){
         window.location.href = selected_value;
     }else {
-        $('.logout-modal').modal('show');
+        $('#logout_modal').modal('show');
     }
+});
+
+$('.remove-address').click(function (e) {
+    e.preventDefault();
+
+    var id = $(this).data('id');
+    
+    $('.remove-btn').attr('href', base_url + 'member/delete_address/' + id);
+    $('#delete_address_modal').modal('show');
 });
 
 $('#add_address_btn').click(() => {
@@ -269,6 +322,16 @@ $('.member-nav-select').on('show.bs.select', () => {
         $('.member-nav-select .dropdown-menu').css('left', '5px');
     }, 0.001)
 })
+
+$('.member-nav-select').change(function (e) {
+    e.preventDefault();
+
+    let nav_val = $(this).val();
+
+    if (nav_val=='logout') {
+        $('#logout_modal').modal('show')
+    }
+});
 
 
 $('#kota_kecamatan').keyup(function(event) {
@@ -495,9 +558,7 @@ $(document).ready(() => {
       return itemsWidth;
     };
 
-
-
-    if (active_page=='distributor') {
+    if (active_page=='dist') {
 
         var widthOfHidden = function(){
             var ww = 0 - $('.wrapper').outerWidth();

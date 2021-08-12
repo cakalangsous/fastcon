@@ -12,6 +12,7 @@ class Pages extends Front {
 		$this->data['location'] 	= db_get_row_data('fastcon_our_location', ['id' => 1]);
 		$this->data['projects']		= db_get_all_data('fastcon_projects', ['featured' => 'yes'], 6, false, false, 'id desc');
 		$this->data['news']			= db_get_all_data('fastcon_news', false, 3, false, false, 'created_at desc' );
+		$this->data['popup']		= db_get_row_data('fastcon_home_popup', ['id' => 1, 'active' => 'yes']);
 		$this->render('home', $this->data);
 	}
 
@@ -95,10 +96,11 @@ class Pages extends Front {
 
 		$info['title']		= lang('thank_you_title');
 		$info['caption']	= lang('thank_you_content');
+		$info['marketplace']= $this->data['marketplace'];
 
 		$html = $this->load->view('email/index', $info, true);
 
-		echo $html;
+		print_r($html);
 		exit;
 
 		$this->load->library('email');
@@ -117,6 +119,7 @@ class Pages extends Front {
 
 		$info['title']		= 'New Contact Inquiry Submitted';
 		$info['caption']	= 'Dear admin, this is e-mail notification for new submitted inquiry from user. Please respond in 1x24 work hours via phone number or e-mail.';
+		$info['marketplace']= $this->data['marketplace'];
 
 		$html = $this->load->view('email/index', $info, true);
 
@@ -204,10 +207,6 @@ class Pages extends Front {
 		$info['link']		= site_url('verify_email/'.$arr['verified_key'].'/'.sha1($arr['email']).'/'.$arr['salt']);
 
 		$html = $this->load->view('email/index', $info, true);
-
-		print_r($html);
-		exit;
-
 
 		$this->load->library('email');
 

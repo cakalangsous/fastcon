@@ -14,7 +14,7 @@
 
                     <div class="share">
                         <p class="fastcon-description"><?=lang('share')?>:</p>
-                        <a href="mailto:?subject=Fastcon - <?=$lang=='indonesian'?$news->title:$news->title_en?>&body=<?=$lang=='indonesian'?$news->title:$news->title_en .' <br> '. base_url(uri_string())?>'">
+                        <a href="mailto:?subject=Fastcon - <?=$lang=='indonesian'?$news->title:$news->title_en?>&body=<?=$lang=='indonesian'?$news->title:$news->title_en .' - '. base_url(uri_string())?>'">
                             <img src="<?=BASE_ASSET?>fastcon/img/icons/email.png" alt="">
                         </a>
                         <a href="javascript:void(0)" onclick="javascript:window.open('https://www.facebook.com/sharer.php?u=<?=base_url(uri_string())?>',

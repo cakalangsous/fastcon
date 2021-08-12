@@ -61,8 +61,10 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="address-wraper">
-                                <h3 class="fastcon-h3 cl-grey-900 mb-30">DAFTAR ALAMAT</h3>
-                                <a href="javascript:void(0)" id="add_address_btn" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ TAMBAH ALAMAT</a>
+                                <h3 class="fastcon-h3 cl-grey-900 mb-30 text-uppercase"><?=lang('address_list')?></h3>
+                                <?php if (count($member_address)<3): ?>
+                                    <a href="javascript:void(0)" id="add_address_btn" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ TAMBAH ALAMAT</a>
+                                <?php endif ?>
 
                                 <?php foreach ($member_address as $ma): ?>
                                     
@@ -79,7 +81,7 @@
                                                 
                                                 <div class="btn-wrap">
                                                     <a href="<?=site_url('member/change_active/'.$ma->id)?>" class="fastcon-btn secondary-btn">
-                                                        GANTI ALAMAT
+                                                        <?=lang('change_address')?>
                                                     </a>
                                                 </div>
 
@@ -92,16 +94,16 @@
                                                     data-phone='<?=$ma->phone?>'
                                                     data-address='<?=$ma->address?>'
                                                 >
-                                                    <h4 class="fastcon-h4 cl-primary-900">
+                                                    <h4 class="fastcon-h4 cl-primary-900 text-uppercase">
                                                         <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
-                                                        UBAH
+                                                        <?=lang('edit')?>
                                                     </h4>
                                                 </a>
         
-                                                <a href="<?=site_url('member/delete_address/'.$ma->id)?>" class="edit-link">
-                                                    <h4 class="fastcon-h4 cl-error">
+                                                <a href="<?=site_url('member/delete_address/'.$ma->id)?>"  class="edit-link remove-address" data-id="<?=$ma->id?>">
+                                                    <h4 class="fastcon-h4 cl-error text-uppercase">
                                                         <img src="<?=BASE_ASSET?>fastcon/img/icons/trash.png" alt="">
-                                                        HAPUS
+                                                        <?=lang('remove')?>
                                                     </h4>
                                                 </a>
                                             </div>
@@ -141,6 +143,16 @@
                                 <div class="form-group">
                                     <label for="phone" class="fastcon-label cl-grey-900">NOMOR HP*</label>
                                     <input type="text" class="form-control" name="phone" placeholder="Ketik disini">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="fastcon-label cl-grey-900">Provinsi*</label>
+                                    <select class="form-control selectpicker" name="province_id" title="Pilih Satu">
+                                        <?php foreach (db_get_all_data('fastcon_coverage_province') as $cp): ?>
+                                            <option value="<?=$cp->province_id?>"><?=$lang=='indonesian'?$cp->province_name:$cp->province_name_en?></option>
+                                        <?php endforeach ?>
+                                        <option value="others"><?=$lang=='indonesian'?'Lainnya':'Others'?></option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">

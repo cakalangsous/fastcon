@@ -18,11 +18,12 @@ $lang = [
 	'our_marketplace' 		=> 'Our marketplace',
 	'our_qualification' 	=> 'Our Qualification',
 	'benefits_of_fastcon'	=> 'Fastcon Product Bennefits',
+	'calculator' 			=> 'AAC Calculator',
 	'distribution_network'  => 'OUR DISTRIBUTION NETWORK',
 	'industrial_sector' 	=> 'FASTCON HAS BEEN USED IN VARIOUS INDUSTRIAL SECTORS',
 
-	'about_company' 		=> 'About Company',
-	'vision_mission' 		=> 'Vision dan Mission',
+	'about_company' 		=> 'Company Overview',
+	'vision_mission' 		=> 'Vision and Mission',
 
 	'see_all_news' 			=> 'See All News',
 	'all_projects' 			=> 'All Projects',
@@ -63,4 +64,16 @@ $lang = [
 
 	'not_found_title' 		=> 'OOPS! SOMETHING IS NOT RIGHT. WE’RE TRYING TO FIX IT. ',
 	'not_found_content' 	=> 'We apologize for the inconvenience, now we’re trying to fix the error. You can also try refreshing the page or try again later. ',
+
+	'logout_title' 			=> 'Are you sure you want to log out?',
+	'discard' 				=> 'Discard',
+	'logout' 				=> 'Logout',
+
+	'remove_address' 		=> 'Remove Address',
+	'remove_address_title' 	=> 'Are you sure want to remove this address?',
+	'remove' 				=> 'Remove',
+
+	'address_list' 			=> 'Address List',
+	'edit' 					=> 'Edit',
+	'change_address' 		=> 'Change Address',
 ];

@@ -25,7 +25,7 @@
                                     <?php if ($c->discount>0): ?>
                                         <del class="normal-price">Rp<?=number_format($c->price)?></del>
                                     <?php endif ?>
-                                    <h4 class="fastcon-h4 main-price cl-error">Rp<?=number_format($c->price-$c->discount)?></h4>
+                                    <h4 class="fastcon-h4 main-price <?=$c->discount>0?'cl-error':''?>">Rp<?=number_format($c->price-$c->discount)?></h4>
                                     <p class="card-desc-details"><span class="desc-title"><?=$lang=='indonesian'?$c->product_option1_name:$c->product_option1_name_en?>: </span><?=$c->option_value1?></p>
 
                                     <?php if ($c->product_option2): ?>
@@ -43,9 +43,9 @@
                         <div class="title-wrap">
                             <h4 class="fastcon-h4 cl-primary-900">DATA PENGIRIMAN</h4>
                             <a href="javascript:void(0)" class="edit-link large-medium-only" data-toggle="modal" data-target=".address-modal">
-                                <h4 class="fastcon-h4 cl-primary-900">
+                                <h4 class="fastcon-h4 cl-primary-900 text-uppercase">
                                     <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
-                                    UBAH
+                                    <?=lang('edit')?>
                                 </h4>
                             </a>
                         </div>
@@ -70,14 +70,26 @@
 
                     </div>
 
-                    <div class="fastcon-alert fastcon-alert-error">
+                    <!-- <div class="fastcon-alert fastcon-alert-error">
                         <div class="alert-header">
                             <p class="alert-title">Peringatan!</p>
                         </div>
                         <div class="alert-body">
                             <p class="alert-message">Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 7421270 atau kontak kami untuk melanjutkan transaksi Anda.</p>
                         </div>
-                    </div>
+                    </div> -->
+
+                    <?php if ($this->session->flashdata('voucher_error')): ?>
+                        <div class="fastcon-alert fastcon-alert-error">
+                            <div class="alert-header">
+                                <p class="alert-title">Peringatan!</p>
+                            </div>
+                            <div class="alert-body">
+                                <p class="alert-message"><?=$this->session->flashdata('voucher_error');?></p>
+                            </div>
+                        </div>
+
+                    <?php endif ?>
 
                     <div class="card-summary">
                         <h4 class="fastcon-h4 cl-primary-900 text-center">RINGKASAN</h4>
@@ -128,22 +140,35 @@
                             </div>
                         </div>
 
-                        <div class="card-summary-product-item">
-                            <div class="product">
-                                <p class="fastcon-description">Ongkos Kirim</p>
+                        <?php if ($ongkir): ?>
+                            <div class="card-summary-product-item mb-0">
+                                <div class="product">
+                                    <p class="fastcon-description">Ongkos Kirim</p>
+                                </div>
+                                <div class="price">
+                                    <p>Rp<?=number_format($ongkir)?></p>
+                                </div>
                             </div>
-                            <div class="price">
-                                <!-- <p>Rp450.000</p> -->
+                        <?php endif ?>
+                        <?php if ($voucher = $this->session->userdata('voucher')): ?>
+                            <div class="card-summary-product-item">
+                                <div class="product">
+                                    <p class="fastcon-description">Diskon Kupon</p>
+                                </div>
+                                <div class="price">
+                                    <p class="cl-error"> - Rp<?=number_format($voucher['voucher_discount'])?></p>
+                                </div>
                             </div>
-                        </div>
+                        <?php $total = $total-$voucher['voucher_discount']; endif ?>
+
 
                         <div class="card-summary-product-item mb-0">
                             <div class="product">
                                 <p class="fastcon-description"><b>Catatan:</b></p>
-                                <p class="fastcon-description">Catatan: 
-Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 1234 atau kontak kami untuk melanjutkan transaksi Anda.</p>
+                                <p class="fastcon-description">Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 1234 atau kontak kami untuk melanjutkan transaksi Anda.</p>
                             </div>
                         </div>
+
 
                         <div class="line"></div>
 
@@ -152,25 +177,29 @@ Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 
                                 <p class="fastcon-description"><b>Total</b></p>
                             </div>
                             <div class="price">
-                                <p><b>Rp<?=number_format($total + (0.1*$total))?></b></p>
+                                <p><b>Rp<?=number_format($total + (0.1*$total) + $ongkir)?></b></p>
                             </div>
                         </div>
 
                         <div class="card-summary-btn-wrap">
-                            <a href="<?=site_url('checkout')?>" class="fastcon-btn primary-btn w-100">BAYAR DENGAN AMAN</a>
+                            <a href="<?=site_url('checkout/submit_order')?>" class="fastcon-btn primary-btn w-100">BAYAR DENGAN AMAN</a>
                         </div>
 
                     </div>
 
-                    <form method="POST" action="#" class="coupon-form">
+                    <?=form_open(site_url('checkout/voucher'), ['class' => 'coupon-form', 'method' => 'POST']);?>
                         <div class="form-group">
-                            <label class="fastcon-label text-capitalize cl-grey-900" for="exampleInputEmail1">Kode Kupon</label>
+                            <label class="fastcon-label text-capitalize cl-grey-900" for="voucher">Kode Kupon</label>
                             <div class="d-flex">
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ketik disini">
-                                <button type="submit" class="fastcon-btn coupon-btn secondary-btn width-md-fit width-sm-fit">Perbarui</button>
+                                <input type="text" class="form-control" id="voucher" value="<?=$this->session->userdata('voucher')!=null?strtoupper($this->session->userdata('voucher')['voucher_code']):''?>" name="voucher" aria-describedby="emailHelp" placeholder="Ketik disini">
+                                <?php if ($this->session->userdata('voucher')): ?>
+                                    <a href="<?=site_url('checkout/voucher_delete')?>" class="fastcon-btn coupon-btn error-btn width-md-fit width-sm-fit">Hapus Kupon</a>
+                                <?php else: ?>
+                                    <button type="submit" class="fastcon-btn coupon-btn secondary-btn width-md-fit width-sm-fit">Perbarui</button>
+                                <?php endif ?>
                             </div>
                         </div>
-                    </form>
+                    <?=form_close();?>
                 </div>
             </div>
 
@@ -185,56 +214,51 @@ Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 
             <div class="modal-content">
                 <div class="modal-body">
                     <h3 class="fastcon-h3 cl-grey-900 text-uppercase text-center mb-30">Data Anda</h3>
-                    
-                    <div class="d-flex w-100">
-                        <a href="javascript:void(0)" id="add_address_btn" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ TAMBAH ALAMAT</a>
+                    <?php if (count($member_address)<3): ?>
+                        <div class="d-flex w-100">
+                            <a href="javascript:void(0)" id="add_address_btn" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ TAMBAH ALAMAT</a>
+                        </div>
+                    <?php endif ?>
+
+                    <div class="address-wraper">
+                        <?php foreach ($member_address as $ma): ?>
+                            <div class="address-wrap <?=$ma->active?'active':''?>">
+                                <div class="address-card mw-100">
+                                    <p class="receiver-name"><?=$ma->name?></p>
+                                    <p class="receiver-email"><?=$ma->email?></p>
+                                    <p class="receiver-email"><?=$ma->phone?></p>
+                                    <p class="address"><?=$ma->address.', '.$ma->kelurahan.', '.$ma->kecamatan.', '.$ma->kabupaten.', '.$ma->provinsi.', '.$ma->kelurahan.', '.$ma->kode_pos?></p>
+                                </div>
+
+                                <div class="address-links">
+                                    <?php if (!$ma->active): ?>
+                                        
+                                        <div class="btn-wrap">
+                                            <a href="<?=site_url('member/change_active/'.$ma->id)?>" class="fastcon-btn secondary-btn">
+                                                GANTI ALAMAT
+                                            </a>
+                                        </div>
+
+                                    <?php endif ?>
+                                    <div class="card-btn-wrap">
+                                        <a href="javascript:void(0)" class="edit-link edit_address"
+                                            data-name='<?=$ma->name?>'
+                                            data-email='<?=$ma->email?>'
+                                            data-id='<?=$ma->id?>'
+                                            data-phone='<?=$ma->phone?>'
+                                            data-address='<?=$ma->address?>'
+                                        >
+                                            <h4 class="fastcon-h4 cl-primary-900">
+                                                <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
+                                                UBAH
+                                            </h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php endforeach ?>
                     </div>
-
-                    <?php foreach ($member_address as $ma): ?>
-                        <div class="address-modal-card <?=$ma->active?'active':''?>">
-                            <p class="receiver-name"><?=$ma->name?></p>
-                            <p class="receiver-email"><?=$ma->email?></p>
-                            <p class="receiver-email"><?=$ma->phone?></p>
-                            <p class="address"><?=$ma->address.', '.$ma->kelurahan.', '.$ma->kecamatan.', '.$ma->kabupaten.', '.$ma->provinsi.', '.$ma->kelurahan.', '.$ma->kode_pos?></p>
-                            <a href="javascript:void(0)" class="edit-link">
-                                <?php if (!$ma->active): ?>
-                                    <a href="<?=site_url('member/change_active/'.$ma->id)?>" class="fastcon-btn secondary-btn">GANTI ALAMAT</a>
-                                <?php endif ?>
-                                <a href="javascript:void(0)" class="edit-link edit_address"
-                                    data-name='<?=$ma->name?>'
-                                    data-email='<?=$ma->email?>'
-                                    data-id='<?=$ma->id?>'
-                                    data-phone='<?=$ma->phone?>'
-                                    data-address='<?=$ma->address?>'
-                                >
-                                    <h4 class="fastcon-h4 cl-primary-900">
-                                        <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
-                                        UBAH
-                                    </h4>
-                                </a>
-                            </a>
-                        </div>
-
-                    <?php endforeach ?>
-
-                    <!-- <div class="address-modal-card">
-                        <p class="receiver-name">Eka Raharjo</p>
-                        <p class="receiver-email">ekaraharjo@gmail.com</p>
-                        <p class="receiver-email">081234567890</p>
-                        <p class="address">Jln. HOS. Cokroaminoto, Kel. Tulungrejo, Kediri, Jawa Timur, 64212 (Sebelah toko listrik Sinar Jaya) DEDDY HERMAWAN</p>
-                        <p class="address mb-20">082211334455</p>
-
-                        <div class="btn-wrap">
-                            <a href="#" class="fastcon-btn secondary-btn">GANTI ALAMAT</a>
-                            <a href="javascript:void(0)" class="edit-link">
-                                <h4 class="fastcon-h4 cl-primary-900">
-                                    <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
-                                    UBAH
-                                </h4>
-                            </a>
-                        </div>
-
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -265,6 +289,15 @@ Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 
                                 </div>
 
                                 <div class="form-group">
+                                    <label class="fastcon-label cl-grey-900">Provinsi*</label>
+                                    <select class="form-control selectpicker" name="province_id" title="Pilih Satu">
+                                        <?php foreach (db_get_all_data('fastcon_coverage_province') as $cp): ?>
+                                            <option value="<?=$cp->province_id?>"><?=$lang=='indonesian'?$cp->province_name:$cp->province_name_en?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="kota_kecamatan" class="fastcon-label cl-grey-900">Kota, Kecamatan atau Kelurahan*</label>
                                     <input type="text" id="kota_kecamatan" name="kota_kecamatan" class="form-control" placeholder="Tulis minimal 3 karakter" autocomplete="on">
                                     <div id="auto_result" class="frontbox"></div>
@@ -279,7 +312,7 @@ Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 
                         
                         <div class="row">
                             <div class="col-12 button-submit-wrap">
-                                <button class="fastcon-btn primary-btn">TAMBAH ALAMAT</button>
+                                <button class="fastcon-btn primary-btn">KIRIM</button>
                                 <a href="#" class="fastcon-btn secondary-btn" data-dismiss="modal" aria-hidden="true">KEMBALI</a>
                             </div>
                         </div>

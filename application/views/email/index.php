@@ -371,14 +371,14 @@ ul.social li{
       </table>
       <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; font-family: 'Open Sans';">
       	<tr>
-          <td valign="middle" style="background: #f5f5f5; border-top: 1px solid rgba(0,0,0,.05); color: #212121; padding: 1.5em 2.5em;">
+          <td valign="middle" style="background: #f5f5f5; border-top: 1px solid rgba(0,0,0,.05); color: #212121; padding: 1.5em 2.5em; display: flex; flex-direction: column;">
+              	<a href="<?=site_url()?>" style="text-align: center;" ><img src="<?=BASE_ASSET?>logo/<?=get_option('site_logo')?>" width="180" alt="Fastcon"></a>
             <table>
             	<tr>
-                <td valign="top" width="50%" style="padding-top: 10px;">
+                <td valign="top" align="center" width="50%" style="padding-top: 10px;">
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                     <tr>
                       <td style="text-align: center; padding-left: 5px; padding-right: 5px; color: #212121;">
-                      	<a href="<?=site_url()?>"><img src="<?=BASE_ASSET?>logo/<?=get_option('site_logo')?>" width="130" alt="Fastcon"></a>
                       	<ul style="margin: 30px 0 0; padding:0;">
                             <h4 class="heading"><?=lang('contact_us')?></h4>
     		                <li style="list-style: none; margin-bottom: 20px; color: #212121; font-family: 'Open Sans'; font-size: 14px;">
@@ -404,23 +404,17 @@ ul.social li{
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                     <tr>
                       <td style="text-align: center; padding-left: 10px;">
-                      	<ul style="margin: 0 ; padding:0;">
-                          <li style="list-style: none; margin-bottom: 7px;"><a style="color:#212121; font-family: 'Jura'; text-transform: uppercase; font-size: 14px;" href="<?=site_url()?>"><?=lang('home')?></a></li>
-		                  <li style="list-style: none; margin-bottom: 7px;"><a style="color:#212121; font-family: 'Jura'; text-transform: uppercase; font-size: 14px;" href="<?=site_url('about-us')?>"><?=lang('about_us')?></a></li>
-		                  <li style="list-style: none; margin-bottom: 7px;"><a style="color:#212121; font-family: 'Jura'; text-transform: uppercase; font-size: 14px;" href="<?=site_url('products')?>"><?=lang('product')?></a></li>
-                          <li style="list-style: none; margin-bottom: 7px;"><a style="color:#212121; font-family: 'Jura'; text-transform: uppercase; font-size: 14px;" href="<?=site_url('projects')?>"><?=lang('project')?></a></li>
-                          <li style="list-style: none; margin-bottom: 7px;"><a style="color:#212121; font-family: 'Jura'; text-transform: uppercase; font-size: 14px;" href="<?=site_url('distributor')?>"><?=lang('distributor')?></a></li>
-					    </ul>
 
                         <ul style="margin: 0 ; padding:0;">
                             <h4 class="heading"><?=lang('our_marketplace')?></h4>
                             <li class="marketplace" style="list-style: none; margin-bottom: 7px;">
-                                <img src="<?=BASE_ASSET?>fastcon/img/icons/tokped.png" alt="">
-                                <img src="<?=BASE_ASSET?>fastcon/img/icons/shopee.png" alt="">
+                                <?php foreach ($marketplace as $mp): ?>
+                                    <a href="<?=$mp->link?>" target="_blank"><img src="<?=site_url('uploads/fastcon_marketplace/'.$mp->icon)?>" alt="" width="24"></a>
+                                <?php endforeach ?>
                             </li>
                         </ul>
 
-                        <ul style="margin: 0 ; padding:0;">
+                        <ul style="margin: 4rem 0 0 0 ; padding:0;">
                             <h4 class="heading"><?=lang('our_qualification')?></h4>
                             <li class="marketplace" style="list-style: none; margin-bottom: 7px;">
                                 <img src="<?=BASE_ASSET?>fastcon/img/iso.png" alt="Fastcon ISO" style="margin-right: 0; max-width: 200px;">

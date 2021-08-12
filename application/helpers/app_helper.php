@@ -895,6 +895,29 @@ if(!function_exists('dd')) {
 
 }
 
+if (!function_exists('get_cart_total')) {
+	function get_cart_total($value='')
+	{
+		$ci =& get_instance();
+		$ci->load->model('Model_web');
+
+		$total = 0;
+		if (!$ci->session->userdata('member')) {
+			$cart = $ci->cart->contents();
+			foreach ($cart as $c) {
+				$total = $total + $c->price;
+			}
+		}else{
+			$cart = $ci->Model_web->get_cart();
+			foreach ($cart as $c) {
+				$total = $total +  (($c->price - $c->discount) * $c->quantity);
+			}
+		}
+
+		return $total;
+	}
+}
+
 
 
 if(!function_exists('get_captcha')) {

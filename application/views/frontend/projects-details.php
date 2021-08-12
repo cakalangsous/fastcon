@@ -7,8 +7,8 @@
                         <?php 
                             $cat = db_get_row_data('fastcon_project_category', ['category_id' => $project->category]);
                         ?>
-                        <p class="fastcon-description"><?=$lang=='indonesian'?$cat->category_name:$cat->category_name_en?></p>
-                        <h1 class="fastcon-h1 cl-grey-900"><?=$lang=='indonesian'?$project->title:$project->title_en?></h1>
+                        <p class="fastcon-description text-uppercase"><?=$lang=='indonesian'?$cat->category_name:$cat->category_name_en?></p>
+                        <h1 class="fastcon-h1 cl-grey-900 text-uppercase"><?=$lang=='indonesian'?$project->title:$project->title_en?></h1>
                     </div>
 
                     <div class="project-content-body">
@@ -17,7 +17,7 @@
 
                     <div class="share">
                         <p class="fastcon-description"><?=lang('share')?>:</p>
-                        <a href="mailto:?subject=Fastcon - <?=$lang=='indonesian'?$project->title:$project->title_en?>&body=<?=$lang=='indonesian'?$project->title:$project->title_en?> <?=' <br> '. base_url(uri_string())?>">
+                        <a href="mailto:?subject=Fastcon - <?=$lang=='indonesian'?$project->title:$project->title_en?>&body=<?=$lang=='indonesian'?$project->title:$project->title_en?> - <?=base_url(uri_string())?>">
                             <img src="<?=BASE_ASSET?>fastcon/img/icons/email.png" alt="">
                         </a>
                         <a href="javascript:void(0)" onclick="javascript:window.open('https://www.facebook.com/sharer.php?u=<?=base_url(uri_string())?>',

@@ -16,31 +16,22 @@
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
                     <div class="row contact-address-wrap">
-                        <div class="col-md-6">
+                        <div class="col-md-6 fastcon-footer-about contact-about">
                             <h3 class="fastcon-h3 cl-primary-900 mb-20 text-uppercase"><?=lang('our_office')?></h3>
-                            <p class="fastcon-body">
-                                Gwalk Shop Houses A1-No. 2
-                            </p>
-                            <p class="fastcon-body">
-                                Citraland - Surabaya
-                            </p>
-                            <br>
-        
-                            <p class="fastcon-body">
-                                <b>(031) </b> 7421270
-                            </p>
+                            <?php foreach ($contact_settings as $cs): ?>
+                                <?php if ($cs->setting_item=='office'): ?>
+                                    <?=$cs->setting_value?>
+                                <?php endif ?>
+                            <?php endforeach ?>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 fastcon-footer-about contact-about">
                             <h3 class="fastcon-h3 cl-primary-900 mb-20 text-uppercase"><?=lang('our_factory')?></h3>
-                            <p class="fastcon-body">
-                                Jl. Raya Tarik No.Km, RW.1, Waru, Waruberon, Kec. BalongBendo, Kabupaten Sidoarjo, Jawa Timur 61263
-                            </p>
-                            <br>
-        
-                            <p class="fastcon-body">
-                                <b>(031) </b> 8986336
-                            </p>
+                            <?php foreach ($contact_settings as $cs): ?>
+                                <?php if ($cs->setting_item=='factory'): ?>
+                                    <?=$cs->setting_value?>
+                                <?php endif ?>
+                            <?php endforeach ?>
                         </div>
                     </div>
                     <div class="row">
