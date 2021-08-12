@@ -371,7 +371,7 @@ ul.social li{
       </table>
       <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; font-family: 'Open Sans';">
       	<tr>
-          <td valign="middle" style="background: #f5f5f5; border-top: 1px solid rgba(0,0,0,.05); color: #212121; padding: 1.5em 2.5em; display: flex; flex-direction: column;">
+          <td valign="middle" style="background: #f5f5f5; padding: 1.5em 2.5em; ">
             <table>
                 <tr>
                     <td align="center">
