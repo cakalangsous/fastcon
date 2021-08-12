@@ -212,7 +212,7 @@ class Pages extends Front {
 		$this->email->set_newline("\r\n");
 		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
 		$this->email->to($arr['email']);
-		$this->email->subject('Fastcon - Contact Submitted');
+		$this->email->subject('Fastcon - Thank you for registration');
 		$this->email->message($html);
 		
 		$this->email->send();
