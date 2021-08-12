@@ -416,8 +416,8 @@ ul.social li{
 
                         <ul style="margin: 4rem 0 0 0 ; padding:0;">
                             <h4 class="heading"><?=lang('our_qualification')?></h4>
-                            <li class="marketplace" style="list-style: none; margin-bottom: 7px;">
-                                <img src="<?=BASE_ASSET?>fastcon/img/iso.png" alt="Fastcon ISO" style="margin-right: 0; width: 100%; max-width: 170px;">
+                            <li style="list-style: none; margin-bottom: 7px;">
+                                <img src="<?=BASE_ASSET?>fastcon/img/iso.png" alt="Fastcon ISO" style="margin-right: 0; width: 100%; max-width: 165px;">
                             </li>
                         </ul>
                       </td>
