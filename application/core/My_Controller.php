@@ -734,6 +734,7 @@ class Front extends MY_Controller
             'protocol'  => 'smtp',
             'smtp_host' => getenv('SMTP_HOST'),
             'smtp_port' => getenv('SMTP_PORT'),
+            'smtp_crypto'=>'ssl',
             'charset'   => 'utf-8',
             'wordwrap'  => TRUE,
             'mailtype'  => 'html',
