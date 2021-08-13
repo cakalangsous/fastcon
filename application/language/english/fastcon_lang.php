@@ -29,6 +29,8 @@ $lang = [
 	'all_projects' 			=> 'All Projects',
 
 	'address' 				=> 'Address',
+	'province' 				=> 'Province',
+	'city_province' 		=> 'City, District, or Subdistrict',
 	'fullname' 				=> 'Fullname',
 	'email' 				=> 'E-mail',
 	'phone' 				=> 'Phone',
@@ -45,6 +47,7 @@ $lang = [
 	'thank_you_title' 		=> 'THANK YOU FOR CONTACTING US!',
 	'thank_you_content' 	=> 'We’ll contact you via e-mail or phone number very shortly. Shop for more Fastcon products as an environmentally friendly development solution and get promos from us, for more information contact our call center at (031) 7421270. ',
 	'back_to_home' 			=> 'Back to Home',
+	'back' 					=> 'Back',
 	'go_to_products' 		=> 'View All Product',
 
 	'cart_empty_title' 		=> 'YOUR SHOPPING CART IS EMPTY',
@@ -53,6 +56,7 @@ $lang = [
 	'login_to_account' 		=> 'Login to your account',
 	'login_caption' 		=> 'Log in to your account to enjoy our exciting promos to transaction history.',
 	'success_login' 		=> 'You\'re successfully login',
+	'select_option_error' 	=> 'You have\'nt select a product option yet',
 
 	'register_email_title' 	=> 'We\'ve sent a verification email! Please check your email.',
 
@@ -64,6 +68,10 @@ $lang = [
 
 	'not_found_title' 		=> 'OOPS! SOMETHING IS NOT RIGHT. WE’RE TRYING TO FIX IT. ',
 	'not_found_content' 	=> 'We apologize for the inconvenience, now we’re trying to fix the error. You can also try refreshing the page or try again later. ',
+	'forgot_password_title' => 'We\'ve sent an email to reset your password. Please check your email.',
+	'new_password_body' 	=> 'Please enter your new password.',
+	'update_password' 		=> 'Update Password',
+	'password_updated' 		=> 'Your password successfully updated',
 
 	'logout_title' 			=> 'Are you sure you want to log out?',
 	'discard' 				=> 'Discard',
@@ -76,4 +84,43 @@ $lang = [
 	'address_list' 			=> 'Address List',
 	'edit' 					=> 'Edit',
 	'change_address' 		=> 'Change Address',
+
+	'profile' 				=> 'Profile',
+	'transaction_history' 	=> 'Transaction History',
+	'coupon' 				=> 'Coupon',
+
+	'welcome' 				=> 'Welcome',
+	'personal_data' 		=> 'Personal Data',
+	'shopping_cart' 		=> 'Shopping Cart',
+	'delivery_details' 		=> 'Delivery Details',
+	'price_estimation' 		=> 'Price Estimation',
+	'continue' 				=> 'Continue',
+	'notes' 				=> 'Notes',
+	'notes_body' 			=> 'Shipping cost will be calculated after you provide the shipping address',
+	'summary' 				=> 'Summary',
+	'checkout_securely' 	=> 'Checkout Securely',
+	'tax' 					=> 'Tax',
+	'delivery_cost' 		=> 'Delivery Cost',
+	'update' 				=> 'Update',
+	'remove_coupon' 		=> 'Remove Coupon',
+	'coupon_code' 			=> 'Coupon Code',
+	'coupon_discount' 		=> 'Coupon Discount',
+
+	'aac_calc' 				=> 'AAC Calculator',
+	'simple_aac_calc' 		=> 'Simple AAC Calculator',
+	'wall_length' 			=> 'Wall Length',
+	'wall_width' 			=> 'Wall Width',
+	'wall_height' 			=> 'Wall Height',
+	'your_brick_thick' 		=> 'Your Brick Thickness',
+	'imagine_data' 			=> 'IMAGINE YOU BUILD WITH AN AREA LIKE THE DATA ABOVE, YOU WILL NEED A LIGHTWEIGHT Brick AS FOLLOWS',
+	'fill_length' 			=> 'Fill in the length of the building in meters',
+	'fill_width' 			=> 'Fill in the width of the building in meters',
+	'fill_height' 			=> 'Fill in the height of the building in meters',
+	'choose_thickness' 		=> 'You can choose the brick size above',
+	'aac_needed' 			=> 'Total Needed AAC (pcs)',
+	'cubication_needed' 	=> 'Total Cubication Needed (M3)',
+	'factory_minimum' 		=> 'Minimum Purchase Amount (M3)',
+
+	'order_title' 			=> 'YOU’VE PURCHASED OUR PRODUCT! ',
+	'order_body' 			=> 'We are currently preparing your order. Shop for more Fastcon products as an environmentally friendly development solution and get promos from us, for more information contact our call center at (031) 7421270',
 ];

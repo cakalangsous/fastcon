@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="fastcon-h2">TROLI BELANJA</h2>
+                    <h2 class="fastcon-h2 text-uppercase"><?=lang('shopping_cart')?></h2>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="card-summary">
-                        <h4 class="fastcon-h4 cl-primary-900 text-center">PERKIRAAN HARGA</h4>
+                        <h4 class="fastcon-h4 cl-primary-900 text-center text-uppercase"><?=lang('price_estimation')?></h4>
 
                         <?php $total=0; foreach ($cart as $c): ?>
 
@@ -101,7 +101,7 @@
 
                         <div class="card-summary-product-item mb-0">
                             <div class="product">
-                                <p class="fastcon-description">PPN (10%)</p>
+                                <p class="fastcon-description"><?=lang('tax')?> (10%)</p>
                             </div>
                             <div class="price">
                                 <p>Rp<?=number_format(0.1*$total)?></p>
@@ -121,13 +121,13 @@
 
                         <div class="card-summary-product-item">
                             <div class="product">
-                                <p class="fastcon-description"><b>Catatan:</b></p>
-                                <p class="fastcon-description">Biaya pengiriman akan dikalkulasi setelah Anda menyediakan alamat pengiriman.</p>
+                                <p class="fastcon-description"><b><?=lang('notes')?>:</b></p>
+                                <p class="fastcon-description"><?=lang('notes_body')?></p>
                             </div>
                         </div>
 
                         <div class="card-summary-btn-wrap">
-                            <a href="<?=site_url('checkout')?>" class="fastcon-btn primary-btn w-100">LANJUTKAN</a>
+                            <a href="<?=site_url('checkout')?>" class="fastcon-btn primary-btn w-100"><?=lang('continue')?></a>
                         </div>
 
                     </div>

@@ -59,6 +59,8 @@ $('#product_options1').change(function (e) {
     let option1 = $(this).val();
     let product = $(this).data('product');
 
+    $('.helper-text.option1').hide();
+
     $.ajax({
         url: base_url + 'products/get_option2',
         type: 'post',
@@ -103,6 +105,8 @@ $('#product_options2').change(function (e) {
     let product = $(this).data('product');
     let option1 = $('#product_options1').val();
     let option2 = $(this).val();
+
+    $('.helper-text.option2').hide();
 
     $.ajax({
         url: base_url + 'products/get_variant',
@@ -169,6 +173,13 @@ $('#add_to_cart_btn').click(function (e) {
     .done(function(res) {
         if (res.status==true) {
             $('#added_to_cart_modal').modal('show');
+        }else {
+            if (res.option=='option1') {
+                $('.helper-text.option1').show();
+            }
+            if (res.option=='option2') {
+                $('.helper-text.option2').show();
+            }
         }
     });
 });
@@ -234,7 +245,7 @@ if (active_page=='cart') {
 
         let variant = $(this).data('variant');
         let quantity = $('#'+variant).val();
-        
+
         $('#update_cart').removeClass('toast hide');
 
         return false;
@@ -313,6 +324,8 @@ $('.remove-address').click(function (e) {
 });
 
 $('#add_address_btn').click(() => {
+    let btn = lang=='indonesian'?'TAMBAH ALAMAT':'ADD ADDRESS';
+    $('#address_form_member .primary-btn').text(btn);
     $('.address-modal').modal('hide');
     $('.form-address-modal').modal('show');
 })
@@ -373,14 +386,21 @@ $('.edit_address').click(function(e) {
     let email = $(this).data('email');
     let phone = $(this).data('phone');
     let address = $(this).data('address');
+    let provinsi = $(this).data('province_id');
     let id = $(this).data('id');
+
+    let btn = lang=='indonesian'?'PERBAHARUI ALAMAT':'UPDATE ADDRESS';
 
     $('#address_form_member input[name="fullname"]').val(name);
     $('#address_form_member input[name="email"]').val(email);
     $('#address_form_member input[name="phone"]').val(phone);
     $('#address_form_member textarea#address').val(address);
+    $('#address_form_member select#province_id').val(provinsi);
+
+    $('#address_form_member select#province_id').selectpicker('refresh');
 
     $('#address_form_member').attr('action', base_url+'member/update_address/'+id)
+    $('#address_form_member .primary-btn').text(btn)
 
     $('#address_modal_form').modal('show');
 });

@@ -62,7 +62,9 @@ $route['forgot-password'] = 'pages/forgot_password';
 $route['register_submit'] = 'pages/register_submit';
 $route['authentication'] = 'pages/authentication';
 $route['verify_email/(:any)/(:any)/(:any)'] = 'pages/verify_email/$1/$2/$3';
-
+$route['forgot_password_submit'] = 'pages/forgot_password_submit';
+$route['new_password/(:any)/(:any)/(:any)'] = 'pages/new_password/$1/$2/$3';
+$route['new_password_submit'] = 'pages/new_password_submit';
 
 $route['about'] = 'pages/about';
 $route['vision_mission'] = 'pages/vision_mission';

@@ -29,6 +29,8 @@ $lang = [
 	'all_projects' 			=> 'Semua Proyek',
 
 	'address' 				=> 'Alamat',
+	'province' 				=> 'Provinsi',
+	'city_province' 		=> 'Kota, Kecamatan, atau Kelurahan',
 	'fullname' 				=> 'Nama Lengkap',
 	'email' 				=> 'E-mail',
 	'phone' 				=> 'Nomor HP',
@@ -45,6 +47,7 @@ $lang = [
 	'thank_you_title' 		=> 'ANDA TELAH BERHASIL MENGONTAK KAMI!',
 	'thank_you_content' 	=> 'Sesaat lagi kami akan menghubungi Anda via e-mail atau nomor HP. Terus belanjakan produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.',
 	'back_to_home' 			=> 'Kembali ke Beranda',
+	'back' 					=> 'Kembali',
 	'go_to_products' 		=> 'Ke Halaman Produk',
 
 	'cart_empty_title' 		=> 'TROLI BELANJA ANDA KOSONG ',
@@ -53,6 +56,7 @@ $lang = [
 	'login_to_account' 		=> 'Masuk ke akun anda',
 	'login_caption' 		=> 'Masuk ke akun Anda agar dapat menikmati banyak promo menarik dan melihat histori sampai status transaksi lewat website.',
 	'success_login' 		=> 'Anda berhasil login',
+	'select_option_error' 	=> 'Anda belum memilih opsi produk',
 
 	'register_email_title' 	=> 'Kami telah mengirimkan email verifikasi! Silakan periksa email Anda.',
 
@@ -64,6 +68,10 @@ $lang = [
 	
 	'not_found_title' 		=> 'UPS! ADA YANG TIDAK BERES. KAMI MENCOBA MEMPERBAIKINYA. ',
 	'not_found_content' 	=> 'Kami mohon maaf atas ketidaknyamanan ini, sekarang kami mencoba untuk memperbaiki kesalahan tersebut. Anda juga dapat mencoba refresh halaman atau mencoba lagi nanti. ',
+	'forgot_password_title' => 'Kami telah mengirimkan email tautan pengaturan ulang kata sandi Anda! Silakan periksa email Anda.',
+	'new_password_body' 	=> 'Silahkan masukkan kata sandi baru anda.',
+	'update_password' 		=> 'Perbaharui Kata Sandi',
+	'password_updated' 		=> 'Pasword anda berhasil diperbaharui',
 
 	'logout_title' 			=> 'Apakah Anda yakin ingin keluar dari akun ini?',
 	'discard' 					=> 'Kembali',
@@ -76,4 +84,43 @@ $lang = [
 	'address_list' 			=> 'Daftar Alamat',
 	'edit' 					=> 'Ubah',
 	'change_address' 		=> 'Ganti Alamat',
+
+	'profile' 				=> 'Profil',
+	'transaction_history' 	=> 'Riwayat Transaksi',
+	'coupon' 				=> 'Kupon Belanja',
+
+	'welcome' 				=> 'Selamat Datang',
+	'personal_data' 		=> 'Data Diri',
+	'shopping_cart' 		=> 'Troli Belanja',
+	'delivery_details' 		=> 'Data Pengiriman',
+	'price_estimation' 		=> 'Perkiraan Harga',
+	'continue' 				=> 'Lanjutkan',
+	'notes' 				=> 'Catatan',
+	'notes_body' 			=> 'Biaya pengiriman akan dikalkulasi setelah Anda menyediakan alamat pengiriman.',
+	'summary' 				=> 'Ringkasan',
+	'checkout_securely' 	=> 'Bayar Dengan Aman',
+	'tax' 					=> 'PPN',
+	'delivery_cost' 		=> 'Ongkos Kirim',
+	'update' 				=> 'Perbaharui',
+	'remove_coupon' 		=> 'Hapus Kupon',
+	'coupon_code' 			=> 'Kode Kupon',
+	'coupon_discount' 		=> 'Diskon Kupon',
+
+	'aac_calc' 				=> 'Kalkulator Bata Ringan',
+	'simple_aac_calc' 		=> 'Kalkulator Bata Ringan Sederhana',
+	'wall_length' 			=> 'Panjang Dinding',
+	'wall_width' 			=> 'Lebar Dinding',
+	'wall_height' 			=> 'Tinggi Dinding',
+	'your_brick_thick' 		=> 'Ketebalan Bata Anda',
+	'imagine_data' 			=> 'BAYANGKAN ANDA MEMBANGUN DENGAN LUASAN SEPERTI DATA DI ATAS, ANDA AKAN MEMBUTUHKAN BATA RINGAN SEBAGAI BERIKUT',
+	'fill_length' 			=> 'Isi panjang bangunan dalam satuan meter',
+	'fill_width' 			=> 'Isi lebar bangunan dalam satuan meter',
+	'fill_height' 			=> 'Isi lebar bangunan dalam satuan meter',
+	'choose_thickness' 		=> 'Anda bisa memilih ukuran bata di atas',
+	'aac_needed' 			=> 'JUMLAH BATA RINGAN YANG DIBUTUHKAN (BUAH)',
+	'cubication_needed' 	=> 'JUMLAH KUBIKASI YANG DIBUTUHKAN (M3)',
+	'factory_minimum' 		=> 'JUMLAH PEMBELIAN MINIMAL PABRIK (M3)',
+
+	'order_title' 			=> 'Anda telah berhasil membeli produk kami!',
+	'order_body' 			=> 'Saat ini kami sedang mempersiapkan barang belanja Anda. Terus belanjakan produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.',
 ];

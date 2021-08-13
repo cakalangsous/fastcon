@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Model_fastcon_contact_settings extends MY_Model {
+class Model_fastcon_calc_guide extends MY_Model {
 
 	private $primary_key 	= 'id';
-	private $table_name 	= 'fastcon_contact_settings';
-	private $field_search 	= ['setting_item', 'setting_value', 'phone'];
+	private $table_name 	= 'fastcon_calc_guide';
+	private $field_search 	= ['guide', 'guide_en'];
 
 	public function __construct()
 	{
@@ -29,16 +29,16 @@ class Model_fastcon_contact_settings extends MY_Model {
         if (empty($field)) {
 	        foreach ($this->field_search as $field) {
 	            if ($iterasi == 1) {
-	                $where .= "fastcon_contact_settings.".$field . " LIKE '%" . $q . "%' ";
+	                $where .= "fastcon_calc_guide.".$field . " LIKE '%" . $q . "%' ";
 	            } else {
-	                $where .= "OR " . "fastcon_contact_settings.".$field . " LIKE '%" . $q . "%' ";
+	                $where .= "OR " . "fastcon_calc_guide.".$field . " LIKE '%" . $q . "%' ";
 	            }
 	            $iterasi++;
 	        }
 
 	        $where = '('.$where.')';
         } else {
-        	$where .= "(" . "fastcon_contact_settings.".$field . " LIKE '%" . $q . "%' )";
+        	$where .= "(" . "fastcon_calc_guide.".$field . " LIKE '%" . $q . "%' )";
         }
 
 		$this->join_avaiable();
@@ -59,16 +59,16 @@ class Model_fastcon_contact_settings extends MY_Model {
         if (empty($field)) {
 	        foreach ($this->field_search as $field) {
 	            if ($iterasi == 1) {
-	                $where .= "fastcon_contact_settings.".$field . " LIKE '%" . $q . "%' ";
+	                $where .= "fastcon_calc_guide.".$field . " LIKE '%" . $q . "%' ";
 	            } else {
-	                $where .= "OR " . "fastcon_contact_settings.".$field . " LIKE '%" . $q . "%' ";
+	                $where .= "OR " . "fastcon_calc_guide.".$field . " LIKE '%" . $q . "%' ";
 	            }
 	            $iterasi++;
 	        }
 
 	        $where = '('.$where.')';
         } else {
-        	$where .= "(" . "fastcon_contact_settings.".$field . " LIKE '%" . $q . "%' )";
+        	$where .= "(" . "fastcon_calc_guide.".$field . " LIKE '%" . $q . "%' )";
         }
 
         if (is_array($select_field) AND count($select_field)) {
@@ -78,11 +78,11 @@ class Model_fastcon_contact_settings extends MY_Model {
 		$this->join_avaiable();
         $this->db->where($where);
         $this->db->limit($limit, $offset);
-	    $this->db->order_by('fastcon_contact_settings.'.$this->primary_key, "DESC");
+	    $this->db->order_by('fastcon_calc_guide.'.$this->primary_key, "DESC");
         if (isset($_GET['order'])) {
         	$this->db->order_by($_GET['order']['0']['column']==0?$this->primary_key:$_GET['order']['0']['column'], $_GET['order']['0']['dir']);
         }else{
-		    $this->db->order_by('fastcon_contact_settings.'.$this->primary_key, "DESC");
+		    $this->db->order_by('fastcon_calc_guide.'.$this->primary_key, "DESC");
         }
 		$query = $this->db->get($this->table_name);
 
@@ -96,5 +96,5 @@ class Model_fastcon_contact_settings extends MY_Model {
 
 }
 
-/* End of file Model_fastcon_contact_settings.php */
-/* Location: ./application/models/Model_fastcon_contact_settings.php */
+/* End of file Model_fastcon_calc_guide.php */
+/* Location: ./application/models/Model_fastcon_calc_guide.php */

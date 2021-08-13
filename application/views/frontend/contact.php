@@ -21,6 +21,8 @@
                             <?php foreach ($contact_settings as $cs): ?>
                                 <?php if ($cs->setting_item=='office'): ?>
                                     <?=$cs->setting_value?>
+
+                                    <a href="tel:<?=$cs->phone?>" class="fastcon-body"><?=$cs->phone?></a>
                                 <?php endif ?>
                             <?php endforeach ?>
                         </div>
@@ -30,6 +32,8 @@
                             <?php foreach ($contact_settings as $cs): ?>
                                 <?php if ($cs->setting_item=='factory'): ?>
                                     <?=$cs->setting_value?>
+
+                                    <a href="tel:<?=$cs->phone?>" class="fastcon-body"><?=$cs->phone?></a>
                                 <?php endif ?>
                             <?php endforeach ?>
                         </div>

@@ -2,7 +2,7 @@
     <div class="content-wrap product-details-wrap">
         <div class="container">
             <div class="breadcrumbs breadcrumbs-right">
-                <span>Produk</span> <span>Bata Ringan AAC</span> <span>Single Cored Block</span>
+                <span><?=lang('product')?></span> <span><?=$lang=='indonesian'?$product->category_name:$product->category_name_en?></span> <span><?=$product->product_name?></span>
             </div>
 
             <div class="row product-details-content-wrap">
@@ -62,6 +62,7 @@
                                                 <option value="<?=$v->option_value1_id?>"><?=$v->option_value1?></option>
                                             <?php endforeach ?>
                                         </select>
+                                        <small class="cl-error helper-text option1"><?=lang('select_option_error')?></small>
                                     </div>
                                 </div>
                             <?php endif ?>
@@ -71,6 +72,7 @@
                                     <div class="form-group">
                                         <label class="fastcon-label cl-grey-900"><?=$lang=='indonesian'?$product->product_option2_name:$product->product_option2_name_en?></label>
                                         <select class="form-control selectpicker" name="product_options2" data-product="<?=$product->product_id?>" id="product_options2" title="Pilih Satu"></select>
+                                        <small class="cl-error helper-text option2"><?=lang('select_option_error')?></small>
                                     </div>
                                 </div>
                             <?php endif ?>

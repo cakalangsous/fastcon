@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row checkout-wrap">
                 <div class="col-lg-5">
-                    <h4 class="fastcon-h4 cl-primary-900">TROLI SAYA</h4>
+                    <h4 class="fastcon-h4 cl-primary-900 text-uppercase"><?=lang('shopping_cart')?></h4>
                     <div class="cart-card-wrap">
 
                         <?php foreach ($cart as $c): ?>
@@ -41,7 +41,7 @@
                     <h2 class="fastcon-h2">CHECKOUT</h2>
                     <div class="address-wrap">
                         <div class="title-wrap">
-                            <h4 class="fastcon-h4 cl-primary-900">DATA PENGIRIMAN</h4>
+                            <h4 class="fastcon-h4 cl-primary-900 text-uppercase"><?=lang('delivery_details')?></h4>
                             <a href="javascript:void(0)" class="edit-link large-medium-only" data-toggle="modal" data-target=".address-modal">
                                 <h4 class="fastcon-h4 cl-primary-900 text-uppercase">
                                     <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
@@ -62,7 +62,7 @@
                                 <a href="javascript:void(0)" class="edit-link" data-toggle="modal" data-target=".address-modal">
                                     <h4 class="fastcon-h4 cl-primary-900">
                                         <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
-                                        UBAH
+                                        <?=lang('edit')?>
                                     </h4>
                                 </a>
                             </div>
@@ -92,7 +92,7 @@
                     <?php endif ?>
 
                     <div class="card-summary">
-                        <h4 class="fastcon-h4 cl-primary-900 text-center">RINGKASAN</h4>
+                        <h4 class="fastcon-h4 cl-primary-900 text-center text-uppercase"><?=lang('summary')?></h4>
 
                         <?php $total=0; foreach ($cart as $c): ?>
 
@@ -143,7 +143,7 @@
                         <?php if ($ongkir): ?>
                             <div class="card-summary-product-item mb-0">
                                 <div class="product">
-                                    <p class="fastcon-description">Ongkos Kirim</p>
+                                    <p class="fastcon-description"><?=lang('delivery_cost')?></p>
                                 </div>
                                 <div class="price">
                                     <p>Rp<?=number_format($ongkir)?></p>
@@ -153,7 +153,7 @@
                         <?php if ($voucher = $this->session->userdata('voucher')): ?>
                             <div class="card-summary-product-item">
                                 <div class="product">
-                                    <p class="fastcon-description">Diskon Kupon</p>
+                                    <p class="fastcon-description"><?=lang('coupon_discount')?></p>
                                 </div>
                                 <div class="price">
                                     <p class="cl-error"> - Rp<?=number_format($voucher['voucher_discount'])?></p>
@@ -162,7 +162,7 @@
                         <?php $total = $total-$voucher['voucher_discount']; endif ?>
 
 
-                        <div class="card-summary-product-item mb-0">
+                        <div class="card-summary-product-item mt-3">
                             <div class="product">
                                 <p class="fastcon-description"><b>Catatan:</b></p>
                                 <p class="fastcon-description">Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 1234 atau kontak kami untuk melanjutkan transaksi Anda.</p>
@@ -182,20 +182,20 @@
                         </div>
 
                         <div class="card-summary-btn-wrap">
-                            <a href="<?=site_url('checkout/submit_order')?>" class="fastcon-btn primary-btn w-100">BAYAR DENGAN AMAN</a>
+                            <a href="<?=site_url('checkout/submit_order')?>" class="fastcon-btn primary-btn w-100"><?=lang('checkout_securely')?></a>
                         </div>
 
                     </div>
 
                     <?=form_open(site_url('checkout/voucher'), ['class' => 'coupon-form', 'method' => 'POST']);?>
                         <div class="form-group">
-                            <label class="fastcon-label text-capitalize cl-grey-900" for="voucher">Kode Kupon</label>
+                            <label class="fastcon-label text-capitalize cl-grey-900" for="voucher"><?=lang('coupon_code')?></label>
                             <div class="d-flex">
                                 <input type="text" class="form-control" id="voucher" value="<?=$this->session->userdata('voucher')!=null?strtoupper($this->session->userdata('voucher')['voucher_code']):''?>" name="voucher" aria-describedby="emailHelp" placeholder="Ketik disini">
                                 <?php if ($this->session->userdata('voucher')): ?>
-                                    <a href="<?=site_url('checkout/voucher_delete')?>" class="fastcon-btn coupon-btn error-btn width-md-fit width-sm-fit">Hapus Kupon</a>
+                                    <a href="<?=site_url('checkout/voucher_delete')?>" class="fastcon-btn coupon-btn error-btn width-md-fit width-sm-fit"><?=lang('remove_coupon')?></a>
                                 <?php else: ?>
-                                    <button type="submit" class="fastcon-btn coupon-btn secondary-btn width-md-fit width-sm-fit">Perbarui</button>
+                                    <button type="submit" class="fastcon-btn coupon-btn secondary-btn width-md-fit width-sm-fit"><?=lang('update')?></button>
                                 <?php endif ?>
                             </div>
                         </div>
@@ -213,7 +213,7 @@
         <div class="modal-body">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h3 class="fastcon-h3 cl-grey-900 text-uppercase text-center mb-30">Data Anda</h3>
+                    <h3 class="fastcon-h3 cl-grey-900 text-uppercase text-center mb-30"><?=lang('personal_data')?></h3>
                     <?php if (count($member_address)<3): ?>
                         <div class="d-flex w-100">
                             <a href="javascript:void(0)" id="add_address_btn" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ TAMBAH ALAMAT</a>
@@ -235,7 +235,7 @@
                                         
                                         <div class="btn-wrap">
                                             <a href="<?=site_url('member/change_active/'.$ma->id)?>" class="fastcon-btn secondary-btn">
-                                                GANTI ALAMAT
+                                                <?=lang('change_address')?>
                                             </a>
                                         </div>
 
@@ -246,11 +246,12 @@
                                             data-email='<?=$ma->email?>'
                                             data-id='<?=$ma->id?>'
                                             data-phone='<?=$ma->phone?>'
+                                            data-province_id='<?=$ma->province_id?>'
                                             data-address='<?=$ma->address?>'
                                         >
-                                            <h4 class="fastcon-h4 cl-primary-900">
+                                            <h4 class="fastcon-h4 cl-primary-900 text-uppercase">
                                                 <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
-                                                UBAH
+                                                <?=lang('edit')?>
                                             </h4>
                                         </a>
                                     </div>
@@ -273,38 +274,39 @@
                     <?=form_open(site_url('member/save_address'), ['class' => "guest-form", 'id' => 'address_form_member']);?>
                         <div class="row">
                             <div class="col-12">
-                                <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt="">  DATA DIRI</h4>
+                                <h4 class="fastcon-h4 cl-primary-900 text-uppercase"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt=""> <?=lang('personal_data')?></h4>
                                 <hr />
                                 <div class="form-group">
-                                    <label for="email" class="fastcon-label cl-grey-900">Nama lengkap*</label>
+                                    <label for="email" class="fastcon-label cl-grey-900"><?=lang('fullname')?>*</label>
                                     <input type="text" class="form-control" name="fullname" placeholder="Ketik disini">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email" class="fastcon-label cl-grey-900">E-mail*</label>
+                                    <label for="email" class="fastcon-label cl-grey-900"><?=lang('email')?>*</label>
                                     <input type="email" class="form-control" name="email" placeholder="Ketik disini">
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone" class="fastcon-label cl-grey-900">NOMOR HP*</label>
+                                    <label for="phone" class="fastcon-label cl-grey-900"><?=lang('phone')?>*</label>
                                     <input type="text" class="form-control" name="phone" placeholder="Ketik disini">
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="fastcon-label cl-grey-900">Provinsi*</label>
-                                    <select class="form-control selectpicker" name="province_id" title="Pilih Satu">
+                                    <label class="fastcon-label cl-grey-900"><?=lang('province')?>*</label>
+                                    <select class="form-control selectpicker" name="province_id" id="province_id" title="Pilih Satu">
                                         <?php foreach (db_get_all_data('fastcon_coverage_province') as $cp): ?>
                                             <option value="<?=$cp->province_id?>"><?=$lang=='indonesian'?$cp->province_name:$cp->province_name_en?></option>
                                         <?php endforeach ?>
+                                        <option value="0"><?=$lang=='indonesian'?'Lainnya':'Others'?></option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="kota_kecamatan" class="fastcon-label cl-grey-900">Kota, Kecamatan atau Kelurahan*</label>
+                                    <label for="kota_kecamatan" class="fastcon-label cl-grey-900"><?=lang('city_province')?>*</label>
                                     <input type="text" id="kota_kecamatan" name="kota_kecamatan" class="form-control" placeholder="Tulis minimal 3 karakter" autocomplete="on">
                                     <div id="auto_result" class="frontbox"></div>
                                 </div>
 
                                 <div class="form-group mb-0">
-                                    <label for="address" class="fastcon-label cl-grey-900">Alamat Lengkap*</label>
+                                    <label for="address" class="fastcon-label cl-grey-900"><?=lang('address')?>*</label>
                                     <textarea class="form-control" id="address" rows="4" name="address"></textarea>
                                 </div>
                             </div>
@@ -313,7 +315,7 @@
                         <div class="row">
                             <div class="col-12 button-submit-wrap">
                                 <button class="fastcon-btn primary-btn">KIRIM</button>
-                                <a href="#" class="fastcon-btn secondary-btn" data-dismiss="modal" aria-hidden="true">KEMBALI</a>
+                                <a href="#" class="fastcon-btn secondary-btn" data-dismiss="modal" aria-hidden="true"><?=lang('back')?></a>
                             </div>
                         </div>
                     <?=form_close();?>

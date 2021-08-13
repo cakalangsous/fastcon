@@ -34,21 +34,23 @@ class Member extends Front {
 		$arr = $this->input->post();
 
 		$this->form_validation->set_rules('fullname', 'Fullname', 'trim|required');
-		if (isset($arr['password'])) {
+		if (isset($arr['password']) AND $arr['password']!='') {
 			$this->form_validation->set_rules('password', 'Password', 'min_length[8]');
 			$this->form_validation->set_rules('c_password', 'Confirm Password', 'min_length[8]|matches[password]');
+		}else {
+			unset($arr['password']);
 		}
+		unset($arr['c_password']);
 
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('error', validation_errors());
 			redirect_back();
 		}
 
-		if (isset($arr['password'])) {
+		if (isset($arr['password']) AND $arr['password']!='') {
 			$arr['salt']			= substr(sha1(uniqid(rand(), true)), 0, 50);
 			$arr['password']		= sha1($arr['salt'].$arr['password'].$arr['salt']);
 
-			unset($arr['c_password']);
 		}
 
 		update_this_data('fastcon_member', ['member_id' => $this->session->userdata('member')['member_id']], $arr);
@@ -220,8 +222,7 @@ class Member extends Front {
 		}
 
 		if ($address->active == 1) {
-			$set_active = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('member')['member_id']], false, false, false, 'id desc');
-
+			$set_active = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('member')['member_id'], 'id !=' => $address_id ], false, false, false, 'id desc');
 			if ($set_active) {
 				update_this_data('fastcon_member_address', ['id' => $set_active->id], ['active' => 1]);
 			}

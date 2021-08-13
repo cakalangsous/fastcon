@@ -7,7 +7,7 @@ function domo(){
  
    // Binding keys
    $('*').bind('keydown', 'Ctrl+a', function assets() {
-       window.location.href = BASE_URL + '/administrator/Fastcon_contact_settings/add';
+       window.location.href = BASE_URL + '/administrator/Fastcon_calc_guide/add';
        return false;
    });
 
@@ -33,11 +33,11 @@ jQuery(document).ready(domo);
 <!-- Content Header (Page header) -->
 <section class="content-header">
    <h1>
-      Contact Settings<small><?= cclang('list_all'); ?></small>
+      AAC Calculator Guide<small><?= cclang('list_all'); ?></small>
    </h1>
    <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Contact Settings</li>
+      <li class="active">AAC Calculator Guide</li>
    </ol>
 </section>
 <!-- Main content -->
@@ -51,26 +51,25 @@ jQuery(document).ready(domo);
                <div class="box box-widget widget-user-2">
                   <!-- Add the bg color to the header using any of the bg-* classes -->
                   <div class="widget-user-header ">
-                     <div class="row pull-right" id="fastcon_contact_settingsBtn">
+                     <div class="row pull-right" id="fastcon_calc_guideBtn">
                                              </div>
                      <div class="widget-user-image">
                         <img class="img-circle" src="<?= BASE_ASSET; ?>/img/list.png" alt="User Avatar">
                      </div>
                      <!-- /.widget-user-image -->
-                     <h3 class="widget-user-username">Contact Settings</h3>
-                     <h5 class="widget-user-desc"><?= cclang('list_all', ['Contact Settings']); ?>  <i class="label bg-yellow"><?= $fastcon_contact_settings_counts; ?>  <?= cclang('items'); ?></i></h5>
+                     <h3 class="widget-user-username">AAC Calculator Guide</h3>
+                     <h5 class="widget-user-desc"><?= cclang('list_all', ['AAC Calculator Guide']); ?>  <i class="label bg-yellow"><?= $fastcon_calc_guide_counts; ?>  <?= cclang('items'); ?></i></h5>
                   </div>
                   <div class="table-responsive"> 
-                  <table class="table table-bordered table-striped dataTable" id="fastcon_contact_settings">
+                  <table class="table table-bordered table-striped dataTable" id="fastcon_calc_guide">
                      <thead>
                         <tr class="">
-                           <th>Setting Item</th>
-                           <th>Setting Value</th>
-                           <th>Phone</th>
+                           <th>Guide</th>
+                           <th>Guide En</th>
                            <th width="250">Action</th>
                         </tr>
                      </thead>
-                     <tbody id="tbody_fastcon_contact_settings">
+                     <tbody id="tbody_fastcon_calc_guide">
                      </tbody>
                   </table>
                   </div>
@@ -87,11 +86,11 @@ jQuery(document).ready(domo);
 <script>
   $(document).ready(function(){
 
-    var table = $('#fastcon_contact_settings').DataTable({
+    var table = $('#fastcon_calc_guide').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": {
-              "url": "<?= base_url('administrator/fastcon_contact_settings/data_ajax');?>",
+              "url": "<?= base_url('administrator/fastcon_calc_guide/data_ajax');?>",
               "type": "GET"
           },
         language: {
@@ -136,7 +135,7 @@ jQuery(document).ready(domo);
         ]
     });
 
-    table.buttons().container().appendTo( $('#fastcon_contact_settingsBtn') );
+    table.buttons().container().appendTo( $('#fastcon_calc_guideBtn') );
    
     $('.remove-data').click(function(){
 
@@ -166,7 +165,7 @@ jQuery(document).ready(domo);
     $('#apply').click(function(){
 
       var bulk = $('#bulk');
-      var serialize_bulk = $('#form_fastcon_contact_settings').serialize();
+      var serialize_bulk = $('#form_fastcon_calc_guide').serialize();
 
       if (bulk.val() == 'delete') {
          swal({
@@ -182,7 +181,7 @@ jQuery(document).ready(domo);
           },
           function(isConfirm){
             if (isConfirm) {
-               document.location.href = BASE_URL + '/administrator/fastcon_contact_settings/delete?' + serialize_bulk;      
+               document.location.href = BASE_URL + '/administrator/fastcon_calc_guide/delete?' + serialize_bulk;      
             }
           });
 

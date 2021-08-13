@@ -136,6 +136,132 @@ class Checkout extends Front {
 
 		redirect_back();
 	}
+
+	public function submit_order()
+	{
+		// guest order
+		if (!$this->session->userdata('member')) {
+			
+		} else {
+			/* member order */
+
+			// get active address
+			$active_address = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('member')['member_id'], 'active' => 1]);
+			if (!$active_address) {
+				$this->session->set_flashdata('error', 'Please select delivery address');
+				redirect_back();
+			}
+
+			// get cart
+			$cart = $this->Model_web->get_cart();
+			if (empty($cart)) {
+				redirect(site_url('products/cart'));
+			}
+
+			// get subtotal
+			$subtotal = 0;
+			foreach ($cart as $c) {
+				$subtotal = $subtotal + (($c->price - $c->discount) * $c->quantity);
+			}
+
+			// get ppn 
+			$ppn = 0.1 * $subtotal;
+
+			// get ongkir
+			$ongkir = db_get_row_data('fastcon_coverage_province', ['province_id' => $active_address->province_id]);
+			if (!$ongkir) {
+				$this->session->set_flashdata('error', 'Ongkir not found');
+				redirect_back();
+			}
+
+			$ongkir = $ongkir->shipping_price;
+
+			$voucher_discount = 0;
+			$voucher_data = null;
+			// check if any voucher used
+			if ($this->session->userdata('voucher')) {
+				$voucher = $this->session->userdata('voucher');
+				$voucher_data = [
+					'voucher_id' => $voucher['voucher_id'],
+					'voucher_code' => $voucher['voucher_code'],
+					'voucher_discount' => $voucher['voucher_discount'],
+					'min_purchase' => $voucher['min_purchase'],
+					'start_date' => $voucher['start_date'],
+					'end_date' => $voucher['end_date'],
+				];
+
+				$voucher_discount = $voucher['voucher_discount'];
+			}
+
+			// count grand total
+			$grand_total = $subtotal + $ppn + $ongkir - $voucher_discount;
+
+			$order_code = 'FAST'.date('Ymd').rand(100,999);
+
+			foreach ($cart as $c) {
+				$order_data = [
+					'order_code' => $order_code,
+					'member_id' => $this->session->userdata('member')['member_id'],
+					'product_category_id' => $c->product_category,
+					'product_category_name' => $c->category_name,
+					'product_category_name_en' => $c->category_name_en,
+					'product_id' => $c->product_id,
+					'product_name' => $c->product_name,
+					'variant_id' => $c->variant_id,
+					'sku' => $c->sku,
+					'product_option1_id' => $c->product_option1,
+					'product_option1_name' => $c->product_option1_name,
+					'product_option1_name_en' => $c->product_option1_name_en,
+					'product_option1_value_id' => $c->product_option_value1,
+					'product_option1_value' => $c->option_value1,
+					'product_option2_id' => $c->product_option2,
+					'product_option2_name' => $c->product_option2_name,
+					'product_option2_name_en' => $c->product_option2_name_en,
+					'product_option2_value_id' => $c->product_option_value2,
+					'product_option2_value' => $c->option_value2,
+					'price' => $c->price,
+					'discount' => $c->discount,
+					'qty' => $c->quantity,
+					'shipping_cost' => $ongkir,
+					'total' => $grand_total,
+					'voucher_id' => $voucher_data!=null?$voucher_data['voucher_id']:null,
+					'voucher_code' => $voucher_data!=null?$voucher_data['voucher_code']:null,
+					'voucher_discount' => $voucher_data!=null?$voucher_data['voucher_discount']:null,
+					'voucher_start_date' => $voucher_data!=null?$voucher_data['start_date']:null,
+					'voucher_end_date' => $voucher_data!=null?$voucher_data['end_date']:null,
+					'member_address_id' => $active_address->id,
+					'nama_penerima' => $active_address->name,
+					'email' => $active_address->email,
+					'no_telp' => $active_address->phone,
+					'province_id' => $active_address->province_id,
+					'province_name' => $active_address->provinsi, // ganti dengan data dari coverage province
+					'provinsi' => $active_address->provinsi,
+					'kabupaten' => $active_address->kabupaten,
+					'kecamatan' => $active_address->kecamatan,
+					'kelurahan' => $active_address->kelurahan,
+					'kode_pos' => $active_address->kode_pos,
+					'alamat_lengkap' => $active_address->address
+					// payment_type
+					// fraud_status
+					// status_message
+					// transaction_id
+					// transaction_time
+					// va_numbers
+					// midtrans_bill_code
+					// midtrans_bill_key
+					// transaction_status
+					// pdf_url
+					// status_pembelian
+					// midtrans_response
+				];
+
+				insert_this_data('fastcon_product_orders', $order_data);
+			}
+		} // end member area (else)
+
+		$this->session->set_flashdata('response', ['title' => lang('order_title'), 'content' => lang('order_body')]);
+		redirect(site_url('thankyou'));
+	}
 	
 }
 

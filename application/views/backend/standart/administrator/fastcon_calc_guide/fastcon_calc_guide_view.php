@@ -23,11 +23,11 @@ jQuery(document).ready(domo);
 <!-- Content Header (Page header) -->
 <section class="content-header">
    <h1>
-      Contact Settings      <small><?= cclang('detail', ['Contact Settings']); ?> </small>
+      AAC Calculator Guide      <small><?= cclang('detail', ['AAC Calculator Guide']); ?> </small>
    </h1>
    <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class=""><a  href="<?= site_url('administrator/fastcon_contact_settings'); ?>">Contact Settings</a></li>
+      <li class=""><a  href="<?= site_url('administrator/fastcon_calc_guide'); ?>">AAC Calculator Guide</a></li>
       <li class="active"><?= cclang('detail'); ?></li>
    </ol>
 </section>
@@ -48,51 +48,35 @@ jQuery(document).ready(domo);
                         <img class="img-circle" src="<?= BASE_ASSET; ?>/img/view.png" alt="User Avatar">
                      </div>
                      <!-- /.widget-user-image -->
-                     <h3 class="widget-user-username">Contact Settings</h3>
-                     <h5 class="widget-user-desc">Detail Contact Settings</h5>
+                     <h3 class="widget-user-username">AAC Calculator Guide</h3>
+                     <h5 class="widget-user-desc">Detail AAC Calculator Guide</h5>
                      <hr>
                   </div>
 
                  
-                  <div class="form-horizontal" name="form_fastcon_contact_settings" id="form_fastcon_contact_settings" >
+                  <div class="form-horizontal" name="form_fastcon_calc_guide" id="form_fastcon_calc_guide" >
                    
                     <div class="form-group ">
                         <label for="content" class="col-sm-2 control-label">Id </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_contact_settings->id); ?>
+                           <?= _ent($fastcon_calc_guide->id); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Setting Item </label>
+                        <label for="content" class="col-sm-2 control-label">Guide </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_contact_settings->setting_item); ?>
+                           <?= _ent($fastcon_calc_guide->guide); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Setting Value </label>
+                        <label for="content" class="col-sm-2 control-label">Guide En </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_contact_settings->setting_value); ?>
-                        </div>
-                    </div>
-                                         
-                    <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Phone </label>
-
-                        <div class="col-sm-8">
-                           <?= _ent($fastcon_contact_settings->phone); ?>
-                        </div>
-                    </div>
-                                         
-                    <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Created At </label>
-
-                        <div class="col-sm-8">
-                           <?= _ent($fastcon_contact_settings->created_at); ?>
+                           <?= _ent($fastcon_calc_guide->guide_en); ?>
                         </div>
                     </div>
                                         
@@ -100,10 +84,10 @@ jQuery(document).ready(domo);
                     <br>
 
                     <div class="view-nav">
-                        <?php is_allowed('fastcon_contact_settings_update', function() use ($fastcon_contact_settings){?>
-                        <a class="btn btn-flat btn-info btn_edit btn_action" id="btn_edit" data-stype='back' title="edit fastcon_contact_settings (Ctrl+e)" href="<?= site_url('administrator/fastcon_contact_settings/edit/'.$fastcon_contact_settings->id); ?>"><i class="fa fa-edit" ></i> <?= cclang('update', ['Fastcon Contact Settings']); ?> </a>
+                        <?php is_allowed('fastcon_calc_guide_update', function() use ($fastcon_calc_guide){?>
+                        <a class="btn btn-flat btn-info btn_edit btn_action" id="btn_edit" data-stype='back' title="edit fastcon_calc_guide (Ctrl+e)" href="<?= site_url('administrator/fastcon_calc_guide/edit/'.$fastcon_calc_guide->id); ?>"><i class="fa fa-edit" ></i> <?= cclang('update', ['Fastcon Calc Guide']); ?> </a>
                         <?php }) ?>
-                        <a class="btn btn-flat btn-default btn_action" id="btn_back" title="back (Ctrl+x)" href="<?= site_url('administrator/fastcon_contact_settings/'); ?>"><i class="fa fa-undo" ></i> <?= cclang('go_list_button', ['Fastcon Contact Settings']); ?></a>
+                        <a class="btn btn-flat btn-default btn_action" id="btn_back" title="back (Ctrl+x)" href="<?= site_url('administrator/fastcon_calc_guide/'); ?>"><i class="fa fa-undo" ></i> <?= cclang('go_list_button', ['Fastcon Calc Guide']); ?></a>
                      </div>
                     
                   </div>

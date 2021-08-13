@@ -94,10 +94,19 @@ class Products extends Front {
 		}
 
 		$arr = $this->input->post();
+		if (!$arr['option']['option1']) {
+			echo json_encode(['status' => false, 'option' => 'option1', 'message' => 'Variant not found!']);
+			return;
+		}
 
 		$product_variant = db_get_row_data('fastcon_product_variant', ['product_id' => $arr['product'], 'product_option_value1' => $arr['option']['option1']]);
 
+
 		if (isset($arr['option']['option2'])) {
+			if (!$arr['option']['option2']) {
+				echo json_encode(['status' => false, 'option' => 'option2', 'message' => 'Variant not found!']);
+				return;
+			}
 			$product_variant = db_get_row_data('fastcon_product_variant', ['product_id' => $arr['product'], 'product_option_value1' => $arr['option']['option1'], 'product_option_value2' => $arr['option']['option2']]);
 		}
 

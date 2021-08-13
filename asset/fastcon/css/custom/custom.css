@@ -2675,6 +2675,16 @@ ul.member-menu li.active a::after {
 .home-modal .button-wrap {
   display: flex;
 }
+span.member_initial {
+  font-family: 'Jura', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  margin-left: 8px;
+}
+small.helper-text {
+  display: none;
+}
 
 @media screen and (max-width: 991px) {
   .width-md-fit {
@@ -3238,6 +3248,9 @@ ul.member-menu li.active a::after {
     width: 100%;
     margin-bottom: 0;
     background-color: #757575;
+  }
+  .account-link-wrap.logged_in {
+    background-color: #00672B;
   }
   .account-link-wrap li {
     padding-left: 5%;

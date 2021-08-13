@@ -12,7 +12,7 @@
                 <div class="content-wrap">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="fastcon-h2 cl-grey-900 text-uppercase">SELAMAT DATANG, <?=$member->fullname?>!</h2>
+                            <h2 class="fastcon-h2 cl-grey-900 text-uppercase"><?=lang('welcome')?>, <?=$member->fullname?>!</h2>
 
                             <?php if ($this->session->flashdata('error')): ?>
                             
@@ -41,12 +41,12 @@
 
                                 <div class="form-group">
                                     <label for="password" class="fastcon-label cl-grey-900"><?=lang('password')?>*</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Ketik disini">
+                                    <input type="password" class="form-control" id="password" value="" name="password" placeholder="Ketik disini">
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="c_password" class="fastcon-label cl-grey-900"><?=lang('confirm_password')?>*</label>
-                                    <input type="password" class="form-control" id="c_password" name="c_password" placeholder="Ketik disini">
+                                    <input type="password" class="form-control" id="c_password" value="" name="c_password" placeholder="Ketik disini">
                                 </div>
 
                                 <div class="form-check pl-0">
@@ -92,6 +92,7 @@
                                                     data-email='<?=$ma->email?>'
                                                     data-id='<?=$ma->id?>'
                                                     data-phone='<?=$ma->phone?>'
+                                                    data-province_id='<?=$ma->province_id?>'
                                                     data-address='<?=$ma->address?>'
                                                 >
                                                     <h4 class="fastcon-h4 cl-primary-900 text-uppercase">
@@ -130,39 +131,39 @@
                     <?=form_open(site_url('member/save_address'), ['class' => "guest-form", 'id' => 'address_form_member']);?>
                         <div class="row">
                             <div class="col-12">
-                                <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt="">  DATA DIRI</h4>
+                                <h4 class="fastcon-h4 cl-primary-900 text-uppercase"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt=""> <?=lang('personal_data')?></h4>
                                 <hr />
                                 <div class="form-group">
-                                    <label for="email" class="fastcon-label cl-grey-900">Nama lengkap*</label>
+                                    <label for="email" class="fastcon-label cl-grey-900"><?=lang('fullname')?>*</label>
                                     <input type="text" class="form-control" name="fullname" placeholder="Ketik disini">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email" class="fastcon-label cl-grey-900">E-mail*</label>
+                                    <label for="email" class="fastcon-label cl-grey-900"><?=lang('email')?>*</label>
                                     <input type="email" class="form-control" name="email" placeholder="Ketik disini">
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone" class="fastcon-label cl-grey-900">NOMOR HP*</label>
+                                    <label for="phone" class="fastcon-label cl-grey-900"><?=lang('phone')?>*</label>
                                     <input type="text" class="form-control" name="phone" placeholder="Ketik disini">
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="fastcon-label cl-grey-900">Provinsi*</label>
-                                    <select class="form-control selectpicker" name="province_id" title="Pilih Satu">
+                                    <label class="fastcon-label cl-grey-900"><?=lang('province')?>*</label>
+                                    <select class="form-control selectpicker" name="province_id" id="province_id" title="Pilih Satu">
                                         <?php foreach (db_get_all_data('fastcon_coverage_province') as $cp): ?>
                                             <option value="<?=$cp->province_id?>"><?=$lang=='indonesian'?$cp->province_name:$cp->province_name_en?></option>
                                         <?php endforeach ?>
-                                        <option value="others"><?=$lang=='indonesian'?'Lainnya':'Others'?></option>
+                                        <option value="0"><?=$lang=='indonesian'?'Lainnya':'Others'?></option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="kota_kecamatan" class="fastcon-label cl-grey-900">Kota, Kecamatan atau Kelurahan*</label>
+                                    <label for="kota_kecamatan" class="fastcon-label cl-grey-900"><?=lang('city_province')?>*</label>
                                     <input type="text" id="kota_kecamatan" name="kota_kecamatan" class="form-control" placeholder="Tulis minimal 3 karakter" autocomplete="on">
                                     <div id="auto_result" class="frontbox"></div>
                                 </div>
 
                                 <div class="form-group mb-0">
-                                    <label for="address" class="fastcon-label cl-grey-900">Alamat Lengkap*</label>
+                                    <label for="address" class="fastcon-label cl-grey-900"><?=lang('address')?>*</label>
                                     <textarea class="form-control" id="address" rows="4" name="address"></textarea>
                                 </div>
                             </div>
@@ -171,7 +172,7 @@
                         <div class="row">
                             <div class="col-12 button-submit-wrap">
                                 <button class="fastcon-btn primary-btn">TAMBAH ALAMAT</button>
-                                <a href="#" class="fastcon-btn secondary-btn" data-dismiss="modal" aria-hidden="true">KEMBALI</a>
+                                <a href="#" class="fastcon-btn secondary-btn" data-dismiss="modal" aria-hidden="true"><?=lang('back')?></a>
                             </div>
                         </div>
                     <?=form_close();?>

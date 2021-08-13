@@ -54,12 +54,15 @@
 									<a href="<?=site_url('products/cart')?>" ><i class="icon-line-shopping-cart"></i><i class="icon-line-cross"></i></a>
 								</div>
 
-								<div id="top-cart" class="header-misc-icon d-none d-sm-block">
+								<div id="top-cart" class="header-misc-icon d-none d-sm-flex align-items-center">
 									<a href="<?=site_url('login')?>">
 										<svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M13.6569 10.3431C12.7855 9.47181 11.7484 8.82678 10.6168 8.43631C11.8288 7.60159 12.625 6.20463 12.625 4.625C12.625 2.07478 10.5502 0 8 0C5.44978 0 3.375 2.07478 3.375 4.625C3.375 6.20463 4.17122 7.60159 5.38319 8.43631C4.25163 8.82678 3.2145 9.47181 2.34316 10.3431C0.832156 11.8542 0 13.8631 0 16H1.25C1.25 12.278 4.27803 9.25 8 9.25C11.722 9.25 14.75 12.278 14.75 16H16C16 13.8631 15.1678 11.8542 13.6569 10.3431ZM8 8C6.13903 8 4.625 6.486 4.625 4.625C4.625 2.764 6.13903 1.25 8 1.25C9.86097 1.25 11.375 2.764 11.375 4.625C11.375 6.486 9.86097 8 8 8Z" fill="#212121"/>
 										</svg>
 									</a>
+									<?php if ($this->session->userdata('member') AND isset($member)): ?>
+										<span class="member_initial"><?=strtoupper(substr($member->fullname, 0, 2)) ?></span>
+									<?php endif ?>
 								</div>
 
 							</div>
@@ -117,12 +120,15 @@
 									<a href="<?=site_url('products/cart')?>" ><i class="icon-line-shopping-cart"></i><i class="icon-line-cross"></i></a>
 								</div>
 
-								<div class="header-misc-icon d-none d-sm-block">
+								<div class="header-misc-icon d-none d-sm-flex align-items-center">
 									<a href="<?=site_url('login')?>">
 										<svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M13.6569 10.3431C12.7855 9.47181 11.7484 8.82678 10.6168 8.43631C11.8288 7.60159 12.625 6.20463 12.625 4.625C12.625 2.07478 10.5502 0 8 0C5.44978 0 3.375 2.07478 3.375 4.625C3.375 6.20463 4.17122 7.60159 5.38319 8.43631C4.25163 8.82678 3.2145 9.47181 2.34316 10.3431C0.832156 11.8542 0 13.8631 0 16H1.25C1.25 12.278 4.27803 9.25 8 9.25C11.722 9.25 14.75 12.278 14.75 16H16C16 13.8631 15.1678 11.8542 13.6569 10.3431ZM8 8C6.13903 8 4.625 6.486 4.625 4.625C4.625 2.764 6.13903 1.25 8 1.25C9.86097 1.25 11.375 2.764 11.375 4.625C11.375 6.486 9.86097 8 8 8Z" fill="#212121"/>
 										</svg>
 									</a>
+									<?php if ($this->session->userdata('member') AND isset($member)): ?>
+										<span class="member_initial"><?=strtoupper(substr($member->fullname, 0, 2)) ?></span>
+									<?php endif ?>
 								</div>
 							<?php endif ?>
 
@@ -141,14 +147,14 @@
 						<?php endif ?>
 
 						<nav class="primary-menu">
-							<ul class="account-link-wrap small-only">
+							<ul class="account-link-wrap small-only <?=$this->session->userdata('member')!=null?'logged_in':''?>">
 								<div class="container">
 									<li class="menu-item">
 										<a href="<?=site_url('login')?>">
 											<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 												<path d="M13.6569 10.3431C12.7855 9.47181 11.7484 8.82678 10.6168 8.43631C11.8288 7.60159 12.625 6.20463 12.625 4.625C12.625 2.07478 10.5502 0 8 0C5.44978 0 3.375 2.07478 3.375 4.625C3.375 6.20463 4.17122 7.60159 5.38319 8.43631C4.25163 8.82678 3.2145 9.47181 2.34316 10.3431C0.832156 11.8542 0 13.8631 0 16H1.25C1.25 12.278 4.27803 9.25 8 9.25C11.722 9.25 14.75 12.278 14.75 16H16C16 13.8631 15.1678 11.8542 13.6569 10.3431ZM8 8C6.13903 8 4.625 6.486 4.625 4.625C4.625 2.764 6.13903 1.25 8 1.25C9.86097 1.25 11.375 2.764 11.375 4.625C11.375 6.486 9.86097 8 8 8Z" fill="#212121"/>
 											</svg>
-											Sudah Punya Akun?
+											<?=($this->session->userdata('member')!=null AND isset($member))?$member->fullname:'Sudah Punya Akun?'?>
 										</a>
 									</li>
 								</div>
@@ -228,6 +234,8 @@
 													<?php foreach ($contact_settings as $cs): ?>
 														<?php if ($cs->setting_item=='office'): ?>
 															<?=$cs->setting_value?>
+
+															<a href="tel:<?=$cs->phone?>" class="fastcon-body"><?=$cs->phone?></a>
 														<?php endif ?>
 													<?php endforeach ?>
 												</div>
@@ -236,6 +244,8 @@
 													<?php foreach ($contact_settings as $cs): ?>
 														<?php if ($cs->setting_item=='factory'): ?>
 															<?=$cs->setting_value?>
+
+															<a href="tel:<?=$cs->phone?>" class="fastcon-body"><?=$cs->phone?></a>
 														<?php endif ?>
 													<?php endforeach ?>
 												</div>
@@ -344,10 +354,11 @@
 	</div>
 
 	<script>
-		let base_url = '<?=site_url()?>';
-		let active_page = '<?=$active?>';
-		let csrf_name = '<?=$this->security->get_csrf_token_name(); ?>';
-		let csrf_val = '<?=$this->security->get_csrf_hash(); ?>';
+		const base_url = '<?=site_url()?>';
+		const active_page = '<?=$active?>';
+		const csrf_name = '<?=$this->security->get_csrf_token_name(); ?>';
+		const csrf_val = '<?=$this->security->get_csrf_hash(); ?>';
+		const lang = '<?=$lang?>';
 	</script>
 
 	<script src="<?=BASE_ASSET?>fastcon/js/jquery.js"></script>

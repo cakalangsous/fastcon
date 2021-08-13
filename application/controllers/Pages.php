@@ -94,9 +94,10 @@ class Pages extends Front {
 			redirect_back();
 		}
 
-		$info['title']		= lang('thank_you_title');
-		$info['caption']	= lang('thank_you_content');
-		$info['marketplace']= $this->data['marketplace'];
+		$info['title']				= lang('thank_you_title');
+		$info['caption']			= lang('thank_you_content');
+		$info['marketplace']		= $this->data['marketplace'];
+		$info['contact_settings']	= $this->data['contact_settings'];
 
 		$html = $this->load->view('email/index', $info, true);
 
@@ -114,14 +115,15 @@ class Pages extends Front {
 
 		$topic = db_get_row_data('fastcon_contact_topic', ['topid_id' => $arr['topic']]);
 
-		$admin['title']		= 'New Contact Inquiry Submitted';
-		$admin['caption']	= 'Dear admin, this is e-mail notification for new submitted inquiry from user. Please respond in 1x24 work hours via phone number or e-mail.';
-		$admin['marketplace']= $this->data['marketplace'];
+		$admin['title']				= 'New Contact Inquiry Submitted';
+		$admin['caption']			= 'Dear admin, this is e-mail notification for new submitted inquiry from user. Please respond in 1x24 work hours via phone number or e-mail.';
+		$admin['marketplace']		= $this->data['marketplace'];
+		$admin['contact_settings']	= $this->data['contact_settings'];
 
 		$html = $this->load->view('email/index', $admin, true);
 
 		$this->load->library('email');
-		
+
 		$this->email->initialize($this->mail_config());
 		$this->email->set_newline("\r\n");
 		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
@@ -172,6 +174,98 @@ class Pages extends Front {
 		$this->render('member/forgot-password', $this->data);
 	}
 
+	public function forgot_password_submit()
+	{
+		$arr = $this->input->post();
+		if (!$arr) {
+			$this->not_found();
+			return;
+		}
+
+		$member = db_get_row_data('fastcon_member', ['email' => $arr['email']]);
+		if (!$member) {
+			$this->not_found();
+			return;
+		}
+
+		$info['title']		= 'Reset Password';
+		$info['caption']	= 'Please click link below to reset your password.';
+		$info['link']		= site_url('new_password/'.$member->verified_key.'/'.sha1($arr['email']).'/'.$member->salt);
+		$info['link_text']	= 'Reset Password';
+		$info['marketplace']= $this->data['marketplace'];
+		$info['contact_settings']	= $this->data['contact_settings'];
+
+		$html = $this->load->view('email/index', $info, true);
+
+		$this->load->library('email');
+
+		$this->email->initialize($this->mail_config());
+		$this->email->set_newline("\r\n");
+		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
+		$this->email->to($arr['email']);
+		$this->email->subject('Fastcon - Reset Password');
+		$this->email->message($html);
+
+		$this->email->send();
+
+
+		$this->session->set_flashdata('response', ['title' => lang('forgot_password_title'), 'content' => '']);
+		redirect(site_url('thankyou'));
+	}
+
+	public function new_password($key=false, $email=false, $salt=false)
+	{
+		if (!$key OR !$email OR !$salt) {
+			$this->not_found();
+			return;
+		}
+
+		$member = db_get_row_data('fastcon_member', ['verified_key' => $key, 'salt' => $salt]);
+		if (!$member) {
+			$this->not_found();
+			return;
+		}
+
+		$this->data['member'] = $member;
+		$this->data['key'] = $member->verified_key;
+		$this->render('member/new-password', $this->data);
+	}
+
+	public function new_password_submit()
+	{
+		$arr = $this->input->post();
+		if (!$arr OR $arr['k']==null) {
+			$this->not_found();
+			return;
+		}
+
+		$member = db_get_row_data('fastcon_member', ['verified_key' => $arr['k']]);
+		if (!$member) {
+			$this->not_found();
+			return;
+		}
+
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[8]');
+		$this->form_validation->set_rules('c_password', 'Confirm Password', 'trim|required|min_length[8]|matches[password]');
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('error', validation_errors());
+			redirect_back();
+		}
+
+		unset($arr['c_password']);
+		unset($arr['k']);
+
+		$arr['salt']			= substr(sha1(uniqid(rand(), true)), 0, 50);
+		$arr['verified_key']	= substr(sha1(uniqid(rand(), true)), 0, 50);
+		$arr['password']		= sha1($arr['salt'].$arr['password'].$arr['salt']);
+
+		update_this_data('fastcon_member', ['member_id' => $member->member_id], $arr);
+
+		$this->session->set_flashdata('response', lang('password_updated'));
+		redirect(site_url('login'));
+	}
+
 	public function register_submit()
 	{
 		if ($this->session->userdata('member')) {
@@ -205,7 +299,9 @@ class Pages extends Front {
 		$info['title']		= 'Thank you for registration';
 		$info['caption']	= 'In order to login to our site, you need to verify your account. Click verify button below to verify your account.';
 		$info['link']		= site_url('verify_email/'.$arr['verified_key'].'/'.sha1($arr['email']).'/'.$arr['salt']);
+		$info['link_text']	= 'Verify Email';
 		$info['marketplace']= $this->data['marketplace'];
+		$info['contact_settings']	= $this->data['contact_settings'];
 
 		$html = $this->load->view('email/index', $info, true);
 
@@ -322,6 +418,7 @@ class Pages extends Front {
 	{
 		$this->data['title'] = 'Accounting Calculator';
 		$this->data['bricks'] = db_get_all_data('fastcon_brick_thickness');
+		$this->data['guide'] = db_get_row_data('fastcon_calc_guide', ['id' => 1]);
 		$this->render('accounting-calc', $this->data);
 	}
 

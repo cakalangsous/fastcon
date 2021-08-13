@@ -359,7 +359,7 @@ ul.social li{
 
                         <?php if (isset($link)): ?>
                             <div class="text" style="text-align: center; margin-top: 3rem;">
-                                <a href="<?=$link?>" style="padding: 10px 15px; display: inline-block; background-color: #00672B; color: #fff; border-radius: 8px; font-size: 16px; line-height: 24px; font-weight: normal;">Verify Email</a>
+                                <a href="<?=$link?>" style="padding: 10px 15px; display: inline-block; background-color: #00672B; color: #fff; border-radius: 8px; font-size: 16px; line-height: 24px; font-weight: normal;"><?=$link_text?></a>
                             </div>
                         <?php endif ?>
             		</td>
