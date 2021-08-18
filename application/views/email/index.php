@@ -447,7 +447,7 @@ p {
                                         <p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><b>x<?=$c->qty?></b></p>
                                     </div>
                                     <div class="price">
-                                        <p>Rp<?=number_format($c->qty * ($c->price-$c->discount))?></p>
+                                        <p style="font-size: 12px;">Rp<?=number_format($c->qty * ($c->price-$c->discount))?></p>
                                     </div>
                                 </div>
                             <?php $ongkir = $c->shipping_cost; endforeach ?>
@@ -459,7 +459,7 @@ p {
                                     <p class="fastcon-description" style="font-size: 12px; margin: 0 !important; font-weight: bold;">Subtotal</p>
                                 </div>
                                 <div class="price">
-                                    <p>Rp<?=number_format($total)?></p>
+                                    <p style="font-size: 12px;">Rp<?=number_format($total)?></p>
                                 </div>
                             </div>
 
@@ -468,7 +468,7 @@ p {
                                     <p class="fastcon-description" style="font-size: 12px; margin: 0 !important; font-weight: bold;"><?=lang('tax')?> (10%)</p>
                                 </div>
                                 <div class="price">
-                                    <p>Rp<?=number_format(0.1*$total)?></p>
+                                    <p style="font-size: 12px;">Rp<?=number_format(0.1*$total)?></p>
                                 </div>
                             </div>
 
@@ -478,7 +478,7 @@ p {
                                         <p class="fastcon-description" style="font-size: 12px; margin: 0 !important; font-weight: bold;"><?=lang('delivery_cost')?></p>
                                     </div>
                                     <div class="price">
-                                        <p>Rp<?=number_format($ongkir)?></p>
+                                        <p style="font-size: 12px;">Rp<?=number_format($ongkir)?></p>
                                     </div>
                                 </div>
                             <?php endif ?>
