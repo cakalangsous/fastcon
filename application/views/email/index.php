@@ -415,7 +415,7 @@ p {
             	<tr>
             		<td>
             			<div class="text" style="text-align: center;">
-            				<h3 class="mtani-sub-title" style="font-family: 'Jura', sans-serif !important; color: #000; text-transform:uppercase;"><?=$title?></h3>
+            				<h3 class="mtani-sub-title" style="font-family: 'Jura', sans-serif; color: #000; text-transform:uppercase;"><?=$title?></h3>
             				<p class="fastcon-body"><?=$caption?></p>
             			</div>
 
@@ -531,7 +531,7 @@ p {
                     <tr>
                       <td style="text-align: center; padding-left: 5px; padding-right: 5px; color: #212121;">
                       	<ul style="margin: 30px 0 0; padding:0;">
-                            <h4 class="heading" style="font-family: 'Jura', sans-serif !important;"><?=lang('contact_us')?></h4>
+                            <h4 class="heading" style="font-family: 'Jura', sans-serif;"><?=lang('contact_us')?></h4>
     		                <li class="contact-us" style="list-style: none; margin-bottom: 20px; color: #212121; font-family: 'Open Sans', sans-serif !important; font-size: 14px;">
                                 <?php foreach ($contact_settings as $cs): ?>
                                     <?php if ($cs->setting_item=='office'): ?>
@@ -547,7 +547,7 @@ p {
 		                </ul>
 
                         <ul style="margin: 30px 0 0; padding:0;">
-                            <h4 class="heading" style="font-family: 'Jura', sans-serif !important;"><?=lang('our_factory')?></h4>
+                            <h4 class="heading" style="font-family: 'Jura', sans-serif;"><?=lang('our_factory')?></h4>
                             <li class="contact-us" style="list-style: none; margin-bottom: 20px; color: #212121; font-family: 'Open Sans', sans-serif !important; font-size: 14px;">
                                 <?php foreach ($contact_settings as $cs): ?>
                                     <?php if ($cs->setting_item=='factory'): ?>
@@ -571,7 +571,7 @@ p {
                       <td style="text-align: center; padding-left: 10px;">
 
                         <ul style="margin: 0 ; padding:0;">
-                            <h4 class="heading" style="font-family: 'Jura', sans-serif !important;"><?=lang('our_marketplace')?></h4>
+                            <h4 class="heading" style="font-family: 'Jura', sans-serif;"><?=lang('our_marketplace')?></h4>
                             <li class="marketplace" style="list-style: none; margin-bottom: 7px;">
                                 <?php foreach ($marketplace as $mp): ?>
                                     <a href="<?=$mp->link?>" target="_blank"><img src="<?=site_url('uploads/fastcon_marketplace/'.$mp->icon)?>" alt="" width="24"></a>
@@ -580,7 +580,7 @@ p {
                         </ul>
 
                         <ul style="margin: 4rem 0 0 0 ; padding:0;">
-                            <h4 class="heading" style="font-family: 'Jura', sans-serif !important;"><?=lang('our_qualification')?></h4>
+                            <h4 class="heading" style="font-family: 'Jura', sans-serif;"><?=lang('our_qualification')?></h4>
                             <li style="list-style: none; margin-bottom: 7px;">
                                 <img src="<?=BASE_ASSET?>fastcon/img/iso.png" alt="Fastcon ISO" style="margin-right: 0; width: 100%; max-width: 165px;">
                             </li>
