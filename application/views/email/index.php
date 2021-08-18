@@ -428,8 +428,8 @@ p {
             	</tr>
                 <tr>
                     <td>
-                        <div class="card-summary" style="margin:40px 0;">
-                            <h4 style="font-family: 'Jura',sans-serif; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('summary')?></h4>
+                        <div class="card-summary" style="margin:40px 0; padding: 20px; background: #FAFAFA; border: 1px dashed #9E9E9E; -webkit-box-sizing: border-box; box-sizing: border-box; border-radius: 8px;">
+                            <h4 style="font-family: 'Jura', sans-serif !important; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('summary')?></h4>
 
                             <?php $total=0; foreach ($cart as $c): ?>
 
@@ -437,9 +437,9 @@ p {
                                     $ongkir = '';
                                     $total = $total + ($c->qty * ($c->price-$c->discount));
                                 ?>
-                                <div class="card-summary-product-item">
+                                <div class="card-summary-product-item" style="margin-bottom: 20px !important;">
                                     <div class="product">
-                                        <p class="fastcon-description" style="font-family: 'Jura', sans-serif;"><?=$c->product_name?></p>
+                                        <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important;"><?=$c->product_name?></p>
                                         <p class="fastcon-description" style="font-size: 12px;"><?=$lang=='indonesian'?$c->product_option1_name:$c->product_option1_name_en?>: <?=$c->product_option1_value?></p>
                                         <?php if ($c->product_option2_id): ?>
                                             <p class="fastcon-description" style="font-size: 12px;"><?=$lang=='indonesian'?$c->product_option2_name:$c->product_option2_name_en?>: <?=$c->product_option2_value?></p>
@@ -454,7 +454,7 @@ p {
 
                             <div class="line"></div>
 
-                            <div class="card-summary-product-item mb-0">
+                            <div class="card-summary-product-item" style="margin-bottom: 0 !important;">
                                 <div class="product">
                                     <p class="fastcon-description" style="font-size: 12px; font-weight: bold;">Subtotal</p>
                                 </div>
@@ -463,7 +463,7 @@ p {
                                 </div>
                             </div>
 
-                            <div class="card-summary-product-item mb-0">
+                            <div class="card-summary-product-item" style="margin-bottom: 0 !important;">
                                 <div class="product">
                                     <p class="fastcon-description" style="font-size: 12px; font-weight: bold;"><?=lang('tax')?> (10%)</p>
                                 </div>
@@ -473,7 +473,7 @@ p {
                             </div>
 
                             <?php if ($ongkir): ?>
-                                <div class="card-summary-product-item mb-0">
+                                <div class="card-summary-product-item" style="margin-bottom: 0 !important;">
                                     <div class="product">
                                         <p class="fastcon-description" style="font-size: 12px; font-weight: bold;"><?=lang('delivery_cost')?></p>
                                     </div>
