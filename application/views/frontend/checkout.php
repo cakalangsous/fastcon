@@ -166,7 +166,7 @@
                             </div>
                         </div>
 
-                        <?php if ($ongkir): ?>
+                        <?php if ($ongkir>0): ?>
                             <div class="card-summary-product-item mb-0">
                                 <div class="product">
                                     <p class="fastcon-description"><?=lang('delivery_cost')?></p>
@@ -187,14 +187,14 @@
                             </div>
                         <?php $total = $total-$voucher['voucher_discount']; endif ?>
 
-
-                        <div class="card-summary-product-item mt-3">
-                            <div class="product">
-                                <p class="fastcon-description"><b>Catatan:</b></p>
-                                <p class="fastcon-description">Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 1234 atau kontak kami untuk melanjutkan transaksi Anda.</p>
+                        <?php if ($ongkir>0): ?>
+                            <div class="card-summary-product-item mt-3">
+                                <div class="product">
+                                    <p class="fastcon-description"><b>Catatan:</b></p>
+                                    <p class="fastcon-description">Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 555 1234 atau kontak kami untuk melanjutkan transaksi Anda.</p>
+                                </div>
                             </div>
-                        </div>
-
+                        <?php endif ?>
 
                         <div class="line"></div>
 
@@ -208,7 +208,7 @@
                         </div>
 
                         <div class="card-summary-btn-wrap">
-                            <button type="button" <?=$address!=null AND $address->province_id!=0?'onClick="window.location.href=\' '.site_url('checkout/submit_order').' \' "':'disabled="disabled"'?> class="fastcon-btn primary-btn w-100 <?=$address!=null AND $address->province_id==0?'disabled':''?>"><?=lang('checkout_securely')?></button>
+                            <button type="button" <?=($address!=null AND $address->province_id!=0)?'onClick="window.location.href=\' '.site_url('checkout/submit_order').' \' "':'disabled="disabled"'?> class="fastcon-btn primary-btn w-100 <?=($address!=null AND $address->province_id==0)?'disabled':''?>"><?=lang('checkout_securely')?></button>
                         </div>
 
                     </div>

@@ -199,7 +199,6 @@ class Checkout extends Front {
 					$this->data['ongkir'] = $ongkir->shipping_price;
 				}
 			}
-			
 			$cart = $this->Model_web->get_cart();
 		}
 
