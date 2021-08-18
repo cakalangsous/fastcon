@@ -65,8 +65,8 @@ class Checkout extends Front {
 
 		$guest_data = [
 			'fullname' => $arr['fullname'],
-			'email' => $arr['receiver_name'],
-			'phone' => $arr['receiver_phone'],
+			'email' => $arr['email'],
+			'phone' => $arr['phone'],
 		];
 		
 		$guest = insert_this_data_last_id('fastcon_guest', $guest_data);
@@ -85,9 +85,9 @@ class Checkout extends Front {
 		]);
 		
 		$guest_address = [
-			'name'		=> $arr['fullname'],
+			'name'		=> $arr['receiver_name'],
 			'email'		=> $arr['email'],
-			'phone'		=> $arr['phone'],
+			'phone'		=> $arr['receiver_phone'],
 			'province_id'=> $arr['province_id'],
 			'provinsi' 	=> $destination_code->provinsi,
 			'kabupaten' => $destination_code->kabupaten,
