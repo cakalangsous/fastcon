@@ -94,7 +94,7 @@
                         </div>
                     <?php endif ?>
 
-                    <?php if ($address->province_id==0): ?>
+                    <?php if ($address!=null AND $address->province_id==0): ?>
                         <div class="fastcon-alert fastcon-alert-error">
                             <div class="alert-header">
                                 <p class="alert-title"><?=lang('warning')?>!</p>
@@ -208,7 +208,7 @@
                         </div>
 
                         <div class="card-summary-btn-wrap">
-                            <button type="button" <?=$address->province_id!=0?'onClick="window.location.href=\' '.site_url('checkout/submit_order').' \' "':'disabled="disabled"'?> class="fastcon-btn primary-btn w-100 <?=$address->province_id==0?'disabled':''?>"><?=lang('checkout_securely')?></button>
+                            <button type="button" <?=$address!=null AND $address->province_id!=0?'onClick="window.location.href=\' '.site_url('checkout/submit_order').' \' "':'disabled="disabled"'?> class="fastcon-btn primary-btn w-100 <?=$address!=null AND $address->province_id==0?'disabled':''?>"><?=lang('checkout_securely')?></button>
                         </div>
 
                     </div>
@@ -299,7 +299,7 @@
         <div class="modal-body">
             <div class="modal-content">
                 <div class="modal-body">
-                    <?=form_open(site_url('pages/save_address'), ['class' => "guest-form", 'id' => 'address_form_member']);?>
+                    <?=form_open(site_url('member/save_address'), ['class' => "guest-form", 'id' => 'address_form_member']);?>
                         <div class="row">
                             <div class="col-12">
                                 <h4 class="fastcon-h4 cl-primary-900 text-uppercase"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt=""> <?=lang('personal_data')?></h4>

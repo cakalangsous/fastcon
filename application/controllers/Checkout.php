@@ -192,11 +192,14 @@ class Checkout extends Front {
 			$this->data['address'] = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('member')['member_id'], 'active' => 1]);
 			$this->data['member_address'] = db_get_all_data('fastcon_member_address', ['member_id' => $this->session->userdata('member')['member_id']], false, false, false, 'active desc');
 
-			$ongkir = db_get_row_data('fastcon_coverage_province', ['province_id' => $this->data['address']->province_id]);
 			$this->data['ongkir'] = 0;
-			if ($ongkir) {
-				$this->data['ongkir'] = $ongkir->shipping_price;
+			if ($this->data['address']) {
+				$ongkir = db_get_row_data('fastcon_coverage_province', ['province_id' => $this->data['address']->province_id]);
+				if ($ongkir) {
+					$this->data['ongkir'] = $ongkir->shipping_price;
+				}
 			}
+			
 			$cart = $this->Model_web->get_cart();
 		}
 
