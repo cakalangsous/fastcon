@@ -268,6 +268,7 @@ class Checkout extends Front {
 	{
 
 		// guest order
+		$account_email = '';
 		if (!$this->session->userdata('member')) {
 
 			// get active address
@@ -372,6 +373,8 @@ class Checkout extends Front {
 
 				insert_this_data('fastcon_product_orders', $order_data);
 			}
+
+			$account_email = $this->session->userdata('guest')['email'];
 
 			$this->session->unset_userdata('cart_contents');
 
@@ -499,6 +502,8 @@ class Checkout extends Front {
 				insert_this_data('fastcon_product_orders', $order_data);
 			}
 
+			$account_email = $this->session->userdata('member')['email'];
+
 			// delete cart for this member
 			delete_this_data('fastcon_product_cart', ['member_id' => $this->session->userdata('member')['member_id']]);
 
@@ -523,8 +528,8 @@ class Checkout extends Front {
 		$this->email->initialize($this->mail_config());
 		$this->email->set_newline("\r\n");
 		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
-		$this->email->to($arr['email']);
-		$this->email->subject('Fastcon - Thank you for registration');
+		$this->email->to($account_email);
+		$this->email->subject('Fastcon - Thank you for purchase');
 		$this->email->message($html);
 		
 		$this->email->send();

@@ -127,6 +127,7 @@ class Products extends Front {
 			$insert = $this->cart->insert($cart_data);
 		}else{
 			$cart_data['member_id'] = $this->session->userdata('member')['member_id'];
+			unset($cart_data['product_images']);
 
 			$cart = db_get_row_data('fastcon_product_cart', ['member_id' => $this->session->userdata('member')['member_id'], 'variant_id' => $product_variant->variant_id]);
 			if (!$cart) {
