@@ -23,11 +23,11 @@ jQuery(document).ready(domo);
 <!-- Content Header (Page header) -->
 <section class="content-header">
    <h1>
-      Voucher      <small><?= cclang('detail', ['Voucher']); ?> </small>
+      Coupon      <small><?= cclang('detail', ['Coupon']); ?> </small>
    </h1>
    <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class=""><a  href="<?= site_url('administrator/fastcon_voucher'); ?>">Voucher</a></li>
+      <li class=""><a  href="<?= site_url('administrator/fastcon_voucher'); ?>">Coupon</a></li>
       <li class="active"><?= cclang('detail'); ?></li>
    </ol>
 </section>
@@ -48,8 +48,8 @@ jQuery(document).ready(domo);
                         <img class="img-circle" src="<?= BASE_ASSET; ?>/img/view.png" alt="User Avatar">
                      </div>
                      <!-- /.widget-user-image -->
-                     <h3 class="widget-user-username">Voucher</h3>
-                     <h5 class="widget-user-desc">Detail Voucher</h5>
+                     <h3 class="widget-user-username">Coupon</h3>
+                     <h5 class="widget-user-desc">Detail Coupon</h5>
                      <hr>
                   </div>
 
@@ -57,7 +57,7 @@ jQuery(document).ready(domo);
                   <div class="form-horizontal" name="form_fastcon_voucher" id="form_fastcon_voucher" >
                    
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Voucher Id </label>
+                        <label for="content" class="col-sm-2 control-label">Coupon Id </label>
 
                         <div class="col-sm-8">
                            <?= _ent($fastcon_voucher->voucher_id); ?>
@@ -65,7 +65,7 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Voucher Code </label>
+                        <label for="content" class="col-sm-2 control-label">Coupon Code </label>
 
                         <div class="col-sm-8">
                            <?= _ent($fastcon_voucher->voucher_code); ?>
@@ -81,7 +81,7 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Voucher Description </label>
+                        <label for="content" class="col-sm-2 control-label">Coupon Description </label>
 
                         <div class="col-sm-8">
                            <?= _ent($fastcon_voucher->voucher_description); ?>
@@ -89,7 +89,7 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Voucher Description En </label>
+                        <label for="content" class="col-sm-2 control-label">Coupon Description En </label>
 
                         <div class="col-sm-8">
                            <?= _ent($fastcon_voucher->voucher_description_en); ?>
@@ -97,7 +97,7 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Voucher Discount </label>
+                        <label for="content" class="col-sm-2 control-label">Coupon Discount </label>
 
                         <div class="col-sm-8">
                            <?= _ent($fastcon_voucher->voucher_discount); ?>
@@ -149,9 +149,9 @@ jQuery(document).ready(domo);
 
                     <div class="view-nav">
                         <?php is_allowed('fastcon_voucher_update', function() use ($fastcon_voucher){?>
-                        <a class="btn btn-flat btn-info btn_edit btn_action" id="btn_edit" data-stype='back' title="edit fastcon_voucher (Ctrl+e)" href="<?= site_url('administrator/fastcon_voucher/edit/'.$fastcon_voucher->voucher_id); ?>"><i class="fa fa-edit" ></i> <?= cclang('update', ['Fastcon Voucher']); ?> </a>
+                        <a class="btn btn-flat btn-info btn_edit btn_action" id="btn_edit" data-stype='back' title="edit fastcon_voucher (Ctrl+e)" href="<?= site_url('administrator/fastcon_voucher/edit/'.$fastcon_voucher->voucher_id); ?>"><i class="fa fa-edit" ></i> <?= cclang('update', ['Fastcon Coupon']); ?> </a>
                         <?php }) ?>
-                        <a class="btn btn-flat btn-default btn_action" id="btn_back" title="back (Ctrl+x)" href="<?= site_url('administrator/fastcon_voucher/'); ?>"><i class="fa fa-undo" ></i> <?= cclang('go_list_button', ['Fastcon Voucher']); ?></a>
+                        <a class="btn btn-flat btn-default btn_action" id="btn_back" title="back (Ctrl+x)" href="<?= site_url('administrator/fastcon_voucher/'); ?>"><i class="fa fa-undo" ></i> <?= cclang('go_list_button', ['Fastcon Coupon']); ?></a>
                      </div>
                     
                   </div>

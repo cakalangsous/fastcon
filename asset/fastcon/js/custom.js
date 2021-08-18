@@ -81,8 +81,10 @@ $('#product_options1').change(function (e) {
             $.each(res.data, function(index, val) {
                 price_text = parseInt(val.price) - parseInt(val.discount);
                 sku = val.sku;
+                $('.main-price').removeClass('cl-error');
                  if(val.discount>0) {
                     real_price_text = val.price;
+                    $('.main-price').addClass('cl-error');
                  }
             });
 
@@ -176,6 +178,7 @@ $('#add_to_cart_btn').click(function (e) {
         }else {
             if (res.option=='option1') {
                 $('.helper-text.option1').show();
+                $('.helper-text.option2').show();
             }
             if (res.option=='option2') {
                 $('.helper-text.option2').show();
@@ -279,23 +282,30 @@ if (active_page=='cart') {
 
 $('#copy_user').change(function() {
     if(this.checked) {
-        let email = $('.guest-form #email').val();
+        let name = $('.guest-form #fullname').val();
         let phone = $('.guest-form #phone').val();
 
-        $('#email_penerima').val(email);
-        $('#phone_penerima').val(phone);
+        $('#receiver_name').val(name);
+        $('#receiver_phone').val(phone);
     }
+});
+
+$('.list-address-trigger').click(function (e) {
+    e.preventDefault();
+
+    $('.address-modal').modal('show');
 });
 
 $('.coupon-item').click(function (e) {
     e.preventDefault();
 
-    var voucher_code = $(this).data('code');
-    var voucher_desc = $(this).data('desc');
-
+    const voucher_code = $(this).data('code');
+    const voucher_desc = $(this).data('desc');
+    const voucher_id = $(this).data('id');
 
     $('#voucher_code').text(voucher_code);
     $('#voucher_description').html(voucher_desc);
+    // $('#use_coupon').attr('href', base_url+'member/use_coupon/'+voucher_id);
     $('.coupon-details-modal').modal('show');
 });
 
@@ -352,7 +362,7 @@ $('#kota_kecamatan').keyup(function(event) {
     if (search.length>2) {
         var result =[] ;
         $.ajax({
-            url: base_url + 'member/kota_kecamatan',
+            url: base_url + 'pages/kota_kecamatan',
             dataType: 'json',
             data: {[csrf_name]:csrf_val, kota_kecamatan:search},
             type: "POST",
@@ -382,12 +392,14 @@ $('#kota_kecamatan').keyup(function(event) {
 $('.edit_address').click(function(e) {
     e.preventDefault();
 
+
     let name = $(this).data('name');
     let email = $(this).data('email');
     let phone = $(this).data('phone');
     let address = $(this).data('address');
     let provinsi = $(this).data('province_id');
     let id = $(this).data('id');
+
 
     let btn = lang=='indonesian'?'PERBAHARUI ALAMAT':'UPDATE ADDRESS';
 
@@ -402,11 +414,29 @@ $('.edit_address').click(function(e) {
     $('#address_form_member').attr('action', base_url+'member/update_address/'+id)
     $('#address_form_member .primary-btn').text(btn)
 
+    if (member==='') {
+        $('#address_form_member').attr('action', base_url+'checkout/change_guest_address/'+id);
+    }
     $('#address_modal_form').modal('show');
 });
 
 $('#address_modal_form').on('hide.bs.modal', () => {
     $('#address_form_member').trigger('reset');
+});
+
+$('#agree').change(function (e) {
+    e.preventDefault();
+    $(this).closest('form').attr('action', base_url+'register_submit');
+    if (member!=='') {
+        $(this).closest('form').attr('action', base_url+'member/update_profile');
+    }
+    $(this).closest('form').find(':submit').removeAttr('disabled');
+    $(this).closest('form').find(':submit').removeClass('disabled');
+    if (!this.checked) {
+        $(this).closest('form').attr('action', '');
+        $(this).closest('form').find(':submit').attr('disabled', 'disabled');
+        $(this).closest('form').find(':submit').addClass('disabled');
+    }
 });
 
 function calc() {
@@ -430,26 +460,33 @@ function calc() {
             default : bata = 0;
         }
 
-        console.log(`bata=${bata}`);
-
-        let keliling, luas, kebutuhan, kubik;
+        let keliling, luas, kebutuhan, kubik, minimum_purchase;
 
         keliling = 2 * (panjang + lebar);
-        console.log(`keliling = ${keliling}`);
 
         luas = keliling * tinggi;
-        console.log(`luas = ${luas}`);
 
         kebutuhan = luas * bata;
-        console.log(`kebutuhan = ${kebutuhan}`);
-
 
         kubik = kebutuhan / (bata * 10);
-        console.log(`kubik = ${kubik}`);
+
+
+        minimum_purchase = 0;
+        if (kubik < 10.8 ) {
+            minimum_purchase = 10.8;
+        }
+        if(kubik > 10.8 && kubik < 30) {
+            minimum_purchase = 30;
+        }
+
+        if (kubik > 30) {
+            minimum_purchase = 45.36;
+        }
 
         if (!isNaN(kebutuhan) && !isNaN(kubik)) {
             $('#needs').text(kebutuhan.toFixed(1));
             $('#kubik_needs').text(kubik.toFixed(1));
+            $('#minimum_purchase').text(minimum_purchase);
         }
 
     }

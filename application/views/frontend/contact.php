@@ -22,7 +22,9 @@
                                 <?php if ($cs->setting_item=='office'): ?>
                                     <?=$cs->setting_value?>
 
-                                    <a href="tel:<?=$cs->phone?>" class="fastcon-body"><?=$cs->phone?></a>
+                                    <a href="tel:<?=$cs->phone?>" class="fastcon-body">
+                                        <img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.svg" style="margin-right: 8px;" width="16" alt="phone"><?=$cs->phone?>
+                                    </a>
                                 <?php endif ?>
                             <?php endforeach ?>
                         </div>
@@ -33,7 +35,10 @@
                                 <?php if ($cs->setting_item=='factory'): ?>
                                     <?=$cs->setting_value?>
 
-                                    <a href="tel:<?=$cs->phone?>" class="fastcon-body"><?=$cs->phone?></a>
+                                    <a href="tel:<?=$cs->phone?>" class="fastcon-body">
+                                        <img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.svg" style="margin-right: 8px;" width="16" alt="phone">
+                                        <?=$cs->phone?>    
+                                    </a>
                                 <?php endif ?>
                             <?php endforeach ?>
                         </div>
@@ -65,17 +70,17 @@
 
                         <div class="form-group">
                             <label for="name" class="fastcon-label cl-grey-900"><?=lang('fullname')?>*</label>
-                            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="<?=lang('enter_here')?>">
                         </div>
 
                         <div class="form-group">
                             <label for="email" class="fastcon-label cl-grey-900"><?=lang('email')?></label>
-                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="<?=lang('enter_here')?>">
                         </div>
 
                         <div class="form-group">
                             <label for="phone" class="fastcon-label cl-grey-900"><?=lang('phone')?>*</label>
-                            <input type="number" class="form-control" id="phone" name="phone" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <input type="number" class="form-control" id="phone" name="phone" aria-describedby="emailHelp" placeholder="<?=lang('enter_here')?>">
                         </div>
 
                         <div class="form-group">
@@ -92,7 +97,7 @@
                             <textarea class="form-control" id="pesan" rows="4" name="message"></textarea>
                         </div>
 
-                        <p class="fastcon-description">*Wajib diisi</p>
+                        <p class="fastcon-description">*<?=lang('required')?></p>
 
                         <button type="submit" class="fastcon-btn primary-btn text-uppercase"><?=lang('send_message')?></button>
 

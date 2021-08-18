@@ -8,7 +8,7 @@
             </div>
 
             <div class="calc-form-wrap">
-                <h3 class="fastcon-h3 cl-grey-900"><?=lang('simple_aac_calc')?></h3>
+                <h3 class="fastcon-h3 cl-grey-900 text-uppercase"><?=lang('simple_aac_calc')?></h3>
 
                 <form id="calculator_form">
                     <div class="row">
@@ -67,7 +67,7 @@
 
                     <div class="col-md-4 col-6 mb-30">
                         <p class="fastcon-label cl-grey-900 text-uppercase"><?=lang('factory_minimum')?></p>
-                        <h1 class="fastcon-calc-result cl-primary-900">0</h1>
+                        <h1 class="fastcon-calc-result cl-primary-900" id="minimum_purchase">0</h1>
                     </div>
                 </div>
             </div>

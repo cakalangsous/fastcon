@@ -83,10 +83,12 @@ p, h1, h2, h3, h4, h5, h6 {
 .calc-content-wrap p,
 .coupon-description p,
 .fastcon-post-info p,
-.fastcon-footer-about p {
+.fastcon-footer-about p,
+.calc-content-wrap p,
+.calc-content-wrap li {
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 14px !important;
   line-height: 19px;
   letter-spacing: 0;
 }
@@ -188,6 +190,16 @@ p, h1, h2, h3, h4, h5, h6 {
   background-color: #d3302f;
   color: #fff !important;
   border: 1px solid #d3302f;
+}
+
+button.disabled {
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
+}
+
+button.disabled:hover {
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
 }
 
 .error-btn {
@@ -2162,7 +2174,7 @@ ul.member-menu li.active a::after {
 
 .member-navbar {
   padding-left: 4%;
-  width: 18%;
+  width: 20%;
   background-color: #F5F5F5;
 }
 
@@ -2684,6 +2696,19 @@ span.member_initial {
 }
 small.helper-text {
   display: none;
+}
+.cancel-btn {
+  font-family: 'Jura', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+
+  display: flex;
+  align-items: center;
+}
+
+.cancel-btn svg {
+  margin-right: 10px;
 }
 
 @media screen and (max-width: 991px) {

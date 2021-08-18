@@ -13,9 +13,9 @@
 
                         <ul class="tab-nav clearfix text-center large-medium-only">
                             <li class="ui-tabs-active"><a href="#">Semua Produk</a></li>
-                            <li><a href="#">BATA RINGAN AAC</a></li>
-                            <li><a href="#">MORTAR</a></li>
-                            <li><a href="#">PANEL</a></li>
+                            <?php foreach ($product_category as $pc): ?>
+                                <li><a href="#"><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></a></li>
+                            <?php endforeach ?>
                         </ul>
 
                         <div class="tab-container">

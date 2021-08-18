@@ -127,13 +127,11 @@ class Fastcon_contact_settings extends Admin
 			exit;
 		}
 		
-		$this->form_validation->set_rules('setting_item', 'Setting Item', 'trim|required');
 		$this->form_validation->set_rules('setting_value', 'Setting Value', 'trim|required');
 		
 		if ($this->form_validation->run()) {
 		
 			$save_data = [
-				'setting_item' => $this->input->post('setting_item'),
 				'setting_value' => $this->input->post('setting_value'),
 				'phone' => $this->input->post('phone'),
 			];

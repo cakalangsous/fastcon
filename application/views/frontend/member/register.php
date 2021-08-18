@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row register-title-wrap">
                 <div class="col-12 text-center">
-                    <h1 class="fastcon-h1 cl-grey-900 text-uppercase">mohon isi formulir pendaftaran</h1>
+                    <h1 class="fastcon-h1 cl-grey-900 text-uppercase"><?=lang('fill_register_form')?></h1>
                 </div>
             </div>
 
@@ -17,47 +17,45 @@
 
             <div class="row">
                 <div class="col-12">
-                    <h4 class="fastcon-h4 cl-primary-900 mb-30"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt="">  DATA DIRI</h4>
+                    <h4 class="fastcon-h4 cl-primary-900 mb-30 text-uppercase"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt="">  <?=lang('personal_data')?></h4>
                     <?=form_open(site_url('register_submit'), ['method' => "post", 'class' => "register-form"]);?>
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="fullname" class="fastcon-label cl-grey-900">Nama lengkap*</label>
-                                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Ketik disini">
+                                    <label for="fullname" class="fastcon-label cl-grey-900"><?=lang('fullname')?>*</label>
+                                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="<?=lang('enter_here')?>">
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="email" class="fastcon-label cl-grey-900">E-mail*</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Ketik disini">
+                                    <label for="email" class="fastcon-label cl-grey-900"><?=lang('email')?>*</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="<?=lang('enter_here')?>">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="password" class="fastcon-label cl-grey-900">KATA SANDI*</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Ketik disini">
+                                    <label for="password" class="fastcon-label cl-grey-900"><?=lang('password')?>*</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="<?=lang('enter_here')?>">
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label for="c_password" class="fastcon-label cl-grey-900">ULANGI KATA SANDI*</label>
-                                    <input type="password" class="form-control" id="c_password" name="c_password" placeholder="Ketik disini">
+                                    <label for="c_password" class="fastcon-label cl-grey-900"><?=lang('confirm_password')?>*</label>
+                                    <input type="password" class="form-control" id="c_password" name="c_password" placeholder="<?=lang('enter_here')?>">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-check">
-                                <input type="checkbox" value="1" checked> <span class="fastcon-description cl-grey-900">Saya menyetujui data pribadi Anda akan digunakan untuk mendukung pengalaman Anda di seluruh situs web ini</span>
+                                <input type="checkbox" value="1" checked id="agree"> <span class="fastcon-description cl-grey-900"><?=lang('personal_data_agree')?></span>
                             </div>
                         </div> 
 
                         <div class="btn-wrap">
-                            <button type="submit" class="fastcon-btn primary-btn text-uppercase">daftar sekarang</button>
-
+                            <button type="submit" class="fastcon-btn primary-btn text-uppercase"><?=lang('register_now')?></button>
                         </div>
-                        <!-- <a href="<?=site_url('member/dashboard')?>">Temp link to member dashboard</a> -->
                     <?=form_close();?>
                 </div>
             </div>

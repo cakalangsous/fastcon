@@ -27,12 +27,12 @@
 			            <?php endif ?>
                         <div class="form-group">
                             <label for="email" class="fastcon-label cl-grey-900">E-mail*</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Ketik disini">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="<?=lang('enter_here')?>">
                         </div>
 
                         <div class="form-group">
                             <label for="password" class="fastcon-label cl-grey-900"><?=lang('password')?>* <a href="<?=site_url('forgot-password')?>" class="cl-grey-900">(<?=lang('forget_password')?>?)</a></label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Ketik disini">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="<?=lang('enter_here')?>">
                         </div>
 
                         <div class="form-check p-0">

@@ -408,10 +408,34 @@ class Pages extends Front {
 		];
 		
 		$this->session->set_userdata( $array );
+
+		if ($this->session->userdata('guest')) {
+			$this->session->unset_userdata('guest');
+		}
+
+		if ($this->session->userdata('guest_address')) {
+			$this->session->unset_userdata('guest_address');
+		}
+
 		if($this->agent->referrer() == site_url('checkout')) {
 			redirect('checkout');
 		}
 		redirect(site_url('member/dashboard'));
+	}
+
+	public function kota_kecamatan()
+	{
+		if (!$this->input->is_ajax_request()) {
+		    $this->not_found();
+			return;
+		}
+
+		$this->load->model('Model_web');
+
+		$search = $this->input->post('kota_kecamatan');
+		$result = $this->Model_web->get_kota_kecamatan($search);
+		echo json_encode($result);
+
 	}
 
 	public function calculator()

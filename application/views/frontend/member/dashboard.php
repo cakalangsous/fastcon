@@ -31,29 +31,29 @@
                             <?=form_open(site_url('member/update_profile'), ['class' => "edit-profile-wrap"]);?>
                                 <div class="form-group">
                                     <label for="name" class="fastcon-label cl-grey-900"><?=lang('fullname')?>*</label>
-                                    <input type="text" class="form-control" id="name" name="fullname" value="<?=$member->fullname?>" placeholder="Ketik disini">
+                                    <input type="text" class="form-control" id="name" name="fullname" value="<?=$member->fullname?>" placeholder="<?=lang('enter_here')?>">
                                 </div>
     
                                 <div class="form-group">
                                     <label for="email" class="fastcon-label cl-grey-900"><?=lang('email')?></label>
-                                    <input type="email" class="form-control disabled" id="email" value="<?=$member->email?>" placeholder="Ketik disini" disabled>
+                                    <input type="email" class="form-control disabled" id="email" value="<?=$member->email?>" placeholder="<?=lang('enter_here')?>" disabled>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password" class="fastcon-label cl-grey-900"><?=lang('password')?>*</label>
-                                    <input type="password" class="form-control" id="password" value="" name="password" placeholder="Ketik disini">
+                                    <input type="password" class="form-control" id="password" value="" name="password" placeholder="<?=lang('enter_here')?>">
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="c_password" class="fastcon-label cl-grey-900"><?=lang('confirm_password')?>*</label>
-                                    <input type="password" class="form-control" id="c_password" value="" name="c_password" placeholder="Ketik disini">
+                                    <input type="password" class="form-control" id="c_password" value="" name="c_password" placeholder="<?=lang('enter_here')?>">
                                 </div>
 
                                 <div class="form-check pl-0">
-                                    <input type="checkbox" value="1" checked> <span class="fastcon-description cl-grey-900">Saya menyetujui data pribadi Anda akan digunakan untuk mendukung pengalaman Anda di seluruh situs web ini</span>
+                                    <input type="checkbox" value="1" checked id="agree"> <span class="fastcon-description cl-grey-900"><?=lang('personal_data_agree')?></span>
                                 </div>
 
-                                <button type="submit" class="fastcon-btn primary-btn">SIMPAN</button>
+                                <button type="submit" class="fastcon-btn primary-btn"><?=lang('save')?></button>
                             <?=form_close();?>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             <div class="address-wraper">
                                 <h3 class="fastcon-h3 cl-grey-900 mb-30 text-uppercase"><?=lang('address_list')?></h3>
                                 <?php if (count($member_address)<3): ?>
-                                    <a href="javascript:void(0)" id="add_address_btn" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ TAMBAH ALAMAT</a>
+                                    <a href="javascript:void(0)" id="add_address_btn" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ <?=lang('add_address')?></a>
                                 <?php endif ?>
 
                                 <?php foreach ($member_address as $ma): ?>
@@ -135,15 +135,15 @@
                                 <hr />
                                 <div class="form-group">
                                     <label for="email" class="fastcon-label cl-grey-900"><?=lang('fullname')?>*</label>
-                                    <input type="text" class="form-control" name="fullname" placeholder="Ketik disini">
+                                    <input type="text" class="form-control" name="fullname" placeholder="<?=lang('enter_here')?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="fastcon-label cl-grey-900"><?=lang('email')?>*</label>
-                                    <input type="email" class="form-control" name="email" placeholder="Ketik disini">
+                                    <input type="email" class="form-control" name="email" placeholder="<?=lang('enter_here')?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="phone" class="fastcon-label cl-grey-900"><?=lang('phone')?>*</label>
-                                    <input type="text" class="form-control" name="phone" placeholder="Ketik disini">
+                                    <input type="text" class="form-control" name="phone" placeholder="<?=lang('enter_here')?>">
                                 </div>
 
                                 <div class="form-group">
@@ -158,7 +158,7 @@
 
                                 <div class="form-group">
                                     <label for="kota_kecamatan" class="fastcon-label cl-grey-900"><?=lang('city_province')?>*</label>
-                                    <input type="text" id="kota_kecamatan" name="kota_kecamatan" class="form-control" placeholder="Tulis minimal 3 karakter" autocomplete="on">
+                                    <input type="text" id="kota_kecamatan" name="kota_kecamatan" class="form-control" placeholder="<?=lang('min_3_char')?>" autocomplete="on">
                                     <div id="auto_result" class="frontbox"></div>
                                 </div>
 

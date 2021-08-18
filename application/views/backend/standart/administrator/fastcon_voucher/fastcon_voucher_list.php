@@ -33,11 +33,11 @@ jQuery(document).ready(domo);
 <!-- Content Header (Page header) -->
 <section class="content-header">
    <h1>
-      Voucher<small><?= cclang('list_all'); ?></small>
+      Coupon<small><?= cclang('list_all'); ?></small>
    </h1>
    <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Voucher</li>
+      <li class="active">Coupon</li>
    </ol>
 </section>
 <!-- Main content -->
@@ -60,18 +60,18 @@ jQuery(document).ready(domo);
                         <img class="img-circle" src="<?= BASE_ASSET; ?>/img/list.png" alt="User Avatar">
                      </div>
                      <!-- /.widget-user-image -->
-                     <h3 class="widget-user-username">Voucher</h3>
+                     <h3 class="widget-user-username">Coupon</h3>
                      <h5 class="widget-user-desc"><?= cclang('list_all', ['Voucher']); ?>  <i class="label bg-yellow"><?= $fastcon_voucher_counts; ?>  <?= cclang('items'); ?></i></h5>
                   </div>
                   <div class="table-responsive"> 
                   <table class="table table-bordered table-striped dataTable" id="fastcon_voucher">
                      <thead>
                         <tr class="">
-                           <th>Voucher Code</th>
+                           <th>Coupon Code</th>
                            <th>Short Desc</th>
-                           <th>Voucher Description</th>
-                           <th>Voucher Description En</th>
-                           <th>Voucher Discount</th>
+                           <th>Coupon Description</th>
+                           <th>Coupon Description En</th>
+                           <th>Coupon Discount</th>
                            <th>Min Purchase</th>
                            <th>Start Date</th>
                            <th>End Date</th>

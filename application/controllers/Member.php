@@ -12,10 +12,11 @@ class Member extends Front {
 			$this->session->set_flashdata('error', 'You need to login to access this page!');
 			redirect(site_url('login'));
 		}
+		
+		$this->load->model('Model_web');
 
 		$this->data['member_menu'] = 'dashboard';
-
-		$this->data['total_coupon'] = count(db_get_all_data('fastcon_voucher', ['active' => 1]));
+		$this->data['total_coupon'] = count($this->Model_web->get_useable_voucher());
 	}
 
 
@@ -57,21 +58,6 @@ class Member extends Front {
 
 		$this->session->set_flashdata('response', 'Profile Updated!');
 		redirect_back();
-	}
-
-	public function kota_kecamatan()
-	{
-		if (!$this->input->is_ajax_request()) {
-		    $this->not_found();
-			return;
-		}
-
-		$this->load->model('Model_web');
-
-		$search = $this->input->post('kota_kecamatan');
-		$result = $this->Model_web->get_kota_kecamatan($search);
-		echo json_encode($result);
-
 	}
 
 	public function save_address()
@@ -189,18 +175,18 @@ class Member extends Front {
 		]);
 
 		$address = [
-			'name'		=> $arr['fullname'],
-			'email'		=> $arr['email'],
-			'phone'		=> $arr['phone'],
-			'province_id'=> $arr['province_id'],
-			'provinsi' 	=> $destination_code->provinsi,
-			'kabupaten' => $destination_code->kabupaten,
-			'kecamatan' => $destination_code->kecamatan,
-			'kelurahan' => $destination_code->kelurahan,
-			'kode_pos' 	=> $destination_code->kode_pos,
-			'address'	=> $arr['address'],
-			'member_id' => $this->session->userdata('member')['member_id'],
-			'active'  	=> $selected_address->active
+			'name'			=> $arr['fullname'],
+			'email'			=> $arr['email'],
+			'phone'			=> $arr['phone'],
+			'province_id'	=> (int) $arr['province_id'],
+			'provinsi' 		=> $destination_code->provinsi,
+			'kabupaten' 	=> $destination_code->kabupaten,
+			'kecamatan' 	=> $destination_code->kecamatan,
+			'kelurahan' 	=> $destination_code->kelurahan,
+			'kode_pos' 		=> $destination_code->kode_pos,
+			'address'		=> $arr['address'],
+			'member_id' 	=> $this->session->userdata('member')['member_id'],
+			'active'  		=> $selected_address->active
 		];
 
 		update_this_data('fastcon_member_address', ['id' => $address_id], $address);
@@ -238,20 +224,85 @@ class Member extends Front {
 	{
 		$this->data['title'] = 'History';
 		$this->data['member_menu'] = 'history';
+		$this->data['transaction_history'] = db_get_all_data('fastcon_product_orders', ['member_id' => $this->session->userdata('member')['member_id']]);
+		$this->data['transaction_history_grouped'] = db_get_all_data('view_order_grouped', ['member_id' => $this->session->userdata('member')['member_id']], false, false, false, 'order_id desc', 'order_code');
+
+		// echo '<pre>';
+		// print_r($this->data['transaction_history_grouped']);
+		// exit;
+
 		$this->render('member/history', $this->data);
+	}
+
+	public function cancel_order($order_code = false)
+	{
+		if (!$order_code) {
+			$this->not_found();
+			return;
+		}
+
+		$orders = db_get_all_data('fastcon_product_orders', ['order_code' => $order_code]);
+		if (!$orders OR $orders[0]->member_id != $this->session->userdata('member')['member_id'] OR $orders[0]->order_status!=1) {
+			$this->not_found();
+			return;
+		}
+
+		foreach ($orders as $o) {
+			update_this_data('fastcon_product_orders', ['order_id' => $o->order_id], ['order_status' => 4]);
+		}
+
+		$this->session->set_flashdata('response', 'Order cancelled.');
+		redirect(site_url('member/history'));
 	}
 
 	public function coupon()
 	{
 		$this->data['title'] = 'Coupon';
 		$this->data['member_menu'] = 'coupon';
-		$this->data['coupon'] = db_get_all_data('fastcon_voucher');
+		$this->data['coupon'] = $this->Model_web->get_useable_voucher();
+		// $this->data['coupon'] = db_get_all_data('view_usable_voucher');
 		$this->render('member/coupon', $this->data);
 	}
 
+	// public function use_coupon($voucher_id=false)
+	// {
+	// 	if (!$voucher_id) {
+	// 		$this->not_found();
+	// 		return;
+	// 	}
+
+	// 	if (!$voucher = db_get_row_data('view_usable_voucher', ['voucher_id' => $voucher_id])) {
+	// 		$this->not_found();
+	// 		return;
+	// 	}
+
+	// 	if ($this->session->userdata('voucher')) {
+	// 		$this->session->unset_userdata('voucher');
+	// 	}
+
+	// 	$array = [
+	// 		'voucher_id' => $voucher->voucher_id,
+	// 		'voucher_code' => $voucher->voucher_code,
+	// 		'voucher_discount' => $voucher->voucher_discount,
+	// 		'min_purchase' => $voucher->min_purchase,
+	// 		'start_date' => $voucher->start_date,
+	// 		'end_date' => $voucher->end_date,
+	// 	];
+		
+	// 	$this->session->set_userdata(['voucher' => $array]);
+	// 	redirect(site_url('products'));
+
+	// }
+
 	public function logout()
 	{
-		$this->session->sess_destroy('member');
+		$this->session->unset_userdata('member');
+		if ($this->session->userdata('cart')) {
+			$this->session->unset_userdata('cart');
+		}
+		if ($this->session->userdata('voucher')) {
+			$this->session->unset_userdata('voucher');
+		}
 		redirect(site_url());
 	}
 

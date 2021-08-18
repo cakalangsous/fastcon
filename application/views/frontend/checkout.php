@@ -42,7 +42,20 @@
                     <div class="address-wrap">
                         <div class="title-wrap">
                             <h4 class="fastcon-h4 cl-primary-900 text-uppercase"><?=lang('delivery_details')?></h4>
-                            <a href="javascript:void(0)" class="edit-link large-medium-only" data-toggle="modal" data-target=".address-modal">
+                            <a href="javascript:void(0)" class="edit-link large-medium-only <?=$this->session->userdata('guest')?'edit_address':'list-address-trigger'?>"
+                                <?php 
+                                    if ($address) {
+                                        echo "data-name='".$address->name."'";
+                                        echo "data-email='".$address->email."'";
+                                        echo "data-id='".$address->id."'";
+                                        echo "data-phone='".$address->phone."'";
+                                        echo "data-province_id='".$address->province_id."'";
+                                        echo "data-address='".$address->address."'";
+                                    }else{
+                                        echo '';
+                                    }
+                                ?>
+                            >
                                 <h4 class="fastcon-h4 cl-primary-900 text-uppercase">
                                     <img src="<?=BASE_ASSET?>fastcon/img/icons/pencil.png" alt="">
                                     <?=lang('edit')?>
@@ -70,19 +83,32 @@
 
                     </div>
 
-                    <!-- <div class="fastcon-alert fastcon-alert-error">
-                        <div class="alert-header">
-                            <p class="alert-title">Peringatan!</p>
+                    <?php if ($this->session->userdata('error')): ?>
+                        <div class="fastcon-alert fastcon-alert-error">
+                            <div class="alert-header">
+                                <p class="alert-title"></p>
+                            </div>
+                            <div class="alert-body">
+                                <p class="alert-message"><?=$this->session->userdata('error')?></p>
+                            </div>
                         </div>
-                        <div class="alert-body">
-                            <p class="alert-message">Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 7421270 atau kontak kami untuk melanjutkan transaksi Anda.</p>
+                    <?php endif ?>
+
+                    <?php if ($address->province_id==0): ?>
+                        <div class="fastcon-alert fastcon-alert-error">
+                            <div class="alert-header">
+                                <p class="alert-title"><?=lang('warning')?>!</p>
+                            </div>
+                            <div class="alert-body">
+                                <p class="alert-message"><?=lang('deliver_not_available')?></p>
+                            </div>
                         </div>
-                    </div> -->
+                    <?php endif ?>
 
                     <?php if ($this->session->flashdata('voucher_error')): ?>
                         <div class="fastcon-alert fastcon-alert-error">
                             <div class="alert-header">
-                                <p class="alert-title">Peringatan!</p>
+                                <p class="alert-title"><?=lang('warning')?>!</p>
                             </div>
                             <div class="alert-body">
                                 <p class="alert-message"><?=$this->session->flashdata('voucher_error');?></p>
@@ -133,7 +159,7 @@
 
                         <div class="card-summary-product-item mb-0">
                             <div class="product">
-                                <p class="fastcon-description">PPN (10%)</p>
+                                <p class="fastcon-description"><?=lang('tax')?> (10%)</p>
                             </div>
                             <div class="price">
                                 <p>Rp<?=number_format(0.1*$total)?></p>
@@ -182,24 +208,26 @@
                         </div>
 
                         <div class="card-summary-btn-wrap">
-                            <a href="<?=site_url('checkout/submit_order')?>" class="fastcon-btn primary-btn w-100"><?=lang('checkout_securely')?></a>
+                            <button type="button" <?=$address->province_id!=0?'onClick="window.location.href=\' '.site_url('checkout/submit_order').' \' "':'disabled="disabled"'?> class="fastcon-btn primary-btn w-100 <?=$address->province_id==0?'disabled':''?>"><?=lang('checkout_securely')?></button>
                         </div>
 
                     </div>
 
-                    <?=form_open(site_url('checkout/voucher'), ['class' => 'coupon-form', 'method' => 'POST']);?>
-                        <div class="form-group">
-                            <label class="fastcon-label text-capitalize cl-grey-900" for="voucher"><?=lang('coupon_code')?></label>
-                            <div class="d-flex">
-                                <input type="text" class="form-control" id="voucher" value="<?=$this->session->userdata('voucher')!=null?strtoupper($this->session->userdata('voucher')['voucher_code']):''?>" name="voucher" aria-describedby="emailHelp" placeholder="Ketik disini">
-                                <?php if ($this->session->userdata('voucher')): ?>
-                                    <a href="<?=site_url('checkout/voucher_delete')?>" class="fastcon-btn coupon-btn error-btn width-md-fit width-sm-fit"><?=lang('remove_coupon')?></a>
-                                <?php else: ?>
-                                    <button type="submit" class="fastcon-btn coupon-btn secondary-btn width-md-fit width-sm-fit"><?=lang('update')?></button>
-                                <?php endif ?>
+                    <?php if ($this->session->userdata('member')): ?>
+                        <?=form_open(site_url('checkout/voucher'), ['class' => 'coupon-form', 'method' => 'POST']);?>
+                            <div class="form-group">
+                                <label class="fastcon-label text-capitalize cl-grey-900" for="voucher"><?=lang('coupon_code')?></label>
+                                <div class="d-flex">
+                                    <input type="text" class="form-control" id="voucher" value="<?=$this->session->userdata('voucher')!=null?strtoupper($this->session->userdata('voucher')['voucher_code']):''?>" name="voucher" aria-describedby="emailHelp" placeholder="<?=lang('enter_here')?>">
+                                    <?php if ($this->session->userdata('voucher')): ?>
+                                        <a href="<?=site_url('checkout/voucher_delete')?>" class="fastcon-btn coupon-btn error-btn width-md-fit width-sm-fit"><?=lang('remove_coupon')?></a>
+                                    <?php else: ?>
+                                        <button type="submit" class="fastcon-btn coupon-btn secondary-btn width-md-fit width-sm-fit"><?=lang('update')?></button>
+                                    <?php endif ?>
+                                </div>
                             </div>
-                        </div>
-                    <?=form_close();?>
+                        <?=form_close();?>
+                    <?php endif ?>
                 </div>
             </div>
 
@@ -216,7 +244,7 @@
                     <h3 class="fastcon-h3 cl-grey-900 text-uppercase text-center mb-30"><?=lang('personal_data')?></h3>
                     <?php if (count($member_address)<3): ?>
                         <div class="d-flex w-100">
-                            <a href="javascript:void(0)" id="add_address_btn" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ TAMBAH ALAMAT</a>
+                            <a href="javascript:void(0)" id="add_address_btn" class="fastcon-btn secondary-btn w-100 text-center mb-20">+ <?=lang('add_address')?></a>
                         </div>
                     <?php endif ?>
 
@@ -271,7 +299,7 @@
         <div class="modal-body">
             <div class="modal-content">
                 <div class="modal-body">
-                    <?=form_open(site_url('member/save_address'), ['class' => "guest-form", 'id' => 'address_form_member']);?>
+                    <?=form_open(site_url('pages/save_address'), ['class' => "guest-form", 'id' => 'address_form_member']);?>
                         <div class="row">
                             <div class="col-12">
                                 <h4 class="fastcon-h4 cl-primary-900 text-uppercase"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt=""> <?=lang('personal_data')?></h4>
@@ -301,7 +329,7 @@
 
                                 <div class="form-group">
                                     <label for="kota_kecamatan" class="fastcon-label cl-grey-900"><?=lang('city_province')?>*</label>
-                                    <input type="text" id="kota_kecamatan" name="kota_kecamatan" class="form-control" placeholder="Tulis minimal 3 karakter" autocomplete="on">
+                                    <input type="text" id="kota_kecamatan" name="kota_kecamatan" class="form-control" placeholder="<?=lang('min_3_char')?>" autocomplete="on">
                                     <div id="auto_result" class="frontbox"></div>
                                 </div>
 

@@ -78,9 +78,9 @@ class Fastcon_voucher extends Admin
 
 	    	$row[] = $fastcon_voucher->short_desc;
 
-	    	$row[] = $fastcon_voucher->voucher_description;
+	    	$row[] = substr(strip_tags($fastcon_voucher->voucher_description), 0, 150);
 
-	    	$row[] = $fastcon_voucher->voucher_description_en;
+	    	$row[] = substr(strip_tags($fastcon_voucher->voucher_description_en), 0, 150);
 
 	    	$row[] = $fastcon_voucher->voucher_discount;
 

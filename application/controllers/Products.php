@@ -99,7 +99,7 @@ class Products extends Front {
 			return;
 		}
 
-		$product_variant = db_get_row_data('fastcon_product_variant', ['product_id' => $arr['product'], 'product_option_value1' => $arr['option']['option1']]);
+		$product_variant = db_get_row_data('view_product_option_variant', ['product_id' => $arr['product'], 'product_option_value1' => $arr['option']['option1']]);
 
 
 		if (isset($arr['option']['option2'])) {
@@ -107,13 +107,14 @@ class Products extends Front {
 				echo json_encode(['status' => false, 'option' => 'option2', 'message' => 'Variant not found!']);
 				return;
 			}
-			$product_variant = db_get_row_data('fastcon_product_variant', ['product_id' => $arr['product'], 'product_option_value1' => $arr['option']['option1'], 'product_option_value2' => $arr['option']['option2']]);
+			$product_variant = db_get_row_data('view_product_option_variant', ['product_id' => $arr['product'], 'product_option_value1' => $arr['option']['option1'], 'product_option_value2' => $arr['option']['option2']]);
 		}
 
 		$cart_data = [
 			'product_id' => $product_variant->product_id,
 			'variant_id' => $product_variant->variant_id,
-			'quantity' => $arr['quantity']
+			'quantity' => $arr['quantity'],
+			'product_images' => $product_variant->product_images
 		];
 
 		if (!$this->session->userdata('member')) {
@@ -121,6 +122,7 @@ class Products extends Front {
 			$cart_data['price'] = $product_variant->price;
 			$cart_data['qty'] = $arr['quantity'];
 			$cart_data['name'] = $product_variant->product_id;
+			$cart_data['discount'] = $product_variant->discount;
 
 			$insert = $this->cart->insert($cart_data);
 		}else{

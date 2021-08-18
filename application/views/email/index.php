@@ -189,7 +189,7 @@ img.g-img + div {
 	color: #30e3ca;
 	font-size: 24px;
 	font-weight: 700;
-	font-family: 'Open Sans';
+	font-family: 'Open Sans', sans-serif !important;
 }
 
 /*HERO*/
@@ -250,7 +250,7 @@ img.g-img + div {
 }
 
 .heading {
-  font-family: "Jura" !important;
+  font-family: "Jura", sans-serif; !important;
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
@@ -311,6 +311,16 @@ img.g-img + div {
   color: #fff;
 }
 
+.contact-us * {
+    color: #212121;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 14px;
+}
+
+.contact-us p {
+    margin: 0;
+}
+
 li.marketplace img {
     margin-right:7px;
 }
@@ -324,12 +334,64 @@ ul.social li{
 	margin-right: 10px;
 }
 
+.card-summary {
+  padding: 20px;
+  background: #FAFAFA;
+  border: 1px dashed #9E9E9E;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.card-summary h4 {
+  margin-bottom: 22px;
+}
+
+.card-summary .line {
+  margin: 20px 0;
+}
+
+.card-summary-product-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.card-summary-product-item p {
+  color: #212121;
+}
+
+.card-summary-product-item .price {
+  margin-left: auto;
+}
+
+.card-summary-product-item .price p {
+  font-family: 'Jura', sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.card-summary-btn-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  margin-top: 10px;
+}
+
+p {
+    margin: 0 !important;
+}
+
     </style>
-
-
 </head>
 
-<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1; font-family: 'Open Sans';">
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1; font-family: 'Open Sans', sans-serif !important;">
 	<center style="width: 100%; background-color: #f1f1f1;">
     <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;"><?=$caption?>
     </div>
@@ -359,17 +421,98 @@ ul.social li{
 
                         <?php if (isset($link)): ?>
                             <div class="text" style="text-align: center; margin-top: 3rem;">
-                                <a href="<?=$link?>" style="padding: 10px 15px; display: inline-block; background-color: #00672B; color: #fff; border-radius: 8px; font-size: 16px; line-height: 24px; font-weight: normal;"><?=$link_text?></a>
+                                <a href="<?=$link?>" style="padding: 10px 15px; display: inline-block; background-color: #00672B; color: #fff; border-radius: 8px; font-size: 16px; line-height: 24px; font-weight: normal; font-family:'Open Sans', sans-serif !important; "><?=$link_text?></a>
                             </div>
                         <?php endif ?>
             		</td>
             	</tr>
+                <tr>
+                    <td>
+                        <div class="card-summary" style="margin:40px 0;">
+                            <h4 style="font-family: 'Jura',sans-serif; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('summary')?></h4>
+
+                            <?php $total=0; foreach ($cart as $c): ?>
+
+                                <?php
+                                    $ongkir = '';
+                                    $total = $total + ($c->qty * ($c->price-$c->discount));
+                                ?>
+                                <div class="card-summary-product-item">
+                                    <div class="product">
+                                        <p class="fastcon-description" style="font-family: 'Jura', sans-serif;"><?=$c->product_name?></p>
+                                        <p class="fastcon-description" style="font-size: 12px;"><?=$lang=='indonesian'?$c->product_option1_name:$c->product_option1_name_en?>: <?=$c->product_option1_value?></p>
+                                        <?php if ($c->product_option2_id): ?>
+                                            <p class="fastcon-description" style="font-size: 12px;"><?=$lang=='indonesian'?$c->product_option2_name:$c->product_option2_name_en?>: <?=$c->product_option2_value?></p>
+                                        <?php endif ?>
+                                        <p class="fastcon-description" style="font-size: 12px;"><b>x<?=$c->qty?></b></p>
+                                    </div>
+                                    <div class="price">
+                                        <p>Rp<?=number_format($c->qty * ($c->price-$c->discount))?></p>
+                                    </div>
+                                </div>
+                            <?php $ongkir = $c->shipping_cost; endforeach ?>
+
+                            <div class="line"></div>
+
+                            <div class="card-summary-product-item mb-0">
+                                <div class="product">
+                                    <p class="fastcon-description" style="font-size: 12px; font-weight: bold;">Subtotal</p>
+                                </div>
+                                <div class="price">
+                                    <p>Rp<?=number_format($total)?></p>
+                                </div>
+                            </div>
+
+                            <div class="card-summary-product-item mb-0">
+                                <div class="product">
+                                    <p class="fastcon-description" style="font-size: 12px; font-weight: bold;"><?=lang('tax')?> (10%)</p>
+                                </div>
+                                <div class="price">
+                                    <p>Rp<?=number_format(0.1*$total)?></p>
+                                </div>
+                            </div>
+
+                            <?php if ($ongkir): ?>
+                                <div class="card-summary-product-item mb-0">
+                                    <div class="product">
+                                        <p class="fastcon-description" style="font-size: 12px; font-weight: bold;"><?=lang('delivery_cost')?></p>
+                                    </div>
+                                    <div class="price">
+                                        <p>Rp<?=number_format($ongkir)?></p>
+                                    </div>
+                                </div>
+                            <?php endif ?>
+                            <?php if ($voucher = $this->session->userdata('voucher')): ?>
+                                <div class="card-summary-product-item">
+                                    <div class="product">
+                                        <p class="fastcon-description" style="font-size: 12px;"><?=lang('coupon_discount')?></p>
+                                    </div>
+                                    <div class="price">
+                                        <p class="cl-error"> - Rp<?=number_format($voucher['voucher_discount'])?></p>
+                                    </div>
+                                </div>
+                            <?php $total = $total-$voucher['voucher_discount']; endif ?>
+
+                            <div class="line"></div>
+
+                            <div class="card-summary-product-item">
+                                <div class="product">
+                                    <p class="fastcon-description" style="font-size: 12px;"><b>Total</b></p>
+                                </div>
+                                <div class="price">
+                                    <p><b>Rp<?=number_format($total + (0.1*$total) + $ongkir)?></b></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
             </table>
           </td>
 	      </tr><!-- end tr -->
       <!-- 1 Column Text + Button : END -->
       </table>
-      <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; font-family: 'Open Sans';">
+      <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; font-family: 'Open Sans', sans-serif !important;">
       	<tr>
           <td valign="middle" style="background: #f5f5f5; padding: 1.5em 2.5em; ">
             <table>
@@ -386,20 +529,34 @@ ul.social li{
                     <tr>
                       <td style="text-align: center; padding-left: 5px; padding-right: 5px; color: #212121;">
                       	<ul style="margin: 30px 0 0; padding:0;">
-                            <h4 class="heading"><?=lang('contact_us')?></h4>
-    		                <li style="list-style: none; margin-bottom: 20px; color: #212121; font-family: 'Open Sans'; font-size: 14px;">
-                                <span class="text" style="color: #212121; font-family: 'Open Sans'; font-size: 14px;">Gwalk Shop Houses A1-No.2, Citraland Surabaya 60213</span>
-                                <br>
-                                <span class="text" style="color: #212121; font-family: 'Open Sans'; font-size: 14px;">(031) 7421270</span>
+                            <h4 class="heading" style="font-family: 'Jura', sans-serif !important;"><?=lang('contact_us')?></h4>
+    		                <li class="contact-us" style="list-style: none; margin-bottom: 20px; color: #212121; font-family: 'Open Sans', sans-serif !important; font-size: 14px;">
+                                <?php foreach ($contact_settings as $cs): ?>
+                                    <?php if ($cs->setting_item=='office'): ?>
+                                        <?=$cs->setting_value?>
+
+                                        <a href="tel:<?=$cs->phone?>" class="fastcon-body">
+                                            <img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.svg" style="margin-right: 8px;" width="16" alt="phone">
+                                            <?=$cs->phone?>
+                                        </a>
+                                    <?php endif ?>
+                                <?php endforeach ?>
                             </li>
 		                </ul>
 
                         <ul style="margin: 30px 0 0; padding:0;">
-                            <h4 class="heading"><?=lang('our_factory')?></h4>
-                            <li style="list-style: none; margin-bottom: 20px; color: #212121; font-family: 'Open Sans'; font-size: 14px;">
-                                <span class="text" style="color: #212121; font-family: 'Open Sans'; font-size: 14px;">Gwalk Shop Houses A1-No.2, Citraland Surabaya 60213</span>
-                                <br>
-                                <span class="text" style="color: #212121; font-family: 'Open Sans'; font-size: 14px;">(031) 7421270</span>
+                            <h4 class="heading" style="font-family: 'Jura', sans-serif !important;"><?=lang('our_factory')?></h4>
+                            <li class="contact-us" style="list-style: none; margin-bottom: 20px; color: #212121; font-family: 'Open Sans', sans-serif !important; font-size: 14px;">
+                                <?php foreach ($contact_settings as $cs): ?>
+                                    <?php if ($cs->setting_item=='factory'): ?>
+                                        <?=$cs->setting_value?>
+
+                                        <a href="tel:<?=$cs->phone?>" class="fastcon-body">
+                                            <img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.svg" style="margin-right: 8px;" width="16" alt="phone">
+                                            <?=$cs->phone?>
+                                        </a>
+                                    <?php endif ?>
+                                <?php endforeach ?>
                             </li>
                         </ul>
                       </td>
@@ -412,7 +569,7 @@ ul.social li{
                       <td style="text-align: center; padding-left: 10px;">
 
                         <ul style="margin: 0 ; padding:0;">
-                            <h4 class="heading"><?=lang('our_marketplace')?></h4>
+                            <h4 class="heading" style="font-family: 'Jura', sans-serif !important;"><?=lang('our_marketplace')?></h4>
                             <li class="marketplace" style="list-style: none; margin-bottom: 7px;">
                                 <?php foreach ($marketplace as $mp): ?>
                                     <a href="<?=$mp->link?>" target="_blank"><img src="<?=site_url('uploads/fastcon_marketplace/'.$mp->icon)?>" alt="" width="24"></a>
@@ -421,7 +578,7 @@ ul.social li{
                         </ul>
 
                         <ul style="margin: 4rem 0 0 0 ; padding:0;">
-                            <h4 class="heading"><?=lang('our_qualification')?></h4>
+                            <h4 class="heading" style="font-family: 'Jura', sans-serif !important;"><?=lang('our_qualification')?></h4>
                             <li style="list-style: none; margin-bottom: 7px;">
                                 <img src="<?=BASE_ASSET?>fastcon/img/iso.png" alt="Fastcon ISO" style="margin-right: 0; width: 100%; max-width: 165px;">
                             </li>

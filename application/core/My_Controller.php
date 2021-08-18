@@ -717,6 +717,7 @@ class Front extends MY_Controller
         $this->data['marketplace'] = db_get_all_data('fastcon_marketplace');
         $this->data['contact_settings'] = db_get_all_data('fastcon_contact_settings');
         $this->data['pages'] = db_get_all_data('fastcon_pages', ['show_in_footer' => 'yes', 'publish' => 'yes'], 3, false, false, 'id desc');
+        $this->data['product_category'] = db_get_all_data('fastcon_product_category');
         if ($this->session->userdata('member')) {
             $this->data['member'] = db_get_row_data('fastcon_member', ['member_id' => $this->session->userdata('member')['member_id']]);
         }

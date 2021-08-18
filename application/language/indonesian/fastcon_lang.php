@@ -70,8 +70,8 @@ $lang = [
 	'not_found_content' 	=> 'Kami mohon maaf atas ketidaknyamanan ini, sekarang kami mencoba untuk memperbaiki kesalahan tersebut. Anda juga dapat mencoba refresh halaman atau mencoba lagi nanti. ',
 	'forgot_password_title' => 'Kami telah mengirimkan email tautan pengaturan ulang kata sandi Anda! Silakan periksa email Anda.',
 	'new_password_body' 	=> 'Silahkan masukkan kata sandi baru anda.',
-	'update_password' 		=> 'Perbaharui Kata Sandi',
-	'password_updated' 		=> 'Pasword anda berhasil diperbaharui',
+	'update_password' 		=> 'Perbarui Kata Sandi',
+	'password_updated' 		=> 'Pasword anda berhasil diperbarui',
 
 	'logout_title' 			=> 'Apakah Anda yakin ingin keluar dari akun ini?',
 	'discard' 					=> 'Kembali',
@@ -80,7 +80,10 @@ $lang = [
 	'remove_address' 		=> 'Hapus Alamat',
 	'remove_address_title' 	=> 'Apakah anda yakin ingin menghapus alamat ini?',
 	'remove' 				=> 'Hapus',
+	'save' 					=> 'Simpan',
+	'personal_data_agree' 	=> 'Saya menyetujui data pribadi akan digunakan untuk mendukung pengalaman Anda di seluruh situs web ini',
 
+	'add_address' 			=> 'Tambah Alamat',
 	'address_list' 			=> 'Daftar Alamat',
 	'edit' 					=> 'Ubah',
 	'change_address' 		=> 'Ganti Alamat',
@@ -101,7 +104,7 @@ $lang = [
 	'checkout_securely' 	=> 'Bayar Dengan Aman',
 	'tax' 					=> 'PPN',
 	'delivery_cost' 		=> 'Ongkos Kirim',
-	'update' 				=> 'Perbaharui',
+	'update' 				=> 'Perbarui',
 	'remove_coupon' 		=> 'Hapus Kupon',
 	'coupon_code' 			=> 'Kode Kupon',
 	'coupon_discount' 		=> 'Diskon Kupon',
@@ -123,4 +126,20 @@ $lang = [
 
 	'order_title' 			=> 'Anda telah berhasil membeli produk kami!',
 	'order_body' 			=> 'Saat ini kami sedang mempersiapkan barang belanja Anda. Terus belanjakan produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.',
+
+	'enter_here' 			=> 'Ketik disini',
+	'required' 				=> 'Wajib diisi',
+	'register_now' 			=> 'Daftar Sekarang',
+	'fill_register_form' 	=> 'Mohon isi formulir pendaftaran',
+
+	'warning' 				=> 'Peringatan',
+	'deliver_not_available' => 'Biaya pengiriman tidak tersedia, silahkan hubungi call center kami di (031) 7421270 atau kontak kami untuk melanjutkan transaksi Anda.',
+
+	'new_order' 			=> 'Order Baru',
+	'payment_received' 		=> 'Pembayaran Diterima',
+	'sent' 					=> 'Dikirim',
+	'cancelled' 			=> 'Dibatalkan',
+
+	'additional_info' 		=> 'Info Tambahan',
+	'min_3_char' 			=> 'Tulis minimal 3 karakter',
 ];

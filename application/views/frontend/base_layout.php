@@ -73,18 +73,11 @@
 									<li class="menu-item <?=$active=='product'?'active':''?>">
 										<a class="menu-link" href="javascript:void(0)"><div><?=lang('product')?></div></a>
 										<ul class="sub-menu-container">
-											<li class="menu-item">
-												<a class="menu-link" href="<?=site_url('products')?>"><div>Semua Produk</div></a>
-											</li>
-											<li class="menu-item">
-												<a class="menu-link" href="<?=site_url('products')?>"><div>Bata Ringan AAC</div></a>
-											</li>
-											<li class="menu-item">
-												<a class="menu-link" href="<?=site_url('products')?>"><div>Mortar</div></a>
-											</li>
-											<li class="menu-item">
-												<a class="menu-link" href="<?=site_url('products')?>"><div>Panel</div></a>
-											</li>
+											<?php foreach ($product_category as $pc): ?>
+												<li class="menu-item">
+													<a class="menu-link" href="<?=site_url('products')?>"><div><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></div></a>
+												</li>
+											<?php endforeach ?>
 										</ul>
 									</li>
 									<li class="menu-item <?=$active=='project'?'active':''?>">
@@ -163,18 +156,11 @@
 								<li class="menu-item <?=$active=='product'?'active':''?>">
 									<a class="menu-link" href="<?=site_url('products')?>"><div><?=lang('product')?></div></a>
 									<ul class="sub-menu-container">
-										<li class="menu-item">
-											<a class="menu-link" href="<?=site_url('products')?>"><div>Semua Produk</div></a>
-										</li>
-										<li class="menu-item">
-											<a class="menu-link" href="<?=site_url('products')?>"><div>Bata Ringan AAC</div></a>
-										</li>
-										<li class="menu-item">
-											<a class="menu-link" href="<?=site_url('products')?>"><div>Mortar</div></a>
-										</li>
-										<li class="menu-item">
-											<a class="menu-link" href="<?=site_url('products')?>"><div>Panel</div></a>
-										</li>
+										<?php foreach ($product_category as $pc): ?>
+											<li class="menu-item">
+												<a class="menu-link" href="<?=site_url('products')?>"><div><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></div></a>
+											</li>
+										<?php endforeach ?>
 									</ul>
 								</li>
 
@@ -235,7 +221,10 @@
 														<?php if ($cs->setting_item=='office'): ?>
 															<?=$cs->setting_value?>
 
-															<a href="tel:<?=$cs->phone?>" class="fastcon-body"><?=$cs->phone?></a>
+															<a href="tel:<?=$cs->phone?>" class="fastcon-body">
+																<img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.svg" style="margin-right: 8px;" width="16" alt="phone">
+																<?=$cs->phone?>
+															</a>
 														<?php endif ?>
 													<?php endforeach ?>
 												</div>
@@ -245,7 +234,10 @@
 														<?php if ($cs->setting_item=='factory'): ?>
 															<?=$cs->setting_value?>
 
-															<a href="tel:<?=$cs->phone?>" class="fastcon-body"><?=$cs->phone?></a>
+															<a href="tel:<?=$cs->phone?>" class="fastcon-body">
+																<img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.svg" style="margin-right: 8px;" width="16" alt="phone">
+																<?=$cs->phone?>
+															</a>
 														<?php endif ?>
 													<?php endforeach ?>
 												</div>
@@ -359,6 +351,7 @@
 		const csrf_name = '<?=$this->security->get_csrf_token_name(); ?>';
 		const csrf_val = '<?=$this->security->get_csrf_hash(); ?>';
 		const lang = '<?=$lang?>';
+		const member = '<?=$this->session->userdata('member')?$this->session->userdata("member")["member_id"]:""?>';
 	</script>
 
 	<script src="<?=BASE_ASSET?>fastcon/js/jquery.js"></script>

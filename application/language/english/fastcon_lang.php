@@ -80,7 +80,10 @@ $lang = [
 	'remove_address' 		=> 'Remove Address',
 	'remove_address_title' 	=> 'Are you sure want to remove this address?',
 	'remove' 				=> 'Remove',
+	'save' 					=> 'Save',
+	'personal_data_agree' 	=> 'I agree that personal data will be used to support your experience throughout this website',
 
+	'add_address' 			=> 'Add Address',
 	'address_list' 			=> 'Address List',
 	'edit' 					=> 'Edit',
 	'change_address' 		=> 'Change Address',
@@ -123,4 +126,20 @@ $lang = [
 
 	'order_title' 			=> 'YOU’VE PURCHASED OUR PRODUCT! ',
 	'order_body' 			=> 'We are currently preparing your order. Shop for more Fastcon products as an environmentally friendly development solution and get promos from us, for more information contact our call center at (031) 7421270',
+
+	'enter_here' 			=> 'Enter here',
+	'required' 				=> 'Required',
+	'register_now' 			=> 'Register Now',
+	'fill_register_form' 	=> 'Please fill the register form',
+
+	'warning' 				=> 'Warning',
+	'deliver_not_available' => 'Shipping costs are not available, please contact our call center at (031) 7421270 or contact us to continue your transaction.',
+
+	'new_order' 			=> 'New Order',
+	'payment_received' 		=> 'Payment Received',
+	'sent' 					=> 'Sent',
+	'cancelled' 			=> 'Cancelled',
+
+	'additional_info' 		=> 'Additional Info',
+	'min_3_char' 			=> 'Enter at least 3 characters',
 ];

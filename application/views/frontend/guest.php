@@ -3,49 +3,70 @@
         <div class="container">
             <h2 class="fastcon-h2 text-center">MOHON ISI DATA DIRI DAN ALAMAT PENGIRIMAN</h2>
 
+            <?php if ($this->session->userdata('error')): ?>
+                <div class="fastcon-alert fastcon-alert-error">
+                    <div class="alert-header">
+                        <p class="alert-title"></p>
+                    </div>
+                    <div class="alert-body">
+                        <p class="alert-message"><?=$this->session->userdata('error')?></p>
+                    </div>
+                </div>
+            <?php endif ?>
+
             <?=form_open(site_url('checkout/save_guest_address'), ['class' => 'guest-form', 'method' => 'post']);?>
                 <div class="row guest-wrap">
                     <div class="col-lg-4 col-md-12">
-                        <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt="">  DATA DIRI</h4>
+                        <h4 class="fastcon-h4 cl-primary-900 text-uppercase"><img src="<?=BASE_ASSET?>fastcon/img/icons/contact.png" alt="">  <?=lang('personal_data')?></h4>
                         <div class="form-group">
                             <label for="email" class="fastcon-label cl-grey-900"><?=lang('email')?>*</label>
-                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="<?=lang('enter_here')?>">
                         </div>
                         <div class="form-group">
                             <label for="fullname" class="fastcon-label cl-grey-900"><?=lang('fullname')?>*</label>
-                            <input type="text" class="form-control" id="fullname" id="fullname" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <input type="text" class="form-control" name="fullname" id="fullname" placeholder="<?=lang('enter_here')?>">
                         </div>
                         <div class="form-group">
                             <label for="phone" class="fastcon-label cl-grey-900"><?=lang('phone')?>*</label>
-                            <input type="number" class="form-control" name="phone" id="phone" placeholder="Ketik disini">
+                            <input type="number" class="form-control" name="phone" id="phone" placeholder="<?=lang('enter_here')?>">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-12">
-                        <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/home.png" alt="">  ALAMAT PENGIRIMAN</h4>
+                        <h4 class="fastcon-h4 cl-primary-900 text-uppercase"><img src="<?=BASE_ASSET?>fastcon/img/icons/home.png" alt="">  <?=lang('delivery_details')?></h4>
                         <div class="form-group">
-                            <label for="email" class="fastcon-label cl-grey-900"><?=lang('address')?>*</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <label class="fastcon-label cl-grey-900"><?=lang('province')?>*</label>
+                            <select class="form-control selectpicker" name="province_id" id="province_id" title="Pilih Satu">
+                                <?php foreach (db_get_all_data('fastcon_coverage_province') as $cp): ?>
+                                    <option value="<?=$cp->province_id?>"><?=$lang=='indonesian'?$cp->province_name:$cp->province_name_en?></option>
+                                <?php endforeach ?>
+                                <option value="0"><?=$lang=='indonesian'?'Lainnya':'Others'?></option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="fastcon-label cl-grey-900">Info Tambahan*</label>
-                            <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <label for="kota_kecamatan" class="fastcon-label cl-grey-900"><?=lang('city_province')?>*</label>
+                            <input type="text" id="kota_kecamatan" name="kota_kecamatan" class="form-control" placeholder="<?=lang('min_3_char')?>" autocomplete="on">
+                            <div id="auto_result" class="frontbox"></div>
                         </div>
                         <div class="form-group">
-                            <label for="phone" class="fastcon-label cl-grey-900">Kecamatan/Kelurahan*</label>
-                            <input type="text" class="form-control" id="phone" placeholder="Ketik disini">
+                            <label for="address" class="fastcon-label cl-grey-900"><?=lang('address')?>*</label>
+                            <input type="text" class="form-control" name="address" id="address" placeholder="<?=lang('enter_here')?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="additional_info" class="fastcon-label cl-grey-900"><?=lang('additional_info')?>*</label>
+                            <input type="text" class="form-control" name="additional_info" id="additional_info" placeholder="<?=lang('enter_here')?>">
                         </div>
                     </div>
 
                     <div class="col-lg-4 col-md-12">
                         <h4 class="fastcon-h4 cl-primary-900"><img src="<?=BASE_ASSET?>fastcon/img/icons/cardbox.png" alt="">  DATA PENERIMA</h4>
                         <div class="form-group">
-                            <label for="email_penerima" class="fastcon-label cl-grey-900">Nama Lengkap*</label>
-                            <input type="email" class="form-control" name="email_penerima" id="email_penerima" aria-describedby="emailHelp" placeholder="Ketik disini">
+                            <label for="receiver_name" class="fastcon-label cl-grey-900"><?=lang('fullname')?>*</label>
+                            <input type="text" class="form-control" name="receiver_name" id="receiver_name" placeholder="<?=lang('enter_here')?>">
                         </div>
                         <div class="form-group">
-                            <label for="phone_penerima" class="fastcon-label cl-grey-900">Nomor HP*</label>
-                            <input type="text" class="form-control" name="phone_penerima" id="phone_penerima" placeholder="Ketik disini">
+                            <label for="receiver_phone" class="fastcon-label cl-grey-900"><?=lang('phone')?>*</label>
+                            <input type="text" class="form-control" name="receiver_phone" id="receiver_phone" placeholder="<?=lang('enter_here')?>">
                         </div>
                         <div class="form-check p-0">
                             <input type="checkbox" value="1" id="copy_user"> <span class="fastcon-description cl-grey-900">Samakan dengan data diri</span>
@@ -59,7 +80,6 @@
                         <button class="fastcon-btn primary-btn">LANJUT KE CHECKOUT</button>
 
                     </div>
-					<a href="<?=site_url('checkout/summary')?>" class="mt-2">Temp link to checkout</a>
                     <div class="col-lg-4"></div>
                 </div>
             <?=form_close();?>

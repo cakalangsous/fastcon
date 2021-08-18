@@ -26,11 +26,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Voucher        <small><?= cclang('new', ['Voucher']); ?> </small>
+        Coupon        <small><?= cclang('new', ['Coupon']); ?> </small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class=""><a  href="<?= site_url('administrator/fastcon_voucher'); ?>">Voucher</a></li>
+        <li class=""><a  href="<?= site_url('administrator/fastcon_voucher'); ?>">Coupon</a></li>
         <li class="active"><?= cclang('new'); ?></li>
     </ol>
 </section>
@@ -48,8 +48,8 @@
                                 <img class="img-circle" src="<?= BASE_ASSET; ?>/img/add2.png" alt="User Avatar">
                             </div>
                             <!-- /.widget-user-image -->
-                            <h3 class="widget-user-username">Voucher</h3>
-                            <h5 class="widget-user-desc"><?= cclang('new', ['Voucher']); ?></h5>
+                            <h3 class="widget-user-username">Coupon</h3>
+                            <h5 class="widget-user-desc"><?= cclang('new', ['Coupon']); ?></h5>
                             <hr>
                         </div>
                         <?= form_open('', [
@@ -61,11 +61,11 @@
                             ]); ?>
                          
                                                 <div class="form-group ">
-                            <label for="voucher_code" class="col-sm-2 control-label">Voucher Code 
+                            <label for="voucher_code" class="col-sm-2 control-label">Coupon Code 
                             <i class="required">*</i>
                             </label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" name="voucher_code" id="voucher_code" placeholder="Voucher Code" value="<?= set_value('voucher_code'); ?>">
+                                <input type="text" class="form-control" name="voucher_code" id="voucher_code" placeholder="Coupon Code" value="<?= set_value('voucher_code'); ?>">
                                 <small class="info help-block">
                                 </small>
                             </div>
@@ -83,33 +83,33 @@
                         </div>
                                                  
                                                 <div class="form-group ">
-                            <label for="voucher_description" class="col-sm-2 control-label">Voucher Description 
+                            <label for="voucher_description" class="col-sm-2 control-label">Coupon Description 
                             <i class="required">*</i>
                             </label>
                             <div class="col-sm-8">
-                                <textarea id="voucher_description" name="voucher_description" rows="5" cols="80"><?= set_value('Voucher Description'); ?></textarea>
+                                <textarea id="voucher_description" name="voucher_description" rows="5" cols="80"><?= set_value('Coupon Description'); ?></textarea>
                                 <small class="info help-block">
                                 </small>
                             </div>
                         </div>
                                                  
                                                 <div class="form-group ">
-                            <label for="voucher_description_en" class="col-sm-2 control-label">Voucher Description En 
+                            <label for="voucher_description_en" class="col-sm-2 control-label">Coupon Description En 
                             <i class="required">*</i>
                             </label>
                             <div class="col-sm-8">
-                                <textarea id="voucher_description_en" name="voucher_description_en" rows="5" cols="80"><?= set_value('Voucher Description En'); ?></textarea>
+                                <textarea id="voucher_description_en" name="voucher_description_en" rows="5" cols="80"><?= set_value('Coupon Description En'); ?></textarea>
                                 <small class="info help-block">
                                 </small>
                             </div>
                         </div>
                                                  
                                                 <div class="form-group ">
-                            <label for="voucher_discount" class="col-sm-2 control-label">Voucher Discount 
+                            <label for="voucher_discount" class="col-sm-2 control-label">Coupon Discount 
                             <i class="required">*</i>
                             </label>
                             <div class="col-sm-8">
-                                <input type="number" class="form-control" name="voucher_discount" id="voucher_discount" placeholder="Voucher Discount" value="<?= set_value('voucher_discount'); ?>">
+                                <input type="number" class="form-control" name="voucher_discount" id="voucher_discount" placeholder="Coupon Discount" value="<?= set_value('voucher_discount'); ?>">
                                 <small class="info help-block">
                                 </small>
                             </div>

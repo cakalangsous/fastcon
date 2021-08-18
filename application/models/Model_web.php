@@ -32,6 +32,15 @@ class Model_web extends MY_Model {
 		$this->db->where('c.member_id', $this->session->userdata('member')['member_id']);
 		return $this->db->get()->result();
 	}
+
+	public function get_useable_voucher()
+	{
+		$this->db->select('v.*')
+				->from('fastcon_voucher v')
+				->where('NOT EXISTS (SELECT * FROM fastcon_product_orders po WHERE v.voucher_id=po.voucher_id AND po.member_id='.$this->session->userdata('member')['member_id'].')','', false);
+
+		return $this->db->get()->result();
+	}
 }
 
 /* End of file Model_web.php */

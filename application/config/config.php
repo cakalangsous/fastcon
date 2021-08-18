@@ -369,7 +369,7 @@ $config['encryption_key'] = '&^85422f4219e76705593080d6#b%8$6*d@8*40a';
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = '__c8cko8gc48o80gsoc804ks80wo84gg888o0sccgs';
-$config['sess_expiration'] = 1600;
+$config['sess_expiration'] = 5000;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 1800;
