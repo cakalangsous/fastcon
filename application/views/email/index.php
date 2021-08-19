@@ -418,37 +418,36 @@ p {
                     <tr>
                         <td>
                             <div class="card-summary" style="margin:40px 0; padding: 20px; background: #FAFAFA; border: 1px dashed #9E9E9E; -webkit-box-sizing: border-box; box-sizing: border-box; border-radius: 8px;">
-                                <?php if ($order_details): ?>
-                                    <?php
-                                        $style = '';
-                                        $status_text = '';
-                                        switch ($order_details->order_status) {
-                                            case 2:
-                                                $style = 'background-color: #00672B; border: 1px solid #00672B; color: #fff;';
-                                                $status_text = lang('payment_received');
-                                                break;
+                                <h4 style="font-family: 'Jura', sans-serif !important; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('order_details')?></h4>
+                                
+                                <table class="card-summary-table" style="margin-bottom: 20px !important; width: 100%;">
+                                    <tbody>
+                                        <?php if ($order_details): ?>
+                                            <?php
+                                                $style = '';
+                                                $status_text = '';
+                                                switch ($order_details->order_status) {
+                                                    case 2:
+                                                        $style = 'background-color: #00672B; border: 1px solid #00672B; color: #fff;';
+                                                        $status_text = lang('payment_received');
+                                                        break;
 
-                                            case 3:
-                                                $style = 'background-color: #e0e0e0; color: #fff; border: 1px solid #e0e0e0;';
-                                                $status_text = lang('sent');
-                                                break;
+                                                    case 3:
+                                                        $style = 'background-color: #e0e0e0; color: #fff; border: 1px solid #e0e0e0;';
+                                                        $status_text = lang('sent');
+                                                        break;
 
-                                            case 4:
-                                                $style = 'background-color: #D3302F; color: #fff; border: 1px solid #D3302F;';
-                                                $status_text = lang('cancelled');
-                                                break;
-                                            
-                                            default:
-                                                $style = 'background-color: #F8C821; color: #fff; border: 1px solid #F8C821;';
-                                                $status_text = lang('new_order');
-                                                break;
-                                        }
-                                    ?>
-                                    <h4 style="font-family: 'Jura', sans-serif !important; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('order_details')?></h4>
-
-                                    
-                                    <table class="card-summary-table" style="margin-bottom: 20px !important; width: 100%;">
-                                        <tbody>
+                                                    case 4:
+                                                        $style = 'background-color: #D3302F; color: #fff; border: 1px solid #D3302F;';
+                                                        $status_text = lang('cancelled');
+                                                        break;
+                                                    
+                                                    default:
+                                                        $style = 'background-color: #F8C821; color: #fff; border: 1px solid #F8C821;';
+                                                        $status_text = lang('new_order');
+                                                        break;
+                                                }
+                                            ?>
                                             <tr>
                                                 <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;">Order Status</p></td>
                                                 <td><p style="font-family: 'Jura', sans-serif !important; margin: 0;<?=$style?> text-align: center; padding: 2px 7px; border-radius: 8px; text-transform: uppercase;"><?=$status_text?></p></td>
@@ -466,16 +465,17 @@ p {
                                                 <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;">Kontak Kurir</p></td>
                                                 <td><p style="margin: 0;"><?=$order_details->courier_name?$order_details->courier_name:'-'?></p></td>
                                             </tr>
-                                        </tbody>
-                                    </table>
-                                <?php endif ?>
 
-                                <div style="border-bottom: solid 1px #000;"></div>
+                                            <tr style="border-bottom: solid 1px #000;"></tr>
+                                        <?php endif ?>
 
-                                <h4 style="font-family: 'Jura', sans-serif !important; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('summary')?></h4>
+                                        <tr>
+                                            <td colspan="3" align="center">
+                                                <h4 style="font-family: 'Jura', sans-serif !important; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('summary')?></h4>
+                                                
+                                            </td>
+                                        </tr>
 
-                                <table class="card-summary-table" style="margin-bottom: 20px !important; width: 100%;">
-                                    <tbody>
                                         <?php $total=0; foreach ($cart as $c): ?>
 
                                             <?php
@@ -529,6 +529,7 @@ p {
                                             <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><b>Total</b></p></td>
                                             <td align="right"><p><b>Rp<?=number_format($total + (0.1*$total) + $ongkir)?></b></p></td>
                                         </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>
