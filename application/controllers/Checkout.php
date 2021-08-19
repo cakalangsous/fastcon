@@ -181,7 +181,7 @@ class Checkout extends Front {
 			}
 
 			// $this->data['address'] = (Object) $this->session->userdata('guest_address');
-			$this->data['address'] = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('guest')['guest_id'], 'active' => 1]);
+			$this->data['address'] = db_get_row_data('fastcon_member_address', ['guest_id' => $this->session->userdata('guest')['guest_id'], 'active' => 1]);
 			$this->data['member_address'] = [];
 			$this->data['ongkir'] = 0;
 
