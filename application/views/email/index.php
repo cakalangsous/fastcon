@@ -449,21 +449,21 @@ p {
                                                 }
                                             ?>
                                             <tr>
-                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;">Order Status</p></td>
-                                                <td><p style="font-family: 'Jura', sans-serif !important; margin: 0;<?=$style?> text-align: center; padding: 2px 7px; border-radius: 8px; text-transform: uppercase;"><?=$status_text?></p></td>
+                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0; font-size: 12px;">Order Status</p></td>
+                                                <td><p style="font-family: 'Jura', sans-serif !important; margin: 0;<?=$style?> text-align: center; padding: 2px 5px; border-radius: 8px; text-transform: uppercase; font-size: 12px;"><?=$status_text?></p></td>
                                                 
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;">Order Code</p></td>
-                                                <td><p style="margin: 0;"><?=$order_details->order_code?></p></td>
+                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0; font-size: 12px;">Order Code</p></td>
+                                                <td><p style="margin: 0; font-size: 12px;"><?=$order_details->order_code?></p></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;">Order Date</p></td>
-                                                <td><p style="margin: 0;"><?=date('F j, Y', strtotime($order_details->created))?></p></td>
+                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0; font-size: 12px;">Order Date</p></td>
+                                                <td><p style="margin: 0; font-size: 12px;"><?=date('F j, Y', strtotime($order_details->created))?></p></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;">Kontak Kurir</p></td>
-                                                <td><p style="margin: 0;"><?=$order_details->courier_name?$order_details->courier_name:'-'?></p></td>
+                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0; font-size: 12px;">Kontak Kurir</p></td>
+                                                <td><p style="margin: 0; font-size: 12px;"><?=$order_details->courier_name?$order_details->courier_name:'-'?></p></td>
                                             </tr>
 
                                             <tr style="border-bottom: solid 1px #000;"></tr>
@@ -529,7 +529,7 @@ p {
                                             <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><b>Total</b></p></td>
                                             <td align="right"><p><b>Rp<?=number_format($total + (0.1*$total) + $ongkir)?></b></p></td>
                                         </tr>
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
