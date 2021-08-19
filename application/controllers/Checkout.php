@@ -34,7 +34,7 @@ class Checkout extends Front {
 	public function guest()
 	{
 
-		if ($this->session->userdata('member') OR $this->session->userdata('guest')) {
+		if ($this->session->userdata('member') OR ($this->session->userdata('guest'))) {
 			redirect(site_url('checkout/summary'),'refresh');
 		}
 
@@ -62,6 +62,10 @@ class Checkout extends Front {
 		}
 
 		$arr = $this->input->post();
+
+		if ($this->session->userdata('guest')) {
+			$this->session->unset_userdata('guest');
+		}
 
 		$guest_data = [
 			'fullname' => $arr['fullname'],
@@ -114,7 +118,7 @@ class Checkout extends Front {
 			return;
 		}
 
-		if (!$selected_address = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('guest')['id'], 'id' => $address_id] )) {
+		if (!$selected_address = db_get_row_data('fastcon_member_address', ['guest_id' => $this->session->userdata('guest')['guest_id'], 'id' => $address_id] )) {
 			$this->not_found();
 			return;
 		}
@@ -167,6 +171,9 @@ class Checkout extends Front {
 		$cart = [];
 
 		if (!$this->session->userdata('member')) {
+			if (!$this->session->userdata('guest')) {
+				redirect(site_url('products/cart'));
+			}
 			foreach ($this->cart->contents() as $c) {
 				$product = db_get_row_data('view_product_option_variant', ['variant_id' => $c['id']]);
 				if ($product AND $product->variant_id == $c['id']) {
@@ -530,9 +537,6 @@ class Checkout extends Front {
 		$info['order_details'] = db_get_row_data('fastcon_product_orders', ['order_code' => $order_code]);
 
 		$html = $this->load->view('email/index', $info, true);
-
-		// print_r($html);
-		// exit;
 
 		$this->load->library('email');
 

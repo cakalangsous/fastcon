@@ -470,7 +470,7 @@ p {
                                     </table>
                                 <?php endif ?>
 
-                                <div style="border-bottom: dashed 1px #000;"></div>
+                                <div style="border-bottom: solid 1px #000;"></div>
 
                                 <h4 style="font-family: 'Jura', sans-serif !important; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('summary')?></h4>
 
@@ -480,73 +480,80 @@ p {
                                         $ongkir = '';
                                         $total = $total + ($c->qty * ($c->price-$c->discount));
                                     ?>
-                                    <div class="card-summary-product-item" style="margin-bottom: 20px !important; display: flex; align-items: center;">
-                                        <div class="product">
-                                            <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important;"><?=$c->product_name?></p>
-                                            <p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><?=$lang=='indonesian'?$c->product_option1_name:$c->product_option1_name_en?>: <?=$c->product_option1_value?></p>
+                                    <table class="card-summary-table" style="margin-bottom: 20px !important; width: 100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important;"><?=$c->product_name?></p></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><?=$lang=='indonesian'?$c->product_option1_name:$c->product_option1_name_en?>: <?=$c->product_option1_value?></p></td>
+                                                <td align="right"><p style="font-size: 12px; margin: 0;">Rp<?=number_format($c->qty * ($c->price-$c->discount))?></p></td>
+                                            </tr>
                                             <?php if ($c->product_option2_id): ?>
-                                                <p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><?=$lang=='indonesian'?$c->product_option2_name:$c->product_option2_name_en?>: <?=$c->product_option2_value?></p>
+                                                <tr>
+                                                    <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><?=$lang=='indonesian'?$c->product_option2_name:$c->product_option2_name_en?>: <?=$c->product_option2_value?></p></td>
+                                                    <td></td>
+                                                </tr>
                                             <?php endif ?>
-                                            <p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><b>x<?=$c->qty?></b></p>
-                                        </div>
-                                        <div class="price">
-                                            <p style="font-size: 12px; margin: 0;">Rp<?=number_format($c->qty * ($c->price-$c->discount))?></p>
-                                        </div>
-                                    </div>
+                                            <tr>
+                                                <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><b>x<?=$c->qty?></b></p></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 <?php $ongkir = $c->shipping_cost; endforeach ?>
 
-                                <div class="line"></div>
+                                <div style="border-bottom: dashed 1px #000; margin: 20px 0;"></div>
 
-                                <div class="card-summary-product-item" style="margin-bottom: 0 !important;">
-                                    <div class="product">
-                                        <p class="fastcon-description" style="font-size: 12px; margin: 0 !important; font-weight: bold;">Subtotal</p>
-                                    </div>
-                                    <div class="price">
-                                        <p style="font-size: 12px; margin: 0;">Rp<?=number_format($total)?></p>
-                                    </div>
-                                </div>
+                                <table class="card-summary-table" style="margin-bottom: 0; width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important; font-weight: bold;">Subtotal</p></td>
+                                            <td align="right"><p style="font-size: 12px; margin: 0;">Rp<?=number_format($total)?></p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                <div class="card-summary-product-item" style="margin-bottom: 0 !important;">
-                                    <div class="product">
-                                        <p class="fastcon-description" style="font-size: 12px; margin: 0 !important; font-weight: bold;"><?=lang('tax')?> (10%)</p>
-                                    </div>
-                                    <div class="price">
-                                        <p style="font-size: 12px; margin: 0;">Rp<?=number_format(0.1*$total)?></p>
-                                    </div>
-                                </div>
+                                <table class="card-summary-table" style="margin-bottom: 0; width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important; font-weight: bold;"><?=lang('tax')?> (10%)</p></td>
+                                            <td align="right"><p style="font-size: 12px; margin: 0;">Rp<?=number_format(0.1*$total)?></p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
                                 <?php if ($ongkir): ?>
-                                    <div class="card-summary-product-item" style="margin-bottom: 0 !important;">
-                                        <div class="product">
-                                            <p class="fastcon-description" style="font-size: 12px; margin: 0 !important; font-weight: bold;"><?=lang('delivery_cost')?></p>
-                                        </div>
-                                        <div class="price">
-                                            <p style="font-size: 12px; margin: 0;">Rp<?=number_format($ongkir)?></p>
-                                        </div>
-                                    </div>
+                                    <table class="card-summary-table" style="margin-bottom: 0; width: 100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important; font-weight: bold;"><?=lang('delivery_cost')?></p></td>
+                                                <td align="right"><p style="font-size: 12px; margin: 0;">Rp<?=number_format($ongkir)?></p></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 <?php endif ?>
                                 <?php if ($voucher = $this->session->userdata('voucher')): ?>
-                                    <div class="card-summary-product-item">
-                                        <div class="product">
-                                            <p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><?=lang('coupon_discount')?></p>
-                                        </div>
-                                        <div class="price">
-                                            <p class="cl-error"> - Rp<?=number_format($voucher['voucher_discount'])?></p>
-                                        </div>
-                                    </div>
+                                    <table class="card-summary-table" style="margin-bottom: 0; width: 100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><?=lang('coupon_discount')?></p></td>
+                                                <td align="right"><p class="cl-error"> - Rp<?=number_format($voucher['voucher_discount'])?></p></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 <?php $total = $total-$voucher['voucher_discount']; endif ?>
 
-                                <div class="line"></div>
+                                <div style="border-bottom: dashed 1px #000; margin: 20px 0;"></div>
 
-                                <div class="card-summary-product-item">
-                                    <div class="product">
-                                        <p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><b>Total</b></p>
-                                    </div>
-                                    <div class="price">
-                                        <p><b>Rp<?=number_format($total + (0.1*$total) + $ongkir)?></b></p>
-                                    </div>
-                                </div>
-
+                                <table class="card-summary-table" style="margin-bottom: 0; width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="2"><p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><b>Total</b></p></td>
+                                            <td align="right"><p><b>Rp<?=number_format($total + (0.1*$total) + $ongkir)?></b></p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </td>
                     </tr>
