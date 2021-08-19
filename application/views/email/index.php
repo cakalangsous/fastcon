@@ -362,26 +362,14 @@ ul.social li{
     margin-bottom: 0 !important;
 }
 
-.card-summary-product-item p {
+.card-summary-table p {
   color: #212121;
+  font-family: 'Jura', sans-serif;
+  font-weight: normal;
 }
 
 .card-summary-product-item .price {
   margin-left: auto;
-}
-
-.card-summary-product-item .price p {
-  font-family: 'Jura', sans-serif;
-  font-weight: normal;
-  /*font-size: 12px;*/
-}
-
-.card-summary-btn-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-align: center;
-  margin-top: 10px;
 }
 
 p {
@@ -459,21 +447,27 @@ p {
                                     <h4 style="font-family: 'Jura', sans-serif !important; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('order_details')?></h4>
 
                                     
-                                    <div class="card-summary-product-item" style="margin-bottom: 20px !important; display: flex; align-items: center; ">
-                                        <div class="product">
-                                            <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Order Status</b></p>
-                                            <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Order Code</b></p>
-                                            <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Order Date</b></p>
-                                            <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Kontak Kurir</b></p>
-                                            
-                                        </div>
-                                        <div class="price">
-                                            <p style="margin: 0;<?=$style?> text-align: center; padding-left: 2px 7px; border-radius: 8px; text-transform: uppercase;"><b><?=$status_text?></b></p>
-                                            <p style="margin: 0;"><b><?=$order_details->order_code?></b></p>
-                                            <p style="margin: 0;"><b><?=date('F j, Y', strtotime($order_details->created))?></b></p>
-                                            <p style="margin: 0;"><b><?=$order_details->courier_name?$order_details->courier_name:'-'?></b></p>
-                                        </div>
-                                    </div>
+                                    <table class="card-summary-table" style="margin-bottom: 20px !important; width: 100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Order Status</b></p></td>
+                                                <td><p style="font-family: 'Jura', sans-serif !important; margin: 0;<?=$style?> text-align: center; padding: 2px 7px; border-radius: 8px; text-transform: uppercase;"><b><?=$status_text?></b></p></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Order Code</b></p></td>
+                                                <td><p style="margin: 0;"><b><?=$order_details->order_code?></b></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Order Date</b></p></td>
+                                                <td><p style="margin: 0;"><b><?=date('F j, Y', strtotime($order_details->created))?></b></p></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Kontak Kurir</b></p></td>
+                                                <td><p style="margin: 0;"><b><?=$order_details->courier_name?$order_details->courier_name:'-'?></b></p></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 <?php endif ?>
 
                                 <div style="border-bottom: dashed 1px #000;"></div>
