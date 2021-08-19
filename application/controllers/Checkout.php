@@ -95,7 +95,8 @@ class Checkout extends Front {
 			'kelurahan' => $destination_code->kelurahan,
 			'kode_pos' 	=> $destination_code->kode_pos,
 			'address'	=> $arr['address'],
-			'member_id' => $this->session->userdata('guest')['id'],
+			'member_id' => 0,
+			'guest_id' 	=> $guest_data['guest_id'],
 			'active'  	=> 1
 		];
 
@@ -180,7 +181,7 @@ class Checkout extends Front {
 			}
 
 			// $this->data['address'] = (Object) $this->session->userdata('guest_address');
-			$this->data['address'] = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('guest')['id'], 'active' => 1]);
+			$this->data['address'] = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('guest')['guest_id'], 'active' => 1]);
 			$this->data['member_address'] = [];
 			$this->data['ongkir'] = 0;
 
