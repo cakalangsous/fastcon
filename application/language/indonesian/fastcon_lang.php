@@ -9,6 +9,7 @@ $lang = [
 	'contact' 				=> 'Kontak',
 	'about_us' 				=> 'Tentang Kami',
 	'our_news' 				=> 'Berita kami',
+	'all_products' 			=> 'Semua Produk',
 
 	'see_product'			=> 'Lihat Produk',
 	'contact_us'			=> 'Kontak Kami',
@@ -142,4 +143,8 @@ $lang = [
 
 	'additional_info' 		=> 'Info Tambahan',
 	'min_3_char' 			=> 'Tulis minimal 3 karakter',
+	'order_details' 		=> 'Detail Order',
+
+	'reset_password_body' 	=> 'Harap masukkan alamat email Anda di bawah ini untuk menerima link reset password',
+	'reset_password' 		=> 'Reset Kata Sandi',
 ];

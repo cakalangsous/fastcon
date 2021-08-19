@@ -378,7 +378,7 @@ class Checkout extends Front {
 
 			$account_email = $this->session->userdata('guest')['email'];
 
-			$this->session->unset_userdata('cart_contents');
+			// $this->session->unset_userdata('cart_contents');
 
 		} else {
 			/* member order */
@@ -522,6 +522,7 @@ class Checkout extends Front {
 		$info['contact_settings']	= $this->data['contact_settings'];
 		$info['lang'] = $this->data['lang'];
 		$info['cart'] = db_get_all_data('fastcon_product_orders', ['order_code' => $order_code]);
+		$info['order_details'] = db_get_row_data('fastcon_product_orders', ['order_code' => $order_code]);
 
 		$html = $this->load->view('email/index', $info, true);
 

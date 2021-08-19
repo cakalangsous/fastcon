@@ -9,6 +9,7 @@ $lang = [
 	'contact' 				=> 'Contact',
 	'about_us' 				=> 'About Us',
 	'our_news' 				=> 'Our News',
+	'all_products' 			=> 'All Products',
 
 	'see_product'			=> 'See Product',
 	'contact_us'			=> 'Contact Us',
@@ -142,4 +143,8 @@ $lang = [
 
 	'additional_info' 		=> 'Additional Info',
 	'min_3_char' 			=> 'Enter at least 3 characters',
+	'order_details' 		=> 'Order Details',
+
+	'reset_password_body' 	=> 'Please enter your email below to receive a password reset link',
+	'reset_password' 		=> 'Reset Password',
 ];

@@ -73,6 +73,9 @@
 									<li class="menu-item <?=$active=='product'?'active':''?>">
 										<a class="menu-link" href="javascript:void(0)"><div><?=lang('product')?></div></a>
 										<ul class="sub-menu-container">
+											<li class="menu-item">
+												<a class="menu-link" href="<?=site_url('products')?>"><div><?=lang('all_products')?></div></a>
+											</li>
 											<?php foreach ($product_category as $pc): ?>
 												<li class="menu-item">
 													<a class="menu-link" href="<?=site_url('products')?>"><div><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></div></a>
@@ -156,6 +159,9 @@
 								<li class="menu-item <?=$active=='product'?'active':''?>">
 									<a class="menu-link" href="<?=site_url('products')?>"><div><?=lang('product')?></div></a>
 									<ul class="sub-menu-container">
+										<li class="menu-item">
+											<a class="menu-link" href="<?=site_url('products')?>"><div><?=lang('all_products')?></div></a>
+										</li>
 										<?php foreach ($product_category as $pc): ?>
 											<li class="menu-item">
 												<a class="menu-link" href="<?=site_url('products')?>"><div><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></div></a>

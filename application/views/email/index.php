@@ -250,7 +250,7 @@ img.g-img + div {
 }
 
 .heading {
-  font-family: "Jura", sans-serif; !important;
+  /*font-family: "Jura", sans-serif; !important;*/
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
@@ -373,7 +373,7 @@ ul.social li{
 .card-summary-product-item .price p {
   font-family: 'Jura', sans-serif;
   font-weight: normal;
-  font-size: 12px;
+  /*font-size: 12px;*/
 }
 
 .card-summary-btn-wrap {
@@ -430,6 +430,54 @@ p {
                     <tr>
                         <td>
                             <div class="card-summary" style="margin:40px 0; padding: 20px; background: #FAFAFA; border: 1px dashed #9E9E9E; -webkit-box-sizing: border-box; box-sizing: border-box; border-radius: 8px;">
+                                <?php if ($order_details): ?>
+                                    <?php
+                                        $style = '';
+                                        $status_text = '';
+                                        switch ($order_details->order_status) {
+                                            case 2:
+                                                $style = 'background-color: #00672B; border: 1px solid #00672B; color: #fff;';
+                                                $status_text = lang('payment_received');
+                                                break;
+
+                                            case 3:
+                                                $style = 'background-color: #e0e0e0; color: #fff; border: 1px solid #e0e0e0;';
+                                                $status_text = lang('sent');
+                                                break;
+
+                                            case 4:
+                                                $style = 'background-color: #D3302F; color: #fff; border: 1px solid #D3302F;';
+                                                $status_text = lang('cancelled');
+                                                break;
+                                            
+                                            default:
+                                                $style = 'background-color: #F8C821; color: #fff; border: 1px solid #F8C821;';
+                                                $status_text = lang('new_order');
+                                                break;
+                                        }
+                                    ?>
+                                    <h4 style="font-family: 'Jura', sans-serif !important; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('order_details')?></h4>
+
+                                    
+                                    <div class="card-summary-product-item" style="margin-bottom: 20px !important; display: flex; align-items: center; ">
+                                        <div class="product">
+                                            <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Order Status</b></p>
+                                            <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Order Code</b></p>
+                                            <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Order Date</b></p>
+                                            <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0;"><b>Kontak Kurir</b></p>
+                                            
+                                        </div>
+                                        <div class="price">
+                                            <p style="margin: 0;<?=$style?> text-align: center; padding-left: 2px 7px; border-radius: 8px; text-transform: uppercase;"><b><?=$status_text?></b></p>
+                                            <p style="margin: 0;"><b><?=$order_details->order_code?></b></p>
+                                            <p style="margin: 0;"><b><?=date('F j, Y', strtotime($order_details->created))?></b></p>
+                                            <p style="margin: 0;"><b><?=$order_details->courier_name?$order_details->courier_name:'-'?></b></p>
+                                        </div>
+                                    </div>
+                                <?php endif ?>
+
+                                <div style="border-bottom: dashed 1px #000;"></div>
+
                                 <h4 style="font-family: 'Jura', sans-serif !important; font-size: 18px; font-weight: normal; text-transform: uppercase; color: #00672B; text-align: center;"><?=lang('summary')?></h4>
 
                                 <?php $total=0; foreach ($cart as $c): ?>
@@ -438,7 +486,7 @@ p {
                                         $ongkir = '';
                                         $total = $total + ($c->qty * ($c->price-$c->discount));
                                     ?>
-                                    <div class="card-summary-product-item" style="margin-bottom: 20px !important;">
+                                    <div class="card-summary-product-item" style="margin-bottom: 20px !important; display: flex; align-items: center;">
                                         <div class="product">
                                             <p class="fastcon-description" style="font-family: 'Jura', sans-serif !important;"><?=$c->product_name?></p>
                                             <p class="fastcon-description" style="font-size: 12px; margin: 0 !important;"><?=$lang=='indonesian'?$c->product_option1_name:$c->product_option1_name_en?>: <?=$c->product_option1_value?></p>
