@@ -66,6 +66,8 @@ $route['forgot_password_submit'] = 'pages/forgot_password_submit';
 $route['new_password/(:any)/(:any)/(:any)'] = 'pages/new_password/$1/$2/$3';
 $route['new_password_submit'] = 'pages/new_password_submit';
 
+$route['products/(:num)'] = 'products/index/$1';
+
 $route['about'] = 'pages/about';
 $route['vision_mission'] = 'pages/vision_mission';
 $route['distributor'] = 'pages/distributor';

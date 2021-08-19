@@ -2348,3 +2348,28 @@ if(!function_exists('custom_curl')) {
 		return $response;
 	}
 }
+
+if (!function_exists('current_url_query')) {
+	function current_url_query()
+	{
+	    $CI =& get_instance();
+
+	    $url = $CI->config->site_url($CI->uri->uri_string());
+	    return $_SERVER['QUERY_STRING'] ? $url.'?'.$_SERVER['QUERY_STRING'] : $url;
+	}
+}
+
+if (!function_exists('check_query_string')) {
+	function check_query_string()
+	{
+	    return $_SERVER['QUERY_STRING'] ? true : false;
+	}
+}
+
+if (!function_exists('check_length')) {
+	function check_length()
+	{
+		$ci =& get_instance();
+	    return $_SERVER['QUERY_STRING'] AND $ci->input->get('l') ? true : false;
+	}
+}

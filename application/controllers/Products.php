@@ -11,14 +11,54 @@ class Products extends Front {
 		$this->data['active'] = 'product';
 	}
 
-	public function index($offset=false)
+	public function index($offset=0)
 	{
 		$limit = 12;
 		if ($this->input->get('l')) {
 			$limit = $this->input->get('l');
 		}
+
+		$sort = 'product_id desc';
+		$available_sort = [1, 2, 3, 4, 5];
+		$sort_user = $this->input->get('s');
+		if (isset($sort_user) AND in_array($sort_user, $available_sort)) {
+			switch($sort_user) {
+				case 2:
+					$sort = 'product_name asc';
+					break;
+
+				case 3:
+					$sort = 'product_name desc';
+					break;
+
+				default:
+					$sort = 'product_id desc';
+					break;
+			}
+		}
+
+		$where = false;
+		if ($this->input->get('c')) {
+			$where = ['product_category' => $this->input->get('c')];
+		}
+
+		$products = db_get_all_data('fastcon_product', $where, $limit, $offset, false, $sort);
+		if (!$products) {
+			$this->not_found();
+			return;
+		}
+
+		$config = [
+			'base_url'     => 'products',
+			'total_rows'   => count(db_get_all_data('fastcon_product', $where, false, $offset, false, $sort)),
+			'per_page'     => $limit,
+			'uri_segment'  => 2,
+		];
+
+		$this->data['pagination'] 	= $this->pagination_front($config);
+
 		$this->data['title'] = 'Products';
-		$this->data['products'] = db_get_all_data('fastcon_product', false, $limit, $offset, false, 'product_id desc');
+		$this->data['products'] = $products;
 		$this->render('products', $this->data);
 	}
 

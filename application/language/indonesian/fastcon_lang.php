@@ -151,4 +151,7 @@ $lang = [
 	'cancel' 				=> 'Batalkan',
 	'cancel_order'		 	=> 'Batalkan Pesanan',
 	'cancel_order_title' 	=> 'Apakah anda yakin akan membatalkan pesanan ini?',
+
+	'alphabeth_asc' 		=> 'Alphabet A-Z',
+	'alphabeth_desc' 		=> 'Alphabet Z-A',
 ];

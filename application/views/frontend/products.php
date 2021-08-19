@@ -12,9 +12,9 @@
                     <div class="tabs-bb clearfix">
 
                         <ul class="tab-nav clearfix text-center large-medium-only">
-                            <li class="ui-tabs-active"><a href="#">Semua Produk</a></li>
+                            <li <?=$this->input->get('c')==null?'class="ui-tabs-active"':''?>><a href="<?=site_url('products')?>"><?=lang('all_products')?></a></li>
                             <?php foreach ($product_category as $pc): ?>
-                                <li><a href="#"><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></a></li>
+                                <li <?=$this->input->get('c')==$pc->category_id?'class="ui-tabs-active"':''?>><a href="<?=site_url('products?c='.$pc->category_id)?>"><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></a></li>
                             <?php endforeach ?>
                         </ul>
 
@@ -26,12 +26,11 @@
                                     <div class="col-lg-3 col-md-6 col-sm-12 small-only">
                                         <div class="form-group">
                                             <label class="fastcon-label cl-grey-900">KATEGORI</label>
-                                            <select class="form-control selectpicker">
-                                                <option>Semua Produk</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                            <select class="form-control selectpicker select-change-page">
+                                                <option value=""><?=lang('all_products')?></option>
+                                                <?php foreach ($product_category as $pc): ?>
+                                                    <option value="<?=site_url('products?c='.$pc->category_id)?>" <?=$this->input->get('c')==$pc->category_id?'selected':''?> ><?=$lang=='indonesian'?$pc->category_name:$pc->category_name_en?></option>
+                                                <?php endforeach ?>
                                             </select>
                                         </div>
                                     </div>
@@ -39,12 +38,10 @@
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label class="fastcon-label cl-grey-900">URUTKAN BERDASARKAN</label>
-                                            <select class="form-control selectpicker">
-                                                <option>Terbaru</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                            <select class="form-control selectpicker select-change-page">
+                                                <option value="<?=site_url('products?s=1')?>" <?=($this->input->get('s') AND $this->input->get('s')==1)?'selected':''?>>Terbaru</option>
+                                                <option value="<?=site_url('products?s=2')?>" <?=($this->input->get('s') AND $this->input->get('s')==2)?'selected':''?>>Alphabet A-Z</option>
+                                                <option value="<?=site_url('products?s=3')?>" <?=($this->input->get('s') AND $this->input->get('s')==3)?'selected':''?>>Alphabet Z-A</option>
                                             </select>
                                         </div>
                                     </div>
@@ -52,12 +49,12 @@
                                     <div class="col-lg-3 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label class="fastcon-label cl-grey-900">LIHAT</label>
-                                            <select class="form-control selectpicker">
-                                                <option>12 per halaman</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                            <select class="form-control selectpicker select-change-page">
+                                                <option value="<?=check_query_string() ?current_url_query().'&l=12':site_url('products?l=12')?>" <?=($this->input->get('l')!=null AND $this->input->get('l')==12)?'selected':''?>>12 per halaman</option>
+                                                <option value="<?=check_query_string() ?current_url_query().'&l=18':site_url('products?l=18')?>" <?=($this->input->get('l')!=null AND $this->input->get('l')==18)?'selected':''?>>18 per halaman</option>
+                                                <option value="<?=check_query_string() ?current_url_query().'&l=24':site_url('products?l=24')?>" <?=($this->input->get('l')!=null AND $this->input->get('l')==24)?'selected':''?>>24 per halaman</option>
+                                                <option value="<?=check_query_string() ?current_url_query().'&l=48':site_url('products?l=48')?>" <?=($this->input->get('l')!=null AND $this->input->get('l')==48)?'selected':''?>>48 per halaman</option>
+                                                <option value="<?=check_query_string() ?current_url_query().'&l=60':site_url('products?l=60')?>" <?=($this->input->get('l')!=null AND $this->input->get('l')==60)?'selected':''?>>60 per halaman</option>
                                             </select>
                                         </div>
                                     </div>
@@ -81,6 +78,9 @@
                                         </div>
                                     <?php endforeach ?>
                                     
+                                </div>
+                                <div class="pagination-wrap">
+                                    <?=$pagination?>
                                 </div>
                             </div>
 
