@@ -166,7 +166,7 @@
                             </div>
                         </div>
 
-                        <?php if ($ongkir>0): ?>
+                        <?php if (isset($ongkir) AND $ongkir>0): ?>
                             <div class="card-summary-product-item mb-0">
                                 <div class="product">
                                     <p class="fastcon-description"><?=lang('delivery_cost')?></p>
