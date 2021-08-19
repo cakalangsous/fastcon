@@ -286,7 +286,7 @@ class Checkout extends Front {
 		if (!$this->session->userdata('member')) {
 
 			// get active address
-			$active_address = db_get_row_data('fastcon_member_address', ['member_id' => $this->session->userdata('guest')['id'], 'active' => 1]);
+			$active_address = db_get_row_data('fastcon_member_address', ['guest_id' => $this->session->userdata('guest')['id'], 'active' => 1]);
 			if (!$active_address) {
 				$this->session->set_flashdata('error', 'Please select delivery address');
 				redirect_back();
