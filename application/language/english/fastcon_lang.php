@@ -147,4 +147,8 @@ $lang = [
 
 	'reset_password_body' 	=> 'Please enter your email below to receive a password reset link',
 	'reset_password' 		=> 'Reset Password',
+
+	'cancel' 				=> 'Cancel',
+	'cancel_order'		 	=> 'Cancel Order',
+	'cancel_order_title' 	=> 'Are you sure want to cancel this order?',
 ];

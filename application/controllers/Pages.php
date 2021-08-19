@@ -184,8 +184,12 @@ class Pages extends Front {
 
 		$member = db_get_row_data('fastcon_member', ['email' => $arr['email']]);
 		if (!$member) {
-			$this->not_found();
-			return;
+			$array = array(
+				'error' => 'Email not registered.'
+			);
+			
+			$this->session->set_userdata( $array );
+			redirect_back();
 		}
 
 		$info['title']		= 'Reset Password';

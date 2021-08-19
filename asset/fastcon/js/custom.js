@@ -101,6 +101,15 @@ $('#product_options1').change(function (e) {
     
 });
 
+$('.cancel-order').click(function (e) {
+    e.preventDefault();
+
+    const url = $(this).data('url');
+
+    $('#cancel_order_modal .remove-btn').attr('href', url);
+    $('#cancel_order_modal').modal('show');
+});
+
 $('#product_options2').change(function (e) {
     e.preventDefault();
 

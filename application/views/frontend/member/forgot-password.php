@@ -4,6 +4,16 @@
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     <div class="forgot-wrap">
+                        <?php if ($this->session->userdata('error')): ?>
+                            <div class="fastcon-alert fastcon-alert-error">
+                                <div class="alert-header">
+                                    <p class="alert-title"></p>
+                                </div>
+                                <div class="alert-body">
+                                    <p class="alert-message"><?=$this->session->userdata('error')?></p>
+                                </div>
+                            </div>
+                        <?php endif ?>
                         <p class="fastcon-body mb-20"><?=lang('reset_password_body')?>.</p>
                         <?=form_open(site_url('forgot_password_submit'), ['method' => 'post', 'class' => 'login-form']);?>
                             <div class="form-group mb-0">

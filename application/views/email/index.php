@@ -565,7 +565,7 @@ p {
                                         <?=$cs->setting_value?>
 
                                         <a href="tel:<?=$cs->phone?>" class="fastcon-body">
-                                            <img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.svg" style="margin-right: 8px;" width="16" alt="phone">
+                                            <img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.png" style="margin-right: 8px;" width="16" alt="phone">
                                             <?=$cs->phone?>
                                         </a>
                                     <?php endif ?>
@@ -581,7 +581,7 @@ p {
                                         <?=$cs->setting_value?>
 
                                         <a href="tel:<?=$cs->phone?>" class="fastcon-body">
-                                            <img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.svg" style="margin-right: 8px;" width="16" alt="phone">
+                                            <img src="<?=BASE_ASSET?>fastcon/img/icons/phone-call.png" style="margin-right: 8px;" width="16" alt="phone">
                                             <?=$cs->phone?>
                                         </a>
                                     <?php endif ?>

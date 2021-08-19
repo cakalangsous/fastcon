@@ -147,4 +147,8 @@ $lang = [
 
 	'reset_password_body' 	=> 'Harap masukkan alamat email Anda di bawah ini untuk menerima link reset password',
 	'reset_password' 		=> 'Reset Kata Sandi',
+
+	'cancel' 				=> 'Batalkan',
+	'cancel_order'		 	=> 'Batalkan Pesanan',
+	'cancel_order_title' 	=> 'Apakah anda yakin akan membatalkan pesanan ini?',
 ];
