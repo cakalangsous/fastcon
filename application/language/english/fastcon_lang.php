@@ -126,7 +126,7 @@ $lang = [
 	'factory_minimum' 		=> 'Minimum Purchase Amount (M3)',
 
 	'order_title' 			=> 'YOU’VE PURCHASED OUR PRODUCT! ',
-	'order_body' 			=> 'We are currently preparing your order. Shop for more Fastcon products as an environmentally friendly development solution and get promos from us, for more information contact our call center at (031) 7421270',
+	'order_body' 			=> 'Please check your email or view the transaction history on the account page for more information. Shop for more Fastcon products as an environmentally friendly development solution and get promos from us, for more information contact our call center at (031) 7421270',
 
 	'enter_here' 			=> 'Enter here',
 	'required' 				=> 'Required',

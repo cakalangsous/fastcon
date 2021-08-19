@@ -126,7 +126,7 @@ $lang = [
 	'factory_minimum' 		=> 'JUMLAH PEMBELIAN MINIMAL PABRIK (M3)',
 
 	'order_title' 			=> 'Anda telah berhasil membeli produk kami!',
-	'order_body' 			=> 'Saat ini kami sedang mempersiapkan barang belanja Anda. Terus belanjakan produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.',
+	'order_body' 			=> 'Silahkan cek e-mail Anda atau lihat histori transaksi di halaman akun untuk informasi lebih lanjut. Terus belanjakan produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.',
 
 	'enter_here' 			=> 'Ketik disini',
 	'required' 				=> 'Wajib diisi',
