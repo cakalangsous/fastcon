@@ -483,7 +483,7 @@ p {
                                                 $total = $total + ($c->qty * ($c->price-$c->discount));
                                             ?>
                                             <tr>
-                                                <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important;"><?=$c->product_name?></p></td>
+                                                <td colspan="2"><p class="fastcon-description" style="margin: 0; font-family: 'Jura', sans-serif !important;"><?=$c->product_name?></p></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
