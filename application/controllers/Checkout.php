@@ -549,6 +549,28 @@ class Checkout extends Front {
 		
 		$this->email->send();
 
+
+		$admin['title']		= lang('new_order_received');
+		$admin['caption']	= 'Dear admin, this is e-mail notification for new order from user. You can check the user details from admin panel. Please respond in 1x24 work hours via phone number or e-mail.';
+		$admin['marketplace']= $this->data['marketplace'];
+		$admin['contact_settings']	= $this->data['contact_settings'];
+		$admin['lang'] = $this->data['lang'];
+		$admin['cart'] = $info['cart'];
+		$admin['order_details'] = $info['order_details'];
+
+		$html = $this->load->view('email/index', $admin, true);
+
+		$this->load->library('email', $this->mail_config());
+
+		$this->email->initialize($this->mail_config());
+		$this->email->set_newline("\r\n");
+		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
+		$this->email->to(getenv('ADMIN_EMAIL'));
+		$this->email->subject('Fastcon - '.lang('new_order_received'));
+		$this->email->message($html);
+		
+		$this->email->send();
+
 		$this->session->set_flashdata('response', ['title' => lang('order_title'), 'content' => lang('order_body')]);
 		redirect(site_url('thankyou'));
 	}
