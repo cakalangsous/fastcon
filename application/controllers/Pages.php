@@ -137,7 +137,7 @@ class Pages extends Front {
 
 		$html = $this->load->view('email/index', $admin, true);
 
-		$this->load->library('email');
+		$this->load->library('email', $this->mail_config());
 
 		$this->email->initialize($this->mail_config());
 		$this->email->set_newline("\r\n");
