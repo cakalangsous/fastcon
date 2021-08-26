@@ -60,10 +60,6 @@ class Fastcon_banner extends Admin
         	$button = '';
         	$row = [];
 
-						if($this->is_allowed('fastcon_banner_add'))
-        	{
-		        $button .= '<a href="'.site_url("administrator/fastcon_banner/clone_data/" . $fastcon_banner->id) .'" class="label-default mr-3"><i class="fa fa-copy"></i> '.cclang('clone').'</a>';
-        	}
 			
 	        $button .= '<a href="'.site_url("administrator/fastcon_banner/view/" . $fastcon_banner->id).'" class="label-default mr-3"><i class="fa fa-newspaper-o" style="padding-right:3px;"></i> '.cclang("view_button").'</a>';
 
@@ -112,6 +108,18 @@ class Fastcon_banner extends Admin
 
 	    	$row[] = $fastcon_banner->caption_en;
 
+	    	$row[] = $fastcon_banner->primary_btn;
+
+	    	$row[] = $fastcon_banner->primary_btn_en;
+
+	    	$row[] = $fastcon_banner->primary_btn_link;
+
+	    	$row[] = $fastcon_banner->secondary_btn;
+
+	    	$row[] = $fastcon_banner->secondary_btn_en;
+
+	    	$row[] = $fastcon_banner->secondary_btn_link;
+
 	    
 	        $row[] = $button;
 	    	$data[] = $row;
@@ -127,163 +135,7 @@ class Fastcon_banner extends Admin
         echo json_encode($output);
 	}
 	
-	/**
-	* Add new fastcon_banners
-	*
-	*/
-	public function add()
-	{
-		$this->is_allowed('fastcon_banner_add');
-
-		$this->template->title('Banner New');
-		$this->render('backend/standart/administrator/fastcon_banner/fastcon_banner_add', $this->data);
-	}
-
-	/**
-	* Add New Fastcon Banners
-	*
-	* @return JSON
-	*/
-	public function add_save()
-	{
-		if (!$this->is_allowed('fastcon_banner_add', false)) {
-			echo json_encode([
-				'success' => false,
-				'message' => cclang('sorry_you_do_not_have_permission_to_access')
-				]);
-			exit;
-		}
-
-		$this->form_validation->set_rules('fastcon_banner_bg_img_name', 'Bg Img', 'trim|required');
-		$this->form_validation->set_rules('fastcon_banner_fg_img_name', 'Fg Img', 'trim|required');
-		$this->form_validation->set_rules('title', 'Title', 'trim|required');
-		$this->form_validation->set_rules('title_en', 'Title En', 'trim|required');
-		$this->form_validation->set_rules('caption', 'Caption', 'trim|required');
-		$this->form_validation->set_rules('caption_en', 'Caption En', 'trim|required');
-		
-
-		if ($this->form_validation->run()) {
-			$fastcon_banner_bg_img_uuid = $this->input->post('fastcon_banner_bg_img_uuid');
-			$fastcon_banner_bg_img_name = $this->input->post('fastcon_banner_bg_img_name');
-			$fastcon_banner_fg_img_uuid = $this->input->post('fastcon_banner_fg_img_uuid');
-			$fastcon_banner_fg_img_name = $this->input->post('fastcon_banner_fg_img_name');
-		
-			$save_data = [
-				'title' => $this->input->post('title'),
-				'title_en' => $this->input->post('title_en'),
-				'caption' => $this->input->post('caption'),
-				'caption_en' => $this->input->post('caption_en'),
-			];
-
-			if (!is_dir(FCPATH . '/uploads/fastcon_banner/')) {
-				mkdir(FCPATH . '/uploads/fastcon_banner/');
-			}
-
-			if (!empty($fastcon_banner_bg_img_name)) {
-				$fastcon_banner_bg_img_name_copy = date('YmdHis') . '-' . $fastcon_banner_bg_img_name;
-
-				rename(FCPATH . 'uploads/tmp/' . $fastcon_banner_bg_img_uuid . '/' . $fastcon_banner_bg_img_name,
-						FCPATH . 'uploads/fastcon_banner/' . $fastcon_banner_bg_img_name_copy);
-
-				if (!is_file(FCPATH . '/uploads/fastcon_banner/' . $fastcon_banner_bg_img_name_copy)) {
-					echo json_encode([
-						'success' => false,
-						'message' => 'Error uploading file'
-						]);
-					exit;
-				}
-
-				$save_data['bg_img'] = $fastcon_banner_bg_img_name_copy;
-			}
-		
-			if (!empty($fastcon_banner_fg_img_name)) {
-				$fastcon_banner_fg_img_name_copy = date('YmdHis') . '-' . $fastcon_banner_fg_img_name;
-
-				rename(FCPATH . 'uploads/tmp/' . $fastcon_banner_fg_img_uuid . '/' . $fastcon_banner_fg_img_name,
-						FCPATH . 'uploads/fastcon_banner/' . $fastcon_banner_fg_img_name_copy);
-
-				if (!is_file(FCPATH . '/uploads/fastcon_banner/' . $fastcon_banner_fg_img_name_copy)) {
-					echo json_encode([
-						'success' => false,
-						'message' => 'Error uploading file'
-						]);
-					exit;
-				}
-
-				$save_data['fg_img'] = $fastcon_banner_fg_img_name_copy;
-			}
-		
-			
-			$save_fastcon_banner = $this->model_fastcon_banner->store($save_data);
-
-			if ($save_fastcon_banner) {
-				if ($this->input->post('save_type') == 'stay') {
-					$this->data['success'] = true;
-					$this->data['id'] 	   = $save_fastcon_banner;
-					$this->data['message'] = cclang('success_save_data_stay', [
-						anchor('administrator/fastcon_banner/edit/' . $save_fastcon_banner, 'Edit Fastcon Banner'),
-						anchor('administrator/fastcon_banner', ' Go back to list')
-					]);
-				} else {
-					set_message(
-						cclang('success_save_data_redirect', [
-						anchor('administrator/fastcon_banner/edit/' . $save_fastcon_banner, 'Edit Fastcon Banner')
-					]), 'success');
-
-            		$this->data['success'] = true;
-					$this->data['redirect'] = base_url('administrator/fastcon_banner');
-				}
-			} else {
-				if ($this->input->post('save_type') == 'stay') {
-					$this->data['success'] = false;
-					$this->data['message'] = cclang('data_not_change');
-				} else {
-            		$this->data['success'] = false;
-            		$this->data['message'] = cclang('data_not_change');
-					$this->data['redirect'] = base_url('administrator/fastcon_banner');
-				}
-			}
-
-		} else {
-			$this->data['success'] = false;
-			$this->data['message'] = validation_errors();
-		}
-
-		echo json_encode($this->data);
-	}
 	
-	
-	/**
-	* Clone data Fastcon Banner	*
-	*/
-	public function clone_data($id=0)
-	{
-		if($id<=0)
-		{
-			$this->data['success'] = false;
-    		$this->data['message'] = cclang('data_not_found');
-			$this->data['redirect'] = base_url('administrator/fastcon_banner');
-			set_message(cclang('data_not_found'), 'warning');
-		}
-
-		$this->is_allowed('fastcon_banner_add');
-
-		if($data = db_get_row_data('fastcon_banner', ['id' => $id]))
-		{
-			clone_this_data('fastcon_banner', ['id' => $id]);
-			$this->data['success'] = true;
-    		$this->data['message'] = cclang('data_cloned');
-			$this->data['redirect'] = base_url('administrator/fastcon_banner');
-
-			set_message(cclang('data_cloned'), 'success');
-		}else{
-			set_message(cclang('data_not_found'), 'warning');
-		}
-
-		redirect('administrator/fastcon_banner');
-
-	}
-
 	
 		/**
 	* Update view Fastcon Banners
@@ -321,6 +173,9 @@ class Fastcon_banner extends Admin
 		$this->form_validation->set_rules('title_en', 'Title En', 'trim|required');
 		$this->form_validation->set_rules('caption', 'Caption', 'trim|required');
 		$this->form_validation->set_rules('caption_en', 'Caption En', 'trim|required');
+		$this->form_validation->set_rules('primary_btn', 'Primary Btn', 'trim|required');
+		$this->form_validation->set_rules('primary_btn_en', 'Primary Btn En', 'trim|required');
+		$this->form_validation->set_rules('primary_btn_link', 'Primary Btn Link', 'trim|required');
 		
 		if ($this->form_validation->run()) {
 			$fastcon_banner_bg_img_uuid = $this->input->post('fastcon_banner_bg_img_uuid');
@@ -333,6 +188,12 @@ class Fastcon_banner extends Admin
 				'title_en' => $this->input->post('title_en'),
 				'caption' => $this->input->post('caption'),
 				'caption_en' => $this->input->post('caption_en'),
+				'primary_btn' => $this->input->post('primary_btn'),
+				'primary_btn_en' => $this->input->post('primary_btn_en'),
+				'primary_btn_link' => $this->input->post('primary_btn_link'),
+				'secondary_btn' => $this->input->post('secondary_btn'),
+				'secondary_btn_en' => $this->input->post('secondary_btn_en'),
+				'secondary_btn_link' => $this->input->post('secondary_btn_link'),
 			];
 
 			if (!is_dir(FCPATH . '/uploads/fastcon_banner/')) {

@@ -154,4 +154,20 @@ $lang = [
 
 	'alphabeth_asc' 		=> 'Alphabet A-Z',
 	'alphabeth_desc' 		=> 'Alphabet Z-A',
+
+	'no_data' 				=> 'No Data',
+
+	'new_order_received'	=> 'NEW ORDER RECEIVED',
+	'new_order_email'		=> 'Your new order has been received, please proceed to payment. Order automatically canceled after 1x24 hours. Shop for more Fastcon products as an environmentally friendly development solution and get promos from us, for more information contact our call center at (031) 7421270',
+
+	'payment_received_title'=> 'PAYMENT RECEIVED! WE WILL PROCEED IMMEDIATELY',
+	'payment_received_email'=> 'We’ve received your payment and will process the delivery as soon as possible. We will notify you once the order has been delivered and we will provide contact with our courier. Shop for more Fastcon products as an environmentally friendly development solution and get promos from us, for more information contact our call center at (031) 7421270',
+
+	'order_sent_title'		=> 'ORDER HAS BEEN DELIVERED!',
+	'order_sent_email'		=> 'We have sent your order! Thank you for shopping at Fastcon. Please contact our courier below for tracking. Shop for more Fastcon products as an environmentally friendly development solution and get promos from us, for more information contact our call center at (031) 7421270',
+
+
+	'order_cancelled_title'	=> 'ORDER HAS BEEN CANCELED',
+	'order_cancelled_email'	=> 'Your order has been canceled. The items listed below were part of the canceled order. If this is not you
+or you accidentally canceled the order, contact our call center at (031) 7421270.',
 ];

@@ -76,6 +76,8 @@
                                 <input class="data_file" name="fastcon_banner_bg_img_name" id="fastcon_banner_bg_img_name" type="hidden" value="<?= set_value('fastcon_banner_bg_img_name', $fastcon_banner->bg_img); ?>">
                                 <small class="info help-block">
                                 <b>Extension file must</b> JPG,PNG,JPEG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 1024 x 1024.</small>
                             </div>
                         </div>
                                                   
@@ -89,6 +91,8 @@
                                 <input class="data_file" name="fastcon_banner_fg_img_name" id="fastcon_banner_fg_img_name" type="hidden" value="<?= set_value('fastcon_banner_fg_img_name', $fastcon_banner->fg_img); ?>">
                                 <small class="info help-block">
                                 <b>Extension file must</b> PNG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 450 x 380.</small>
                             </div>
                         </div>
                                                   
@@ -135,18 +139,75 @@
                                 </small>
                             </div>
                         </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="primary_btn" class="col-sm-2 control-label">Primary Btn 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="primary_btn" id="primary_btn" placeholder="Primary Btn" value="<?= set_value('primary_btn', $fastcon_banner->primary_btn); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="primary_btn_en" class="col-sm-2 control-label">Primary Btn En 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="primary_btn_en" id="primary_btn_en" placeholder="Primary Btn En" value="<?= set_value('primary_btn_en', $fastcon_banner->primary_btn_en); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="primary_btn_link" class="col-sm-2 control-label">Primary Btn Link 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="primary_btn_link" id="primary_btn_link" placeholder="Primary Btn Link" value="<?= set_value('primary_btn_link', $fastcon_banner->primary_btn_link); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="secondary_btn" class="col-sm-2 control-label">Secondary Btn 
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="secondary_btn" id="secondary_btn" placeholder="Secondary Btn" value="<?= set_value('secondary_btn', $fastcon_banner->secondary_btn); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="secondary_btn_en" class="col-sm-2 control-label">Secondary Btn En 
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="secondary_btn_en" id="secondary_btn_en" placeholder="Secondary Btn En" value="<?= set_value('secondary_btn_en', $fastcon_banner->secondary_btn_en); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="secondary_btn_link" class="col-sm-2 control-label">Secondary Btn Link 
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="secondary_btn_link" id="secondary_btn_link" placeholder="Secondary Btn Link" value="<?= set_value('secondary_btn_link', $fastcon_banner->secondary_btn_link); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
                                                 
                         <div class="message"></div>
                         <div class="row-fluid col-md-7">
                             <button class="btn btn-flat btn-primary btn_save btn_action" id="btn_save" data-stype='stay' title="<?= cclang('save_button'); ?> (Ctrl+s)">
                             <i class="fa fa-save" ></i> <?= cclang('save_button'); ?>
                             </button>
-                            <a class="btn btn-flat btn-info btn_save btn_action btn_save_back" id="btn_save" data-stype='back' title="<?= cclang('save_and_go_the_list_button'); ?> (Ctrl+d)">
-                            <i class="ion ion-ios-list-outline" ></i> <?= cclang('save_and_go_the_list_button'); ?>
-                            </a>
-                            <a class="btn btn-flat btn-default btn_action" id="btn_cancel" title="<?= cclang('cancel_button'); ?> (Ctrl+x)">
-                            <i class="fa fa-undo" ></i> <?= cclang('cancel_button'); ?>
-                            </a>
                             <span class="loading loading-hide">
                             <img src="<?= BASE_ASSET; ?>/img/loading-spin-primary.svg"> 
                             <i><?= cclang('loading_saving_data'); ?></i>

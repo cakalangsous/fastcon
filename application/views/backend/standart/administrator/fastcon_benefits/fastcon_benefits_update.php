@@ -76,6 +76,8 @@
                                 <input class="data_file" name="fastcon_benefits_image_name" id="fastcon_benefits_image_name" type="hidden" value="<?= set_value('fastcon_benefits_image_name', $fastcon_benefits->image); ?>">
                                 <small class="info help-block">
                                 <b>Extension file must</b> PNG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 250 x 160.</small>
                             </div>
                         </div>
                                                   

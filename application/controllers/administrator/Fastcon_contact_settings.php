@@ -67,10 +67,6 @@ class Fastcon_contact_settings extends Admin
         	{
 		        $button .= '<a href="'.site_url("administrator/fastcon_contact_settings/edit/" . $fastcon_contact_settings->id) .'" class="label-default mr-3"><i class="fa fa-edit "></i> '.cclang('update_button').'</a>';
         	}
-			        	if($this->is_allowed('fastcon_contact_settings_delete'))
-        	{
-		        $button .= '<a href="javascript:void(0);" onclick="delete_this(\''.BASE_URL.'administrator/fastcon_contact_settings/delete/'.$fastcon_contact_settings->id.'\')" class="label-default remove-data"><i class="fa fa-close"></i>'.cclang('remove_button').'</a>';
-        	}
 
 
 

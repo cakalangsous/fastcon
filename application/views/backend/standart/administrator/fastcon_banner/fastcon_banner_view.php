@@ -131,6 +131,54 @@ jQuery(document).ready(domo);
                            <?= _ent($fastcon_banner->caption_en); ?>
                         </div>
                     </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Primary Btn </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_banner->primary_btn); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Primary Btn En </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_banner->primary_btn_en); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Primary Btn Link </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_banner->primary_btn_link); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Secondary Btn </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_banner->secondary_btn); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Secondary Btn En </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_banner->secondary_btn_en); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Secondary Btn Link </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_banner->secondary_btn_link); ?>
+                        </div>
+                    </div>
                                         
                     <br>
                     <br>

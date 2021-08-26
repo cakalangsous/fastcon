@@ -63,20 +63,26 @@
 
                                 <div class="row fastcon-product-list">
 
-                                    <?php foreach ($products as $p): ?>
-                                        <div class="col-lg-4 col-md-6 col-sm-12">
-                                            <a href="<?=site_url('products/details/'.$p->product_id.'/'.$p->product_slug)?>" class="product-item">
-                                                <div class="product-img">
-                                                    <img src="<?=site_url('uploads/fastcon_product/'.explode(',', $p->product_images)[0] )?>" alt="<?=$p->product_name?>">
-                                                </div>
-        
-                                                <div class="product-desc">
-                                                    <p class="fastcon-description cl-grey-900 text-uppercase"><?=db_get_row_data('fastcon_product_category', ['category_id' => $p->product_category])->category_name ?></p>
-                                                    <h4 class="fastcon-h4"><?=$p->product_name?></h4>
-                                                </div>
-                                            </a>
+                                    <?php if ($products): ?>
+                                        <?php foreach ($products as $p): ?>
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                                <a href="<?=site_url('products/details/'.$p->product_id.'/'.$p->product_slug)?>" class="product-item">
+                                                    <div class="product-img">
+                                                        <img src="<?=site_url('uploads/fastcon_product/'.explode(',', $p->product_images)[0] )?>" alt="<?=$p->product_name?>">
+                                                    </div>
+            
+                                                    <div class="product-desc">
+                                                        <p class="fastcon-description cl-grey-900 text-uppercase"><?=db_get_row_data('fastcon_product_category', ['category_id' => $p->product_category])->category_name ?></p>
+                                                        <h4 class="fastcon-h4"><?=$p->product_name?></h4>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        <?php endforeach ?>
+                                    <?php else: ?>
+                                        <div class="col-12">
+                                            <p class="fastcon-body"><?=ucfirst(lang('no_data'))?></p>
                                         </div>
-                                    <?php endforeach ?>
+                                    <?php endif ?>
                                     
                                 </div>
                                 <div class="pagination-wrap">

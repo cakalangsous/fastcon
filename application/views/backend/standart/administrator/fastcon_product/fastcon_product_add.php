@@ -115,6 +115,8 @@
                                 <div id="fastcon_product_product_images_galery_listed"></div>
                                 <small class="info help-block">
                                 <b>Extension file must</b> JPG,JPEG,PNG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 350 x 350.</small>
                             </div>
                         </div>
                                                  
@@ -139,6 +141,8 @@
                                 <input class="data_file" name="fastcon_product_spec_name" id="fastcon_product_spec_name" type="hidden" value="<?= set_value('fastcon_product_spec_name'); ?>">
                                 <small class="info help-block">
                                 <b>Extension file must</b> JPG,JPEG,PNG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 900 x 300.</small>
                             </div>
                         </div>
                                                  
@@ -152,6 +156,8 @@
                                 <input class="data_file" name="fastcon_product_cara_pasang_name" id="fastcon_product_cara_pasang_name" type="hidden" value="<?= set_value('fastcon_product_cara_pasang_name'); ?>">
                                 <small class="info help-block">
                                 <b>Extension file must</b> JPG,JPEG,PNG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 900 x 300.</small>
                             </div>
                         </div>
                                                  
@@ -165,6 +171,8 @@
                                 <input class="data_file" name="fastcon_product_certificate_name" id="fastcon_product_certificate_name" type="hidden" value="<?= set_value('fastcon_product_certificate_name'); ?>">
                                 <small class="info help-block">
                                 <b>Extension file must</b> JPG,JPEG,PNG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 900 x 300.</small>
                             </div>
                         </div>
                                                 

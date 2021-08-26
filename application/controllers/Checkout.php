@@ -528,8 +528,8 @@ class Checkout extends Front {
 
 		} // end member area (else)
 
-		$info['title']		= lang('order_title');
-		$info['caption']	= lang('order_body');
+		$info['title']		= lang('new_order_received');
+		$info['caption']	= lang('new_order_email');
 		$info['marketplace']= $this->data['marketplace'];
 		$info['contact_settings']	= $this->data['contact_settings'];
 		$info['lang'] = $this->data['lang'];
@@ -544,7 +544,7 @@ class Checkout extends Front {
 		$this->email->set_newline("\r\n");
 		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
 		$this->email->to($account_email);
-		$this->email->subject('Fastcon - Thank you for purchase');
+		$this->email->subject('Fastcon - '.lang('new_order_received'));
 		$this->email->message($html);
 		
 		$this->email->send();

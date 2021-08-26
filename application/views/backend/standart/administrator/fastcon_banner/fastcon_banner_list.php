@@ -52,9 +52,6 @@ jQuery(document).ready(domo);
                   <!-- Add the bg color to the header using any of the bg-* classes -->
                   <div class="widget-user-header ">
                      <div class="row pull-right" id="fastcon_bannerBtn">
-                        <?php is_allowed('fastcon_banner_add', function(){?>
-                        <a class="btn btn-flat btn-success btn_add_new mr-3" id="btn_add_new" title="<?= cclang('add_new_button', ['Fastcon Banner']); ?>  (Ctrl+a)" href="<?=  site_url('administrator/fastcon_banner/add'); ?>"><i class="fa fa-plus-square-o" ></i> <?= cclang('add_new_button', ['Fastcon Banner']); ?></a>
-                        <?php }) ?>
                                              </div>
                      <div class="widget-user-image">
                         <img class="img-circle" src="<?= BASE_ASSET; ?>/img/list.png" alt="User Avatar">
@@ -73,6 +70,12 @@ jQuery(document).ready(domo);
                            <th>Title En</th>
                            <th>Caption</th>
                            <th>Caption En</th>
+                           <th>Primary Btn</th>
+                           <th>Primary Btn En</th>
+                           <th>Primary Btn Link</th>
+                           <th>Secondary Btn</th>
+                           <th>Secondary Btn En</th>
+                           <th>Secondary Btn Link</th>
                            <th width="250">Action</th>
                         </tr>
                      </thead>

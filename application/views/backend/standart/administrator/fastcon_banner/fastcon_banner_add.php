@@ -136,6 +136,69 @@
                                 </small>
                             </div>
                         </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="primary_btn" class="col-sm-2 control-label">Primary Btn 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="primary_btn" id="primary_btn" placeholder="Primary Btn" value="<?= set_value('primary_btn'); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="primary_btn_en" class="col-sm-2 control-label">Primary Btn En 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="primary_btn_en" id="primary_btn_en" placeholder="Primary Btn En" value="<?= set_value('primary_btn_en'); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="primary_btn_link" class="col-sm-2 control-label">Primary Btn Link 
+                            <i class="required">*</i>
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="primary_btn_link" id="primary_btn_link" placeholder="Primary Btn Link" value="<?= set_value('primary_btn_link'); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="secondary_btn" class="col-sm-2 control-label">Secondary Btn 
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="secondary_btn" id="secondary_btn" placeholder="Secondary Btn" value="<?= set_value('secondary_btn'); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="secondary_btn_en" class="col-sm-2 control-label">Secondary Btn En 
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="secondary_btn_en" id="secondary_btn_en" placeholder="Secondary Btn En" value="<?= set_value('secondary_btn_en'); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
+                                                 
+                                                <div class="form-group ">
+                            <label for="secondary_btn_link" class="col-sm-2 control-label">Secondary Btn Link 
+                            </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="secondary_btn_link" id="secondary_btn_link" placeholder="Secondary Btn Link" value="<?= set_value('secondary_btn_link'); ?>">
+                                <small class="info help-block">
+                                </small>
+                            </div>
+                        </div>
                                                 
                         <div class="message"></div>
                         <div class="row-fluid col-md-7">

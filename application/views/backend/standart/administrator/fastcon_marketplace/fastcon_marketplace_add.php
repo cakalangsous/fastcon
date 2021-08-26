@@ -77,6 +77,8 @@
                                 <input class="data_file" name="fastcon_marketplace_icon_name" id="fastcon_marketplace_icon_name" type="hidden" value="<?= set_value('fastcon_marketplace_icon_name'); ?>">
                                 <small class="info help-block">
                                 <b>Extension file must</b> PNG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 30 x 30.</small>
                             </div>
                         </div>
                                                  

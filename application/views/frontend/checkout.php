@@ -187,7 +187,7 @@
                             </div>
                         <?php $total = $total-$voucher['voucher_discount']; endif ?>
 
-                        <?php if (isset($ongkir) AND $ongkir>0): ?>
+                        <?php if (isset($ongkir) AND $ongkir<=0): ?>
                             <div class="card-summary-product-item mt-3">
                                 <div class="product">
                                     <p class="fastcon-description"><b>Catatan:</b></p>

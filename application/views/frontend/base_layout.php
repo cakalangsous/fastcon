@@ -346,9 +346,13 @@
 	</div>
 
 	<div class="whatsapp-wrap">
-		<a href="#">
-			<img src="<?=BASE_ASSET?>fastcon/img/icons/whatsapp-big.png" alt="">
-		</a>
+		<?php foreach ($contact_settings as $cs): ?>
+			<?php if ($cs->setting_item=='whatsapp'): ?>
+				<a href="https://wa.me/<?=urlencode($cs->phone)?>?text=<?=urlencode(strip_tags($cs->setting_value))?>" target="_blank">
+					<img src="<?=BASE_ASSET?>fastcon/img/icons/whatsapp-big.png" alt="">
+				</a>
+			<?php endif ?>
+		<?php endforeach ?>
 	</div>
 
 	<script>

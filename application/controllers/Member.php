@@ -251,6 +251,27 @@ class Member extends Front {
 			update_this_data('fastcon_product_orders', ['order_id' => $o->order_id], ['order_status' => 4]);
 		}
 
+		$info['title']		= lang('order_cancelled_title');
+		$info['caption']	= lang('order_cancelled_email');
+		$info['marketplace']= $this->data['marketplace'];
+		$info['contact_settings']	= $this->data['contact_settings'];
+		$info['lang'] = $this->data['lang'];
+		$info['cart'] = db_get_all_data('fastcon_product_orders', ['order_code' => $order_code]);
+		$info['order_details'] = db_get_row_data('fastcon_product_orders', ['order_code' => $order_code]);
+
+		$html = $this->load->view('email/index', $info, true);
+
+		$this->load->library('email');
+
+		$this->email->initialize($this->mail_config());
+		$this->email->set_newline("\r\n");
+		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
+		$this->email->to($account_email);
+		$this->email->subject('Fastcon - Thank you for purchase');
+		$this->email->message($html);
+		
+		$this->email->send();
+
 		$this->session->set_flashdata('response', 'Order cancelled.');
 		redirect(site_url('member/history'));
 	}

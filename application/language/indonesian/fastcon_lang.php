@@ -154,4 +154,19 @@ $lang = [
 
 	'alphabeth_asc' 		=> 'Alphabet A-Z',
 	'alphabeth_desc' 		=> 'Alphabet Z-A',
+
+	'no_data' 				=> 'Tidak Ada Data',
+
+	'new_order_received'	=> 'ORDER BARU TELAH DITERIMA',
+	'new_order_email'		=> ' Order Anda telah kami terima, silahkan melakukan proses pembayaran terlebih dahulu. Order otomatis dibatalkan 1x24 jam. Terus belanjakan produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.',
+
+	'payment_received_title'=> 'PEMBAYARAN ANDA TELAH KAMI TERIMA DAN LANGSUNG KAMI PROSES',
+	'payment_received_email'=> 'Pembayaran Anda sudah kami terima dan langsung kami proses pengiriman secepatnya. Kami akan beritahu secepatnya begitu barang sudah terkirim dan memberikan kontak kurir. Terus belanjaka produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.',
+
+	'order_sent_title'		=> 'ORDER TERKIRIM!',
+	'order_sent_email'		=> 'Order Anda sudah kami kirimkan! Terima kasih telah berbelanja di Fastcon. Silahkan kontak kurir kami di bawah ini untuk melakukan tracking. Terus belanjakan produk-produk Fastcon sebagai solusi pembangunan ramah lingkungan dan dapatkan promo menarik dari kami, untuk informasi lebih lanjut hubungi call center kami di (031) 7421270.',
+
+
+	'order_cancelled_title'	=> 'ORDER TELAH DIBATALKAN',
+	'order_cancelled_email'	=> 'Order Anda telah dibatalkan. Berikut adalah daftar barang-barang Anda yang telah dibatalkan. Jika ini bukan Anda yang batalkan atau secara tidak sengaja membatalkannya, silahkan hubungi call center kami di (031) 7421270.',
 ];

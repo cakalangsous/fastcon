@@ -9,8 +9,10 @@
 					<p class="fastcon-body-large"><?=$lang=='indonesian'?$banner->caption:$banner->caption_en ?></p>
 				</div>
 				<div class="hero-section_info-btn">
-					<a href="<?=site_url('products')?>" class="fastcon-btn primary-btn"><?=lang('see_product')?></a>
-					<a href="<?=site_url('contact')?>" class="fastcon-btn secondary-btn"><?=lang('contact_us')?></a>
+					<a href="<?=$banner->primary_btn_link?>" class="fastcon-btn primary-btn"><?=$lang=='indonesian'?$banner->primary_btn:$banner->primary_btn_en?></a>
+					<?php if ($banner->secondary_btn_link): ?>
+						<a href="$banner->secondary_btn_link" class="fastcon-btn secondary-btn"><?=$lang=='indonesian'?$banner->secondary_btn:$banner->secondary_btn_en?></a>
+					<?php endif ?>
 				</div>
 				<div class="hero-section_info-iso">
 					<img src="<?=BASE_ASSET?>fastcon/img/iso.png" alt="Fastcon ISO" class="iso-img">

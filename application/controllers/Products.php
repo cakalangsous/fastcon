@@ -43,10 +43,6 @@ class Products extends Front {
 		}
 
 		$products = db_get_all_data('fastcon_product', $where, $limit, $offset, false, $sort);
-		if (!$products) {
-			$this->not_found();
-			return;
-		}
 
 		$config = [
 			'base_url'     => 'products',

@@ -5,7 +5,7 @@ class Model_fastcon_banner extends MY_Model {
 
 	private $primary_key 	= 'id';
 	private $table_name 	= 'fastcon_banner';
-	private $field_search 	= ['bg_img', 'fg_img', 'title', 'title_en', 'caption', 'caption_en'];
+	private $field_search 	= ['bg_img', 'fg_img', 'title', 'title_en', 'caption', 'caption_en', 'primary_btn', 'primary_btn_en', 'primary_btn_link', 'secondary_btn', 'secondary_btn_en', 'secondary_btn_link'];
 
 	public function __construct()
 	{

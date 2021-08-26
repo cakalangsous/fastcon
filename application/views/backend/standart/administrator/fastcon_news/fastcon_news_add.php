@@ -77,6 +77,8 @@
                                 <input class="data_file" name="fastcon_news_image_name" id="fastcon_news_image_name" type="hidden" value="<?= set_value('fastcon_news_image_name'); ?>">
                                 <small class="info help-block">
                                 <b>Extension file must</b> JPG,JPEG,PNG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 600 x 400.</small>
                             </div>
                         </div>
                                                  

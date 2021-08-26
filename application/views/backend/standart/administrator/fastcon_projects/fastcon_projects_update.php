@@ -96,6 +96,8 @@
                                 </div>
                                 <small class="info help-block">
                                 <b>Extension file must</b> JPG,JPEG,PNG.</small>
+                                <small class="info help-block">
+                                <b>Recommended Size</b> 750 x 600.</small>
                             </div>
                         </div>
                                                  
