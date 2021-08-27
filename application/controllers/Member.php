@@ -266,7 +266,7 @@ class Member extends Front {
 		$this->email->initialize($this->mail_config());
 		$this->email->set_newline("\r\n");
 		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
-		$this->email->to($account_email);
+		$this->email->to($this->session->userdata('member')['email']);
 		$this->email->subject('Fastcon - Thank you for purchase');
 		$this->email->message($html);
 		
