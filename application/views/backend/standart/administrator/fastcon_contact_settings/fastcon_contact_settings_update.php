@@ -88,8 +88,10 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <input type="number" class="form-control" name="phone" id="phone" placeholder="Phone" value="<?= set_value('phone', $fastcon_contact_settings->phone); ?>">
-                                    <small class="info help-block">
-                                    </small>
+                                    <?php if ($fastcon_contact_settings->setting_item=='whatsapp'): ?>
+                                        <small class="info help-block">
+                                        <b>Use extension numbers starting with "+62" ex: +628212345679 </b></small>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         <?php endif ?>                         
