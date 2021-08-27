@@ -11,7 +11,7 @@
 				<div class="hero-section_info-btn">
 					<a href="<?=$banner->primary_btn_link?>" class="fastcon-btn primary-btn"><?=$lang=='indonesian'?$banner->primary_btn:$banner->primary_btn_en?></a>
 					<?php if ($banner->secondary_btn_link): ?>
-						<a href="$banner->secondary_btn_link" class="fastcon-btn secondary-btn"><?=$lang=='indonesian'?$banner->secondary_btn:$banner->secondary_btn_en?></a>
+						<a href="<?=$banner->secondary_btn_link?>" class="fastcon-btn secondary-btn"><?=$lang=='indonesian'?$banner->secondary_btn:$banner->secondary_btn_en?></a>
 					<?php endif ?>
 				</div>
 				<div class="hero-section_info-iso">
