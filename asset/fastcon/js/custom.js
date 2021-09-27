@@ -184,6 +184,7 @@ $('#add_to_cart_btn').click(function (e) {
     .done(function(res) {
         if (res.status==true) {
             $('#added_to_cart_modal').modal('show');
+            $('.icon-line-shopping-cart').addClass('cart-not-empty')
         }else {
             if (res.option=='option1') {
                 $('.helper-text.option1').show();
@@ -466,6 +467,7 @@ function calc() {
         switch(ketebalan) {
             case '75' : bata = 11.1; break;
             case '100' : bata = 8.3; break;
+            case '125' : bata = 6.67; break;
             default : bata = 0;
         }
 

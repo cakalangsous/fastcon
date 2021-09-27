@@ -51,7 +51,7 @@
 							<div class="header-misc">
 
 								<div id="top-search" class="header-misc-icon">
-									<a href="<?=site_url('products/cart')?>" ><i class="icon-line-shopping-cart"></i><i class="icon-line-cross"></i></a>
+									<a href="<?=site_url('products/cart')?>" ><i class="icon-line-shopping-cart <?=$cart_badge?'cart-not-empty':''?>"></i></a>
 								</div>
 
 								<div id="top-cart" class="header-misc-icon d-none d-sm-flex align-items-center">
@@ -113,7 +113,7 @@
 							<?php if (!isset($checkout)): ?>
 
 								<div id="top-search" class="header-misc-icon">
-									<a href="<?=site_url('products/cart')?>" ><i class="icon-line-shopping-cart"></i><i class="icon-line-cross"></i></a>
+									<a href="<?=site_url('products/cart')?>" ><i class="icon-line-shopping-cart <?=$cart_badge?'cart-not-empty':''?>"></i></a>
 								</div>
 
 								<div class="header-misc-icon d-none d-sm-flex align-items-center">

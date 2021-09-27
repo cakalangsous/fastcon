@@ -197,6 +197,11 @@ button.disabled {
   border-color: #E0E0E0;
 }
 
+button.owl-prev.disabled:hover {
+  background-color: unset;
+  border-color: unset;
+}
+
 button.disabled:hover {
   background-color: #E0E0E0;
   border-color: #E0E0E0;
@@ -1371,6 +1376,19 @@ a.product-item:hover h4 {
   margin-right: 0;
 }
 
+
+.icon-line-shopping-cart.cart-not-empty:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  transition: all .3s ease-in-out;
+}
+
 .card-summary {
   padding: 20px;
   background: #FAFAFA;
@@ -1790,6 +1808,10 @@ a.product-item:hover h4 {
 .projects-wrap .right .overlay {
   left: 15px !important;
   right: 5px !important;
+}
+
+.projects-wrap .overlay {
+  max-height: 360px;
 }
 
 .overlay {
@@ -2983,8 +3005,14 @@ small.helper-text {
     padding: 0;
   }
   .projects-wrap .project-item .project-description .category::after {
-    bottom: 29.9%;
+    /*bottom: 29.9%;*/
   }
+
+  .projects-wrap .overlay {
+    max-height: 250px;
+    max-width: 309px;
+  }
+
   .projects-wrap .left {
     padding-left: 15px;
   }
@@ -3437,6 +3465,12 @@ small.helper-text {
   .products-wrap .tab-container {
     padding-top: 0 !important;
   }
+
+  .projects-wrap .overlay {
+    max-height: 234px;
+    max-width: 290px;
+  }
+
   .tab-container {
     padding: 34px 0 !important;
   }
