@@ -123,6 +123,7 @@ $lang = [
 	'choose_thickness' 		=> 'Anda bisa memilih ukuran bata di atas',
 	'aac_needed' 			=> 'JUMLAH BATA RINGAN YANG DIBUTUHKAN (BUAH)',
 	'cubication_needed' 	=> 'JUMLAH KUBIKASI YANG DIBUTUHKAN (M3)',
+	'mortar_needed'			=> 'JUMLAH MORTAR YANG DIBUTUHKAN',
 	'factory_minimum' 		=> 'JUMLAH PEMBELIAN MINIMAL PABRIK (M3)',
 
 	'order_title' 			=> 'Anda telah berhasil membeli produk kami!',

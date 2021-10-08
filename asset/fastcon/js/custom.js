@@ -498,6 +498,7 @@ function calc() {
             $('#needs').text(kebutuhan.toFixed(1));
             $('#kubik_needs').text(kubik.toFixed(1));
             $('#minimum_purchase').text(minimum_purchase);
+            $('#mortar_needed').text(Math.round(kubik.toFixed(1)));
         }
 
     }

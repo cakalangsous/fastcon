@@ -55,20 +55,26 @@
                 <h3 class="fastcon-h3 cl-grey-900 text-uppercase"><?=lang('imagine_data')?>:</h3>
 
                 <div class="row">
-                    <div class="col-md-4 col-6 mb-30">
+                    <div class="col-md-3 col-6 mb-30">
                         <p class="fastcon-label cl-grey-900 text-uppercase"><?=lang('aac_needed')?></p>
                         <h1 class="fastcon-calc-result cl-primary-900" id="needs">0</h1>
                     </div>
 
-                    <div class="col-md-4 col-6 mb-30">
+                    <div class="col-md-3 col-6 mb-30">
                         <p class="fastcon-label cl-grey-900 text-uppercase"><?=lang('cubication_needed')?></p>
                         <h1 class="fastcon-calc-result cl-primary-900" id="kubik_needs">0</h1>
                     </div>
 
-                    <div class="col-md-4 col-6 mb-30">
+                    <div class="col-md-3 col-6 mb-30">
+                        <p class="fastcon-label cl-grey-900 text-uppercase"><?=lang('mortar_needed')?></p>
+                        <h1 class="fastcon-calc-result cl-primary-900" id="mortar_needed">0</h1>
+                    </div>
+
+                    <div class="col-md-3 col-6 mb-30">
                         <p class="fastcon-label cl-grey-900 text-uppercase"><?=lang('factory_minimum')?></p>
                         <h1 class="fastcon-calc-result cl-primary-900" id="minimum_purchase">0</h1>
                     </div>
+
                 </div>
             </div>
         </div>

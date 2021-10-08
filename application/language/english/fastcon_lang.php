@@ -123,6 +123,7 @@ $lang = [
 	'choose_thickness' 		=> 'You can choose the brick size above',
 	'aac_needed' 			=> 'Total Needed AAC (pcs)',
 	'cubication_needed' 	=> 'Total Cubication Needed (M3)',
+	'mortar_needed'			=> 'Total MORTAR Needed',
 	'factory_minimum' 		=> 'Minimum Purchase Amount (M3)',
 
 	'order_title' 			=> 'YOU’VE PURCHASED OUR PRODUCT! ',
