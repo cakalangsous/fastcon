@@ -21,7 +21,6 @@ class XenditNotifCallback extends Api {
 
 		if ($this->post('external_id')) {
 			$order = db_get_row_data('fastcon_product_orders', ['order_code' => $this->post('external_id')]);
-
 		}
 
 		if ($this->post('status')) {
@@ -85,6 +84,15 @@ class XenditNotifCallback extends Api {
 				$this->email->send();
 				
 			}
+			$this->response([
+				'status' => true,
+				'message' => 'Notif received successfully'
+			], Api::HTTP_OK);
+		} else {
+			$this->response([
+				'status' => false,
+				'message' => 'order not found'
+			], Api::HTTP_NOT_FOUND);
 		}
 
 
@@ -101,10 +109,7 @@ class XenditNotifCallback extends Api {
 
 		insert_this_data('fastcon_xendit_callback_hit', $callback_data);
 
-		$this->response([
-			'status' => true,
-			'message' => 'Notif received successfully'
-		], Api::HTTP_OK);
+		
 	}
 
 }
