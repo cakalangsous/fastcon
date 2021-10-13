@@ -339,6 +339,7 @@ class Checkout extends Front {
 				$order_data = [
 					'order_code' => $order_code,
 					'guest_id' => $this->session->userdata('guest')['guest_id'],
+					'payer_name' => $this->session->userdata('guest')['fullname'],
 					'product_category_id' => $variant->product_category,
 					'product_category_name' => $variant->category_name,
 					'product_category_name_en' => $variant->category_name_en,
@@ -380,18 +381,6 @@ class Checkout extends Front {
 					'kelurahan' => $active_address->kelurahan,
 					'kode_pos' => $active_address->kode_pos,
 					'alamat_lengkap' => $active_address->address
-					// payment_type
-					// fraud_status
-					// status_message
-					// transaction_id
-					// transaction_time
-					// va_numbers
-					// midtrans_bill_code
-					// midtrans_bill_key
-					// transaction_status
-					// pdf_url
-					// status_pembelian
-					// midtrans_response
 				];
 
 				insert_this_data('fastcon_product_orders', $order_data);
@@ -469,6 +458,7 @@ class Checkout extends Front {
 				$order_data = [
 					'order_code' => $order_code,
 					'member_id' => $this->session->userdata('member')['member_id'],
+					'payer_name' => $this->session->userdata('member')['name'],
 					'product_category_id' => $c->product_category,
 					'product_category_name' => $c->category_name,
 					'product_category_name_en' => $c->category_name_en,
