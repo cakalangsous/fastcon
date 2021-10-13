@@ -838,9 +838,6 @@ class API extends REST_Controller
         $this->form_validation->set_error_delimiters('', '');
         $this->load->model('model_user');
 
-        $dotenv = new Dotenv\Dotenv(FCPATH);
-        $dotenv->load();
-
         if ($lang = $this->input->get('lang')) {
             $this->config->set_item('language', $lang);
 
@@ -858,7 +855,7 @@ class API extends REST_Controller
         }
         $this->lang->load('fastcon', $this->session->userdata('fastcon_lang'));
         $this->data['lang'] = $this->session->userdata('fastcon_lang');
-        
+
         $this->data['marketplace'] = db_get_all_data('fastcon_marketplace');
         $this->data['contact_settings'] = db_get_all_data('fastcon_contact_settings');
     }

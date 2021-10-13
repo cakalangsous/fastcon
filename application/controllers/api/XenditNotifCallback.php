@@ -17,7 +17,7 @@ class XenditNotifCallback extends Api {
 		if (!$this->head('x-callback-token') OR $this->head('x-callback-token') !== getenv('XENDIT_CALLBACK_TOKEN')) {
 			$callback_data = [
 				'status' => false,
-				'xendit_response_json' => $this->head().' - '.$this->post()
+				'xendit_response_json' => json_encode($this->post()).' - '.json_encode($this->post())
 			];
 			insert_this_data('fastcon_xendit_callback_hit', $callback_data);
 
@@ -66,8 +66,9 @@ class XenditNotifCallback extends Api {
 			'status' => 'success',
 			'xendit_id' => $this->post('id'),
 			'xendit_external_id' => $this->post('external_id'),
-			'xendit_response_json' => $this->post()
+			'xendit_response_json' => json_encode($this->post())
 		];
+
 
 		if ($this->post('status')!=null) {
 			$callback_data['xendit_status'] = $this->post('status');
@@ -131,7 +132,7 @@ class XenditNotifCallback extends Api {
 		} else {
 			$this->response([
 				'status' => false,
-				'message' => 'order not found'
+				'message' => 'Unknown Request'
 			], Api::HTTP_NOT_FOUND);
 		}
 		
