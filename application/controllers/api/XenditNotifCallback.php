@@ -78,7 +78,7 @@ class XenditNotifCallback extends Api {
 		}
 
 		if (isset($this->post('retail_outlet_name'))) {
-			$callback_data['retail_outlet_name'] => $this->post('retail_outlet_name');
+			$callback_data['retail_outlet_name'] = $this->post('retail_outlet_name');
 		}
 
 		if (isset($this->post('ewallet_type'))) {
