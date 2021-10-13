@@ -503,9 +503,22 @@ function calc() {
 
     }
 
-
 }
 
+function submit_user_order() {
+    $('.submit_order_btn').attr({
+        readonly: 'readonly',
+        disabled: 'disabled'
+    });
+
+    let btn_text = lang=='indonesian'?'Mengirim....':'Sending....';
+
+    $('.submit_order_btn').addClass('disabled');
+
+    $('.submit_order_btn').text(btn_text);
+
+    window.location.href = base_url + 'checkout/submit_order';
+}
 
 $(document).ready(() => {
 

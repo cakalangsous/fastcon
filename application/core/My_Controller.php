@@ -8,6 +8,7 @@ require_once APPPATH . '/libraries/Jwt/JWT.php';
 require_once APPPATH . '/libraries/REST_Controller.php';
 
 use \Firebase\JWT\JWT;
+use Xendit\Xendit;
 
 class MY_Controller extends CI_Controller {
 
@@ -43,6 +44,16 @@ class MY_Controller extends CI_Controller {
             ], $lang);
             set_cookie('language', $lang, (60 * 60 * 24) * 365 );
         }
+
+        // $this->xendit['url'] = 'https://api.xendit.co';
+        // $this->xendit['secret_api_key'] = getenv('PAYMENT_SECRET_KEY');
+
+        // $this->xendit['headers'] = [
+        //     'content-type: application/x-www-form-urlencoded',
+        //     'Authorization: Basic '.base64_encode($this->xendit['secret_api_key'].':')
+        // ];
+
+        Xendit::setApiKey(getenv('PAYMENT_SECRET_KEY'));
 
         date_default_timezone_set(get_option('timezone', 'asia/jakarta'));
         $this->load->library(['aauth', 'cc_html', 'cc_page_element', 'cc_app', 'cc_extension']);
@@ -815,7 +826,6 @@ class Front extends MY_Controller
 }
 
 
-
 class API extends REST_Controller
 {
     public $limit_page = 10;
@@ -823,9 +833,13 @@ class API extends REST_Controller
     public function __construct()
     {
         parent::__construct();
+
         $this->config->set_item('csrf_protection', false);
         $this->form_validation->set_error_delimiters('', '');
         $this->load->model('model_user');
+
+        $dotenv = new Dotenv\Dotenv(FCPATH);
+        $dotenv->load();
 
         if ($lang = $this->input->get('lang')) {
             $this->config->set_item('language', $lang);
@@ -838,6 +852,32 @@ class API extends REST_Controller
                 'aauth',
             ], $lang );
         }
+
+        if (!$this->session->userdata('fastcon_lang')) {
+            $this->session->set_userdata( ['fastcon_lang' => 'indonesian'] );
+        }
+        $this->lang->load('fastcon', $this->session->userdata('fastcon_lang'));
+        $this->data['lang'] = $this->session->userdata('fastcon_lang');
+        
+        $this->data['marketplace'] = db_get_all_data('fastcon_marketplace');
+        $this->data['contact_settings'] = db_get_all_data('fastcon_contact_settings');
+    }
+
+    public function mail_config()
+    {
+        return $config = [
+            'protocol'      => 'smtp',
+            'smtp_host'     => getenv('SMTP_HOST'),
+            'smtp_port'     => getenv('SMTP_PORT'),
+            'smtp_crypto'   =>'ssl',
+            'smtp_timeout'  => '30',
+            'charset'       => 'utf-8',
+            'wordwrap'      => TRUE,
+            'mailtype'      => 'html',
+            'newline'       => "\r\n",
+            'smtp_user'     => getenv('SMTP_USER'),
+            'smtp_pass'     => getenv('SMTP_PASS'),
+        ];
     }
 
     /**

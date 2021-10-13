@@ -15,12 +15,13 @@
 		"tan5en5/codeigniter-debugbar": "dev-master",
 		"compwright/codeigniter-installers": "*",
         "maximebf/debugbar": ">=1.0.0",
-		"filp/whoops": "^2.1"
+		"filp/whoops": "^2.1",
+		"xendit/xendit-php": "^2.15"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},
 	"require-dev": {
-		"mikey179/vfsStream": "1.1.*"
+		"mikey179/vfsstream": "1.1.*"
 	}
 }

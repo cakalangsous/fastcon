@@ -9,9 +9,16 @@ class ComposerStaticInit13e7765008d9187172b77548f69c8496
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'X' => 
+        array (
+            'Xendit\\' => 7,
+        ),
         'W' => 
         array (
             'Whoops\\' => 7,
@@ -24,6 +31,14 @@ class ComposerStaticInit13e7765008d9187172b77548f69c8496
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
         'D' => 
         array (
@@ -32,6 +47,10 @@ class ComposerStaticInit13e7765008d9187172b77548f69c8496
     );
 
     public static $prefixDirsPsr4 = array (
+        'Xendit\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/xendit/xendit-php/src',
+        ),
         'Whoops\\' => 
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
@@ -47,6 +66,27 @@ class ComposerStaticInit13e7765008d9187172b77548f69c8496
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+        ),
+        'Psr\\Http\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
         'DebugBar\\' => 
         array (
@@ -71,12 +111,17 @@ class ComposerStaticInit13e7765008d9187172b77548f69c8496
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit13e7765008d9187172b77548f69c8496::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit13e7765008d9187172b77548f69c8496::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit13e7765008d9187172b77548f69c8496::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit13e7765008d9187172b77548f69c8496::$classMap;
 
         }, null, ClassLoader::class);
     }

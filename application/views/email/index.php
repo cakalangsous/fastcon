@@ -404,6 +404,9 @@ p {
             		<td>
             			<div class="text" style="text-align: center;">
             				<h3 class="mtani-sub-title" style="font-family: 'Jura', sans-serif; color: #000; text-transform:uppercase;"><?=$title?></h3>
+                            <?php if ($payer_name): ?>
+                                <p class="fastcon-body">Dear <b> <?=$payer_name?></b>,</p>
+                            <?php endif ?>
             				<p class="fastcon-body"><?=$caption?></p>
             			</div>
 

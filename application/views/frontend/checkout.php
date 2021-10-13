@@ -208,7 +208,9 @@
                         </div>
 
                         <div class="card-summary-btn-wrap">
-                            <button type="button" <?=($address!=null AND $address->province_id!=0)?'onClick="window.location.href=\' '.site_url('checkout/submit_order').' \' "':'disabled="disabled"'?> class="fastcon-btn primary-btn w-100 <?=($address!=null AND $address->province_id==0)?'disabled':''?>"><?=lang('checkout_securely')?></button>
+                            <button type="button" <?=($address!=null AND $address->province_id!=0)?'onClick="submit_user_order()"':'disabled="disabled"'?> class="fastcon-btn submit_order_btn primary-btn w-100 <?=($address!=null AND $address->province_id==0)?'disabled':''?>"><?=lang('checkout_securely')?></button>
+
+                            <!-- <button type="button" <?=($address!=null AND $address->province_id!=0)?'data-toggle="modal" data-target="#payment_channels_modal"':'disabled="disabled"'?> class="fastcon-btn primary-btn w-100 <?=($address!=null AND $address->province_id==0)?'disabled':''?>"><?=lang('checkout_securely')?></button> -->
                         </div>
 
                     </div>
@@ -235,6 +237,42 @@
     </div>
 
 </section>
+
+<?php /* ?>
+<div class="modal fade" id="payment_channels_modal" tabindex="-1" role="dialog" aria-labelledby="addressModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="container">
+
+                        <?=form_open('#', ['method' => 'POST']);?>
+                            <?php foreach ($payment_channels as $pc => $pc_value): ?>
+                                <?php if ($pc == 'VIRTUAL_ACCOUNT'): ?>
+                                    <h3 class="fastcon-h3 mb-20">Virtual Account</h3>
+                                    <?php foreach ($pc_value as $pv): ?>
+                                        <?php if ($pv->is_enabled): ?>
+                                            <div class="row mb-20">
+                                                <div class="col d-flex align-items-center">
+                                                    <input type="radio" name="payment_channel" value="<?=$pv->channel_code?>">
+                                                    <img src="<?=BASE_ASSET?>fastcon/img/icons/bank/<?=strtolower($pv->channel_code)?>.png" alt="<?=$pv->channel_code?>" width="50" class="ml-3">
+                                                    <span class="fastcon-description cl-grey-900 ml-3"><?=$pv->channel_code?></span>
+                                                </div>
+                                            </div>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            <?php endforeach ?>
+                        <?=form_close();?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php */ ?>
 
 <div class="modal fade address-modal" tabindex="-1" role="dialog" aria-labelledby="addressModal" aria-hidden="true">
     <div class="modal-dialog">
@@ -447,11 +485,11 @@
 	}
 
 
-	[type="radio"]:checked,
+	/*[type="radio"]:checked,
 	[type="radio"]:not(:checked) {
 	    position: absolute;
 	    left: -9999px;
-	}
+	}*/
 	[type="radio"]:checked + label,
 	[type="radio"]:not(:checked) + label
 	{

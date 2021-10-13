@@ -216,6 +216,14 @@ class Checkout extends Front {
 
 		$this->data['cart'] = $cart;
 
+		// $payment_channels = json_decode(custom_curl($this->xendit['url'].'/payment_channels', 'GET', $this->xendit['headers']));
+
+		// $this->data['payment_channels'] = array_group_by('channel_category', $payment_channels);
+
+		// echo "<pre>";
+		// print_r($this->data['payment_channels']);
+		// exit;
+
 		$this->data['title'] = 'Checkout';
 		$this->data['checkout'] = true;
 		$this->render('checkout', $this->data);
@@ -322,7 +330,8 @@ class Checkout extends Front {
 
 			$grand_total = $subtotal + $ppn + $ongkir;
 
-			$order_code = 'FAST'.date('Ymd').rand(100,999);
+			// $order_code = 'FAST'.date('Ymd').rand(100,999);
+			$order_code = generate_order_code();
 
 			foreach ($cart as $c) {
 				$variant = db_get_row_data('view_product_option_variant', ['variant_id' => $c['variant_id']]);
@@ -389,6 +398,7 @@ class Checkout extends Front {
 			}
 
 			$account_email = $this->session->userdata('guest')['email'];
+			$account_name = $this->session->userdata('guest')['fullname'];
 
 			$this->session->unset_userdata('cart_contents');
 
@@ -452,7 +462,8 @@ class Checkout extends Front {
 			// count grand total
 			$grand_total = $subtotal + $ppn + $ongkir - $voucher_discount;
 
-			$order_code = 'FAST'.date('Ymd').rand(100,999);
+			// $order_code = 'FAST'.date('Ymd').rand(100,999);
+			$order_code = generate_order_code();
 
 			foreach ($cart as $c) {
 				$order_data = [
@@ -499,24 +510,14 @@ class Checkout extends Front {
 					'kelurahan' => $active_address->kelurahan,
 					'kode_pos' => $active_address->kode_pos,
 					'alamat_lengkap' => $active_address->address
-					// payment_type
-					// fraud_status
-					// status_message
-					// transaction_id
-					// transaction_time
-					// va_numbers
-					// midtrans_bill_code
-					// midtrans_bill_key
-					// transaction_status
-					// pdf_url
-					// status_pembelian
-					// midtrans_response
 				];
 
 				insert_this_data('fastcon_product_orders', $order_data);
+
 			}
 
 			$account_email = $this->session->userdata('member')['email'];
+			$account_name = $this->session->userdata('member')['name'];
 
 			// delete cart for this member
 			delete_this_data('fastcon_product_cart', ['member_id' => $this->session->userdata('member')['member_id']]);
@@ -528,6 +529,7 @@ class Checkout extends Front {
 
 		} // end member area (else)
 
+		// send email to customer by fastcon mailing
 		$info['title']		= lang('new_order_received');
 		$info['caption']	= lang('new_order_email');
 		$info['marketplace']= $this->data['marketplace'];
@@ -550,6 +552,7 @@ class Checkout extends Front {
 		$this->email->send();
 
 
+		// send email notif to admin by fastcon mailing
 		$admin['title']		= lang('new_order_received');
 		$admin['caption']	= 'Dear admin, this is e-mail notification for new order from user. You can check the user details from admin panel. Please respond in 1x24 work hours via phone number or e-mail.';
 		$admin['marketplace']= $this->data['marketplace'];
@@ -572,7 +575,45 @@ class Checkout extends Front {
 		$this->email->send();
 
 		$this->session->set_flashdata('response', ['title' => lang('order_title'), 'content' => lang('order_body')]);
-		redirect(site_url('thankyou'));
+
+		// create xendit invoice
+		$params = [
+			"external_id" => $order_code,
+			"amount" => $info['order_details']->total,
+			"payer_email" => $account_email,
+			"description" => "Invoice ".$order_code,
+		    "should_send_email" => true,
+		    "customer" => [
+		        "given_names" => $account_name,
+		        "email" => $account_email,
+		    ],
+		    "customer_notification_preference" => [
+		        "invoice_created" => ["email"],
+		        "invoice_reminder" => ["email"],
+		        "invoice_paid" => ["email"],
+		        "invoice_expired" => ["email"]
+		    ],
+		    "success_redirect_url" => site_url('member/history')
+		];
+
+		$createInvoice = \Xendit\Invoice::create($params);
+
+		$data_to_update = [
+			'xendit_inv_id' => $createInvoice['id'],
+			'external_id' => $createInvoice['external_id'],
+			'user_id' => $createInvoice['user_id'],
+			'status' => $createInvoice['status'],
+			'amount' => $createInvoice['amount'],
+			'payer_email' => $createInvoice['payer_email'],
+			'expiry_date' => $createInvoice['expiry_date'],
+			'invoice_url' => $createInvoice['invoice_url'],
+			'xendit_response' => json_encode($createInvoice)
+		];
+
+		update_this_data('fastcon_product_orders', ['order_code' => $order_code], $data_to_update);
+
+		$url = isset($createInvoice['invoice_url'])?$createInvoice['invoice_url']:site_url('thankyou');
+		redirect($url);
 	}
 	
 }

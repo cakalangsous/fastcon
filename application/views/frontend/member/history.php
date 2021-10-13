@@ -15,7 +15,7 @@
                         <div class="col-12 history-wrapper">
                             <?php if ($this->session->flashdata('response')): ?>
                                 <div class="style-msg successmsg mt-3">
-                                    <div class="sb-msg"><?=$this->session->flashdata('response');?></div>
+                                    <div class="sb-msg"><?=isset($this->session->flashdata('response')['title'])?$this->session->flashdata('response')['title'] : $this->session->flashdata('response');?></div>
                                 </div>
                             <?php endif ?>
                             <div class="history-item accordion" data-collapsible="true">
