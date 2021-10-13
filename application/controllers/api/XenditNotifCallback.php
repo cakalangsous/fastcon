@@ -47,6 +47,19 @@ class XenditNotifCallback extends Api {
 			}
 		}
 
+		$callback_data = [
+			'status' => 'success',
+			'xendit_id' => $this->post('id'),
+			'xendit_external_id' => $this->post('external_id'),
+			'xendit_status' => $this->post('status'),
+			'bank_code' => $this->post('bank_code'),
+			'retail_outlet_name' => $this->post('retail_outlet_name'),
+			'ewallet_type' => $this->post('ewallet_type'),
+			'xendit_response_json' => $this->post()
+		];
+
+		insert_this_data('fastcon_xendit_callback_hit', $callback_data);
+
 
 		if ($order AND $order_status) {
 			$order_update = [
@@ -94,21 +107,6 @@ class XenditNotifCallback extends Api {
 				'message' => 'order not found'
 			], Api::HTTP_NOT_FOUND);
 		}
-
-
-		$callback_data = [
-			'status' => 'success',
-			'xendit_id' => $this->post('id'),
-			'xendit_external_id' => $this->post('external_id'),
-			'xendit_status' => $this->post('status'),
-			'bank_code' => $this->post('bank_code'),
-			'retail_outlet_name' => $this->post('retail_outlet_name'),
-			'ewallet_type' => $this->post('ewallet_type'),
-			'xendit_response_json' => $this->post()
-		];
-
-		insert_this_data('fastcon_xendit_callback_hit', $callback_data);
-
 		
 	}
 
