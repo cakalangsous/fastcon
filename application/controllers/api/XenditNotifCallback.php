@@ -20,7 +20,7 @@ class XenditNotifCallback extends Api {
 				'xendit_response_json' => $this->head().' - '.$this->post()
 			];
 			insert_this_data('fastcon_xendit_callback_hit', $callback_data);
-			
+
 			$this->response([
 				'status' => false,
 				'message' => 'Unknown Request'
@@ -66,12 +66,24 @@ class XenditNotifCallback extends Api {
 			'status' => 'success',
 			'xendit_id' => $this->post('id'),
 			'xendit_external_id' => $this->post('external_id'),
-			'xendit_status' => $this->post('status'),
-			'bank_code' => $this->post('bank_code'),
-			'retail_outlet_name' => $this->post('retail_outlet_name'),
-			'ewallet_type' => $this->post('ewallet_type'),
 			'xendit_response_json' => $this->post()
 		];
+
+		if (isset($this->post('status'))) {
+			$callback_data['xendit_status'] = $this->post('status');
+		}
+
+		if (isset($this->post('bank_code'))) {
+			$callback_data['bank_code'] = $this->post('bank_code');
+		}
+
+		if (isset($this->post('retail_outlet_name'))) {
+			$callback_data['retail_outlet_name'] => $this->post('retail_outlet_name');
+		}
+
+		if (isset($this->post('ewallet_type'))) {
+			$callback_data['ewallet_type'] = $this->post('ewallet_type');
+		}
 
 		insert_this_data('fastcon_xendit_callback_hit', $callback_data);
 
