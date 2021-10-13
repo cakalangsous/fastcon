@@ -14,7 +14,7 @@ class XenditNotifCallback extends Api {
 
 	public function success_post()
 	{
-		if (!$this->head('x-callback-token') OR $this->head('x-callback-token') !== getenv('XENDIT_CALLBACK_TOKEN')) {
+		if (!$this->head('X-CALLBACK-TOKEN') OR $this->head('X-CALLBACK-TOKEN') !== getenv('XENDIT_CALLBACK_TOKEN')) {
 			$callback_data = [
 				'status' => false,
 				'xendit_response_json' => json_encode($this->head()).' - '.json_encode($this->post())
