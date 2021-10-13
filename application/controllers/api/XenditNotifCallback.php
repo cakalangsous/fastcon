@@ -3,6 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class XenditNotifCallback extends Api {
 
+	public function success_get()
+	{
+		$this->response([
+				'status' => true,
+				'message' => 'Testing success'
+			], Api::HTTP_OK);
+			return;
+	}
+
 	public function success_post()
 	{
 		if (!$this->head('x-callback-token') OR $this->head('x-callback-token') !== getenv('XENDIT_CALLBACK_TOKEN')) {
