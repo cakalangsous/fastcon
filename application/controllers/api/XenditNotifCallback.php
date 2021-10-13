@@ -17,7 +17,7 @@ class XenditNotifCallback extends Api {
 		if (!$this->head('x-callback-token') OR $this->head('x-callback-token') !== getenv('XENDIT_CALLBACK_TOKEN')) {
 			$callback_data = [
 				'status' => false,
-				'xendit_response_json' => json_encode($this->post()).' - '.json_encode($this->post())
+				'xendit_response_json' => json_encode($this->head()).' - '.json_encode($this->post())
 			];
 			insert_this_data('fastcon_xendit_callback_hit', $callback_data);
 
@@ -70,19 +70,19 @@ class XenditNotifCallback extends Api {
 		];
 
 
-		if ($this->post('status')!=null) {
+		if ($this->post('status')) {
 			$callback_data['xendit_status'] = $this->post('status');
 		}
 
-		if ($this->post('bank_code')!=null) {
+		if ($this->post('bank_code')) {
 			$callback_data['bank_code'] = $this->post('bank_code');
 		}
 
-		if ($this->post('retail_outlet_name')!=null) {
+		if ($this->post('retail_outlet_name')) {
 			$callback_data['retail_outlet_name'] = $this->post('retail_outlet_name');
 		}
 
-		if ($this->post('ewallet_type')!=null) {
+		if ($this->post('ewallet_type')) {
 			$callback_data['ewallet_type'] = $this->post('ewallet_type');
 		}
 
