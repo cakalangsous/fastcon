@@ -69,19 +69,19 @@ class XenditNotifCallback extends Api {
 			'xendit_response_json' => $this->post()
 		];
 
-		if (isset($this->post('status'))) {
+		if ($this->post('status')!=null) {
 			$callback_data['xendit_status'] = $this->post('status');
 		}
 
-		if (isset($this->post('bank_code'))) {
+		if ($this->post('bank_code')!=null) {
 			$callback_data['bank_code'] = $this->post('bank_code');
 		}
 
-		if (isset($this->post('retail_outlet_name'))) {
+		if ($this->post('retail_outlet_name')!=null) {
 			$callback_data['retail_outlet_name'] = $this->post('retail_outlet_name');
 		}
 
-		if (isset($this->post('ewallet_type'))) {
+		if ($this->post('ewallet_type')!=null) {
 			$callback_data['ewallet_type'] = $this->post('ewallet_type');
 		}
 
