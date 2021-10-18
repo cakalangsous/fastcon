@@ -156,11 +156,11 @@ $(document).ready(function($) {
                   $('.cart-card-wrap').html(html);
                   $('.address-card').html(address_html);
                   $('#product_summary').html(product_summary);
-                  $('#total p').text(convert_rupiah(res.order_details.subtotal));
-                  $('#tax p').text(convert_rupiah(res.order_details.subtotal * 0.1));
-                  $('#shipping_cost p').text(convert_rupiah(res.order_details.shipping_cost));
-                  $('#voucher_discount p').text('- ' + res.order_details.voucher_discount > 0 ? convert_rupiah(res.voucher_discount):'');
-                  $('#grand_total p b').text(convert_rupiah(res.order_details.total));
+                  $('#total p').text('Rp' + convert_rupiah(res.order_details.subtotal));
+                  $('#tax p').text('Rp' + convert_rupiah(res.order_details.subtotal * 0.1));
+                  $('#shipping_cost p').text('Rp' + convert_rupiah(res.order_details.shipping_cost));
+                  $('#voucher_discount p').text('- ' + res.order_details.voucher_discount > 0 ? 'Rp' + convert_rupiah(res.voucher_discount):'');
+                  $('#grand_total p b').text('Rp' + convert_rupiah(res.order_details.total));
 
                   $('#loading_wrap').slideUp();
                   $('.checkout-wrap').slideDown();
