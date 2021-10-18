@@ -79,6 +79,7 @@
                                                         <div>
                                                             <p class="fastcon-body cl-grey-900"><b>Kontak Kurir:</b></p>
                                                             <p class="fastcon-body cl-grey-900"><?=$hg->courier_name!=''?$hg->courier_name:'-'?></p>
+                                                            <p class="fastcon-body cl-grey-900"><?=$hg->courier_phone!=''?$hg->courier_phone:'-'?></p>
                                                         </div>
                                                     </div>
 
