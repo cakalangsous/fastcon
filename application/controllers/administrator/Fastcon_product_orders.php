@@ -80,7 +80,7 @@ class Fastcon_product_orders extends Admin
         			break;
 
         		case 4:
-        			$show_to_admin = '<label class="label label-danger mr-3" style="font-size:1.3rem; font-weight:400;"> '.lang('order_cancelled').' </label>';
+        			$show_to_admin = '<label class="label label-danger mr-3" style="font-size:1.3rem; font-weight:400;"> '.lang('cancelled').' </label>';
         			break;
         		
         		default:
