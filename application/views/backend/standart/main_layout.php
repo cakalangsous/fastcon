@@ -67,6 +67,8 @@
 
   <link rel="stylesheet" href="<?= BASE_ASSET; ?>flag-icon/css/flag-icon.css" rel="stylesheet" media="all" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <?= $this->cc_html->getCssFileTop(); ?>
@@ -329,7 +331,7 @@
 
     </div>
 
-    <strong>Copyright &copy; <?=date('Y'); ?> <a href="#"><?= get_option('site_name'); ?></a>.</strong> All rights
+    <strong>Copyright &copy; <?=date('Y'); ?> <a href="<?=site_url()?>"><?= get_option('site_name'); ?></a>.</strong> All rights
 
     reserved.
 
@@ -416,6 +418,7 @@
 <script src="<?= BASE_ASSET; ?>/admin-lte/dist/js/app.min.js"></script>
 
 <script src="<?= BASE_ASSET; ?>/js/custom.js"></script>
+<script src="<?= BASE_ASSET; ?>/js/fastcon.admin.js"></script>
 
 </body>
 

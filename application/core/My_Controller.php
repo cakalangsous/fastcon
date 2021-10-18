@@ -459,6 +459,23 @@ class Admin extends MY_Controller
         }      
     }
 
+    public function mail_config()
+    {
+        return $config = [
+            'protocol'      => 'smtp',
+            'smtp_host'     => getenv('SMTP_HOST'),
+            'smtp_port'     => getenv('SMTP_PORT'),
+            'smtp_crypto'   =>'ssl',
+            'smtp_timeout'  => '30',
+            'charset'       => 'utf-8',
+            'wordwrap'      => TRUE,
+            'mailtype'      => 'html',
+            'newline'       => "\r\n",
+            'smtp_user'     => getenv('SMTP_USER'),
+            'smtp_pass'     => getenv('SMTP_PASS'),
+        ];
+    }
+
 
     /**
     * render admin page

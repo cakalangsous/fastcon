@@ -23,11 +23,11 @@ jQuery(document).ready(domo);
 <!-- Content Header (Page header) -->
 <section class="content-header">
    <h1>
-      Orders      <small><?= cclang('detail', ['Orders']); ?> </small>
+      Transactions      <small><?= cclang('detail', ['Transactions']); ?> </small>
    </h1>
    <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class=""><a  href="<?= site_url('administrator/fastcon_product_orders'); ?>">Orders</a></li>
+      <li class=""><a  href="<?= site_url('administrator/fastcon_product_orders'); ?>">Transactions</a></li>
       <li class="active"><?= cclang('detail'); ?></li>
    </ol>
 </section>
@@ -48,8 +48,8 @@ jQuery(document).ready(domo);
                         <img class="img-circle" src="<?= BASE_ASSET; ?>/img/view.png" alt="User Avatar">
                      </div>
                      <!-- /.widget-user-image -->
-                     <h3 class="widget-user-username">Orders</h3>
-                     <h5 class="widget-user-desc">Detail Orders</h5>
+                     <h3 class="widget-user-username">Transactions</h3>
+                     <h5 class="widget-user-desc">Detail Transactions</h5>
                      <hr>
                   </div>
 
@@ -93,6 +93,22 @@ jQuery(document).ready(domo);
 
                         <div class="col-sm-8">
                            <?= _ent($fastcon_product_orders->guest_id); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Payer Name </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_product_orders->payer_name); ?>
+                        </div>
+                    </div>
+                                         
+                    <div class="form-group ">
+                        <label for="content" class="col-sm-2 control-label">Payer Email </label>
+
+                        <div class="col-sm-8">
+                           <?= _ent($fastcon_product_orders->payer_email); ?>
                         </div>
                     </div>
                                          
@@ -451,90 +467,66 @@ jQuery(document).ready(domo);
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Payment Type </label>
+                        <label for="content" class="col-sm-2 control-label">Xendit Inv Id </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->payment_type); ?>
+                           <?= _ent($fastcon_product_orders->xendit_inv_id); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Fraud Status </label>
+                        <label for="content" class="col-sm-2 control-label">External Id </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->fraud_status); ?>
+                           <?= _ent($fastcon_product_orders->external_id); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Status Message </label>
+                        <label for="content" class="col-sm-2 control-label">User Id </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->status_message); ?>
+                           <?= _ent($fastcon_product_orders->user_id); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Transaction Id </label>
+                        <label for="content" class="col-sm-2 control-label">Status </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->transaction_id); ?>
+                           <?= _ent($fastcon_product_orders->status); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Transaction Time </label>
+                        <label for="content" class="col-sm-2 control-label">Amount </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->transaction_time); ?>
+                           <?= _ent($fastcon_product_orders->amount); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Va Numbers </label>
+                        <label for="content" class="col-sm-2 control-label">Expiry Date </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->va_numbers); ?>
+                           <?= _ent($fastcon_product_orders->expiry_date); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Midtrans Bill Code </label>
+                        <label for="content" class="col-sm-2 control-label">Invoice Url </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->midtrans_bill_code); ?>
+                           <?= _ent($fastcon_product_orders->invoice_url); ?>
                         </div>
                     </div>
                                          
                     <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Midtrans Bill Key </label>
+                        <label for="content" class="col-sm-2 control-label">Xendit Response </label>
 
                         <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->midtrans_bill_key); ?>
-                        </div>
-                    </div>
-                                         
-                    <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Transaction Status </label>
-
-                        <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->transaction_status); ?>
-                        </div>
-                    </div>
-                                         
-                    <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Pdf Url </label>
-
-                        <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->pdf_url); ?>
-                        </div>
-                    </div>
-                                         
-                    <div class="form-group ">
-                        <label for="content" class="col-sm-2 control-label">Midtrans Response </label>
-
-                        <div class="col-sm-8">
-                           <?= _ent($fastcon_product_orders->midtrans_response); ?>
+                           <?= _ent($fastcon_product_orders->xendit_response); ?>
                         </div>
                     </div>
                                          

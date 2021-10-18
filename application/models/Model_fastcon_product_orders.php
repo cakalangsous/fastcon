@@ -5,7 +5,7 @@ class Model_fastcon_product_orders extends MY_Model {
 
 	private $primary_key 	= 'order_id';
 	private $table_name 	= 'fastcon_product_orders';
-	private $field_search 	= ['order_code', 'order_status', 'member_id', 'guest_id', 'product_category_id', 'product_category_name', 'product_category_name_en', 'product_id', 'product_name', 'product_images', 'variant_id', 'sku', 'product_option1_id', 'product_option1_name', 'product_option1_name_en', 'product_option1_value_id', 'product_option1_value', 'product_option2_id', 'product_option2_name', 'product_option2_name_en', 'product_option2_value_id', 'product_option2_value', 'price', 'discount', 'qty', 'subtotal', 'shipping_cost', 'total', 'voucher_id', 'voucher_code', 'voucher_discount', 'voucher_start_date', 'voucher_end_date', 'member_address_id', 'nama_penerima', 'email', 'no_telp', 'province_id', 'province_name', 'provinsi', 'kabupaten', 'kecamatan', 'kelurahan', 'kode_pos', 'alamat_lengkap', 'courier_name', 'courier_phone', 'payment_type', 'fraud_status', 'status_message', 'transaction_id', 'transaction_time', 'va_numbers', 'midtrans_bill_code', 'midtrans_bill_key', 'transaction_status', 'pdf_url', 'midtrans_response', 'created'];
+	private $field_search 	= ['order_code', 'order_status', 'payer_name', 'payer_email', 'no_telp', 'courier_name', 'courier_phone', 'created'];
 
 	public function __construct()
 	{
@@ -84,6 +84,7 @@ class Model_fastcon_product_orders extends MY_Model {
         }else{
 		    $this->db->order_by('fastcon_product_orders.'.$this->primary_key, "DESC");
         }
+        $this->db->group_by('fastcon_product_orders.order_code');
 		$query = $this->db->get($this->table_name);
 
 		return $query->result();

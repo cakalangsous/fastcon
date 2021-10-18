@@ -466,7 +466,7 @@ p {
                                             </tr>
                                             <tr>
                                                 <td colspan="2"><p class="fastcon-description" style="font-family: 'Jura', sans-serif !important; margin: 0; font-size: 12px;">Kontak Kurir</p></td>
-                                                <td><p style="margin: 0; font-size: 12px;"><?=$order_details->courier_name?$order_details->courier_name:'-'?></p></td>
+                                                <td><p style="margin: 0; font-size: 12px;"><?=$order_details->courier_name?$order_details->courier_name.' ('.$order_details->courier_phone.')' :'-'?></p></td>
                                             </tr>
 
                                             <tr style="border-bottom: solid 1px #000;"></tr>

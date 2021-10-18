@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?= BASE_ASSET; ?>fastcon/css/custom/custom.css">
 
 <script src="<?= BASE_ASSET; ?>/js/jquery.hotkeys.js"></script>
 
@@ -33,11 +34,11 @@ jQuery(document).ready(domo);
 <!-- Content Header (Page header) -->
 <section class="content-header">
    <h1>
-      Orders<small><?= cclang('list_all'); ?></small>
+      Transactions<small><?= cclang('list_all'); ?></small>
    </h1>
    <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Orders</li>
+      <li class="active">Transactions</li>
    </ol>
 </section>
 <!-- Main content -->
@@ -57,8 +58,8 @@ jQuery(document).ready(domo);
                         <img class="img-circle" src="<?= BASE_ASSET; ?>/img/list.png" alt="User Avatar">
                      </div>
                      <!-- /.widget-user-image -->
-                     <h3 class="widget-user-username">Orders</h3>
-                     <h5 class="widget-user-desc"><?= cclang('list_all', ['Orders']); ?>  <i class="label bg-yellow"><?= $fastcon_product_orders_counts; ?>  <?= cclang('items'); ?></i></h5>
+                     <h3 class="widget-user-username">Transactions</h3>
+                     <h5 class="widget-user-desc"><?= cclang('list_all', ['Transactions']); ?>  <i class="label bg-yellow"><?= $fastcon_product_orders_counts; ?>  <?= cclang('items'); ?></i></h5>
                   </div>
                   <div class="table-responsive"> 
                   <table class="table table-bordered table-striped dataTable" id="fastcon_product_orders">
@@ -66,64 +67,14 @@ jQuery(document).ready(domo);
                         <tr class="">
                            <th>Order Code</th>
                            <th>Order Status</th>
-                           <th>Member Id</th>
-                           <th>Guest Id</th>
-                           <th>Product Category Id</th>
-                           <th>Product Category Name</th>
-                           <th>Product Category Name En</th>
-                           <th>Product Id</th>
-                           <th>Product Name</th>
-                           <th>Product Images</th>
-                           <th>Variant Id</th>
-                           <th>Sku</th>
-                           <th>Product Option1 Id</th>
-                           <th>Product Option1 Name</th>
-                           <th>Product Option1 Name En</th>
-                           <th>Product Option1 Value Id</th>
-                           <th>Product Option1 Value</th>
-                           <th>Product Option2 Id</th>
-                           <th>Product Option2 Name</th>
-                           <th>Product Option2 Name En</th>
-                           <th>Product Option2 Value Id</th>
-                           <th>Product Option2 Value</th>
-                           <th>Price</th>
-                           <th>Discount</th>
-                           <th>Qty</th>
-                           <th>Subtotal</th>
-                           <th>Shipping Cost</th>
-                           <th>Total</th>
-                           <th>Voucher Id</th>
-                           <th>Voucher Code</th>
-                           <th>Voucher Discount</th>
-                           <th>Voucher Start Date</th>
-                           <th>Voucher End Date</th>
-                           <th>Member Address Id</th>
-                           <th>Nama Penerima</th>
-                           <th>Email</th>
+                           <th>Action</th>
+                           <th>Payer Name</th>
+                           <th>Payer Email</th>
                            <th>No Telp</th>
-                           <th>Province Id</th>
-                           <th>Province Name</th>
-                           <th>Provinsi</th>
-                           <th>Kabupaten</th>
-                           <th>Kecamatan</th>
-                           <th>Kelurahan</th>
-                           <th>Kode Pos</th>
-                           <th>Alamat Lengkap</th>
                            <th>Courier Name</th>
                            <th>Courier Phone</th>
-                           <th>Payment Type</th>
-                           <th>Fraud Status</th>
-                           <th>Status Message</th>
-                           <th>Transaction Id</th>
-                           <th>Transaction Time</th>
-                           <th>Va Numbers</th>
-                           <th>Midtrans Bill Code</th>
-                           <th>Midtrans Bill Key</th>
-                           <th>Transaction Status</th>
-                           <th>Pdf Url</th>
-                           <th>Midtrans Response</th>
                            <th>Created</th>
-                           <th width="250">Action</th>
+                           <!-- <th width="250">Action</th> -->
                         </tr>
                      </thead>
                      <tbody id="tbody_fastcon_product_orders">
@@ -136,6 +87,137 @@ jQuery(document).ready(domo);
          <!--/box -->
       </div>
    </div>
+
+   <div class="modal fade" id="courier_modal" tabindex="-1" role="dialog" aria-labelledby="courier_modal_label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Send this order?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title">This action can't be cancelled and will update the order status to "Sent".</h5>
+                    <h5 class="modal-title">Please enter the courier info below to update the order status.</h5>
+                </div>
+                <?=form_open('', ['id' => 'courier_info_form', 'method' => 'POST']);?>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="courier_name">Courier Name</label>
+                            <input type="text" class="form-control" id="courier_name" name="courier_name" placeholder="Enter courier name">
+                            <small class="form-text text-danger" id="courier_name_error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="courier_name">Courier Phone</label>
+                            <input type="number" class="form-control" id="courier_phone" name="courier_phone" placeholder="Enter courier phone">
+                            <small class="form-text text-danger" id="courier_phone_error"></small>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="submit_courier_info" class="btn btn-success">Send order</button>
+                    </div>
+                <?=form_close();?>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="order_details_modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content" style="padding-bottom: 3rem;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Order Details</h4>
+                </div>
+                <div class="modal-body container" style="margin-bottom: 2rem;">
+                    <div id="loading_wrap" style="display: flex; justify-content: center; align-items: center; padding: 3rem 0;">
+                        <span class="loading">
+                            <img src="<?= BASE_ASSET; ?>/img/loading-spin-primary.svg" style="margin-right: 1rem;"> 
+                            <i>Please wait...</i>
+                        </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12" style="margin-bottom: 3rem;">
+                            <h3 class="fastcon-h3" id="order_code"></h3>
+                            <h4 class="fastcon-h4" id="order_status"></h4>
+                            <h4 class="fastcon-h4 hide" id="courier_info"></h4>
+                        </div>
+                    </div>
+                    <div class="row checkout-wrap">
+                        <div class="col-lg-5">
+                            <h4 class="fastcon-h4 cl-primary-900 text-uppercase">ORDER ITEMS</h4>
+                            <div class="cart-card-wrap"></div>
+                        </div>
+                        <div class="col-lg-7">
+                            <h3 class="fastcon-h3">CHECKOUT INFO</h3>
+                            <div class="address-wrap">
+                                <div class="address-card"></div>
+                            </div>
+
+                            <div class="card-summary">
+                                <h4 class="fastcon-h4 cl-primary-900 text-center text-uppercase">ORDER SUMMARY</h4>
+
+                                <div id="product_summary"></div>
+
+                                <div class="line"></div>
+
+                                <div class="card-summary-product-item mb-0">
+                                    <div class="product">
+                                        <p class="fastcon-description">Subtotal</p>
+                                    </div>
+                                    <div class="price" id="total">
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <div class="card-summary-product-item mb-0">
+                                    <div class="product">
+                                        <p class="fastcon-description">Tax (10%)</p>
+                                    </div>
+                                    <div class="price" id="tax">
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <div class="card-summary-product-item mb-0">
+                                    <div class="product">
+                                        <p class="fastcon-description">Delivery Cost</p>
+                                    </div>
+                                    <div class="price" id="shipping_cost">
+                                        <p>-</p>
+                                    </div>
+                                </div>
+
+                                <div class="card-summary-product-item">
+                                    <div class="product">
+                                        <p class="fastcon-description">Voucher</p>
+                                    </div>
+                                    <div class="price" id="voucher_discount">
+                                        <p class="cl-error"></p>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+
+                                <div class="card-summary-product-item">
+                                    <div class="product">
+                                        <p class="fastcon-description"><b>Total</b></p>
+                                    </div>
+                                    <div class="price" id="grand_total">
+                                        <p><b></b></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- /.content -->
 

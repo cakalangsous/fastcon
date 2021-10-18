@@ -1278,3 +1278,8 @@ div.phpdebugbar-header, .phpdebugbar-restore-btn {
     font-size: 15px;
     font-weight: bold;
 }
+
+
+.modal-xl {
+    width: min(90%, 1500px);
+}

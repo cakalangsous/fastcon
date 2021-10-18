@@ -11,47 +11,58 @@
                 <div class="col-lg-8">
                     <div class="cart-card-wrap">
 
-                        <?php foreach ($cart as $c): ?>
-                            <div class="cart-card-item">
-                                <div class="card-img">
-                                    <img src="<?=site_url('uploads/fastcon_product/'.explode(',', $c->product_images)[0] )?>" alt="">
-                                </div>
-                                
-                                <div class="card-desc">
-                                    <a href="<?=site_url('products/details/'.$c->product_id.'/'.$c->product_slug)?>"><h4 class="fastcon-h4"><?=$c->product_name?></h4></a>
-                                    <?php if ($c->discount>0): ?>
-                                        <del class="normal-price">Rp<?=number_format($c->price)?></del>
-                                    <?php endif ?>
-                                    <h4 class="fastcon-h4 main-price <?=$c->discount>0?'cl-error':''?>">Rp<?=number_format($c->price - $c->discount)?></h4>
-                                    <p class="card-desc-details"><span class="desc-title"><?=$lang=='indonesian'?$c->product_option1_name:$c->product_option1_name_en?>: </span><?=$c->option_value1?></p>
-
-                                    <?php if ($c->product_option2_name!=null): ?>
-                                        <p class="card-desc-details"><span class="desc-title"><?=$lang=='indonesian'?$c->product_option2_name:$c->product_option2_name_en?>: </span><?=$c->option_value2?></p>
-                                    <?php endif ?>
-                                </div>
-                                
-                                <div class="card-qty">
-                                    <div class="quantity clearfix">
-                                        <input type="button" value="-" class="minus cart_minus" data-variant="<?=$this->session->userdata('member')!=null?$c->variant_id:$c->rowid?>">
-                                        <input type="number" step="1" min="1" name="quantity" value="<?=$this->session->userdata('member')!=null ? $c->quantity:$c->qty?>" title="Qty" class="qty cart_qty customjs" id="<?=$this->session->userdata('member')!=null?$c->variant_id:$c->rowid?>" />
-                                        <input type="button" value="+" class="plus cart_plus" data-variant="<?=$this->session->userdata('member')!=null?$c->variant_id:$c->rowid?>">
+                        <?=form_open(site_url('products/update_cart'), ['method' => 'POST']);?>
+                            <?php if ($this->session->flashdata('success')): ?>
+                                <div class="cart-card-item mb-20">
+                                    <div class="style-msg successmsg w-100">
+                                        <div class="sb-msg"><?=$this->session->flashdata('success');?></div>
                                     </div>
                                 </div>
-        
-                                <div class="delete-link">
-                                    <a href="javascript:void(0)" class="delete-cart" data-product="<?=$c->product_name?>" data-image="<?=site_url('uploads/fastcon_product/'.explode(',', $c->product_images)[0] )?>" data-variant="<?=$c->variant_id?>" <?=isset($c->rowid)?'data-rowid="'.$c->rowid.'"':''?>>
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g opacity="0.5">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M23 1H1V23H23V1ZM0 0V24H24V0H0Z" fill="#D3302F"/>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.11116 17.8889L17.6465 7.35359L16.9393 6.64648L6.40405 17.1818L7.11116 17.8889Z" fill="#D3302F"/>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.9394 17.8889L6.40408 7.35359L7.11119 6.64648L17.6465 17.1818L16.9394 17.8889Z" fill="#D3302F"/>
-                                            </g>
-                                        </svg>
-                                    </a>
+                            <?php endif ?>
+
+                            <?php foreach ($cart as $c): ?>
+                                <div class="cart-card-item">
+                                    <div class="card-img">
+                                        <img src="<?=site_url('uploads/fastcon_product/'.explode(',', $c->product_images)[0] )?>" alt="">
+                                    </div>
+                                    
+                                    <div class="card-desc">
+                                        <a href="<?=site_url('products/details/'.$c->product_id.'/'.$c->product_slug)?>"><h4 class="fastcon-h4"><?=$c->product_name?></h4></a>
+                                        <?php if ($c->discount>0): ?>
+                                            <del class="normal-price">Rp<?=number_format($c->price)?></del>
+                                        <?php endif ?>
+                                        <h4 class="fastcon-h4 main-price <?=$c->discount>0?'cl-error':''?>">Rp<?=number_format($c->price - $c->discount)?></h4>
+                                        <p class="card-desc-details"><span class="desc-title"><?=$lang=='indonesian'?$c->product_option1_name:$c->product_option1_name_en?>: </span><?=$c->option_value1?></p>
+
+                                        <?php if ($c->product_option2_name!=null): ?>
+                                            <p class="card-desc-details"><span class="desc-title"><?=$lang=='indonesian'?$c->product_option2_name:$c->product_option2_name_en?>: </span><?=$c->option_value2?></p>
+                                        <?php endif ?>
+                                    </div>
+                                    
+                                    <div class="card-qty">
+                                        <div class="quantity clearfix">
+                                            <input type="button" value="-" class="minus cart_minus" data-variant="<?=$this->session->userdata('member')!=null?$c->variant_id:$c->rowid?>">
+                                            <input type="number" step="1" min="1" name="<?=$this->session->userdata('member')!=null?$c->cart_id:$c->rowid?>" value="<?=$this->session->userdata('member')!=null ? $c->quantity:$c->qty?>" title="Qty" class="qty cart_qty customjs" id="<?=$this->session->userdata('member')!=null?$c->variant_id:$c->rowid?>" />
+                                            <input type="button" value="+" class="plus cart_plus" data-variant="<?=$this->session->userdata('member')!=null?$c->variant_id:$c->rowid?>">
+                                        </div>
+                                    </div>
+            
+                                    <div class="delete-link">
+                                        <a href="javascript:void(0)" class="delete-cart" data-product="<?=$c->product_name?>" data-image="<?=site_url('uploads/fastcon_product/'.explode(',', $c->product_images)[0] )?>" data-variant="<?=$c->variant_id?>" <?=isset($c->rowid)?'data-rowid="'.$c->rowid.'"':''?>>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g opacity="0.5">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M23 1H1V23H23V1ZM0 0V24H24V0H0Z" fill="#D3302F"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.11116 17.8889L17.6465 7.35359L16.9393 6.64648L6.40405 17.1818L7.11116 17.8889Z" fill="#D3302F"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.9394 17.8889L6.40408 7.35359L7.11119 6.64648L17.6465 17.1818L16.9394 17.8889Z" fill="#D3302F"/>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php endforeach ?>
-                        <a href="<?=site_url('products/update_cart')?>" class="fastcon-btn primary-btn toast hide" id="update_cart">Update Cart</a>
+                            <?php endforeach ?>
+                            <!-- <a href="<?=site_url('products/update_cart')?>" class="fastcon-btn primary-btn toast hide" id="update_cart">Update Cart</a> -->
+                            <button type="submit" class="fastcon-btn primary-btn toast hide" id="update_cart">Update Cart</button>
+                        <?=form_close();?>
                     </div>
                 </div>
                 <div class="col-lg-4">

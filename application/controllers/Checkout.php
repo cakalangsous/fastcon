@@ -583,7 +583,7 @@ class Checkout extends Front {
 		        "invoice_paid" => ["email"],
 		        "invoice_expired" => ["email"]
 		    ],
-		    "success_redirect_url" => site_url('member/history')
+		    "success_redirect_url" => site_url()
 		];
 
 		$createInvoice = \Xendit\Invoice::create($params);

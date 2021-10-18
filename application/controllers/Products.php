@@ -236,16 +236,33 @@ class Products extends Front {
 		}
 
 		delete_this_data('fastcon_product_cart', ['member_id' => $this->session->userdata('member')['member_id'], 'variant_id' => $arr['variant']]);
+		$this->session->set_flashdata('success', 'Cart Updated');
 		echo json_encode(['status' => true, 'message' => 'Cart updated']);
 		return;
 	}
 
-	// public function update_cart()
-	// {
-	// 	if (!$this->session->userdata('member')) {
+	public function update_cart()
+	{
+		$arr = $this->input->post();
+		if (!$this->session->userdata('member')) {
+			$cart_to_update = [];
+			foreach ($arr as $a => $qty) {
+				$cart_data['rowid'] = $a;
+				$cart_data['qty'] = $qty;
 
-	// 	}
-	// }
+				array_push($cart_to_update, $cart_data);
+			}
+
+			$this->cart->update($cart_to_update);
+		}else {
+			foreach ($arr as $a => $qty) {
+				update_this_data('fastcon_product_cart', ['cart_id' => $a], ['quantity' => $qty]);
+			}
+		}
+
+		$this->session->set_flashdata('success', 'Cart Updated');
+		redirect_back();
+	}
 }
 
 /* End of file Products.php */

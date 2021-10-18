@@ -44,7 +44,7 @@ class Fastcon_product_orders extends Admin
 		$this->data['pagination'] = $this->pagination($config);
 		$this->data['datables'] = true;
 
-		$this->template->title('Orders List');
+		$this->template->title('Transactions List');
 		$this->render('backend/standart/administrator/fastcon_product_orders/fastcon_product_orders_list', $this->data);
 	}
 
@@ -61,143 +61,50 @@ class Fastcon_product_orders extends Admin
         	$row = [];
 
 			
-	        $button .= '<a href="'.site_url("administrator/fastcon_product_orders/view/" . $fastcon_product_orders->order_id).'" class="label-default mr-3"><i class="fa fa-newspaper-o" style="padding-right:3px;"></i> '.cclang("view_button").'</a>';
+	        // $button .= '<a href="'.site_url("administrator/fastcon_product_orders/view/" . $fastcon_product_orders->order_id).'" class="label-default mr-3"><i class="fa fa-newspaper-o" style="padding-right:3px;"></i> '.cclang("view_button").'</a>';
 
-			        	if($this->is_allowed('fastcon_product_orders_delete'))
-        	{
-		        $button .= '<a href="javascript:void(0);" onclick="delete_this(\''.BASE_URL.'administrator/fastcon_product_orders/delete/'.$fastcon_product_orders->order_id.'\')" class="label-default remove-data"><i class="fa fa-close"></i>'.cclang('remove_button').'</a>';
+			      //   	if($this->is_allowed('fastcon_product_orders_delete'))
+        	// {
+		       //  $button .= '<a href="javascript:void(0);" onclick="delete_this(\''.BASE_URL.'administrator/fastcon_product_orders/delete/'.$fastcon_product_orders->order_id.'\')" class="label-default remove-data"><i class="fa fa-close"></i>'.cclang('remove_button').'</a>';
+        	// }
+
+        	$show_to_admin = '';
+        	switch ($fastcon_product_orders->order_status) {
+
+        		case 2:
+        			$show_to_admin = '<label class="label label-primary mr-3" style="font-size:1.3rem; font-weight:400;"> '.lang('payment_received').' </label> ';
+        			break;
+
+        		case 3:
+        			$show_to_admin = '<label class="label label-success mr-3" style="font-size:1.3rem; font-weight:400;"> '.lang('sent').' </label>';
+        			break;
+
+        		case 4:
+        			$show_to_admin = '<label class="label label-danger mr-3" style="font-size:1.3rem; font-weight:400;"> '.lang('order_cancelled').' </label>';
+        			break;
+        		
+        		default:
+        			$show_to_admin = '<label class="label label-warning mr-3" style="font-size:1.3rem; font-weight:400;"> '.lang('new_order').' </label>';
+        			break;
         	}
 
+	    	$row[] = '<a href="javascript:void(0)" class="order-details-btn" data-order="'.$fastcon_product_orders->order_code.'">'.$fastcon_product_orders->order_code.'</a>';
 
+	    	$row[] = $show_to_admin;
 
-	    	$row[] = $fastcon_product_orders->order_code;
+	    	$row[] = $fastcon_product_orders->order_status == 2 ? '<button type="button" class="btn btn-success send-btn" data-order="'.$fastcon_product_orders->order_code.'">Send This Order</button>' : '';
 
-	    	$row[] = $fastcon_product_orders->order_status;
+	    	$row[] = $fastcon_product_orders->payer_name;
 
-	    	$row[] = $fastcon_product_orders->member_id;
-
-	    	$row[] = $fastcon_product_orders->guest_id;
-
-	    	$row[] = $fastcon_product_orders->product_category_id;
-
-	    	$row[] = $fastcon_product_orders->product_category_name;
-
-	    	$row[] = $fastcon_product_orders->product_category_name_en;
-
-	    	$row[] = $fastcon_product_orders->product_id;
-
-	    	$row[] = $fastcon_product_orders->product_name;
-
-	    	if (!empty($fastcon_product_orders->product_images)){
-                if (is_image($fastcon_product_orders->product_images)){
-	                $row[] = '<a class="fancybox" rel="group" href="'.BASE_URL . 'uploads/fastcon_product_orders/'. $fastcon_product_orders->product_images.'">
-	                            <img src="'.BASE_URL . 'uploads/fastcon_product_orders/' . $fastcon_product_orders->product_images.'" class="image-responsive" alt="image fastcon_product_orders" title="product_images fastcon_product_orders" width="40px">
-	                        </a>';
-                }else{
-	                $row[] =  '<a href="'.BASE_URL . 'administrator/file/download/fastcon_product_orders/' . $fastcon_product_orders->product_images.'">
-	                       <img src="'.get_icon_file($fastcon_product_orders->product_images).'" class="image-responsive image-icon" alt="image fastcon_product_orders" title="product_images fastcon_product_orders" width="40px">
-	                     </a>';
-                }
-            }else{
-				$row[] = null;
-			}
-	    	$row[] = $fastcon_product_orders->variant_id;
-
-	    	$row[] = $fastcon_product_orders->sku;
-
-	    	$row[] = $fastcon_product_orders->product_option1_id;
-
-	    	$row[] = $fastcon_product_orders->product_option1_name;
-
-	    	$row[] = $fastcon_product_orders->product_option1_name_en;
-
-	    	$row[] = $fastcon_product_orders->product_option1_value_id;
-
-	    	$row[] = $fastcon_product_orders->product_option1_value;
-
-	    	$row[] = $fastcon_product_orders->product_option2_id;
-
-	    	$row[] = $fastcon_product_orders->product_option2_name;
-
-	    	$row[] = $fastcon_product_orders->product_option2_name_en;
-
-	    	$row[] = $fastcon_product_orders->product_option2_value_id;
-
-	    	$row[] = $fastcon_product_orders->product_option2_value;
-
-	    	$row[] = $fastcon_product_orders->price;
-
-	    	$row[] = $fastcon_product_orders->discount;
-
-	    	$row[] = $fastcon_product_orders->qty;
-
-	    	$row[] = $fastcon_product_orders->subtotal;
-
-	    	$row[] = $fastcon_product_orders->shipping_cost;
-
-	    	$row[] = $fastcon_product_orders->total;
-
-	    	$row[] = $fastcon_product_orders->voucher_id;
-
-	    	$row[] = $fastcon_product_orders->voucher_code;
-
-	    	$row[] = $fastcon_product_orders->voucher_discount;
-
-	    	$row[] = $fastcon_product_orders->voucher_start_date;
-
-	    	$row[] = $fastcon_product_orders->voucher_end_date;
-
-	    	$row[] = $fastcon_product_orders->member_address_id;
-
-	    	$row[] = $fastcon_product_orders->nama_penerima;
-
-	    	$row[] = $fastcon_product_orders->email;
+	    	$row[] = $fastcon_product_orders->payer_email;
 
 	    	$row[] = $fastcon_product_orders->no_telp;
-
-	    	$row[] = $fastcon_product_orders->province_id;
-
-	    	$row[] = $fastcon_product_orders->province_name;
-
-	    	$row[] = $fastcon_product_orders->provinsi;
-
-	    	$row[] = $fastcon_product_orders->kabupaten;
-
-	    	$row[] = $fastcon_product_orders->kecamatan;
-
-	    	$row[] = $fastcon_product_orders->kelurahan;
-
-	    	$row[] = $fastcon_product_orders->kode_pos;
-
-	    	$row[] = $fastcon_product_orders->alamat_lengkap;
 
 	    	$row[] = $fastcon_product_orders->courier_name;
 
 	    	$row[] = $fastcon_product_orders->courier_phone;
 
-	    	$row[] = $fastcon_product_orders->payment_type;
-
-	    	$row[] = $fastcon_product_orders->fraud_status;
-
-	    	$row[] = $fastcon_product_orders->status_message;
-
-	    	$row[] = $fastcon_product_orders->transaction_id;
-
-	    	$row[] = $fastcon_product_orders->transaction_time;
-
-	    	$row[] = $fastcon_product_orders->va_numbers;
-
-	    	$row[] = $fastcon_product_orders->midtrans_bill_code;
-
-	    	$row[] = $fastcon_product_orders->midtrans_bill_key;
-
-	    	$row[] = $fastcon_product_orders->transaction_status;
-
-	    	$row[] = $fastcon_product_orders->pdf_url;
-
-	    	$row[] = $fastcon_product_orders->midtrans_response;
-
-	    	$row[] = $fastcon_product_orders->created;
+	    	$row[] = date('F j, Y H:i:s', strtotime($fastcon_product_orders->created));
 
 	    
 	        $row[] = $button;
@@ -259,7 +166,7 @@ class Fastcon_product_orders extends Admin
 
 		$this->data['fastcon_product_orders'] = $this->model_fastcon_product_orders->join_avaiable()->find($id);
 
-		$this->template->title('Orders Detail');
+		$this->template->title('Transactions Detail');
 		$this->render('backend/standart/administrator/fastcon_product_orders/fastcon_product_orders_view', $this->data);
 	}
 	
@@ -381,6 +288,108 @@ class Fastcon_product_orders extends Admin
 		$this->is_allowed('fastcon_product_orders_export');
 
 		$this->model_fastcon_product_orders->pdf('fastcon_product_orders', 'fastcon_product_orders');
+	}
+
+	public function send_order()
+	{
+		if (!$this->is_allowed('fastcon_product_orders_update', false)) {
+			echo json_encode([
+				'success' => false,
+				'message' => 'You do not have permission to access'
+				]);
+			exit;
+		}
+
+		if (!$this->input->is_ajax_request()) {
+			echo json_encode([
+				'success' => false,
+				'message' => 'Unknown Request'
+				]);
+			exit;
+		}
+
+		$arr = $this->input->post();
+
+		if (!$order = db_get_row_data('fastcon_product_orders', ['order_code' => $arr['order_code']] )) {
+			echo json_encode([
+				'success' => false,
+				'message' => 'Unknown Request'
+				]);
+			exit;
+		}
+
+		$data_to_update = [
+			'order_status' => 3,
+			'status' => 'SENT',
+			'courier_name' => $arr['courier_name'],
+			'courier_phone' => $arr['courier_phone']
+		];
+
+		update_this_data('fastcon_product_orders', ['order_code' => $arr['order_code']], $data_to_update);
+
+		$order = db_get_row_data('fastcon_product_orders', ['order_code' => $arr['order_code']] );
+
+		// send email to customer by fastcon mailing
+		$market_place = db_get_all_data('fastcon_marketplace');
+        $contact_settings = db_get_all_data('fastcon_contact_settings');
+        $lang = $this->session->userdata('fastcon_lang');
+
+		$info['title']		= lang('order_sent_title');
+		$info['caption']	= lang('order_sent_email');
+		$info['marketplace']= $market_place;
+		$info['contact_settings']	= $contact_settings;
+		$info['lang'] = $lang;
+		$info['cart'] = db_get_all_data('fastcon_product_orders', ['order_code' => $arr['order_code']]);
+		$info['order_details'] = $order;
+
+		$html = $this->load->view('email/index', $info, true);
+
+		$this->load->library('email');
+
+		$this->email->initialize($this->mail_config());
+		$this->email->set_newline("\r\n");
+		$this->email->from(getenv('EMAIL_SENDER'), getenv('SENDER_NAME'));
+		$this->email->to($order->payer_email);
+		$this->email->subject('Fastcon - '.lang('order_sent_title'));
+		$this->email->message($html);
+		
+		$this->email->send();
+
+
+		echo json_encode([
+			'success' => true,
+			'message' => 'Action completed successfully'
+		]);
+
+		return;
+	}
+
+	public function order_details()
+	{
+		if (!$this->input->is_ajax_request()) {
+			echo json_encode([
+				'success' => false,
+				'message' => 'Unknown Request'
+				]);
+			exit;
+		}
+
+		$this->is_allowed('fastcon_product_orders_view');
+
+		$arr = $this->input->post();
+
+		if (!$order = db_get_all_data('fastcon_product_orders', ['order_code' => $arr['order_code']])) {
+			echo json_encode([
+				'success' => false,
+				'message' => 'Unknown Request'
+				]);
+			exit;
+		}
+
+		$order_details = db_get_row_data('fastcon_product_orders', ['order_code' => $arr['order_code']]);
+
+		echo json_encode(['success' => true, 'message' => 'Order found!', 'order' => $order, 'order_details' => $order_details]);
+		return;
 	}
 }
 
