@@ -52,6 +52,11 @@ class Fastcon_product_variant extends Admin
 	{
 		$this->is_allowed('fastcon_product_variant_list');
 		$fastcon_product_variants = $this->model_fastcon_product_variant->get($_GET['search']['value'], '', $this->input->get('length'), $this->input->get('start'), 0);
+
+		// echo "<pre>";
+		// print_r($this->db->last_query());
+		// exit;
+
 		$data = array();
         $no = $this->input->get('draw');
 
@@ -79,10 +84,10 @@ class Fastcon_product_variant extends Admin
 
 
 	    			$row[] = $fastcon_product_variant->product_name;
-	    			$row[] = $fastcon_product_variant->product_option_name;
-	    			$row[] = $fastcon_product_variant->option_value;
-	    			$row[] = $fastcon_product_variant->product_option_name;
-	    			$row[] = $fastcon_product_variant->option_value;
+	    			$row[] = $fastcon_product_variant->product_option1;
+	    			$row[] = $fastcon_product_variant->option_value1;
+	    			$row[] = $fastcon_product_variant->product_option2;
+	    			$row[] = $fastcon_product_variant->option_value2;
 	    	$row[] = $fastcon_product_variant->sku;
 
 	    	$row[] = $fastcon_product_variant->price;

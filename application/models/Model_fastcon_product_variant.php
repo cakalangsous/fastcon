@@ -74,6 +74,8 @@ class Model_fastcon_product_variant extends MY_Model {
         if (is_array($select_field) AND count($select_field)) {
         	$this->db->select($select_field);
         }
+
+        $this->db->select('fastcon_product_variant.variant_id, fastcon_product.product_name, fastcon_product_option.product_option_name_en as product_option1, fastcon_product_option_value.option_value as option_value1, fastcon_product_option1.product_option_name_en as product_option2, fastcon_product_option_value1.option_value as option_value2, fastcon_product_variant.sku, fastcon_product_variant.price, fastcon_product_variant.discount');
 		
 		$this->join_avaiable();
         $this->db->where($where);
