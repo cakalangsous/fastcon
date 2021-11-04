@@ -1063,6 +1063,8 @@ footer {
 
 .product-img {
   background-color: #fff;
+  display: flex;
+  justify-content: center;
 }
 
 .product-details-img-wrap .slick-slide:not(.slick-current) {
