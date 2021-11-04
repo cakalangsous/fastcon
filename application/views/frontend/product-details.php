@@ -156,44 +156,20 @@
                 <div class="col-12 text-center">
                     <h3 class="fastcon-h3">PRODUK TERKAIT</h3>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="<?=site_url('products/details/1/asdf')?>" class="product-item mb-0">
-                        <div class="product-img">
-                            <img src="<?=BASE_ASSET?>fastcon/img/products/img.jpg" alt="">
-                        </div>
 
-                        <div class="product-desc">
-                            <p class="fastcon-description">BATA RINGAN AAC</p>
-                            <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="<?=site_url('products/details/1/asdf')?>" class="product-item mb-0">
-                        <div class="product-img">
-                            <img src="<?=BASE_ASSET?>fastcon/img/products/img.jpg" alt="">
-                        </div>
-
-                        <div class="product-desc">
-                            <p class="fastcon-description">BATA RINGAN AAC</p>
-                            <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="<?=site_url('products/details/1/asdf')?>" class="product-item mb-0">
-                        <div class="product-img">
-                            <img src="<?=BASE_ASSET?>fastcon/img/products/img-1.jpg" alt="">
-                        </div>
-
-                        <div class="product-desc">
-                            <p class="fastcon-description">BATA RINGAN AAC</p>
-                            <h4 class="fastcon-h4">BATA RINGAN FASTCON (BLOK STANDARD)</h4>
-                        </div>
-                    </a>
-                </div>
+                <?php foreach (db_get_all_data('fastcon_product', ['product_category' => $product->product_category, 'product_id !=' => $product->product_id], 3) as $p): ?>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <a href="<?=site_url('products/details/'.$p->product_id.'/'.$p->product_slug)?>" class="product-item mb-0">
+                            <div class="product-img">
+                                <img src="<?=site_url('uploads/fastcon_product/'.explode(',', $p->product_images)[0] )?>" alt="<?=$p->product_name?>">
+                            </div>
+                            <div class="product-desc">
+                                <p class="fastcon-description"><?=db_get_row_data('fastcon_product_category', ['category_id' => $p->product_category])->category_name ?></p>
+                                <h4 class="fastcon-h4"><?=$p->product_name?></h4>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>
