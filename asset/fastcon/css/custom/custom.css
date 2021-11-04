@@ -1065,6 +1065,8 @@ footer {
   background-color: #fff;
   display: flex;
   justify-content: center;
+  max-width: 350px;
+  max-height: 350px;
 }
 
 .product-details-img-wrap .slick-slide:not(.slick-current) {
