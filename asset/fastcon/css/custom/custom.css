@@ -1069,6 +1069,10 @@ footer {
   max-height: 350px;
 }
 
+.product-item .product-desc {
+  min-height: 112px;
+}
+
 .product-details-img-wrap .slick-slide:not(.slick-current) {
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
