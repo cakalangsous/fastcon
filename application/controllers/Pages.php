@@ -16,21 +16,6 @@ class Pages extends Front {
 		$this->render('home', $this->data);
 	}
 
-	public function perm_temp()
-	{
-		for ($i = 425; $i < 436 ; $i++) {
-			if (db_get_row_data('aauth_perms', ['id' => $i])) {
-				insert_this_data('aauth_perm_to_group', ['perm_id' => $i, 'group_id' => 3]);
-			}
-		}
-
-		for ($i = 568; $i < 573 ; $i++) {
-			if (db_get_row_data('aauth_perms', ['id' => $i])) {
-				insert_this_data('aauth_perm_to_group', ['perm_id' => $i, 'group_id' => 3]);
-			}
-		}
-	}
-
 	public function distributor()
 	{
 		$this->data['active']	= 'dist';
