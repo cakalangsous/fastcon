@@ -759,6 +759,10 @@ class Front extends MY_Controller
                 $this->data['cart_badge'] = true;
             }
         }
+
+        $this->data['keyword'] = 'Bata Ringan, Jual bata ringan, mortar, plester, aci, acian, kualitas tinggi, harga terjangkau';
+        $this->data['description'] = 'Bata ringan autoclaved. Menjual bata ringan, mortar, acian, dan lain-lain dengan produk yang berkualitas tinggi dan harga terjangkau.';
+        $this->data['meta_image'] = BASE_ASSET.'logo/'.get_option('site_logo_small');
     }
 
     public function render($view='', $data=[])

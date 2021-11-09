@@ -3,10 +3,22 @@
 <head>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="Benny Kindangen" />
+	<meta name="author" content="https://instagram.com/bennykindangen" />
 
 	<link rel="icon" href="<?=BASE_ASSET?>logo/<?=get_option('site_favicon')?>">
 	<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+	<meta name="author" content="https://instagram.com/bennykindangen" />
+    <meta name="keywords" content="<?=isset($keyword)?$keyword:''?>">
+    <meta name="description" content="<?=isset($description)?$description:'' ?>">
+    
+    <meta property="og:image" itemprop="image" content="<?=isset($meta_image)?$meta_image:''?>">
+	<meta name="og:url" property="og:url" content="<?=site_url(uri_string())?>">
+	<meta name="og:title" property="og:title" content="<?=isset($title)?$title:'' ?> | Fastcon">
+	<meta name="og:description" property="og:description" content="<?=isset($description)?$description:'' ?>">
+	<meta name="og:type" property="og:type" content="website" />
+    <meta name="theme-color" content="#00672B">
+
 	<link rel="stylesheet" href="<?=BASE_ASSET?>fastcon/css/bootstrap.css" type="text/css" />
 	<link rel="stylesheet" href="<?=BASE_ASSET?>fastcon/style.css" type="text/css" />
 	<link rel="stylesheet" href="<?=BASE_ASSET?>fastcon/css/swiper.css" type="text/css" />

@@ -81,8 +81,9 @@ class Products extends Front {
 		$this->data['cheap'] = $cheap->price;
 		$this->data['expensive'] = $expensive;
 
-		$this->data['title'] = $product->product_name;
 		$this->data['product'] = $product;
+		$this->data['title'] = $product->product_name;
+		$this->data['meta_image'] = site_url('uploads/fastcon_product/'.explode(',', $product->product_images)[0] );
 		
 		$this->render('product-details', $this->data);
 	}
