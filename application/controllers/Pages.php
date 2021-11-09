@@ -16,20 +16,38 @@ class Pages extends Front {
 		$this->render('home', $this->data);
 	}
 
-	// public function perm_temp()
-	// {
+	public function perm_temp()
+	{
 		
-	// 	$default = ['1', '20', '21', '22'];
-	// 	foreach ($default as $d) {
-	// 		insert_this_data('aauth_perm_to_group', ['perm_id' => $d, 'group_id' => 1]);
-	// 	}
+		$default = ['20', '21', '22'];
+		foreach ($default as $d) {
+			insert_this_data('aauth_perm_to_group', ['perm_id' => $d, 'group_id' => 3]);
+		}
 
-	// 	for ($i = 356; $i < 631 ; $i++) {
-	// 		if (db_get_row_data('aauth_perms', ['id' => $i])) {
-	// 			insert_this_data('aauth_perm_to_group', ['perm_id' => $i, 'group_id' => 1]);
-	// 		}
-	// 	}
-	// }
+		for ($i = 463; $i < 468 ; $i++) {
+			if (db_get_row_data('aauth_perms', ['id' => $i])) {
+				insert_this_data('aauth_perm_to_group', ['perm_id' => $i, 'group_id' => 3]);
+			}
+		}
+
+		for ($i = 502; $i < 506 ; $i++) {
+			if (db_get_row_data('aauth_perms', ['id' => $i])) {
+				insert_this_data('aauth_perm_to_group', ['perm_id' => $i, 'group_id' => 3]);
+			}
+		}
+
+		for ($i = 514; $i < 525 ; $i++) {
+			if (db_get_row_data('aauth_perms', ['id' => $i])) {
+				insert_this_data('aauth_perm_to_group', ['perm_id' => $i, 'group_id' => 3]);
+			}
+		}
+
+		for ($i = 587; $i < 592 ; $i++) {
+			if (db_get_row_data('aauth_perms', ['id' => $i])) {
+				insert_this_data('aauth_perm_to_group', ['perm_id' => $i, 'group_id' => 3]);
+			}
+		}
+	}
 
 	public function distributor()
 	{
